@@ -1,0 +1,21 @@
+<UserControl
+    x:Class="MovieShop.Views.FlashSaleBanner"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    x:Name="BannerRoot">
+
+    <Border x:Name="BannerBorder" 
+            Background="#D32F2F" 
+            Padding="10"
+            Visibility="{x:Bind ViewModel.IsActive, Mode=OneWay}">
+
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Spacing="10">
+            <TextBlock Text="FLASH SALE ENDS IN:" Foreground="White" FontWeight="Bold"/>
+
+            <TextBlock x:Name="TimerText" 
+                       Text="{x:Bind ViewModel.TimerText, Mode=OneWay}" 
+                       Foreground="White" 
+                       FontWeight="Bold"/>
+        </StackPanel>
+    </Border>
+</UserControl>

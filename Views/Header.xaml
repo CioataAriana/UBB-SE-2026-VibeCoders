@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<UserControl
+    x:Class="MovieShop.Views.Header"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <Grid Padding="20,10" Background="White">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="Auto"/>
+        </Grid.ColumnDefinitions>
+
+        <StackPanel Orientation="Horizontal" Spacing="10">
+            <SymbolIcon Symbol="Video" VerticalAlignment="Center" Foreground="Black"/>
+            <TextBlock Text="MOVIE SHOP" VerticalAlignment="Center" FontWeight="Bold" FontSize="18" Foreground="Black"/>
+        </StackPanel>
+
+        <StackPanel Grid.Column="1" Orientation="Horizontal" Spacing="25">
+            <TextBlock Text="user account" VerticalAlignment="Center" Opacity="0.7" Foreground="Black"/>
+            <TextBlock Text="wallet" VerticalAlignment="Center" Opacity="0.7" Foreground="Black"/>
+            <TextBlock Text="inventory" VerticalAlignment="Center" Opacity="0.7" Foreground="Black"/>
+        </StackPanel>
+    </Grid>
+</UserControl>
