@@ -1,3 +1,4 @@
+
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Controls.Primitives;
@@ -23,6 +24,9 @@ namespace MovieShop.Views
         {
             InitializeComponent();
 
+            FlashSaleVM.PropertyChanged += FlashSaleVM_PropertyChanged;
+            UpdateBigBanner(FlashSaleVM.TimerText, FlashSaleVM.IsActive);
+
         }
 
         public void UpdateBigBanner(string time, bool isActive)
@@ -35,12 +39,17 @@ namespace MovieShop.Views
         {
             if (this.XamlRoot.Content is NavigationPage navPage)
             {
-                // 2. Tell the "Boss" ViewModel to switch to the SalesPage state
                 navPage.ViewModel.CurrentViewModel = "SalesPage";
-
-                // This triggers the 'else if' you just wrote in NavigationPage!
             }
 
         }
-     }
+
+        private void FlashSaleVM_PropertyChanged(object senser, System.ComponentModel.PropertyChangedEventArgs e)
+        {
+            DispatcherQueue.TryEnqueue(() =>
+            {
+                UpdateBigBanner(FlashSaleVM.TimerText, FlashSaleVM.IsActive);
+            });
+        }
+    }
 }
