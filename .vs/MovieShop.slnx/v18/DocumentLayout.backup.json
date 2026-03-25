@@ -11,16 +11,12 @@
       "RelativeMoniker": "D:0:0:{EA307B9B-A8AC-AAB7-28D2-1A7BB0F6A26F}|MovieShop\\MovieShop.csproj|solutionrelative:movieshop\\viewmodels\\mainviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{EA307B9B-A8AC-AAB7-28D2-1A7BB0F6A26F}|MovieShop\\MovieShop.csproj|c:\\users\\marius\\source\\repos\\se_movies\\ubb-se-2026-vibecoders\\movieshop\\services\\saleservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{EA307B9B-A8AC-AAB7-28D2-1A7BB0F6A26F}|MovieShop\\MovieShop.csproj|solutionrelative:movieshop\\services\\saleservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{EA307B9B-A8AC-AAB7-28D2-1A7BB0F6A26F}|MovieShop\\MovieShop.csproj|c:\\users\\marius\\source\\repos\\se_movies\\ubb-se-2026-vibecoders\\movieshop\\viewmodels\\flashsaleviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EA307B9B-A8AC-AAB7-28D2-1A7BB0F6A26F}|MovieShop\\MovieShop.csproj|solutionrelative:movieshop\\viewmodels\\flashsaleviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{EA307B9B-A8AC-AAB7-28D2-1A7BB0F6A26F}|MovieShop\\MovieShop.csproj|c:\\users\\marius\\source\\repos\\se_movies\\ubb-se-2026-vibecoders\\movieshop\\views\\flashsalebanner.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{EA307B9B-A8AC-AAB7-28D2-1A7BB0F6A26F}|MovieShop\\MovieShop.csproj|solutionrelative:movieshop\\views\\flashsalebanner.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{EA307B9B-A8AC-AAB7-28D2-1A7BB0F6A26F}|MovieShop\\MovieShop.csproj|c:\\users\\marius\\source\\repos\\se_movies\\ubb-se-2026-vibecoders\\movieshop\\viewmodels\\flashsaleviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{EA307B9B-A8AC-AAB7-28D2-1A7BB0F6A26F}|MovieShop\\MovieShop.csproj|solutionrelative:movieshop\\viewmodels\\flashsaleviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{EA307B9B-A8AC-AAB7-28D2-1A7BB0F6A26F}|MovieShop\\MovieShop.csproj|c:\\users\\marius\\source\\repos\\se_movies\\ubb-se-2026-vibecoders\\movieshop\\views\\flashsalebanner.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
@@ -38,7 +34,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 11,
+          "SelectedChildIndex": 10,
           "Children": [
             {
               "$type": "Bookmark",
@@ -82,41 +78,28 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "MainViewModel.cs",
-              "DocumentMoniker": "C:\\Users\\marius\\source\\repos\\SE_Movies\\UBB-SE-2026-VibeCoders\\MovieShop\\ViewModels\\MainViewModel.cs",
-              "RelativeDocumentMoniker": "MovieShop\\ViewModels\\MainViewModel.cs",
-              "ToolTip": "C:\\Users\\marius\\source\\repos\\SE_Movies\\UBB-SE-2026-VibeCoders\\MovieShop\\ViewModels\\MainViewModel.cs",
-              "RelativeToolTip": "MovieShop\\ViewModels\\MainViewModel.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAcAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-25T21:23:53.906Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 0,
               "Title": "ActiveSalesRepo.cs",
               "DocumentMoniker": "C:\\Users\\marius\\source\\repos\\SE_Movies\\UBB-SE-2026-VibeCoders\\MovieShop\\Repositories\\ActiveSalesRepo.cs",
               "RelativeDocumentMoniker": "MovieShop\\Repositories\\ActiveSalesRepo.cs",
               "ToolTip": "C:\\Users\\marius\\source\\repos\\SE_Movies\\UBB-SE-2026-VibeCoders\\MovieShop\\Repositories\\ActiveSalesRepo.cs",
               "RelativeToolTip": "MovieShop\\Repositories\\ActiveSalesRepo.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAABAAAAAAAAAAAAAwwBsAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-03-25T21:23:38.658Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "SaleService.cs",
-              "DocumentMoniker": "C:\\Users\\marius\\source\\repos\\SE_Movies\\UBB-SE-2026-VibeCoders\\MovieShop\\Services\\SaleService.cs",
-              "RelativeDocumentMoniker": "MovieShop\\Services\\SaleService.cs",
-              "ToolTip": "C:\\Users\\marius\\source\\repos\\SE_Movies\\UBB-SE-2026-VibeCoders\\MovieShop\\Services\\SaleService.cs",
-              "RelativeToolTip": "MovieShop\\Services\\SaleService.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAjAAAAAAAAAA==",
+              "DocumentIndex": 1,
+              "Title": "MainViewModel.cs",
+              "DocumentMoniker": "C:\\Users\\marius\\source\\repos\\SE_Movies\\UBB-SE-2026-VibeCoders\\MovieShop\\ViewModels\\MainViewModel.cs",
+              "RelativeDocumentMoniker": "MovieShop\\ViewModels\\MainViewModel.cs",
+              "ToolTip": "C:\\Users\\marius\\source\\repos\\SE_Movies\\UBB-SE-2026-VibeCoders\\MovieShop\\ViewModels\\MainViewModel.cs",
+              "RelativeToolTip": "MovieShop\\ViewModels\\MainViewModel.cs",
+              "ViewState": "AgIAAC0AAAAAAAAAAAAAwDgAAAA8AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-25T21:22:09.973Z",
+              "WhenOpened": "2026-03-25T21:23:53.906Z",
               "EditorCaption": ""
             },
             {
@@ -134,7 +117,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 4,
               "Title": "FlashSaleBanner.xaml",
               "DocumentMoniker": "C:\\Users\\marius\\source\\repos\\SE_Movies\\UBB-SE-2026-VibeCoders\\MovieShop\\Views\\FlashSaleBanner.xaml",
               "RelativeDocumentMoniker": "MovieShop\\Views\\FlashSaleBanner.xaml",
@@ -147,7 +130,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 2,
               "Title": "FlashSaleViewModel.cs",
               "DocumentMoniker": "C:\\Users\\marius\\source\\repos\\SE_Movies\\UBB-SE-2026-VibeCoders\\MovieShop\\ViewModels\\FlashSaleViewModel.cs",
               "RelativeDocumentMoniker": "MovieShop\\ViewModels\\FlashSaleViewModel.cs",
@@ -160,7 +143,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 5,
               "Title": "MainPage.xaml",
               "DocumentMoniker": "C:\\Users\\marius\\source\\repos\\SE_Movies\\UBB-SE-2026-VibeCoders\\MovieShop\\Views\\MainPage.xaml",
               "RelativeDocumentMoniker": "MovieShop\\Views\\MainPage.xaml",

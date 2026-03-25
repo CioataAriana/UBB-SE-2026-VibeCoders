@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "MovieMarketplace (Package)": {
+      "commandName": "MsixPackage"
+    },
+    "MovieMarketplace (Unpackaged)": {
+      "commandName": "Project"
+    }
+  }
+}

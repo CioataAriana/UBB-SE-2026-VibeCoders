@@ -1,0 +1,457 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\iss\\MovieMarketplace\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{7867221C-1219-31A1-BF37-082AA2FA4F3B}|MovieMarketplace.csproj|d:\\iss\\moviemarketplace\\viewmodels\\sellviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7867221C-1219-31A1-BF37-082AA2FA4F3B}|MovieMarketplace.csproj|solutionrelative:viewmodels\\sellviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7867221C-1219-31A1-BF37-082AA2FA4F3B}|MovieMarketplace.csproj|d:\\iss\\moviemarketplace\\viewmodels\\marketplaceviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7867221C-1219-31A1-BF37-082AA2FA4F3B}|MovieMarketplace.csproj|solutionrelative:viewmodels\\marketplaceviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7867221C-1219-31A1-BF37-082AA2FA4F3B}|MovieMarketplace.csproj|d:\\iss\\moviemarketplace\\viewmodels\\buyviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7867221C-1219-31A1-BF37-082AA2FA4F3B}|MovieMarketplace.csproj|solutionrelative:viewmodels\\buyviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7867221C-1219-31A1-BF37-082AA2FA4F3B}|MovieMarketplace.csproj|d:\\iss\\moviemarketplace\\models\\equipment.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7867221C-1219-31A1-BF37-082AA2FA4F3B}|MovieMarketplace.csproj|solutionrelative:models\\equipment.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7867221C-1219-31A1-BF37-082AA2FA4F3B}|MovieMarketplace.csproj|d:\\iss\\moviemarketplace\\models\\sessionmaganer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7867221C-1219-31A1-BF37-082AA2FA4F3B}|MovieMarketplace.csproj|solutionrelative:models\\sessionmaganer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7867221C-1219-31A1-BF37-082AA2FA4F3B}|MovieMarketplace.csproj|d:\\iss\\moviemarketplace\\models\\transactionviews.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7867221C-1219-31A1-BF37-082AA2FA4F3B}|MovieMarketplace.csproj|solutionrelative:models\\transactionviews.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7867221C-1219-31A1-BF37-082AA2FA4F3B}|MovieMarketplace.csproj|d:\\iss\\moviemarketplace\\repositories\\equipmentrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7867221C-1219-31A1-BF37-082AA2FA4F3B}|MovieMarketplace.csproj|solutionrelative:repositories\\equipmentrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7867221C-1219-31A1-BF37-082AA2FA4F3B}|MovieMarketplace.csproj|d:\\iss\\moviemarketplace\\views\\marketplacepage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{7867221C-1219-31A1-BF37-082AA2FA4F3B}|MovieMarketplace.csproj|solutionrelative:views\\marketplacepage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7867221C-1219-31A1-BF37-082AA2FA4F3B}|MovieMarketplace.csproj|d:\\iss\\moviemarketplace\\views\\marketplacepage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7867221C-1219-31A1-BF37-082AA2FA4F3B}|MovieMarketplace.csproj|solutionrelative:views\\marketplacepage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7867221C-1219-31A1-BF37-082AA2FA4F3B}|MovieMarketplace.csproj|d:\\iss\\moviemarketplace\\views\\myorderspage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{7867221C-1219-31A1-BF37-082AA2FA4F3B}|MovieMarketplace.csproj|solutionrelative:views\\myorderspage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7867221C-1219-31A1-BF37-082AA2FA4F3B}|MovieMarketplace.csproj|d:\\iss\\moviemarketplace\\views\\myorderspage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7867221C-1219-31A1-BF37-082AA2FA4F3B}|MovieMarketplace.csproj|solutionrelative:views\\myorderspage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7867221C-1219-31A1-BF37-082AA2FA4F3B}|MovieMarketplace.csproj|d:\\iss\\moviemarketplace\\views\\mysalespage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{7867221C-1219-31A1-BF37-082AA2FA4F3B}|MovieMarketplace.csproj|solutionrelative:views\\mysalespage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7867221C-1219-31A1-BF37-082AA2FA4F3B}|MovieMarketplace.csproj|d:\\iss\\moviemarketplace\\views\\mysalespage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7867221C-1219-31A1-BF37-082AA2FA4F3B}|MovieMarketplace.csproj|solutionrelative:views\\mysalespage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7867221C-1219-31A1-BF37-082AA2FA4F3B}|MovieMarketplace.csproj|d:\\iss\\moviemarketplace\\views\\sellpage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{7867221C-1219-31A1-BF37-082AA2FA4F3B}|MovieMarketplace.csproj|solutionrelative:views\\sellpage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7867221C-1219-31A1-BF37-082AA2FA4F3B}|MovieMarketplace.csproj|d:\\iss\\moviemarketplace\\views\\sellpage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7867221C-1219-31A1-BF37-082AA2FA4F3B}|MovieMarketplace.csproj|solutionrelative:views\\sellpage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7867221C-1219-31A1-BF37-082AA2FA4F3B}|MovieMarketplace.csproj|d:\\iss\\moviemarketplace\\views\\startpage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7867221C-1219-31A1-BF37-082AA2FA4F3B}|MovieMarketplace.csproj|solutionrelative:views\\startpage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7867221C-1219-31A1-BF37-082AA2FA4F3B}|MovieMarketplace.csproj|d:\\iss\\moviemarketplace\\app.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7867221C-1219-31A1-BF37-082AA2FA4F3B}|MovieMarketplace.csproj|solutionrelative:app.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7867221C-1219-31A1-BF37-082AA2FA4F3B}|MovieMarketplace.csproj|d:\\iss\\moviemarketplace\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7867221C-1219-31A1-BF37-082AA2FA4F3B}|MovieMarketplace.csproj|solutionrelative:mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7867221C-1219-31A1-BF37-082AA2FA4F3B}|MovieMarketplace.csproj|d:\\iss\\moviemarketplace\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{7867221C-1219-31A1-BF37-082AA2FA4F3B}|MovieMarketplace.csproj|solutionrelative:mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7867221C-1219-31A1-BF37-082AA2FA4F3B}|MovieMarketplace.csproj|d:\\iss\\moviemarketplace\\app.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{7867221C-1219-31A1-BF37-082AA2FA4F3B}|MovieMarketplace.csproj|solutionrelative:app.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7867221C-1219-31A1-BF37-082AA2FA4F3B}|MovieMarketplace.csproj|d:\\iss\\moviemarketplace\\views\\startpage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{7867221C-1219-31A1-BF37-082AA2FA4F3B}|MovieMarketplace.csproj|solutionrelative:views\\startpage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7867221C-1219-31A1-BF37-082AA2FA4F3B}|MovieMarketplace.csproj|d:\\iss\\moviemarketplace\\views\\equipmentdetailpage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{7867221C-1219-31A1-BF37-082AA2FA4F3B}|MovieMarketplace.csproj|solutionrelative:views\\equipmentdetailpage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7867221C-1219-31A1-BF37-082AA2FA4F3B}|MovieMarketplace.csproj|d:\\iss\\moviemarketplace\\views\\equipmentdetailpage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7867221C-1219-31A1-BF37-082AA2FA4F3B}|MovieMarketplace.csproj|solutionrelative:views\\equipmentdetailpage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\iss\\MovieMarketplace\\obj\\x64\\Debug\\net8.0-windows10.0.19041.0\\win-x64\\App.g.i.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:obj\\x64\\Debug\\net8.0-windows10.0.19041.0\\win-x64\\App.g.i.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7867221C-1219-31A1-BF37-082AA2FA4F3B}|MovieMarketplace.csproj|d:\\iss\\moviemarketplace\\app.manifest||{FA3CD31E-987B-443A-9B81-186104E8DAC1}",
+      "RelativeMoniker": "D:0:0:{7867221C-1219-31A1-BF37-082AA2FA4F3B}|MovieMarketplace.csproj|solutionrelative:app.manifest||{FA3CD31E-987B-443A-9B81-186104E8DAC1}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\TEMP\\.vsdbgsrc\\6566458cddce4009ce11835092ea2e28af4d0912220ce78ab48f9d522decb282\\App.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 2,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "BuyViewModel.cs",
+              "DocumentMoniker": "D:\\iss\\MovieMarketplace\\ViewModels\\BuyViewModel.cs",
+              "RelativeDocumentMoniker": "ViewModels\\BuyViewModel.cs",
+              "ToolTip": "D:\\iss\\MovieMarketplace\\ViewModels\\BuyViewModel.cs*",
+              "RelativeToolTip": "ViewModels\\BuyViewModel.cs*",
+              "ViewState": "AgIAABYAAAAAAAAAAADwvxsAAAA0AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-23T13:38:41.355Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "MarketplaceViewModel.cs",
+              "DocumentMoniker": "D:\\iss\\MovieMarketplace\\ViewModels\\MarketplaceViewModel.cs",
+              "RelativeDocumentMoniker": "ViewModels\\MarketplaceViewModel.cs",
+              "ToolTip": "D:\\iss\\MovieMarketplace\\ViewModels\\MarketplaceViewModel.cs",
+              "RelativeToolTip": "ViewModels\\MarketplaceViewModel.cs",
+              "ViewState": "AgIAAEMAAAAAAAAAAAAwwBsAAAAIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-15T14:59:22.069Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "SellViewModel.cs",
+              "DocumentMoniker": "D:\\iss\\MovieMarketplace\\ViewModels\\SellViewModel.cs",
+              "RelativeDocumentMoniker": "ViewModels\\SellViewModel.cs",
+              "ToolTip": "D:\\iss\\MovieMarketplace\\ViewModels\\SellViewModel.cs*",
+              "RelativeToolTip": "ViewModels\\SellViewModel.cs*",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-23T13:23:55.828Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Equipment.cs",
+              "DocumentMoniker": "D:\\iss\\MovieMarketplace\\Models\\Equipment.cs",
+              "RelativeDocumentMoniker": "Models\\Equipment.cs",
+              "ToolTip": "D:\\iss\\MovieMarketplace\\Models\\Equipment.cs",
+              "RelativeToolTip": "Models\\Equipment.cs",
+              "ViewState": "AgIAAA0AAAAAAAAAAADwvxAAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-15T14:57:20.769Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "SessionMaganer.cs",
+              "DocumentMoniker": "D:\\iss\\MovieMarketplace\\Models\\SessionMaganer.cs",
+              "RelativeDocumentMoniker": "Models\\SessionMaganer.cs",
+              "ToolTip": "D:\\iss\\MovieMarketplace\\Models\\SessionMaganer.cs",
+              "RelativeToolTip": "Models\\SessionMaganer.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-16T09:10:24.965Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "TransactionViews.cs",
+              "DocumentMoniker": "D:\\iss\\MovieMarketplace\\Models\\TransactionViews.cs",
+              "RelativeDocumentMoniker": "Models\\TransactionViews.cs",
+              "ToolTip": "D:\\iss\\MovieMarketplace\\Models\\TransactionViews.cs*",
+              "RelativeToolTip": "Models\\TransactionViews.cs*",
+              "ViewState": "AgIAAA0AAAAAAAAAAAA5wBUAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-16T10:26:07.037Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "EquipmentRepository.cs",
+              "DocumentMoniker": "D:\\iss\\MovieMarketplace\\Repositories\\EquipmentRepository.cs",
+              "RelativeDocumentMoniker": "Repositories\\EquipmentRepository.cs",
+              "ToolTip": "D:\\iss\\MovieMarketplace\\Repositories\\EquipmentRepository.cs*",
+              "RelativeToolTip": "Repositories\\EquipmentRepository.cs*",
+              "ViewState": "AgIAAMIAAAAAAAAAAAAMwMcAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-15T14:53:39.3Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "MarketplacePage.xaml",
+              "DocumentMoniker": "D:\\iss\\MovieMarketplace\\Views\\MarketplacePage.xaml",
+              "RelativeDocumentMoniker": "Views\\MarketplacePage.xaml",
+              "ToolTip": "D:\\iss\\MovieMarketplace\\Views\\MarketplacePage.xaml",
+              "RelativeToolTip": "Views\\MarketplacePage.xaml",
+              "ViewState": "AgIAAE4AAAAAAAAAAAAAAFMAAAAXAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2026-03-15T15:11:39.553Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "MarketplacePage.xaml.cs",
+              "DocumentMoniker": "D:\\iss\\MovieMarketplace\\Views\\MarketplacePage.xaml.cs",
+              "RelativeDocumentMoniker": "Views\\MarketplacePage.xaml.cs",
+              "ToolTip": "D:\\iss\\MovieMarketplace\\Views\\MarketplacePage.xaml.cs",
+              "RelativeToolTip": "Views\\MarketplacePage.xaml.cs",
+              "ViewState": "AgIAADIAAAAAAAAAAAAAABQAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-15T15:12:55.911Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "MyOrdersPage.xaml",
+              "DocumentMoniker": "D:\\iss\\MovieMarketplace\\Views\\MyOrdersPage.xaml",
+              "RelativeDocumentMoniker": "Views\\MyOrdersPage.xaml",
+              "ToolTip": "D:\\iss\\MovieMarketplace\\Views\\MyOrdersPage.xaml",
+              "RelativeToolTip": "Views\\MyOrdersPage.xaml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACcAAABaAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2026-03-16T10:24:16.493Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "MyOrdersPage.xaml.cs",
+              "DocumentMoniker": "D:\\iss\\MovieMarketplace\\Views\\MyOrdersPage.xaml.cs",
+              "RelativeDocumentMoniker": "Views\\MyOrdersPage.xaml.cs",
+              "ToolTip": "D:\\iss\\MovieMarketplace\\Views\\MyOrdersPage.xaml.cs*",
+              "RelativeToolTip": "Views\\MyOrdersPage.xaml.cs*",
+              "ViewState": "AgIAAEAAAAAAAAAAAAAkwA4AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-16T10:28:10.846Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "MySalesPage.xaml",
+              "DocumentMoniker": "D:\\iss\\MovieMarketplace\\Views\\MySalesPage.xaml",
+              "RelativeDocumentMoniker": "Views\\MySalesPage.xaml",
+              "ToolTip": "D:\\iss\\MovieMarketplace\\Views\\MySalesPage.xaml",
+              "RelativeToolTip": "Views\\MySalesPage.xaml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAADkAAAAHAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2026-03-16T11:21:21.755Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "MySalesPage.xaml.cs",
+              "DocumentMoniker": "D:\\iss\\MovieMarketplace\\Views\\MySalesPage.xaml.cs",
+              "RelativeDocumentMoniker": "Views\\MySalesPage.xaml.cs",
+              "ToolTip": "D:\\iss\\MovieMarketplace\\Views\\MySalesPage.xaml.cs*",
+              "RelativeToolTip": "Views\\MySalesPage.xaml.cs*",
+              "ViewState": "AgIAACMAAAAAAAAAAAAAABUAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-16T11:21:58.776Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "SellPage.xaml",
+              "DocumentMoniker": "D:\\iss\\MovieMarketplace\\Views\\SellPage.xaml",
+              "RelativeDocumentMoniker": "Views\\SellPage.xaml",
+              "ToolTip": "D:\\iss\\MovieMarketplace\\Views\\SellPage.xaml",
+              "RelativeToolTip": "Views\\SellPage.xaml",
+              "ViewState": "AgIAAAcAAAAAAAAAAAAIwDoAAAAHAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2026-03-15T15:38:58.948Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "SellPage.xaml.cs",
+              "DocumentMoniker": "D:\\iss\\MovieMarketplace\\Views\\SellPage.xaml.cs",
+              "RelativeDocumentMoniker": "Views\\SellPage.xaml.cs",
+              "ToolTip": "D:\\iss\\MovieMarketplace\\Views\\SellPage.xaml.cs*",
+              "RelativeToolTip": "Views\\SellPage.xaml.cs*",
+              "ViewState": "AgIAAD8AAAAAAAAAAAAIwCsAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-15T15:39:58.466Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "StartPage.xaml.cs",
+              "DocumentMoniker": "D:\\iss\\MovieMarketplace\\Views\\StartPage.xaml.cs",
+              "RelativeDocumentMoniker": "Views\\StartPage.xaml.cs",
+              "ToolTip": "D:\\iss\\MovieMarketplace\\Views\\StartPage.xaml.cs",
+              "RelativeToolTip": "Views\\StartPage.xaml.cs",
+              "ViewState": "AgIAAD4AAAAAAAAAAAAswDcAAAA2AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-15T19:54:54.172Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "App.xaml.cs",
+              "DocumentMoniker": "D:\\iss\\MovieMarketplace\\App.xaml.cs",
+              "RelativeDocumentMoniker": "App.xaml.cs",
+              "ToolTip": "D:\\iss\\MovieMarketplace\\App.xaml.cs*",
+              "RelativeToolTip": "App.xaml.cs*",
+              "ViewState": "AgIAAAkAAAAAAAAAAAAIwBMAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-15T15:51:17.795Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "MainWindow.xaml.cs",
+              "DocumentMoniker": "D:\\iss\\MovieMarketplace\\MainWindow.xaml.cs",
+              "RelativeDocumentMoniker": "MainWindow.xaml.cs",
+              "ToolTip": "D:\\iss\\MovieMarketplace\\MainWindow.xaml.cs",
+              "RelativeToolTip": "MainWindow.xaml.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAAAsAAAASAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-15T15:04:43.216Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "MainWindow.xaml",
+              "DocumentMoniker": "D:\\iss\\MovieMarketplace\\MainWindow.xaml",
+              "RelativeDocumentMoniker": "MainWindow.xaml",
+              "ToolTip": "D:\\iss\\MovieMarketplace\\MainWindow.xaml",
+              "RelativeToolTip": "MainWindow.xaml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAUwAwAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2026-03-15T15:02:39.375Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 19,
+              "Title": "App.xaml",
+              "DocumentMoniker": "D:\\iss\\MovieMarketplace\\App.xaml",
+              "RelativeDocumentMoniker": "App.xaml",
+              "ToolTip": "D:\\iss\\MovieMarketplace\\App.xaml",
+              "RelativeToolTip": "App.xaml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAA0AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2026-03-15T15:51:13.214Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 20,
+              "Title": "StartPage.xaml",
+              "DocumentMoniker": "D:\\iss\\MovieMarketplace\\Views\\StartPage.xaml",
+              "RelativeDocumentMoniker": "Views\\StartPage.xaml",
+              "ToolTip": "D:\\iss\\MovieMarketplace\\Views\\StartPage.xaml",
+              "RelativeToolTip": "Views\\StartPage.xaml",
+              "ViewState": "AgIAABsAAAAAAAAAAAAkwCwAAAAmAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2026-03-15T19:54:23.986Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 21,
+              "Title": "EquipmentDetailPage.xaml",
+              "DocumentMoniker": "D:\\iss\\MovieMarketplace\\Views\\EquipmentDetailPage.xaml",
+              "RelativeDocumentMoniker": "Views\\EquipmentDetailPage.xaml",
+              "ToolTip": "D:\\iss\\MovieMarketplace\\Views\\EquipmentDetailPage.xaml",
+              "RelativeToolTip": "Views\\EquipmentDetailPage.xaml",
+              "ViewState": "AgIAAFUAAAAAAAAAAAAIwF0AAAAmAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2026-03-15T19:19:01.38Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 22,
+              "Title": "EquipmentDetailPage.xaml.cs",
+              "DocumentMoniker": "D:\\iss\\MovieMarketplace\\Views\\EquipmentDetailPage.xaml.cs",
+              "RelativeDocumentMoniker": "Views\\EquipmentDetailPage.xaml.cs",
+              "ToolTip": "D:\\iss\\MovieMarketplace\\Views\\EquipmentDetailPage.xaml.cs",
+              "RelativeToolTip": "Views\\EquipmentDetailPage.xaml.cs",
+              "ViewState": "AgIAAAoAAAAAAAAAAIA1wA8AAAAkAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-15T19:19:33.694Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 23,
+              "Title": "App.g.i.cs",
+              "DocumentMoniker": "D:\\iss\\MovieMarketplace\\obj\\x64\\Debug\\net8.0-windows10.0.19041.0\\win-x64\\App.g.i.cs",
+              "RelativeDocumentMoniker": "obj\\x64\\Debug\\net8.0-windows10.0.19041.0\\win-x64\\App.g.i.cs",
+              "ToolTip": "D:\\iss\\MovieMarketplace\\obj\\x64\\Debug\\net8.0-windows10.0.19041.0\\win-x64\\App.g.i.cs",
+              "RelativeToolTip": "obj\\x64\\Debug\\net8.0-windows10.0.19041.0\\win-x64\\App.g.i.cs",
+              "ViewState": "AgIAADsAAAAAAAAAAAAlwD0AAAANAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-15T19:35:13.027Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 24,
+              "Title": "app.manifest",
+              "DocumentMoniker": "D:\\iss\\MovieMarketplace\\app.manifest",
+              "RelativeDocumentMoniker": "app.manifest",
+              "ToolTip": "D:\\iss\\MovieMarketplace\\app.manifest",
+              "RelativeToolTip": "app.manifest",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001203|",
+              "WhenOpened": "2026-03-16T11:22:54.688Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 25,
+              "Title": "App.cs",
+              "DocumentMoniker": "C:\\TEMP\\.vsdbgsrc\\6566458cddce4009ce11835092ea2e28af4d0912220ce78ab48f9d522decb282\\App.cs",
+              "ToolTip": "C:\\TEMP\\.vsdbgsrc\\6566458cddce4009ce11835092ea2e28af4d0912220ce78ab48f9d522decb282\\App.cs [Read Only]",
+              "ViewState": "AgIAAEEAAAAAAAAAAAAEwEkAAAAEAAAAAQAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-15T20:15:17.859Z",
+              "EditorCaption": " [Read Only]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
