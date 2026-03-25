@@ -24,6 +24,8 @@ namespace MovieShop.Views
             }
         }
 
+        public void SetMainContent(object content) => ContentArea.Content = content;
+
         private void NavigateToCurrentView()
         {
             var current = ViewModel.CurrentViewModel as string;

@@ -4,9 +4,8 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    mc:Ignorable="d"
-    xmlns:models="using:MovieShop.Models"
-    xmlns:local="using:MovieShop.Views">
+    xmlns:local="using:MovieShop.Views"
+    mc:Ignorable="d">
     <Grid Background="#1E1E1E" Padding="20">
 
         <Grid.RowDefinitions>
@@ -15,7 +14,7 @@
         </Grid.RowDefinitions>
 
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="200"/>
+            <ColumnDefinition Width="220"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
 
@@ -23,16 +22,46 @@
 
         <StackPanel Grid.Row="1" Grid.Column="0" Spacing="20" Margin="0,0,20,0">
             <TextBlock Text="Search by title" FontSize="14" Foreground="Gray"/>
-            <TextBox PlaceholderText="Search..." x:Name="SearchBox"/>
+            <TextBox PlaceholderText="Search..." x:Name="SearchBox" TextChanged="SearchBox_TextChanged"/>
 
             <TextBlock Text="Filter" FontSize="18" FontWeight="Bold" Margin="0,10,0,5"/>
             <StackPanel Spacing="5">
-                <RadioButton Content="Ascending price" GroupName="Sort"/>
-                <RadioButton Content="Descending price" GroupName="Sort"/>
-                <RadioButton Content="Highest rating" GroupName="Sort"/>
-                <RadioButton Content="Lowest rating" GroupName="Sort"/>
+                <RadioButton Content="Ascending price" GroupName="Sort" Checked="SortRadio_Checked" Tag="price_asc"/>
+                <RadioButton Content="Descending price" GroupName="Sort" Checked="SortRadio_Checked" Tag="price_desc"/>
+                <RadioButton Content="Highest rating" GroupName="Sort" Checked="SortRadio_Checked" Tag="rating_desc"/>
+                <RadioButton Content="Lowest rating" GroupName="Sort" Checked="SortRadio_Checked" Tag="rating_asc"/>
             </StackPanel>
         </StackPanel>
 
+        <ScrollViewer Grid.Row="1" Grid.Column="1" VerticalScrollBarVisibility="Auto">
+            <GridView x:Name="MoviesGridView"
+                      IsItemClickEnabled="True"
+                      ItemClick="MoviesGridView_ItemClick"
+                      SelectionMode="None"
+                      Padding="0,0,0,24">
+                <GridView.ItemTemplate>
+                    <DataTemplate x:DataType="local:MovieCatalogRow">
+                        <Border Width="208" Background="#2D2D30" CornerRadius="12" Margin="6" Padding="0,0,0,12">
+                            <StackPanel Spacing="0">
+                                <Border Background="#1A1A1A" Height="260" CornerRadius="12,12,0,0">
+                                    <Image Source="{x:Bind Poster}" Stretch="UniformToFill" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                </Border>
+                                <StackPanel Padding="12,10,12,0" Spacing="6">
+                                    <TextBlock Text="{x:Bind Title}" Foreground="White" FontWeight="SemiBold" TextWrapping="Wrap" MaxLines="2"/>
+                                    <TextBlock Foreground="#1DB954" FontSize="16" FontWeight="Bold">
+                                        <Run Text="$"/>
+                                        <Run Text="{x:Bind Price}"/>
+                                    </TextBlock>
+                                    <TextBlock Foreground="#888" FontSize="12" TextWrapping="Wrap">
+                                        <Run Text="Rating "/>
+                                        <Run Text="{x:Bind Rating}"/>
+                                    </TextBlock>
+                                </StackPanel>
+                            </StackPanel>
+                        </Border>
+                    </DataTemplate>
+                </GridView.ItemTemplate>
+            </GridView>
+        </ScrollViewer>
     </Grid>
 </UserControl>

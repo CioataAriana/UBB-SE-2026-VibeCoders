@@ -1,4 +1,4 @@
-﻿using CommunityToolkit.Mvvm.Input;
+using CommunityToolkit.Mvvm.Input;
 using MovieShop.Repositories;
 using MovieShop.ViewModels;
 using System;
@@ -85,7 +85,7 @@ namespace MovieShop.ViewModels
             NavigateToShop();
         }
 
-        private void NavigateToShop() => CurrentViewModel = "Shop";
+        private void NavigateToShop() => CurrentViewModel = "FullShop";
         private void NavigateToWallet() => CurrentViewModel = _walletViewModel;
         private void NavigateToMarketplace() => CurrentViewModel = "Marketplace";
         private void NavigateToInventory() => CurrentViewModel = "Inventory";

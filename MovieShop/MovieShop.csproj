@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
     <TargetFramework>net8.0-windows10.0.19041.0</TargetFramework>
@@ -19,6 +19,9 @@
     <None Remove="Views\Header.xaml" />
     <None Remove="Views\MainPage.xaml" />
     <None Remove="Views\MarketplacePage.xaml" />
+    <None Remove="Views\MovieDetailPage.xaml" />
+    <None Remove="Views\MovieEventsPage.xaml" />
+    <None Remove="Views\MovieReviewsPage.xaml" />
     <None Remove="Views\MovieShopView.xaml" />
     <None Remove="Views\NavigationPage.xaml" />
     <None Remove="Views\SellPage.xaml" />
@@ -87,6 +90,15 @@
   </ItemGroup>
   <ItemGroup>
     <Page Update="Views\MovieShopView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Update="Views\MovieDetailPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Update="Views\MovieReviewsPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Update="Views\MovieEventsPage.xaml">
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>

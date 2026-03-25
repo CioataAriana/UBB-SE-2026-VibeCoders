@@ -1,4 +1,4 @@
-﻿--DELETE FROM Transactions;
+--DELETE FROM Transactions;
 --DELETE FROM Equipment;
 --DELETE FROM ActiveSales;
 --DELETE FROM Users;
@@ -41,6 +41,27 @@ IF NOT EXISTS (SELECT * FROM Users WHERE Username = 'dummy2')
 BEGIN
 	INSERT INTO Users(Username, Email, PasswordHash, Balance)
 	VALUES ('dummy2', 'dummy2@gmail.com', 'pass2', 50.00);
+END
+
+-- Two sample reviews for Movie 1 (re-run safe: only when none exist yet)
+IF EXISTS (SELECT 1 FROM Movies WHERE ID = 1) AND NOT EXISTS (SELECT 1 FROM Reviews WHERE MovieID = 1)
+BEGIN
+    DECLARE @Ua INT = (SELECT ID FROM Users WHERE Username = 'Test');
+    DECLARE @Ub INT = (SELECT ID FROM Users WHERE Username = 'dummy1');
+    IF @Ua IS NULL SET @Ua = (SELECT TOP 1 ID FROM Users ORDER BY ID);
+    IF @Ub IS NULL SET @Ub = @Ua;
+    INSERT INTO Reviews (MovieID, UserID, StarRating, Comment, CreatedAt) VALUES
+    (1, @Ua, 5, N'Absolutely stunning visuals and a clever plot.', DATEADD(day, -2, GETDATE())),
+    (1, @Ub, 4, N'Great film — a bit confusing on the first watch.', DATEADD(day, -1, GETDATE()));
+END
+
+-- Sample upcoming event for Movie 1 (Events button visibility & filtered events page)
+IF EXISTS (SELECT 1 FROM Movies WHERE ID = 1) AND NOT EXISTS (SELECT 1 FROM Events WHERE MovieID = 1)
+BEGIN
+    INSERT INTO Events (MovieID, Title, Description, [Date], Location, TicketPrice, PosterUrl)
+    VALUES
+    (1, N'Inception 15th Anniversary IMAX', N'Special screening with Q&A.', DATEADD(day, 14, GETDATE()), N'Downtown Cinema', 18.50,
+     N'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS1ylQxJCDkRmlhPcTzBMXenct8rScWPHqvPA&s');
 END
 
 DECLARE @Seller1 INT = (SELECT ID FROM Users WHERE Username = 'dummy1');

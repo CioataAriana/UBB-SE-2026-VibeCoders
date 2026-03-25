@@ -1,0 +1,101 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\ovidi\\source\\repos\\UBB-SE-2026-TryingOurBest-main\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\ovidi\\source\\repos\\UBB-SE-2026-TryingOurBest-main\\Insert Equipment.sql||{3B902123-F8A7-4915-9F01-361F908088D0}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Insert Equipment.sql||{3B902123-F8A7-4915-9F01-361F908088D0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\ovidi\\source\\repos\\UBB-SE-2026-TryingOurBest-main\\ActiveSales.sql||{3B902123-F8A7-4915-9F01-361F908088D0}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:ActiveSales.sql||{3B902123-F8A7-4915-9F01-361F908088D0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\ovidi\\source\\repos\\UBB-SE-2026-TryingOurBest-main\\ActiveSalesTable.sql||{3B902123-F8A7-4915-9F01-361F908088D0}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:ActiveSalesTable.sql||{3B902123-F8A7-4915-9F01-361F908088D0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\ovidi\\source\\repos\\UBB-SE-2026-TryingOurBest-main\\MovieShop\\Models\\Movie.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:MovieShop\\Models\\Movie.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 4,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{75188d03-9892-4ae2-abf1-207126247ce5}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{40ea2e6b-2121-4bb8-a43e-c83c04b51041}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Insert Equipment.sql",
+              "DocumentMoniker": "C:\\Users\\ovidi\\source\\repos\\UBB-SE-2026-TryingOurBest-main\\Insert Equipment.sql",
+              "RelativeDocumentMoniker": "Insert Equipment.sql",
+              "ToolTip": "C:\\Users\\ovidi\\source\\repos\\UBB-SE-2026-TryingOurBest-main\\Insert Equipment.sql",
+              "RelativeToolTip": "Insert Equipment.sql",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAA9AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000826|",
+              "WhenOpened": "2026-03-25T16:31:08.497Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "ActiveSales.sql",
+              "DocumentMoniker": "C:\\Users\\ovidi\\source\\repos\\UBB-SE-2026-TryingOurBest-main\\ActiveSales.sql",
+              "RelativeDocumentMoniker": "ActiveSales.sql",
+              "ToolTip": "C:\\Users\\ovidi\\source\\repos\\UBB-SE-2026-TryingOurBest-main\\ActiveSales.sql",
+              "RelativeToolTip": "ActiveSales.sql",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000826|",
+              "WhenOpened": "2026-03-25T16:30:53.21Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "ActiveSalesTable.sql",
+              "DocumentMoniker": "C:\\Users\\ovidi\\source\\repos\\UBB-SE-2026-TryingOurBest-main\\ActiveSalesTable.sql",
+              "RelativeDocumentMoniker": "ActiveSalesTable.sql",
+              "ToolTip": "C:\\Users\\ovidi\\source\\repos\\UBB-SE-2026-TryingOurBest-main\\ActiveSalesTable.sql",
+              "RelativeToolTip": "ActiveSalesTable.sql",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000826|",
+              "WhenOpened": "2026-03-25T16:30:50.818Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Movie.cs",
+              "DocumentMoniker": "C:\\Users\\ovidi\\source\\repos\\UBB-SE-2026-TryingOurBest-main\\MovieShop\\Models\\Movie.cs",
+              "RelativeDocumentMoniker": "MovieShop\\Models\\Movie.cs",
+              "ToolTip": "C:\\Users\\ovidi\\source\\repos\\UBB-SE-2026-TryingOurBest-main\\MovieShop\\Models\\Movie.cs",
+              "RelativeToolTip": "MovieShop\\Models\\Movie.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-25T16:30:41.007Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
