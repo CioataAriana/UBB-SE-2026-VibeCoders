@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "E:\\DBMS\\MovieShop\\MovieShop\\MovieShop.csproj": {}
+    "C:\\Users\\marius\\source\\repos\\SE_Movies\\UBB-SE-2026-VibeCoders\\MovieShop\\MovieShop.csproj": {}
   },
   "projects": {
-    "E:\\DBMS\\MovieShop\\MovieShop\\MovieShop.csproj": {
+    "C:\\Users\\marius\\source\\repos\\SE_Movies\\UBB-SE-2026-VibeCoders\\MovieShop\\MovieShop.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\DBMS\\MovieShop\\MovieShop\\MovieShop.csproj",
+        "projectUniqueName": "C:\\Users\\marius\\source\\repos\\SE_Movies\\UBB-SE-2026-VibeCoders\\MovieShop\\MovieShop.csproj",
         "projectName": "MovieShop",
-        "projectPath": "E:\\DBMS\\MovieShop\\MovieShop\\MovieShop.csproj",
-        "packagesPath": "C:\\Users\\chiri\\.nuget\\packages\\",
-        "outputPath": "E:\\DBMS\\MovieShop\\MovieShop\\obj\\",
+        "projectPath": "C:\\Users\\marius\\source\\repos\\SE_Movies\\UBB-SE-2026-VibeCoders\\MovieShop\\MovieShop.csproj",
+        "packagesPath": "C:\\Users\\marius\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\marius\\source\\repos\\SE_Movies\\UBB-SE-2026-VibeCoders\\MovieShop\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\chiri\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\marius\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -85,27 +85,27 @@
           "downloadDependencies": [
             {
               "name": "Microsoft.AspNetCore.App.Runtime.win-arm64",
-              "version": "[8.0.25, 8.0.25]"
+              "version": "[8.0.23, 8.0.23]"
             },
             {
               "name": "Microsoft.AspNetCore.App.Runtime.win-x64",
-              "version": "[8.0.25, 8.0.25]"
+              "version": "[8.0.23, 8.0.23]"
             },
             {
               "name": "Microsoft.AspNetCore.App.Runtime.win-x86",
-              "version": "[8.0.25, 8.0.25]"
+              "version": "[8.0.23, 8.0.23]"
             },
             {
               "name": "Microsoft.NETCore.App.Runtime.win-arm64",
-              "version": "[8.0.25, 8.0.25]"
+              "version": "[8.0.23, 8.0.23]"
             },
             {
               "name": "Microsoft.NETCore.App.Runtime.win-x64",
-              "version": "[8.0.25, 8.0.25]"
+              "version": "[8.0.23, 8.0.23]"
             },
             {
               "name": "Microsoft.NETCore.App.Runtime.win-x86",
-              "version": "[8.0.25, 8.0.25]"
+              "version": "[8.0.23, 8.0.23]"
             },
             {
               "name": "Microsoft.Windows.SDK.NET.Ref",
@@ -113,15 +113,15 @@
             },
             {
               "name": "Microsoft.WindowsDesktop.App.Runtime.win-arm64",
-              "version": "[8.0.25, 8.0.25]"
+              "version": "[8.0.23, 8.0.23]"
             },
             {
               "name": "Microsoft.WindowsDesktop.App.Runtime.win-x64",
-              "version": "[8.0.25, 8.0.25]"
+              "version": "[8.0.23, 8.0.23]"
             },
             {
               "name": "Microsoft.WindowsDesktop.App.Runtime.win-x86",
-              "version": "[8.0.25, 8.0.25]"
+              "version": "[8.0.23, 8.0.23]"
             }
           ],
           "frameworkReferences": {
@@ -132,7 +132,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.104/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.102/PortableRuntimeIdentifierGraph.json"
         }
       },
       "runtimes": {

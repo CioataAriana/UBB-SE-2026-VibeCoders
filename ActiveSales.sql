@@ -1,7 +1,4 @@
-USE MovieShopDB
-GO
-
-DROP TABLE IF EXISTS Transactions; 
+﻿DROP TABLE IF EXISTS Transactions; 
 DROP TABLE IF EXISTS ActiveSales;
 DROP TABLE IF EXISTS Events;
 DROP TABLE IF EXISTS Equipment;

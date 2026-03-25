@@ -3,12 +3,13 @@ using System;
 using System.Collections.Generic;
 
 using MovieShop.Models;
+using System.Diagnostics;
 
 namespace MovieShop.Repositories
 {
     internal class ActiveSalesRepo
     {
-        private string connString = "SERVER = S24B\\SQLEXPRESS; Database = MovieShopDB; Trusted_Connection = True; TrustServerCertificate = True";
+        DatabaseSingleton _db = DatabaseSingleton.Instance;
 
         public List<ActiveSale> GetCurrentSales()
         {
@@ -20,15 +21,13 @@ namespace MovieShop.Repositories
                             WHERE s.StartTime <= GETDATE() AND s.EndTime > GETDATE()
                             ORDER BY s.EndTime ASC";
 
-            using (SqlConnection conn = new SqlConnection(connString))
+
+            using (SqlCommand cmd = new SqlCommand(query, _db.Connection))
             {
-                SqlCommand cmd = new SqlCommand(query, conn);
-
-                conn.Open();
-
+                _db.OpenConnection();
                 SqlDataReader reader = cmd.ExecuteReader();
 
-                while(reader.Read())
+                while (reader.Read())
                 {
                     sales.Add(new ActiveSale
                     {
@@ -43,6 +42,8 @@ namespace MovieShop.Repositories
                         }
                     });
                 }
+
+                _db.CloseConnection();
             }
 
             return sales;

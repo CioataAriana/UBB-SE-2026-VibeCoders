@@ -52,6 +52,11 @@
     <PackageReference Include="Microsoft.WindowsAppSDK" Version="1.8.260209005" />
   </ItemGroup>
   <ItemGroup>
+    <None Update="MovieShopDB.mdf">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
     <Page Update="Views\WalletView.xaml">
       <Generator>MSBuild:Compile</Generator>
     </Page>

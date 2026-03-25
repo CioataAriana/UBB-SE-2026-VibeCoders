@@ -9,11 +9,11 @@ namespace MovieShop.ViewModels
 {
     public class WalletViewModel : INotifyPropertyChanged
     {
-        public event PropertyChangedEventHandler PropertyChanged;
-        private void OnPropertyChanged(string name) =>
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
+        public event PropertyChangedEventHandler? PropertyChanged;
 
-        private int _currentUserID;
+        private void OnPropertyChanged(string name) => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
+
+        private readonly int _currentUserID;
 
         // --- Balance ---
         private decimal _balance;
@@ -160,7 +160,7 @@ namespace MovieShop.ViewModels
                     Timestamp = System.DateTime.Now.AddDays(-1)
                 });
 
-                SortTransactions();
+                // SortTransactions();
             }
             catch (System.Exception ex)
             {

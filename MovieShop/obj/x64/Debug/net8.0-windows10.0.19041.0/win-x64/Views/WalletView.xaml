@@ -151,6 +151,8 @@
                                                                                              
                                    AutoGenerateColumns="False"
                                    IsReadOnly="True"
+                                   Foreground="White"
+                                   FontSize="15"
                                    GridLinesVisibility="Horizontal"
                                    HorizontalAlignment="Stretch"
                                    CanUserSortColumns="True"
@@ -158,16 +160,16 @@
 
                     <controls:DataGrid.Columns>
                         <controls:DataGridTextColumn Header="Date"
-                                                     Binding="{Binding DisplayTimestamp}"
+                                                     Binding="{Binding Timestamp}"
                                                      Width="160"/>
                         <controls:DataGridTextColumn Header="Type"
-                                                     Binding="{Binding DisplayType}"
+                                                     Binding="{Binding Type}"
                                                      Width="180"/>
                         <controls:DataGridTextColumn Header="Status"
-                                                     Binding="{Binding DisplayStatus}"
+                                                     Binding="{Binding Status}"
                                                      Width="140"/>
                         <controls:DataGridTextColumn Header="Amount"
-                                                     Binding="{Binding DisplayAmount}"
+                                                     Binding="{Binding Amount}"
                                                      Width="120"/>
                     </controls:DataGrid.Columns>
                 </controls:DataGrid>
