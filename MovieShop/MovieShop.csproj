@@ -14,11 +14,15 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
   <ItemGroup>
+    <None Remove="Views\EquipmentDetailPage.xaml" />
     <None Remove="Views\FlashSaleBanner.xaml" />
     <None Remove="Views\Header.xaml" />
     <None Remove="Views\MainPage.xaml" />
+    <None Remove="Views\MarketplacePage.xaml" />
     <None Remove="Views\MovieShopView.xaml" />
     <None Remove="Views\NavigationPage.xaml" />
+    <None Remove="Views\SellPage.xaml" />
+    <None Remove="Views\StartPageEquipment.xaml" />
     <None Remove="Views\WalletView.xaml" />
   </ItemGroup>
 
@@ -50,6 +54,26 @@
     <PackageReference Include="Microsoft.Data.SqlClient" Version="6.1.4" />
     <PackageReference Include="Microsoft.Windows.SDK.BuildTools" Version="10.0.26100.7705" />
     <PackageReference Include="Microsoft.WindowsAppSDK" Version="1.8.260209005" />
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="Views\EquipmentDetailPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="Views\MarketplacePage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="Views\SellPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="Views\StartPageEquipment.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Page Update="Views\WalletView.xaml">

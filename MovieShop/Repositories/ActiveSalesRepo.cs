@@ -8,8 +8,7 @@ namespace MovieShop.Repositories
 {
     internal class ActiveSalesRepo
     {
-        private string connString = "SERVER = S24B\\SQLEXPRESS; Database = MovieShopDB; Trusted_Connection = True; TrustServerCertificate = True";
-
+        private string connString = @"Server=(localdb)\MSSQLLocalDB;Database=MovieShopDB;Trusted_Connection=True;TrustServerCertificate=True;";
         public List<ActiveSale> GetCurrentSales()
         {
             List<ActiveSale> sales = new List<ActiveSale>();

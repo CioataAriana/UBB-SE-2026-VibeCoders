@@ -1,0 +1,73 @@
+<Page
+    x:Class="MovieShop.Views.MarketplacePage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:models="using:MovieShop.Models"
+    mc:Ignorable="d">
+
+    <Grid Background="#1E1E1E" Padding="20">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <StackPanel Grid.Row="0" Orientation="Horizontal" Spacing="20" Margin="0,0,0,20">
+            <Button Content="" FontFamily="Segoe MDL2 Assets" Click="BackToStart_Click" 
+                    Background="Transparent" Foreground="White" FontSize="20"/>
+            <TextBlock Text="Available Equipment" FontSize="28" FontWeight="Bold" Foreground="White"/>
+            <Button Content="+ Sell Your Gear" Click="GoToSell_Click" 
+                    Background="#2E7D32" Foreground="White" CornerRadius="4" Margin="20,0,0,0"/>
+        </StackPanel>
+
+        <StackPanel Grid.Row="1" Orientation="Horizontal" Spacing="15" Margin="0,0,0,20">
+            <TextBlock Text="Filter by:" VerticalAlignment="Center" Foreground="Gray"/>
+            <ComboBox x:Name="CategoryFilter" Width="200" SelectionChanged="CategoryFilter_SelectionChanged" SelectedIndex="0">
+                <ComboBoxItem Content="All"/>
+                <ComboBoxItem Content="Cameras"/>
+                <ComboBoxItem Content="Microphones"/>
+                <ComboBoxItem Content="Lighting"/>
+                <ComboBoxItem Content="Accessories"/>
+            </ComboBox>
+        </StackPanel>
+
+        <ScrollViewer Grid.Row="2" VerticalScrollBarVisibility="Auto">
+            <ItemsControl ItemsSource="{x:Bind ViewModel.AvailableItems, Mode=OneWay}">
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <ItemsWrapGrid Orientation="Horizontal" HorizontalAlignment="Center"/>
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate x:DataType="models:Equipment">
+                        <Border Background="#252525" CornerRadius="12" Margin="10" Width="260" Height="380" 
+                                BorderBrush="#333333" BorderThickness="1">
+                            <StackPanel Spacing="0">
+                                <Border CornerRadius="12,12,0,0" Height="180" Background="#1A1A1A">
+                                    <Image Source="{x:Bind ImageUrl, Mode=OneWay}" Stretch="UniformToFill" />
+                                </Border>
+
+                                <StackPanel Padding="15" Spacing="8">
+                                    <TextBlock Text="{x:Bind Title}" FontSize="18" FontWeight="Bold" Foreground="White"
+                                               MaxLines="2" Height="48" TextTrimming="CharacterEllipsis" TextWrapping="Wrap"/>
+
+                                    <TextBlock Text="{x:Bind Category}" FontSize="12" Foreground="Gray"/>
+
+                                    <TextBlock Text="{x:Bind Price, Converter={StaticResource StringFormatConverter}, ConverterParameter='{}{0:C}'}" 
+                                               FontSize="22" FontWeight="Bold" Foreground="#4CAF50"/>
+
+                                    <Button Content="VIEW DETAILS" Click="ViewDetails_Click" 
+                                            HorizontalAlignment="Stretch" Background="#1565C0" Foreground="White"
+                                            CornerRadius="6" Margin="0,10,0,0"/>
+                                </StackPanel>
+                            </StackPanel>
+                        </Border>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+        </ScrollViewer>
+    </Grid>
+</Page>

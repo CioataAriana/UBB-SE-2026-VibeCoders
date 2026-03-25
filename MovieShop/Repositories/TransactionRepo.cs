@@ -11,8 +11,7 @@ namespace MovieShop.Repositories
 {
     internal class TransactionRepo
     {
-        private string connString = "Server = S24B\\SQLEXPRESS; Database = MovieShopDB; Trusted_Connection = True; TrustServerCertificate = True";
-
+        private string connString = @"Server=(localdb)\MSSQLLocalDB;Database=MovieShopDB;Trusted_Connection=True;TrustServerCertificate=True;";
         public void LogTransaction(Transaction transaction)
         {
             string query = @"INSERT INTO Transactions(BuyerID, SellerID, EquipmentID, MovieID, EventID, Amount, Type, Status, Timestamp, ShippingAddress)
@@ -39,6 +38,34 @@ namespace MovieShop.Repositories
                 }
 
             }
+        }
+        public List<Transaction> GetTransactionsByUserId(int userId)
+        {
+            var list = new List<Transaction>();
+            string query = "SELECT Timestamp, Type, Status, Amount FROM Transactions WHERE BuyerID = @uid OR SellerID = @uid ORDER BY Timestamp DESC";
+
+            using (SqlConnection conn = new SqlConnection(connString))
+            {
+                conn.Open();
+                using (SqlCommand cmd = new SqlCommand(query, conn))
+                {
+                    cmd.Parameters.AddWithValue("@uid", userId);
+                    using (SqlDataReader reader = cmd.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            list.Add(new Transaction
+                            {
+                                Timestamp = reader.GetDateTime(0),
+                                Type = reader.GetString(1),
+                                Status = reader.GetString(2),
+                                Amount = reader.GetDecimal(3)
+                            });
+                        }
+                    }
+                }
+            }
+            return list;
         }
     }
 }

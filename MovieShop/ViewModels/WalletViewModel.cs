@@ -7,6 +7,7 @@ using CommunityToolkit.Mvvm.Input;
 
 namespace MovieShop.ViewModels
 {
+
     public class WalletViewModel : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;

@@ -32,6 +32,10 @@ namespace MovieShop.Views
             {
                 ContentArea.Content = new WalletView(walletVM);
             }
+            else if (current == "Marketplace")
+            {
+                ContentArea.Content = new MovieShop.Views.StartPageEquipment();
+            }
             else if (current == "Shop")
             {
                 // Shows the Red Banner

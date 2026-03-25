@@ -1,1 +1,1 @@
-E:\DBMS\MovieShop\MovieShop\MovieShop.csproj;x64
+D:\My Documents\OneDrive\Desktop\OOP\UBB-SE-2026-TryingOurBest\MovieShop\MovieShop.csproj;x64
