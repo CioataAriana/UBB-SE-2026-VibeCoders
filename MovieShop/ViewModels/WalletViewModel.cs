@@ -7,7 +7,6 @@ using CommunityToolkit.Mvvm.Input;
 
 namespace MovieShop.ViewModels
 {
-
     public class WalletViewModel : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
@@ -118,6 +117,10 @@ namespace MovieShop.ViewModels
         }
 
         // --- Load Transactions ---
+        // 1. Add the field
+        private readonly MovieShop.Repositories.TransactionRepo _transactionRepo = new MovieShop.Repositories.TransactionRepo();
+
+        // 2. Update LoadTransactionsAsync
         public async Task LoadTransactionsAsync()
         {
             IsLoading = true;
@@ -125,43 +128,14 @@ namespace MovieShop.ViewModels
 
             try
             {
+                // Offload DB work to a background thread to keep UI smooth
+                var result = await Task.Run(() => _transactionRepo.GetTransactionsByUserId(_currentUserID));
+
                 Transactions.Clear();
-
-                // TODO: Replace with real DB call
-                // var result = await TransactionRepository.GetAllByUserIDAsync(_currentUserID);
-                // foreach (var t in result) Transactions.Add(t);
-
-                // Mock data for now
-                await Task.Delay(100);
-                Transactions.Add(new Transaction
+                foreach (var t in result)
                 {
-                    ID = 1, // Change TransactionID to ID
-                    BuyerID = new User { ID = _currentUserID }, // Wrap the ID in a User object
-                    SellerID = null,
-                    EquipmentID = null,
-                    MovieID = null,
-                    EventID = null,
-                    Amount = 100.00m,
-                    Type = "TopUp",
-                    Status = "Completed",
-                    Timestamp = System.DateTime.Now.AddDays(-3)
-                });
-
-                Transactions.Add(new Transaction
-                {
-                    ID = 2, // Change TransactionID to ID
-                    BuyerID = new User { ID = _currentUserID }, // Wrap the ID in a User object
-                    SellerID = null,
-                    MovieID = 1,
-                    EquipmentID = null,
-                    EventID = null,
-                    Amount = -19.99m,
-                    Type = "MoviePurchase",
-                    Status = "Completed",
-                    Timestamp = System.DateTime.Now.AddDays(-1)
-                });
-
-                SortTransactions();
+                    Transactions.Add(t);
+                }
             }
             catch (System.Exception ex)
             {
@@ -172,7 +146,25 @@ namespace MovieShop.ViewModels
                 IsLoading = false;
             }
         }
-        // --- Sort Transactions by Date Descending ---
+
+        // 3. Update LogTopUpTransaction to use the repo
+        private void LogTopUpTransaction(decimal amount)
+        {
+            var transaction = new Transaction
+            {
+                BuyerID = new User { ID = _currentUserID },
+                Amount = amount,
+                Type = "TopUp",
+                Status = "Completed",
+                Timestamp = System.DateTime.Now
+            };
+
+            // Save to DB
+            Task.Run(() => _transactionRepo.LogTransaction(transaction));
+
+            // Also add to the local list so the UI updates immediately
+            Transactions.Insert(0, transaction);
+        }        // --- Sort Transactions by Date Descending ---
         private void SortTransactions()
         {
             var sorted = Transactions.OrderByDescending(t => t.Timestamp).ToList();
@@ -280,23 +272,6 @@ namespace MovieShop.ViewModels
             // TODO: call UserRepository.UpdateBalance(_currentUserID, Balance)
         }
 
-        private void LogTopUpTransaction(decimal amount)
-        {
-            var transaction = new Transaction
-            {
-                BuyerID = new User { ID = _currentUserID },
-                SellerID = null,
-                EquipmentID = null,
-                MovieID = null,
-                EventID = null,
-                Amount = amount,
-                Type = "TopUp",
-                Status = "Completed",
-                Timestamp = System.DateTime.Now
-            };
-            Transactions.Insert(0, transaction);
-            // TODO: call TransactionRepository.Add(transaction)
-        }
 
         private void ClearForm()
         {

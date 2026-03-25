@@ -24,5 +24,12 @@ namespace MovieShop.Models
         public DateTime Timestamp { get; set; }
         public string? ShippingAddress { get; set; }
 
+        //formatting
+        public string DisplayTimestamp => Timestamp.ToString("g");
+        public string DisplayType => MovieShop.Services.TransactionTypeMapper.ToDisplayString(Type);
+        public string DisplayStatus => MovieShop.Services.TransactionTypeMapper.StatusToDisplayString(Status);
+        public string DisplayAmount => MovieShop.Services.TransactionTypeMapper.FormatAmount(Amount);
+
+
     }
 }
