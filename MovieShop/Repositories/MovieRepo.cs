@@ -2,6 +2,7 @@ using Microsoft.Data.SqlClient;
 using MovieShop.Models;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace MovieShop.Repositories
 {
@@ -12,7 +13,7 @@ namespace MovieShop.Repositories
         public List<Movie> GetAllMovies()
         {
             var list = new List<Movie>();
-            const string query = @"SELECT ID, Title, Description, Rating, Price, ImageUrl FROM Movies ORDER BY Title";
+            const string query = @"SELECT ID, Title, Description, Price, ImageUrl FROM Movies ORDER BY Title";
 
             _db.OpenConnection();
             try
@@ -29,12 +30,13 @@ namespace MovieShop.Repositories
                 _db.CloseConnection();
             }
 
+            PopulateRatingsInCode(list);
             return list;
         }
 
         public Movie? GetMovieById(int movieId)
         {
-            const string query = @"SELECT ID, Title, Description, Rating, Price, ImageUrl FROM Movies WHERE ID = @id";
+            const string query = @"SELECT ID, Title, Description, Price, ImageUrl FROM Movies WHERE ID = @id";
 
             _db.OpenConnection();
             try
@@ -42,7 +44,12 @@ namespace MovieShop.Repositories
                 using var cmd = new SqlCommand(query, _db.Connection);
                 cmd.Parameters.AddWithValue("@id", movieId);
                 using var reader = cmd.ExecuteReader();
-                return reader.Read() ? MapMovie(reader) : null;
+                if (!reader.Read())
+                    return null;
+
+                var movie = MapMovie(reader);
+                PopulateRatingsInCode(new[] { movie });
+                return movie;
             }
             finally
             {
@@ -99,29 +106,15 @@ namespace MovieShop.Repositories
                 {
                     cmd.Parameters.AddWithValue("@mid", movieId);
                     var pr = cmd.ExecuteScalar();
-                    if (pr == null || pr == DBNull.Value)
-                        throw new InvalidOperationException("Movie not found.");
+                    if (pr == null || pr == DBNull.Value) throw new InvalidOperationException("Movie not found.");
                     basePrice = Convert.ToDecimal(pr);
                 }
-
-                decimal? salePct = null;
-                string getBestSale = @"SELECT MAX(s.DiscountPercentage) FROM ActiveSales s WHERE s.MovieID = @mid AND s.StartTime <= GETDATE() AND s.EndTime > GETDATE()";
-                using (var cmd = new SqlCommand(getBestSale, _db.Connection, sqlTrans))
-                {
-                    cmd.Parameters.AddWithValue("@mid", movieId);
-                    var o = cmd.ExecuteScalar();
-                    if (o != null && o != DBNull.Value)
-                        salePct = Convert.ToDecimal(o);
-                }
-
-                var price = salePct is decimal d && d > 0 ? decimal.Round(basePrice * (1 - d / 100m), 2, MidpointRounding.AwayFromZero)
-                                                          : basePrice;
 
                 string deductSql = @"UPDATE Users SET Balance = Balance - @price WHERE ID = @uid AND Balance >= @price";
                 int updated;
                 using (var cmd = new SqlCommand(deductSql, _db.Connection, sqlTrans))
                 {
-                    cmd.Parameters.AddWithValue("@price", price);
+                    cmd.Parameters.AddWithValue("@price", basePrice);
                     cmd.Parameters.AddWithValue("@uid", userId);
                     updated = cmd.ExecuteNonQuery();
                 }
@@ -142,7 +135,7 @@ namespace MovieShop.Repositories
                 {
                     cmd.Parameters.AddWithValue("@buyerID", userId);
                     cmd.Parameters.AddWithValue("@movieID", movieId);
-                    cmd.Parameters.AddWithValue("@amount", price);
+                    cmd.Parameters.AddWithValue("@amount", -basePrice);
                     cmd.Parameters.AddWithValue("@type", "MoviePurchase");
                     cmd.Parameters.AddWithValue("@status", "Completed");
                     cmd.Parameters.AddWithValue("@timestamp", DateTime.Now);
@@ -169,10 +162,55 @@ namespace MovieShop.Repositories
                 ID = reader.GetInt32(0),
                 Title = reader.GetString(1),
                 Description = reader.IsDBNull(2) ? "" : reader.GetString(2),
-                Rating = reader.GetDouble(3),
-                Price = reader.GetDecimal(4),
-                ImageUrl = reader.IsDBNull(5) ? null : reader.GetString(5)
+                Price = reader.GetDecimal(3),
+                ImageUrl = reader.IsDBNull(4) ? null : reader.GetString(4)
             };
+        }
+
+        private void PopulateRatingsInCode(IReadOnlyList<Movie> movies)
+        {
+            if (movies.Count == 0)
+                return;
+
+            var ids = movies.Select(m => m.ID).Distinct().ToList();
+            var ratingsByMovieId = new Dictionary<int, List<int>>();
+
+            // Fetch raw review stars; compute averages in code (no AVG/COUNT in SQL).
+            var paramNames = ids.Select((_, i) => $"@id{i}").ToArray();
+            var inClause = string.Join(",", paramNames);
+            var query = $@"SELECT MovieID, StarRating FROM Reviews WHERE MovieID IN ({inClause})";
+
+            _db.OpenConnection();
+            try
+            {
+                using var cmd = new SqlCommand(query, _db.Connection);
+                for (var i = 0; i < ids.Count; i++)
+                    cmd.Parameters.AddWithValue(paramNames[i], ids[i]);
+
+                using var reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    var movieId = reader.GetInt32(0);
+                    var star = reader.GetInt32(1);
+
+                    if (!ratingsByMovieId.TryGetValue(movieId, out var list))
+                        ratingsByMovieId[movieId] = list = new List<int>();
+
+                    list.Add(star);
+                }
+            }
+            finally
+            {
+                _db.CloseConnection();
+            }
+
+            foreach (var m in movies)
+            {
+                if (ratingsByMovieId.TryGetValue(m.ID, out var stars) && stars.Count > 0)
+                    m.Rating = stars.Average();
+                else
+                    m.Rating = 0;
+            }
         }
     }
 }

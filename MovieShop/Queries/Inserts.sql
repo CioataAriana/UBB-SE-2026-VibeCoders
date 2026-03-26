@@ -1,4 +1,5 @@
-﻿--DELETE FROM Transactions;
+--DELETE FROM Reviews;
+--DELETE FROM Transactions;
 --DELETE FROM Equipment;
 --DELETE FROM ActiveSales;
 --DELETE FROM Users;
@@ -9,6 +10,7 @@
 --DBCC CHECKIDENT('Equipment', RESEED, 0) WITH NO_INFOMSGS;
 --DBCC CHECKIDENT('ActiveSales', RESEED, 0) WITH NO_INFOMSGS;
 --DBCC CHECKIDENT('Users', RESEED, 0) WITH NO_INFOMSGS;
+--DBCC CHECKIDENT('Reviews', RESEED, 0) WITH NO_INFOMSGS;
 --DBCC CHECKIDENT('Transactions', RESEED, 0) WITH NO_INFOMSGS;
 --DBCC CHECKIDENT('OwnedMovies', RESEED, 0) WITH NO_INFOMSGS;
 
@@ -19,8 +21,8 @@ IF NOT EXISTS (SELECT * FROM Users WHERE ID = 1)
 
 -- Make sure Movie 1 exists
 IF NOT EXISTS (SELECT * FROM Movies WHERE ID = 1)
-    INSERT INTO Movies (Title, Description, Rating, Price, ImageUrl) 
-    VALUES ('Inception', 'A dream within a dream', 8.8, 45.00, 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS1ylQxJCDkRmlhPcTzBMXenct8rScWPHqvPA&s');
+    INSERT INTO Movies (Title, Description, Price, ImageUrl) 
+    VALUES ('Inception', 'A dream within a dream', 45.00, 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS1ylQxJCDkRmlhPcTzBMXenct8rScWPHqvPA&s');
 
 INSERT INTO ActiveSales (MovieID, DiscountPercentage, StartTime, EndTime)
 VALUES (1, 20.00, DATEADD(day, -1, GETDATE()), DATEADD(day, 5, GETDATE()));
@@ -32,6 +34,59 @@ VALUES (1, 50.00, DATEADD(day, -10, GETDATE()), DATEADD(day, -2, GETDATE()));
 --to see if it expires in one minute when i refresh
 INSERT INTO ActiveSales (MovieID, DiscountPercentage, StartTime, EndTime)
 VALUES (1, 99.00, GETDATE(), DATEADD(minute, 1, GETDATE()));
+
+-- Insert 5 more movies
+IF NOT EXISTS (SELECT * FROM Movies WHERE Title = 'The Matrix')
+    INSERT INTO Movies (Title, Description, Price, ImageUrl)
+    VALUES ('The Matrix', 'A computer hacker learns about the true nature of reality.', 39.99,
+            'https://static0.colliderimages.com/wordpress/wp-content/uploads/2023/05/the-matrix-code-keanu-reeves.jpeg');
+
+IF NOT EXISTS (SELECT * FROM Movies WHERE Title = 'Interstellar')
+    INSERT INTO Movies (Title, Description, Price, ImageUrl)
+    VALUES ('Interstellar', 'A team travels through a wormhole in search of humanity''s survival.', 49.99,
+            'https://m.media-amazon.com/images/I/91vIHsL-zjL._AC_UF894,1000_QL80_.jpg');
+
+IF NOT EXISTS (SELECT * FROM Movies WHERE Title = 'Parasite')
+    INSERT INTO Movies (Title, Description, Price, ImageUrl)
+    VALUES ('Parasite', 'Greed and class discrimination threaten the newly formed symbiotic relationship.', 29.99,
+            'https://m.media-amazon.com/images/M/MV5BYjk1Y2U4MjQtY2ZiNS00OWQyLWI3MmYtZWUwNmRjYWRiNWNhXkEyXkFqcGc@._V1_QL75_UX190_CR0,0,190,281_.jpg');
+
+IF NOT EXISTS (SELECT * FROM Movies WHERE Title = 'John Wick')
+    INSERT INTO Movies (Title, Description, Price, ImageUrl)
+    VALUES ('John Wick', 'An ex-hitman comes out of retirement to track down the gangsters responsible for his wife''s death.', 34.99,
+            'https://m.media-amazon.com/images/M/MV5BMTU2NjA1ODgzMF5BMl5BanBnXkFtZTgwMTM2MTI4MjE@._V1_FMjpg_UX1000_.jpg');
+
+IF NOT EXISTS (SELECT * FROM Movies WHERE Title = 'Whiplash')
+    INSERT INTO Movies (Title, Description, Price, ImageUrl)
+    VALUES ('Whiplash', 'A young drummer''s obsession with greatness leads to a brutal rivalry with his instructor.', 24.99,
+            'https://miro.medium.com/v2/resize:fit:1200/1*HygtAUSg3MqQjimu0MQy3Q.jpeg');
+
+DECLARE @MatrixID INT = (SELECT ID FROM Movies WHERE Title = 'The Matrix');
+DECLARE @InterstellarID INT = (SELECT ID FROM Movies WHERE Title = 'Interstellar');
+DECLARE @ParasiteID INT = (SELECT ID FROM Movies WHERE Title = 'Parasite');
+DECLARE @JohnWickID INT = (SELECT ID FROM Movies WHERE Title = 'John Wick');
+DECLARE @WhiplashID INT = (SELECT ID FROM Movies WHERE Title = 'Whiplash');
+
+-- Active discounts for some movies only
+IF NOT EXISTS (
+    SELECT 1
+    FROM ActiveSales
+    WHERE MovieID = @MatrixID
+      AND StartTime <= GETDATE()
+      AND EndTime > GETDATE()
+)
+INSERT INTO ActiveSales (MovieID, DiscountPercentage, StartTime, EndTime)
+VALUES (@MatrixID, 20.00, DATEADD(day, -1, GETDATE()), DATEADD(day, 5, GETDATE()));
+
+IF NOT EXISTS (
+    SELECT 1
+    FROM ActiveSales
+    WHERE MovieID = @InterstellarID
+      AND StartTime <= GETDATE()
+      AND EndTime > GETDATE()
+)
+INSERT INTO ActiveSales (MovieID, DiscountPercentage, StartTime, EndTime)
+VALUES (@InterstellarID, 35.00, DATEADD(day, -1, GETDATE()), DATEADD(day, 5, GETDATE()));
 
 IF NOT EXISTS (SELECT * FROM Users WHERE Username = 'dummy1')
 BEGIN
@@ -47,6 +102,47 @@ END
 
 DECLARE @Seller1 INT = (SELECT ID FROM Users WHERE Username = 'dummy1');
 DECLARE @Seller2 INT = (SELECT ID FROM Users WHERE Username = 'dummy2');
+
+-- Reviews for the 5 inserted movies (rating is later averaged into Movies.Rating)
+IF NOT EXISTS (SELECT 1 FROM Reviews WHERE MovieID = @MatrixID AND UserID = @Seller1)
+    INSERT INTO Reviews (MovieID, UserID, StarRating, Comment)
+    VALUES (@MatrixID, @Seller1, 9, 'A mind-bending classic with unforgettable world-building.');
+
+IF NOT EXISTS (SELECT 1 FROM Reviews WHERE MovieID = @MatrixID AND UserID = @Seller2)
+    INSERT INTO Reviews (MovieID, UserID, StarRating, Comment)
+    VALUES (@MatrixID, @Seller2, 7, 'Great action and ideas, but definitely not for everyone.');
+
+IF NOT EXISTS (SELECT 1 FROM Reviews WHERE MovieID = @InterstellarID AND UserID = @Seller1)
+    INSERT INTO Reviews (MovieID, UserID, StarRating, Comment)
+    VALUES (@InterstellarID, @Seller1, 10, 'Epic, emotional, and incredibly thought-provoking.');
+
+IF NOT EXISTS (SELECT 1 FROM Reviews WHERE MovieID = @InterstellarID AND UserID = @Seller2)
+    INSERT INTO Reviews (MovieID, UserID, StarRating, Comment)
+    VALUES (@InterstellarID, @Seller2, 8, 'Beautiful visuals and a satisfying emotional payoff.');
+
+IF NOT EXISTS (SELECT 1 FROM Reviews WHERE MovieID = @ParasiteID AND UserID = @Seller1)
+    INSERT INTO Reviews (MovieID, UserID, StarRating, Comment)
+    VALUES (@ParasiteID, @Seller1, 9, 'Smart, tense, and darkly funny all the way through.');
+
+IF NOT EXISTS (SELECT 1 FROM Reviews WHERE MovieID = @ParasiteID AND UserID = @Seller2)
+    INSERT INTO Reviews (MovieID, UserID, StarRating, Comment)
+    VALUES (@ParasiteID, @Seller2, 6, 'Surprisingly entertaining, but the pacing felt uneven.');
+
+IF NOT EXISTS (SELECT 1 FROM Reviews WHERE MovieID = @JohnWickID AND UserID = @Seller1)
+    INSERT INTO Reviews (MovieID, UserID, StarRating, Comment)
+    VALUES (@JohnWickID, @Seller1, 8, 'Non-stop style and killer action choreography.');
+
+IF NOT EXISTS (SELECT 1 FROM Reviews WHERE MovieID = @JohnWickID AND UserID = @Seller2)
+    INSERT INTO Reviews (MovieID, UserID, StarRating, Comment)
+    VALUES (@JohnWickID, @Seller2, 7, 'Solid thrills and great atmosphere; easy to binge.');
+
+IF NOT EXISTS (SELECT 1 FROM Reviews WHERE MovieID = @WhiplashID AND UserID = @Seller1)
+    INSERT INTO Reviews (MovieID, UserID, StarRating, Comment)
+    VALUES (@WhiplashID, @Seller1, 9, 'A brutal, addictive rivalry that stays with you.');
+
+IF NOT EXISTS (SELECT 1 FROM Reviews WHERE MovieID = @WhiplashID AND UserID = @Seller2)
+    INSERT INTO Reviews (MovieID, UserID, StarRating, Comment)
+    VALUES (@WhiplashID, @Seller2, 8, 'Fantastic performances and a soundtrack that demands attention.');
 
 --insert 5 equipments
 INSERT INTO Equipment(SellerID, Title, Category, Description, Condition, Price, ImageUrl, Status)

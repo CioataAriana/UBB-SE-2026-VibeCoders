@@ -4,6 +4,7 @@ DROP TABLE IF EXISTS Transactions;
 DROP TABLE IF EXISTS ActiveSales;
 DROP TABLE IF EXISTS Events;
 DROP TABLE IF EXISTS Equipment;
+DROP TABLE IF EXISTS Reviews;
 DROP TABLE IF EXISTS Users;
 DROP TABLE IF EXISTS Movies;
 
@@ -21,7 +22,6 @@ CREATE TABLE Movies
     ID          INT            NOT NULL    IDENTITY(1, 1)  PRIMARY KEY,
     Title       NVARCHAR(255)  NOT NULL,
     Description NVARCHAR(MAX)  NOT NULL,
-    Rating      FLOAT          NOT NULL    DEFAULT 0.0,
     Price       DECIMAL(15, 2) NOT NULL,
     ImageUrl    NVARCHAR(500)  NOT NULL
 );

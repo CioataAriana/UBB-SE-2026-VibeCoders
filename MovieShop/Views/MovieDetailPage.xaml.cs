@@ -5,6 +5,7 @@ using Microsoft.UI.Xaml.Documents;
 using Microsoft.UI.Xaml.Media;
 using Microsoft.UI.Xaml.Media.Imaging;
 using Microsoft.UI.Xaml.Navigation;
+using Microsoft.Data.SqlClient;
 using MovieShop.Models;
 using MovieShop.Repositories;
 using MovieShop.ViewModels;
@@ -66,35 +67,13 @@ public sealed partial class MovieDetailPage : Page
         };
         PriceBlock.Inlines.Add(label);
 
-        if (_movie.HasActiveSale)
+        var only = new Run
         {
-            var original = new Run
-            {
-                Text = $"{_movie.Price:C}",
-                TextDecorations = Windows.UI.Text.TextDecorations.Strikethrough,
-                Foreground = new SolidColorBrush(Color.FromArgb(255, 136, 136, 136))
-            };
-            var gap = new Run { Text = "  " };
-            var sale = new Run
-            {
-                Text = _movie.GetEffectivePrice().ToString("C"),
-                Foreground = new SolidColorBrush(Color.FromArgb(255, 29, 185, 84)),
-                FontWeight = FontWeights.Bold
-            };
-            PriceBlock.Inlines.Add(original);
-            PriceBlock.Inlines.Add(gap);
-            PriceBlock.Inlines.Add(sale);
-        }
-        else
-        {
-            var only = new Run
-            {
-                Text = _movie.Price.ToString("C"),
-                Foreground = new SolidColorBrush(Color.FromArgb(255, 29, 185, 84)),
-                FontWeight = FontWeights.Bold
-            };
-            PriceBlock.Inlines.Add(only);
-        }
+            Text = _movie.Price.ToString("C"),
+            Foreground = new SolidColorBrush(Color.FromArgb(255, 29, 185, 84)),
+            FontWeight = FontWeights.Bold
+        };
+        PriceBlock.Inlines.Add(only);
     }
 
     private void TrySetPoster(string? url)
@@ -172,7 +151,7 @@ public sealed partial class MovieDetailPage : Page
         var confirm = new ContentDialog
         {
             Title = "Confirm purchase",
-            Content = $"Buy \"{_movie.Title}\" for {_movie.GetEffectivePrice():C}? This will be charged to your balance.",
+            Content = $"Buy \"{_movie.Title}\" for {_movie.Price:C}? This will be charged to your balance.",
             PrimaryButtonText = "Buy",
             CloseButtonText = "Cancel",
             DefaultButton = ContentDialogButton.Primary,
@@ -219,10 +198,13 @@ public sealed partial class MovieDetailPage : Page
         if (_movie == null)
             return;
 
+        var reviewCount = GetReviewCount(_movie.ID);
+        var peopleText = reviewCount == 1 ? "1 person" : $"{reviewCount} people";
+
         var dialog = new ContentDialog
         {
             Title = "Reviews",
-            Content = $"Reviews for \"{_movie.Title}\" will be shown here (REQ-01 — Reviews integration).",
+            Content = $"\"{_movie.Title}\" was reviewed by {peopleText}.",
             PrimaryButtonText = "Close",
             XamlRoot = XamlRoot
         };
@@ -247,6 +229,39 @@ public sealed partial class MovieDetailPage : Page
     private void BackButton_Click(object sender, Microsoft.UI.Xaml.RoutedEventArgs e)
     {
         if (Frame?.CanGoBack == true)
+        {
             Frame.GoBack();
+            return;
+        }
+
+        // If this page was opened directly (no back stack), return to the MainPage (Shop view).
+        if (this.XamlRoot?.Content is NavigationPage navPage)
+        {
+            navPage.ViewModel.CurrentViewModel = "Shop";
+        }
+    }
+
+    private static int GetReviewCount(int movieId)
+    {
+        var db = DatabaseSingleton.Instance;
+        db.OpenConnection();
+
+        try
+        {
+            const string query = @"SELECT StarRating FROM Reviews WHERE MovieID = @mid";
+            using var cmd = new SqlCommand(query, db.Connection);
+            cmd.Parameters.AddWithValue("@mid", movieId);
+
+            using var reader = cmd.ExecuteReader();
+            var count = 0;
+            while (reader.Read())
+                count++;
+
+            return count;
+        }
+        finally
+        {
+            db.CloseConnection();
+        }
     }
 }

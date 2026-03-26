@@ -1,6 +1,7 @@
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using MovieShop.ViewModels;
+using MovieShop.Models;
 
 namespace MovieShop.Views
 {
@@ -9,6 +10,8 @@ namespace MovieShop.Views
         public bool ShowOnlySales { get; set; }
 
         public MainViewModel? HostViewModel { get; set; }
+
+        public Movie? InitialMovie { get; set; }
 
         public MovieShopView()
         {
@@ -22,6 +25,16 @@ namespace MovieShop.Views
 
             if (HostViewModel == null)
                 return;
+
+            if (InitialMovie != null)
+            {
+                ShopFrame.Navigate(typeof(MovieDetailPage), new MovieDetailNavArgs
+                {
+                    MainViewModel = HostViewModel,
+                    Movie = InitialMovie
+                });
+                return;
+            }
 
             ShopFrame.Navigate(typeof(MovieCatalogPage), new MovieCatalogNavArgs
             {

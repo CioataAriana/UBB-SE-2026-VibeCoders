@@ -31,41 +31,58 @@
             </StackPanel>
         </StackPanel>
 
-        <GridView x:Name="MoviesGrid"
-                  Grid.Column="1"
-                  SelectionMode="None"
-                  IsItemClickEnabled="True"
-                  ItemClick="MoviesGrid_ItemClick"
-                  Padding="0">
-            <GridView.ItemContainerStyle>
-                <Style TargetType="GridViewItem">
-                    <Setter Property="Margin" Value="8"/>
-                    <Setter Property="Padding" Value="0"/>
-                </Style>
-            </GridView.ItemContainerStyle>
-            <GridView.ItemTemplate>
-                <DataTemplate x:DataType="models:Movie">
-                    <Border Background="#2A2A2A" CornerRadius="10" Padding="0" Width="200" BorderBrush="#404040" BorderThickness="1">
-                        <StackPanel Spacing="8" Padding="10">
-                            <Border Height="260" Background="#1A1A1A" CornerRadius="6">
-                                <Image Source="{x:Bind ImageUrl}" Stretch="UniformToFill"/>
-                            </Border>
-                            <TextBlock Text="{x:Bind Title}" Foreground="White" FontWeight="SemiBold" TextTrimming="CharacterEllipsis" MaxLines="2" TextWrapping="Wrap"/>
-                            <StackPanel Orientation="Horizontal" Spacing="8" VerticalAlignment="Center">
-                                <StackPanel Orientation="Horizontal" Spacing="2"
-                                            Visibility="{x:Bind HasActiveSale, Mode=OneWay, Converter={StaticResource BoolToVisibilityConverter}}">
-                                    <TextBlock Text="$" Foreground="#888888" FontWeight="SemiBold" TextDecorations="Strikethrough"/>
-                                    <TextBlock Text="{x:Bind CatalogStrikePriceText, Mode=OneWay}" Foreground="#888888" FontWeight="SemiBold" TextDecorations="Strikethrough"/>
-                                </StackPanel>
-                                <StackPanel Orientation="Horizontal" Spacing="2">
-                                    <TextBlock Text="$" Foreground="#1DB954" FontWeight="Bold"/>
-                                    <TextBlock Text="{x:Bind CatalogEffectivePriceText, Mode=OneWay}" Foreground="#1DB954" FontWeight="Bold"/>
+        <Grid Grid.Column="1">
+            <TextBlock x:Name="FlashSaleEndedText"
+                       Text="The flash sale has ended!"
+                       Foreground="White"
+                       FontSize="28"
+                       FontWeight="Bold"
+                       HorizontalAlignment="Center"
+                       VerticalAlignment="Center"
+                       Visibility="Collapsed"/>
+
+            <GridView x:Name="MoviesGrid"
+                      SelectionMode="None"
+                      IsItemClickEnabled="True"
+                      ItemClick="MoviesGrid_ItemClick"
+                      Padding="0">
+                <GridView.ItemContainerStyle>
+                    <Style TargetType="GridViewItem">
+                        <Setter Property="Margin" Value="8"/>
+                        <Setter Property="Padding" Value="0"/>
+                    </Style>
+                </GridView.ItemContainerStyle>
+                <GridView.ItemTemplate>
+                    <DataTemplate x:DataType="local:MovieCatalogItem">
+                        <Border Background="#2A2A2A"
+                                CornerRadius="10"
+                                Padding="0"
+                                Width="200"
+                                BorderBrush="#404040"
+                                BorderThickness="1"
+                                RenderTransformOrigin="0.5,0.5"
+                                PointerEntered="MovieCard_PointerEntered"
+                                PointerExited="MovieCard_PointerExited">
+                            <StackPanel Spacing="8" Padding="10">
+                                <Border Height="260" Background="#1A1A1A" CornerRadius="6">
+                                    <Image Source="{x:Bind ImageUrl}" Stretch="UniformToFill"/>
+                                </Border>
+                                <TextBlock Text="{x:Bind Title}" Foreground="White" FontWeight="SemiBold" TextTrimming="CharacterEllipsis" MaxLines="2" TextWrapping="Wrap"/>
+                                <TextBlock Text="{x:Bind RatingAndReviewCountText, Mode=OneWay}"
+                                           Foreground="#FFC107"
+                                           FontWeight="SemiBold"
+                                           TextWrapping="Wrap"/>
+                                <StackPanel Orientation="Horizontal" Spacing="8" VerticalAlignment="Center">
+                                    <StackPanel Orientation="Horizontal" Spacing="2">
+                                        <TextBlock Text="$" Foreground="#1DB954" FontWeight="Bold"/>
+                                        <TextBlock Text="{x:Bind OriginalPriceText, Mode=OneWay}" Foreground="#1DB954" FontWeight="Bold"/>
+                                    </StackPanel>
                                 </StackPanel>
                             </StackPanel>
-                        </StackPanel>
-                    </Border>
-                </DataTemplate>
-            </GridView.ItemTemplate>
-        </GridView>
+                        </Border>
+                    </DataTemplate>
+                </GridView.ItemTemplate>
+            </GridView>
+        </Grid>
     </Grid>
 </Page>

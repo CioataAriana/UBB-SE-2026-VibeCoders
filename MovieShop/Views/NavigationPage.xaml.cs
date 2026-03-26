@@ -1,5 +1,6 @@
 using Microsoft.UI.Xaml.Controls;
 using MovieShop.ViewModels;
+using MovieShop.Models;
 
 namespace MovieShop.Views
 {
@@ -56,6 +57,16 @@ namespace MovieShop.Views
                     ShowOnlySales = false
                 };
             }
+        }
+
+        public void NavigateToMovieDetail(Movie movie, bool showOnlySales)
+        {
+            ContentArea.Content = new MovieShop.Views.MovieShopView
+            {
+                HostViewModel = ViewModel,
+                ShowOnlySales = showOnlySales,
+                InitialMovie = movie
+            };
         }
     }
 }
