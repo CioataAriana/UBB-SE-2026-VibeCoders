@@ -49,6 +49,7 @@ namespace MovieShop.ViewModels
         public IRelayCommand NavigateToShopCommand { get; }
         public IRelayCommand NavigateToWalletCommand { get; }
         public IRelayCommand NavigateToMarketplaceCommand { get; }
+        public IRelayCommand NavigateToTicketsCommand { get; }
         public IRelayCommand NavigateToInventoryCommand { get; }
 
         public MainViewModel()
@@ -85,6 +86,7 @@ namespace MovieShop.ViewModels
             NavigateToShopCommand = new RelayCommand(NavigateToShop);
             NavigateToWalletCommand = new RelayCommand(NavigateToWallet);
             NavigateToMarketplaceCommand = new RelayCommand(NavigateToMarketplace);
+            NavigateToTicketsCommand = new RelayCommand(NavigateToTickets);
             NavigateToInventoryCommand = new RelayCommand(NavigateToInventory);
 
             NavigateToShop();
@@ -108,6 +110,7 @@ namespace MovieShop.ViewModels
         private void NavigateToWallet() => CurrentViewModel = _walletViewModel;
         private void NavigateToMarketplace() => CurrentViewModel = "Marketplace";
         private void NavigateToInventory() => CurrentViewModel = "Inventory";
+        private void NavigateToTickets() => CurrentViewModel = "Tickets";
         private void NavigateToSales() => CurrentViewModel = "SalesPage";
 
     }

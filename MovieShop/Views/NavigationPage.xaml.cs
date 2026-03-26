@@ -41,6 +41,10 @@ namespace MovieShop.Views
             {
                 ContentArea.Content = new MainPage();
             }
+            else if (current == "Tickets")
+            {
+                ContentArea.Content = new MovieShop.Views.MovieEventsPage();
+            }
             else if (current == "SalesPage")
             {
                 ContentArea.Content = new MovieShop.Views.MovieShopView
@@ -56,6 +60,10 @@ namespace MovieShop.Views
                     HostViewModel = ViewModel,
                     ShowOnlySales = false
                 };
+            }
+            else if (current == "Inventory")
+            {
+                ContentArea.Content = new MovieShop.Views.InventoryView();
             }
         }
 

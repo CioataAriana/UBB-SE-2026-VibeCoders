@@ -50,6 +50,13 @@
                         BorderThickness="0"
                         Padding="12,8"/>
 
+                <Button Content="🎫 Tickets"
+                        Command="{x:Bind ViewModel.NavigateToTicketsCommand}"
+                        Background="Transparent"
+                        Foreground="White"
+                        BorderThickness="0"
+                        Padding="12,8"/>
+
                 <Button Content="🎒 Inventory"
                         Command="{x:Bind ViewModel.NavigateToInventoryCommand}"
                         Background="Transparent"

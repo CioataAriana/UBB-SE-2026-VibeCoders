@@ -27,9 +27,17 @@
                        VerticalAlignment="Center"/>
         </StackPanel>
 
-        <ListView x:Name="EventsList"
-                  Grid.Row="1"
-                  SelectionMode="None">
+        <StackPanel Grid.Row="1">
+            <StackPanel Orientation="Horizontal" Spacing="8" Margin="0,0,0,12">
+                <TextBox x:Name="SearchBox" PlaceholderText="Search events..." Width="300" TextChanged="SearchBox_TextChanged"/>
+                <ComboBox x:Name="FilterCombo" Width="160" SelectionChanged="FilterCombo_SelectionChanged">
+                    <ComboBoxItem Content="All" IsSelected="True"/>
+                    <ComboBoxItem Content="Upcoming"/>
+                    <ComboBoxItem Content="Past"/>
+                </ComboBox>
+            </StackPanel>
+
+            <ListView x:Name="EventsList" SelectionMode="None">
             <ListView.ItemTemplate>
                 <DataTemplate x:DataType="models:MovieEvent">
                     <Border Background="#252525" CornerRadius="10" BorderBrush="#333" BorderThickness="1" Padding="14" Margin="0,0,0,10">
@@ -53,12 +61,14 @@
                                     <TextBlock Text="•" Foreground="Gray"/>
                                     <TextBlock Text="{x:Bind DisplayTicketPrice}" Foreground="#1DB954" FontWeight="Bold"/>
                                 </StackPanel>
+                                <Button Content="Buy ticket" HorizontalAlignment="Right" Click="BuyTicket_Click" x:Name="BuyTicketButton"/>
                             </StackPanel>
                         </Grid>
                     </Border>
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
+        </StackPanel>
     </Grid>
 </Page>
 

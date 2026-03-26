@@ -176,6 +176,12 @@ public sealed partial class MovieDetailPage : Page
                 XamlRoot = XamlRoot
             };
             _ = await dialog.ShowAsync();
+
+            // Navigate to Inventory so the user can see the purchased movie
+            if (this.XamlRoot?.Content is NavigationPage navPage)
+            {
+                navPage.ViewModel.CurrentViewModel = "Inventory";
+            }
         }
         catch (InvalidOperationException ex)
         {
