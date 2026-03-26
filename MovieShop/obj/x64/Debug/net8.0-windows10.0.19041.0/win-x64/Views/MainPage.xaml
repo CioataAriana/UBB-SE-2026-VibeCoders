@@ -21,12 +21,12 @@
                                                                            >
 
             <StackPanel Spacing="15" HorizontalAlignment="Center">
-                <TextBlock Text="Flash sale" FontSize="48" Foreground="White" HorizontalAlignment="Center"/>
+                <TextBlock x:ConnectionId='3'                                         FontSize="48" Foreground="White" HorizontalAlignment="Center"/>
 
-                <TextBlock x:ConnectionId='3' x:Name="BigTimerText"                                                    FontSize="36" 
+                <TextBlock x:ConnectionId='4' x:Name="BigTimerText"                                                    FontSize="36" 
                        Foreground="White" HorizontalAlignment="Center" FontWeight="Bold"/>
 
-                <Button x:ConnectionId='4' x:Name="DiscoverButton" 
+                <Button x:ConnectionId='5' x:Name="DiscoverButton" 
                     Content="discover our discounted movies!" 
                                                 
                     HorizontalAlignment="Center" 

@@ -1,8 +1,14 @@
 App.xbf
 MainWindow.xbf
+Views\EquipmentDetailPage.xbf
 Views\FlashSaleBanner.xbf
 Views\Header.xbf
 Views\MainPage.xbf
+Views\MarketplacePage.xbf
+Views\MovieCatalogPage.xbf
+Views\MovieDetailPage.xbf
 Views\MovieShopView.xbf
 Views\NavigationPage.xbf
+Views\SellPage.xbf
+Views\StartPageEquipment.xbf
 Views\WalletView.xbf

@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Diagnostics;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
@@ -16,6 +17,7 @@ namespace MovieShop.ViewModels
         //every second without crashing the app.
 
         private DispatcherTimer _timer;
+        private string _displayText;
         private string _timerText;
         private DateTime _expiryDate;
         private bool _isActive;
@@ -38,6 +40,16 @@ namespace MovieShop.ViewModels
             set
             {
                 _timerText = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public string DisplayText
+        {
+            get => _displayText;
+            set
+            {
+                _displayText = value;
                 OnPropertyChanged();
             }
         }
@@ -80,6 +92,7 @@ namespace MovieShop.ViewModels
             {
                 //DoD: TimerText property updates HH:MM::SS every second
 
+                DisplayText = "Flash sale";
                 TimerText = string.Format("{0:D2}:{1:D2}:{2:D2}",
                                                 (int)timeRemaining.TotalHours,
                                                 (int)timeRemaining.Minutes,
@@ -88,19 +101,20 @@ namespace MovieShop.ViewModels
             else
             {
                 _timer.Stop();
+                DisplayText = "Flash sale has expired!";
                 TimerText = "00:00:00";
 
                 IsActive = false;
 
                 _onExpiredAction?.Invoke();
 
-                HandleSaleExpiry();
+                //HandleSaleExpiry();
             }
         }
         
         private void HandleSaleExpiry()
         {
-            System.Diagnostics.Debug.WriteLine("Flash Sale has expired!");
+            Debug.WriteLine("Flash Sale has expired!");
         }
 
         public Visibility BannerVisibility => IsActive ? Visibility.Visible : Visibility.Collapsed;

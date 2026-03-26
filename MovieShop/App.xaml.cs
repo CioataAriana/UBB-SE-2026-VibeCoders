@@ -6,12 +6,11 @@ using Microsoft.UI.Xaml.Input;
 using Microsoft.UI.Xaml.Media;
 using Microsoft.UI.Xaml.Navigation;
 using Microsoft.UI.Xaml.Shapes;
+using MovieShop.Repositories;
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.IO;
 using System.Linq;
-using System.Reflection;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.ApplicationModel;
 using Windows.ApplicationModel.Activation;
@@ -28,7 +27,7 @@ namespace MovieShop
     /// </summary>
     public partial class App : Application
     {
-        private Window? _window;
+        public static Window? _window;
 
         /// <summary>
         /// Initializes the singleton application object.  This is the first line of authored code

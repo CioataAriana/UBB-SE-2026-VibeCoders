@@ -1,0 +1,86 @@
+<Page
+    x:Class="MovieMarketplace.Views.MarketplacePage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:models="using:MovieMarketplace.Models"
+    mc:Ignorable="d">
+
+    <Grid Padding="20">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <StackPanel Grid.Row="0" Orientation="Horizontal" Spacing="20" Margin="0,0,0,20">
+            <Button Content="" FontFamily="Segoe MDL2 Assets" Click="BackToStart_Click" Background="Transparent"/>
+            <TextBlock Text="Available Equipment" FontSize="28" FontWeight="Bold"/>
+        </StackPanel>
+
+        <StackPanel Grid.Row="1" Orientation="Horizontal" Spacing="15" Margin="0,0,0,20">
+            <TextBlock Text="Filter:" VerticalAlignment="Center"/>
+            <ComboBox x:Name="CategoryFilter" Width="200" SelectionChanged="CategoryFilter_SelectionChanged">
+                <ComboBoxItem Content="All"/>
+                <ComboBoxItem Content="Cameras"/>
+                <ComboBoxItem Content="Microphones"/>
+                <ComboBoxItem Content="Lighting"/>
+                <ComboBoxItem Content="Accessories"/>
+            </ComboBox>
+        </StackPanel>
+
+        <ScrollViewer Grid.Row="2" VerticalScrollBarVisibility="Auto">
+            <ItemsControl ItemsSource="{x:Bind ViewModel.AvailableItems, Mode=OneWay}">
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <ItemsWrapGrid Orientation="Horizontal" HorizontalAlignment="Center"/>
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate x:DataType="models:Equipment">
+                        <Border Background="#212121" 
+                        CornerRadius="12" 
+                        Margin="10" 
+                        Width="240" 
+                        Height="340" 
+                        BorderBrush="#333333" 
+                        BorderThickness="1">
+                            <StackPanel Spacing="10">
+                                <Border CornerRadius="12,12,0,0" Height="180" Background="#1A1A1A">
+                                    <Image Source="{x:Bind ImageUrl}" Stretch="UniformToFill" />
+                                </Border>
+
+                                <StackPanel Padding="15" Spacing="5">
+                                    <TextBlock Text="{x:Bind Title}" 
+                                       FontSize="18" 
+                                       FontWeight="Bold" 
+                                       MaxLines="1" 
+                                       TextTrimming="CharacterEllipsis"/>
+
+                                    <TextBlock Text="{x:Bind Category}" 
+                                       FontSize="12" 
+                                       Foreground="Gray"/>
+
+                                    <TextBlock Text="{x:Bind Price}" 
+                                       FontSize="22" 
+                                       FontWeight="Bold" 
+                                       Foreground="#4CAF50" 
+                                       Margin="0,5,0,5"/>
+
+                                    <Button Content="VIEW DETAILS" 
+                                    Click="BuyButton_Click" 
+                                    HorizontalAlignment="Stretch" 
+                                    Background="DarkGreen" 
+                                    Foreground="White"
+                                    CornerRadius="6"/>
+                                </StackPanel>
+                            </StackPanel>
+                        </Border>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+        </ScrollViewer>
+    </Grid>
+</Page>

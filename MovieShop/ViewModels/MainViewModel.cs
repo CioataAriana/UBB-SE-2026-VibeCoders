@@ -1,6 +1,6 @@
-﻿using CommunityToolkit.Mvvm.Input;
+using CommunityToolkit.Mvvm.Input;
+using MovieShop.Models;
 using MovieShop.Repositories;
-using MovieShop.ViewModels;
 using System;
 using System.ComponentModel;
 using System.Linq;
@@ -26,7 +26,7 @@ namespace MovieShop.ViewModels
         private readonly ActiveSalesRepo _salesRepo = new ActiveSalesRepo();
 
         // --- Balance ---
-        private decimal _balance = 500.00m;
+        private decimal _balance;
         public decimal Balance
         {
             get => _balance;
@@ -40,7 +40,8 @@ namespace MovieShop.ViewModels
 
         public string DisplayBalance => Balance.ToString("C");
 
-        private readonly int _currentUserID = 1;
+        private readonly int _currentUserID = SessionManager.CurrentUserID;
+        private readonly UserRepo _userRepo = new UserRepo();
 
         private WalletViewModel _walletViewModel;
         private MovieViewModel _shopViewModel;
@@ -52,6 +53,10 @@ namespace MovieShop.ViewModels
 
         public MainViewModel()
         {
+            if (_currentUserID > 0)
+                Balance = _userRepo.GetBalance(_currentUserID);
+            else
+                Balance = 0;
 
             //SALE LOGIC
             var currentSales = _salesRepo.GetCurrentSales();
@@ -70,7 +75,7 @@ namespace MovieShop.ViewModels
 
             //----------------------------
 
-            _walletViewModel = new WalletViewModel(_currentUserID, _balance);
+            _walletViewModel = new WalletViewModel(_currentUserID, Balance);
             _walletViewModel.PropertyChanged += (s, e) =>
             {
                 if (e.PropertyName == nameof(WalletViewModel.Balance))
@@ -83,6 +88,20 @@ namespace MovieShop.ViewModels
             NavigateToInventoryCommand = new RelayCommand(NavigateToInventory);
 
             NavigateToShop();
+        }
+
+        public void RefreshBalanceFromDatabase()
+        {
+            if (_currentUserID <= 0)
+            {
+                Balance = 0;
+                _walletViewModel.Balance = 0;
+                return;
+            }
+
+            var b = _userRepo.GetBalance(_currentUserID);
+            Balance = b;
+            _walletViewModel.Balance = b;
         }
 
         private void NavigateToShop() => CurrentViewModel = "Shop";

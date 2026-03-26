@@ -29,21 +29,21 @@
     <AppXManifest Include="C:\Users\marius\source\repos\SE_Movies\UBB-SE-2026-VibeCoders\MovieShop\bin\x64\Debug\net8.0-windows10.0.19041.0\win-x64\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2026-03-25T00:52:00.449</Modified>
+      <Modified>2026-03-26T00:10:16.657</Modified>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
     <AppxPackagedFile Include="C:\Users\marius\source\repos\SE_Movies\UBB-SE-2026-VibeCoders\MovieShop\bin\x64\Debug\net8.0-windows10.0.19041.0\win-x64\MovieShop.runtimeconfig.json">
       <PackagePath>MovieShop.runtimeconfig.json</PackagePath>
-      <Modified>2026-03-24T19:37:16.717</Modified>
+      <Modified>2026-03-25T20:44:27.974</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\marius\source\repos\SE_Movies\UBB-SE-2026-VibeCoders\MovieShop\obj\x64\Debug\net8.0-windows10.0.19041.0\win-x64\apphost.exe">
       <PackagePath>MovieShop.exe</PackagePath>
-      <Modified>2026-03-25T00:51:59.776</Modified>
+      <Modified>2026-03-26T00:10:16.007</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\marius\source\repos\SE_Movies\UBB-SE-2026-VibeCoders\MovieShop\obj\x64\Debug\net8.0-windows10.0.19041.0\win-x64\MovieShop.dll">
       <PackagePath>MovieShop.dll</PackagePath>
-      <Modified>2026-03-25T00:51:59.761</Modified>
+      <Modified>2026-03-26T00:10:15.991</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\marius\.nuget\packages\microsoft.netcore.app.runtime.win-x64\8.0.23\runtimes\win-x64\lib\net8.0\Microsoft.CSharp.dll">
       <PackagePath>Microsoft.CSharp.dll</PackagePath>
@@ -1099,7 +1099,7 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\marius\source\repos\SE_Movies\UBB-SE-2026-VibeCoders\MovieShop\bin\x64\Debug\net8.0-windows10.0.19041.0\win-x64\MovieShop.deps.json">
       <PackagePath>MovieShop.deps.json</PackagePath>
-      <Modified>2026-03-25T00:31:52.279</Modified>
+      <Modified>2026-03-25T23:56:28.931</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\marius\.nuget\packages\communitytoolkit.winui.ui.controls.datagrid\7.1.2\lib\net5.0-windows10.0.18362\CommunityToolkit.WinUI.UI.Controls.DataGrid.pri">
       <PackagePath>CommunityToolkit.WinUI.UI.Controls.DataGrid.pri</PackagePath>
@@ -1139,7 +1139,7 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\marius\source\repos\SE_Movies\UBB-SE-2026-VibeCoders\MovieShop\bin\x64\Debug\net8.0-windows10.0.19041.0\win-x64\resources.pri">
       <PackagePath>resources.pri</PackagePath>
-      <Modified>2026-03-25T00:31:52.382</Modified>
+      <Modified>2026-03-25T23:56:29.300</Modified>
     </AppxPackagedFile>
   </ItemGroup>
   <ItemGroup>

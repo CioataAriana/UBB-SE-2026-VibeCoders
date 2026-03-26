@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("MovieShop")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+e72994d65666f2ddb43c901738282d0aaedd14c6")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+bd18f38bfad73dbe29132af735a5414ea3b1a25a")]
 [assembly: System.Reflection.AssemblyProductAttribute("MovieShop")]
 [assembly: System.Reflection.AssemblyTitleAttribute("MovieShop")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

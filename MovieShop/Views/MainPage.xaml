@@ -21,7 +21,7 @@
             Visibility="{x:Bind FlashSaleVM.BannerVisibility, Mode=OneWay}">
 
             <StackPanel Spacing="15" HorizontalAlignment="Center">
-                <TextBlock Text="Flash sale" FontSize="48" Foreground="White" HorizontalAlignment="Center"/>
+                <TextBlock Text="{x:Bind FlashSaleVM.DisplayText}" FontSize="48" Foreground="White" HorizontalAlignment="Center"/>
 
                 <TextBlock x:Name="BigTimerText" Text="{x:Bind FlashSaleVM.TimerText, Mode=OneWay}" FontSize="36" 
                        Foreground="White" HorizontalAlignment="Center" FontWeight="Bold"/>
