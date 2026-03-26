@@ -27,5 +27,26 @@ namespace MovieShop.Repositories
                 _db.CloseConnection();
             }
         }
+
+        public void UpdateBalance(int userId, decimal newBalance)
+        {
+            if (userId <= 0)
+                return;
+
+            const string query = "UPDATE Users SET Balance = @balance WHERE ID = @id";
+
+            _db.OpenConnection();
+            try
+            {
+                using var cmd = new SqlCommand(query, _db.Connection);
+                cmd.Parameters.AddWithValue("@balance", newBalance);
+                cmd.Parameters.AddWithValue("@id", userId);
+                cmd.ExecuteNonQuery();
+            }
+            finally
+            {
+                _db.CloseConnection();
+            }
+        }
     }
 }

@@ -60,7 +60,6 @@ public sealed partial class MovieDetailPage : Page
         if (_movie == null)
             return;
 
-        
         PriceBlock.Text = $"${_movie.DiscountedPriceText}";
 
         if (_movie.HasActiveSale)
@@ -162,7 +161,9 @@ public sealed partial class MovieDetailPage : Page
         try
         {
             await Task.Run(() => _movieRepo.PurchaseMovie(SessionManager.CurrentUserID, _movie.ID, _movie.GetEffectivePrice()));
-            _mainVm.RefreshBalanceFromDatabase();
+
+            // Refresh balance in nav bar AND reload wallet transaction list
+            _mainVm.RefreshWallet();
             SessionManager.CurrentUserBalance = _mainVm.Balance;
 
             RefreshBuyButtonState();
@@ -177,7 +178,6 @@ public sealed partial class MovieDetailPage : Page
             };
             _ = await dialog.ShowAsync();
 
-            // Navigate to Inventory so the user can see the purchased movie
             if (this.XamlRoot?.Content is NavigationPage navPage)
             {
                 navPage.ViewModel.CurrentViewModel = "Inventory";
@@ -198,10 +198,7 @@ public sealed partial class MovieDetailPage : Page
 
     private void ReviewsButton_Click(object sender, Microsoft.UI.Xaml.RoutedEventArgs e)
     {
-        if (_movie == null)
-            return;
-
-        if (_mainVm == null)
+        if (_movie == null || _mainVm == null)
             return;
 
         Frame?.Navigate(typeof(MovieReviewsPage), new MovieReviewsNavArgs
@@ -213,10 +210,7 @@ public sealed partial class MovieDetailPage : Page
 
     private void EventsButton_Click(object sender, Microsoft.UI.Xaml.RoutedEventArgs e)
     {
-        if (_movie == null)
-            return;
-
-        if (_mainVm == null)
+        if (_movie == null || _mainVm == null)
             return;
 
         Frame?.Navigate(typeof(MovieEventsPage), new MovieEventsNavArgs
@@ -234,7 +228,6 @@ public sealed partial class MovieDetailPage : Page
             return;
         }
 
-        // If this page was opened directly (no back stack), return to the MainPage (Shop view).
         if (this.XamlRoot?.Content is NavigationPage navPage)
         {
             navPage.ViewModel.CurrentViewModel = "Shop";
@@ -267,7 +260,7 @@ public sealed partial class MovieDetailPage : Page
 
     private static string BuildStarDistributionTooltip(int movieId)
     {
-        var counts = new int[11]; // 0..10
+        var counts = new int[11];
 
         var db = DatabaseSingleton.Instance;
         db.OpenConnection();

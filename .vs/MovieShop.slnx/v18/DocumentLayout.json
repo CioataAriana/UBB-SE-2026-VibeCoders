@@ -1,121 +1,293 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\marius\\source\\repos\\SE_Movies\\UBB-SE-2026-VibeCoders\\",
+  "WorkspaceRootPath": "A:\\facultate\\an 2 sem 2\\iss\\TOB\\UBB-SE-2026-TryingOurBest\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{EA307B9B-A8AC-AAB7-28D2-1A7BB0F6A26F}|MovieShop\\MovieShop.csproj|c:\\users\\marius\\source\\repos\\se_movies\\ubb-se-2026-vibecoders\\movieshop\\queries\\inserts.sql||{CC5D8DF0-88F4-4BB2-9DBB-B48CEE65C30A}",
-      "RelativeMoniker": "D:0:0:{EA307B9B-A8AC-AAB7-28D2-1A7BB0F6A26F}|MovieShop\\MovieShop.csproj|solutionrelative:movieshop\\queries\\inserts.sql||{CC5D8DF0-88F4-4BB2-9DBB-B48CEE65C30A}"
+      "AbsoluteMoniker": "D:0:0:{EA307B9B-A8AC-AAB7-28D2-1A7BB0F6A26F}|MovieShop\\MovieShop.csproj|a:\\facultate\\an 2 sem 2\\iss\\tob\\ubb-se-2026-tryingourbest\\movieshop\\views\\equipmentdetailpage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EA307B9B-A8AC-AAB7-28D2-1A7BB0F6A26F}|MovieShop\\MovieShop.csproj|solutionrelative:movieshop\\views\\equipmentdetailpage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{EA307B9B-A8AC-AAB7-28D2-1A7BB0F6A26F}|MovieShop\\MovieShop.csproj|c:\\users\\marius\\source\\repos\\se_movies\\ubb-se-2026-vibecoders\\movieshop\\views\\moviereviewspage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{EA307B9B-A8AC-AAB7-28D2-1A7BB0F6A26F}|MovieShop\\MovieShop.csproj|solutionrelative:movieshop\\views\\moviereviewspage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{EA307B9B-A8AC-AAB7-28D2-1A7BB0F6A26F}|MovieShop\\MovieShop.csproj|a:\\facultate\\an 2 sem 2\\iss\\tob\\ubb-se-2026-tryingourbest\\movieshop\\repositories\\equipmentrepo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EA307B9B-A8AC-AAB7-28D2-1A7BB0F6A26F}|MovieShop\\MovieShop.csproj|solutionrelative:movieshop\\repositories\\equipmentrepo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{EA307B9B-A8AC-AAB7-28D2-1A7BB0F6A26F}|MovieShop\\MovieShop.csproj|c:\\users\\marius\\source\\repos\\se_movies\\ubb-se-2026-vibecoders\\movieshop\\repositories\\reviewrepo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{EA307B9B-A8AC-AAB7-28D2-1A7BB0F6A26F}|MovieShop\\MovieShop.csproj|solutionrelative:movieshop\\repositories\\reviewrepo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{EA307B9B-A8AC-AAB7-28D2-1A7BB0F6A26F}|MovieShop\\MovieShop.csproj|a:\\facultate\\an 2 sem 2\\iss\\tob\\ubb-se-2026-tryingourbest\\movieshop\\repositories\\databasesingleton.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EA307B9B-A8AC-AAB7-28D2-1A7BB0F6A26F}|MovieShop\\MovieShop.csproj|solutionrelative:movieshop\\repositories\\databasesingleton.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{EA307B9B-A8AC-AAB7-28D2-1A7BB0F6A26F}|MovieShop\\MovieShop.csproj|c:\\users\\marius\\source\\repos\\se_movies\\ubb-se-2026-vibecoders\\movieshop\\views\\moviedetailpage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{EA307B9B-A8AC-AAB7-28D2-1A7BB0F6A26F}|MovieShop\\MovieShop.csproj|a:\\facultate\\an 2 sem 2\\iss\\tob\\ubb-se-2026-tryingourbest\\movieshop\\views\\walletview.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EA307B9B-A8AC-AAB7-28D2-1A7BB0F6A26F}|MovieShop\\MovieShop.csproj|solutionrelative:movieshop\\views\\walletview.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EA307B9B-A8AC-AAB7-28D2-1A7BB0F6A26F}|MovieShop\\MovieShop.csproj|a:\\facultate\\an 2 sem 2\\iss\\tob\\ubb-se-2026-tryingourbest\\movieshop\\views\\moviedetailpage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{EA307B9B-A8AC-AAB7-28D2-1A7BB0F6A26F}|MovieShop\\MovieShop.csproj|solutionrelative:movieshop\\views\\moviedetailpage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{EA307B9B-A8AC-AAB7-28D2-1A7BB0F6A26F}|MovieShop\\MovieShop.csproj|c:\\users\\marius\\source\\repos\\se_movies\\ubb-se-2026-vibecoders\\movieshop\\repositories\\movierepo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{EA307B9B-A8AC-AAB7-28D2-1A7BB0F6A26F}|MovieShop\\MovieShop.csproj|a:\\facultate\\an 2 sem 2\\iss\\tob\\ubb-se-2026-tryingourbest\\movieshop\\viewmodels\\movieviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EA307B9B-A8AC-AAB7-28D2-1A7BB0F6A26F}|MovieShop\\MovieShop.csproj|solutionrelative:movieshop\\viewmodels\\movieviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EA307B9B-A8AC-AAB7-28D2-1A7BB0F6A26F}|MovieShop\\MovieShop.csproj|a:\\facultate\\an 2 sem 2\\iss\\tob\\ubb-se-2026-tryingourbest\\movieshop\\repositories\\userrepo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EA307B9B-A8AC-AAB7-28D2-1A7BB0F6A26F}|MovieShop\\MovieShop.csproj|solutionrelative:movieshop\\repositories\\userrepo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EA307B9B-A8AC-AAB7-28D2-1A7BB0F6A26F}|MovieShop\\MovieShop.csproj|a:\\facultate\\an 2 sem 2\\iss\\tob\\ubb-se-2026-tryingourbest\\movieshop\\viewmodels\\walletviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EA307B9B-A8AC-AAB7-28D2-1A7BB0F6A26F}|MovieShop\\MovieShop.csproj|solutionrelative:movieshop\\viewmodels\\walletviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EA307B9B-A8AC-AAB7-28D2-1A7BB0F6A26F}|MovieShop\\MovieShop.csproj|a:\\facultate\\an 2 sem 2\\iss\\tob\\ubb-se-2026-tryingourbest\\movieshop\\viewmodels\\mainviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EA307B9B-A8AC-AAB7-28D2-1A7BB0F6A26F}|MovieShop\\MovieShop.csproj|solutionrelative:movieshop\\viewmodels\\mainviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EA307B9B-A8AC-AAB7-28D2-1A7BB0F6A26F}|MovieShop\\MovieShop.csproj|a:\\facultate\\an 2 sem 2\\iss\\tob\\ubb-se-2026-tryingourbest\\movieshop\\repositories\\transactionrepo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EA307B9B-A8AC-AAB7-28D2-1A7BB0F6A26F}|MovieShop\\MovieShop.csproj|solutionrelative:movieshop\\repositories\\transactionrepo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EA307B9B-A8AC-AAB7-28D2-1A7BB0F6A26F}|MovieShop\\MovieShop.csproj|a:\\facultate\\an 2 sem 2\\iss\\tob\\ubb-se-2026-tryingourbest\\movieshop\\models\\transaction.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EA307B9B-A8AC-AAB7-28D2-1A7BB0F6A26F}|MovieShop\\MovieShop.csproj|solutionrelative:movieshop\\models\\transaction.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EA307B9B-A8AC-AAB7-28D2-1A7BB0F6A26F}|MovieShop\\MovieShop.csproj|a:\\facultate\\an 2 sem 2\\iss\\tob\\ubb-se-2026-tryingourbest\\movieshop\\views\\walletview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{EA307B9B-A8AC-AAB7-28D2-1A7BB0F6A26F}|MovieShop\\MovieShop.csproj|solutionrelative:movieshop\\views\\walletview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EA307B9B-A8AC-AAB7-28D2-1A7BB0F6A26F}|MovieShop\\MovieShop.csproj|a:\\facultate\\an 2 sem 2\\iss\\tob\\ubb-se-2026-tryingourbest\\movieshop\\views\\startpageequipment.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EA307B9B-A8AC-AAB7-28D2-1A7BB0F6A26F}|MovieShop\\MovieShop.csproj|solutionrelative:movieshop\\views\\startpageequipment.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EA307B9B-A8AC-AAB7-28D2-1A7BB0F6A26F}|MovieShop\\MovieShop.csproj|a:\\facultate\\an 2 sem 2\\iss\\tob\\ubb-se-2026-tryingourbest\\movieshop\\views\\startpageequipment.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{EA307B9B-A8AC-AAB7-28D2-1A7BB0F6A26F}|MovieShop\\MovieShop.csproj|solutionrelative:movieshop\\views\\startpageequipment.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EA307B9B-A8AC-AAB7-28D2-1A7BB0F6A26F}|MovieShop\\MovieShop.csproj|a:\\facultate\\an 2 sem 2\\iss\\tob\\ubb-se-2026-tryingourbest\\movieshop\\views\\sellpage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EA307B9B-A8AC-AAB7-28D2-1A7BB0F6A26F}|MovieShop\\MovieShop.csproj|solutionrelative:movieshop\\views\\sellpage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EA307B9B-A8AC-AAB7-28D2-1A7BB0F6A26F}|MovieShop\\MovieShop.csproj|a:\\facultate\\an 2 sem 2\\iss\\tob\\ubb-se-2026-tryingourbest\\movieshop\\views\\sellpage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{EA307B9B-A8AC-AAB7-28D2-1A7BB0F6A26F}|MovieShop\\MovieShop.csproj|solutionrelative:movieshop\\views\\sellpage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EA307B9B-A8AC-AAB7-28D2-1A7BB0F6A26F}|MovieShop\\MovieShop.csproj|a:\\facultate\\an 2 sem 2\\iss\\tob\\ubb-se-2026-tryingourbest\\movieshop\\views\\navigationpage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EA307B9B-A8AC-AAB7-28D2-1A7BB0F6A26F}|MovieShop\\MovieShop.csproj|solutionrelative:movieshop\\views\\navigationpage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EA307B9B-A8AC-AAB7-28D2-1A7BB0F6A26F}|MovieShop\\MovieShop.csproj|a:\\facultate\\an 2 sem 2\\iss\\tob\\ubb-se-2026-tryingourbest\\movieshop\\views\\navigationpage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{EA307B9B-A8AC-AAB7-28D2-1A7BB0F6A26F}|MovieShop\\MovieShop.csproj|solutionrelative:movieshop\\views\\navigationpage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EA307B9B-A8AC-AAB7-28D2-1A7BB0F6A26F}|MovieShop\\MovieShop.csproj|a:\\facultate\\an 2 sem 2\\iss\\tob\\ubb-se-2026-tryingourbest\\movieshop\\views\\movieshopview.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EA307B9B-A8AC-AAB7-28D2-1A7BB0F6A26F}|MovieShop\\MovieShop.csproj|solutionrelative:movieshop\\views\\movieshopview.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EA307B9B-A8AC-AAB7-28D2-1A7BB0F6A26F}|MovieShop\\MovieShop.csproj|a:\\facultate\\an 2 sem 2\\iss\\tob\\ubb-se-2026-tryingourbest\\movieshop\\views\\movieshopview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{EA307B9B-A8AC-AAB7-28D2-1A7BB0F6A26F}|MovieShop\\MovieShop.csproj|solutionrelative:movieshop\\views\\movieshopview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EA307B9B-A8AC-AAB7-28D2-1A7BB0F6A26F}|MovieShop\\MovieShop.csproj|a:\\facultate\\an 2 sem 2\\iss\\tob\\ubb-se-2026-tryingourbest\\movieshop\\views\\moviereviewspage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EA307B9B-A8AC-AAB7-28D2-1A7BB0F6A26F}|MovieShop\\MovieShop.csproj|solutionrelative:movieshop\\views\\moviereviewspage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EA307B9B-A8AC-AAB7-28D2-1A7BB0F6A26F}|MovieShop\\MovieShop.csproj|a:\\facultate\\an 2 sem 2\\iss\\tob\\ubb-se-2026-tryingourbest\\movieshop\\views\\moviereviewspage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{EA307B9B-A8AC-AAB7-28D2-1A7BB0F6A26F}|MovieShop\\MovieShop.csproj|solutionrelative:movieshop\\views\\moviereviewspage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EA307B9B-A8AC-AAB7-28D2-1A7BB0F6A26F}|MovieShop\\MovieShop.csproj|a:\\facultate\\an 2 sem 2\\iss\\tob\\ubb-se-2026-tryingourbest\\movieshop\\views\\movieeventspage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EA307B9B-A8AC-AAB7-28D2-1A7BB0F6A26F}|MovieShop\\MovieShop.csproj|solutionrelative:movieshop\\views\\movieeventspage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EA307B9B-A8AC-AAB7-28D2-1A7BB0F6A26F}|MovieShop\\MovieShop.csproj|a:\\facultate\\an 2 sem 2\\iss\\tob\\ubb-se-2026-tryingourbest\\movieshop\\views\\movieeventspage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{EA307B9B-A8AC-AAB7-28D2-1A7BB0F6A26F}|MovieShop\\MovieShop.csproj|solutionrelative:movieshop\\views\\movieeventspage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EA307B9B-A8AC-AAB7-28D2-1A7BB0F6A26F}|MovieShop\\MovieShop.csproj|a:\\facultate\\an 2 sem 2\\iss\\tob\\ubb-se-2026-tryingourbest\\movieshop\\views\\moviedetailpage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{EA307B9B-A8AC-AAB7-28D2-1A7BB0F6A26F}|MovieShop\\MovieShop.csproj|solutionrelative:movieshop\\views\\moviedetailpage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EA307B9B-A8AC-AAB7-28D2-1A7BB0F6A26F}|MovieShop\\MovieShop.csproj|a:\\facultate\\an 2 sem 2\\iss\\tob\\ubb-se-2026-tryingourbest\\movieshop\\views\\moviecatalogpage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EA307B9B-A8AC-AAB7-28D2-1A7BB0F6A26F}|MovieShop\\MovieShop.csproj|solutionrelative:movieshop\\views\\moviecatalogpage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EA307B9B-A8AC-AAB7-28D2-1A7BB0F6A26F}|MovieShop\\MovieShop.csproj|a:\\facultate\\an 2 sem 2\\iss\\tob\\ubb-se-2026-tryingourbest\\movieshop\\views\\moviecatalogpage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{EA307B9B-A8AC-AAB7-28D2-1A7BB0F6A26F}|MovieShop\\MovieShop.csproj|solutionrelative:movieshop\\views\\moviecatalogpage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EA307B9B-A8AC-AAB7-28D2-1A7BB0F6A26F}|MovieShop\\MovieShop.csproj|a:\\facultate\\an 2 sem 2\\iss\\tob\\ubb-se-2026-tryingourbest\\movieshop\\views\\marketplacepage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EA307B9B-A8AC-AAB7-28D2-1A7BB0F6A26F}|MovieShop\\MovieShop.csproj|solutionrelative:movieshop\\views\\marketplacepage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EA307B9B-A8AC-AAB7-28D2-1A7BB0F6A26F}|MovieShop\\MovieShop.csproj|a:\\facultate\\an 2 sem 2\\iss\\tob\\ubb-se-2026-tryingourbest\\movieshop\\views\\marketplacepage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{EA307B9B-A8AC-AAB7-28D2-1A7BB0F6A26F}|MovieShop\\MovieShop.csproj|solutionrelative:movieshop\\views\\marketplacepage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EA307B9B-A8AC-AAB7-28D2-1A7BB0F6A26F}|MovieShop\\MovieShop.csproj|a:\\facultate\\an 2 sem 2\\iss\\tob\\ubb-se-2026-tryingourbest\\movieshop\\views\\mainpage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EA307B9B-A8AC-AAB7-28D2-1A7BB0F6A26F}|MovieShop\\MovieShop.csproj|solutionrelative:movieshop\\views\\mainpage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EA307B9B-A8AC-AAB7-28D2-1A7BB0F6A26F}|MovieShop\\MovieShop.csproj|a:\\facultate\\an 2 sem 2\\iss\\tob\\ubb-se-2026-tryingourbest\\movieshop\\views\\mainpage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{EA307B9B-A8AC-AAB7-28D2-1A7BB0F6A26F}|MovieShop\\MovieShop.csproj|solutionrelative:movieshop\\views\\mainpage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EA307B9B-A8AC-AAB7-28D2-1A7BB0F6A26F}|MovieShop\\MovieShop.csproj|a:\\facultate\\an 2 sem 2\\iss\\tob\\ubb-se-2026-tryingourbest\\movieshop\\views\\inventoryview.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EA307B9B-A8AC-AAB7-28D2-1A7BB0F6A26F}|MovieShop\\MovieShop.csproj|solutionrelative:movieshop\\views\\inventoryview.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EA307B9B-A8AC-AAB7-28D2-1A7BB0F6A26F}|MovieShop\\MovieShop.csproj|a:\\facultate\\an 2 sem 2\\iss\\tob\\ubb-se-2026-tryingourbest\\movieshop\\views\\inventoryview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{EA307B9B-A8AC-AAB7-28D2-1A7BB0F6A26F}|MovieShop\\MovieShop.csproj|solutionrelative:movieshop\\views\\inventoryview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EA307B9B-A8AC-AAB7-28D2-1A7BB0F6A26F}|MovieShop\\MovieShop.csproj|a:\\facultate\\an 2 sem 2\\iss\\tob\\ubb-se-2026-tryingourbest\\movieshop\\views\\header.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EA307B9B-A8AC-AAB7-28D2-1A7BB0F6A26F}|MovieShop\\MovieShop.csproj|solutionrelative:movieshop\\views\\header.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EA307B9B-A8AC-AAB7-28D2-1A7BB0F6A26F}|MovieShop\\MovieShop.csproj|a:\\facultate\\an 2 sem 2\\iss\\tob\\ubb-se-2026-tryingourbest\\movieshop\\views\\header.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{EA307B9B-A8AC-AAB7-28D2-1A7BB0F6A26F}|MovieShop\\MovieShop.csproj|solutionrelative:movieshop\\views\\header.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EA307B9B-A8AC-AAB7-28D2-1A7BB0F6A26F}|MovieShop\\MovieShop.csproj|a:\\facultate\\an 2 sem 2\\iss\\tob\\ubb-se-2026-tryingourbest\\movieshop\\views\\flashsalebanner.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EA307B9B-A8AC-AAB7-28D2-1A7BB0F6A26F}|MovieShop\\MovieShop.csproj|solutionrelative:movieshop\\views\\flashsalebanner.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EA307B9B-A8AC-AAB7-28D2-1A7BB0F6A26F}|MovieShop\\MovieShop.csproj|a:\\facultate\\an 2 sem 2\\iss\\tob\\ubb-se-2026-tryingourbest\\movieshop\\views\\flashsalebanner.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{EA307B9B-A8AC-AAB7-28D2-1A7BB0F6A26F}|MovieShop\\MovieShop.csproj|solutionrelative:movieshop\\views\\flashsalebanner.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EA307B9B-A8AC-AAB7-28D2-1A7BB0F6A26F}|MovieShop\\MovieShop.csproj|a:\\facultate\\an 2 sem 2\\iss\\tob\\ubb-se-2026-tryingourbest\\movieshop\\views\\buyticketpage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EA307B9B-A8AC-AAB7-28D2-1A7BB0F6A26F}|MovieShop\\MovieShop.csproj|solutionrelative:movieshop\\views\\buyticketpage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EA307B9B-A8AC-AAB7-28D2-1A7BB0F6A26F}|MovieShop\\MovieShop.csproj|a:\\facultate\\an 2 sem 2\\iss\\tob\\ubb-se-2026-tryingourbest\\movieshop\\views\\buyticketpage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{EA307B9B-A8AC-AAB7-28D2-1A7BB0F6A26F}|MovieShop\\MovieShop.csproj|solutionrelative:movieshop\\views\\buyticketpage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EA307B9B-A8AC-AAB7-28D2-1A7BB0F6A26F}|MovieShop\\MovieShop.csproj|a:\\facultate\\an 2 sem 2\\iss\\tob\\ubb-se-2026-tryingourbest\\movieshop\\views\\booltovisibilityconverter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EA307B9B-A8AC-AAB7-28D2-1A7BB0F6A26F}|MovieShop\\MovieShop.csproj|solutionrelative:movieshop\\views\\booltovisibilityconverter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EA307B9B-A8AC-AAB7-28D2-1A7BB0F6A26F}|MovieShop\\MovieShop.csproj|a:\\facultate\\an 2 sem 2\\iss\\tob\\ubb-se-2026-tryingourbest\\movieshop\\views\\equipmentdetailpage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{EA307B9B-A8AC-AAB7-28D2-1A7BB0F6A26F}|MovieShop\\MovieShop.csproj|solutionrelative:movieshop\\views\\equipmentdetailpage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EA307B9B-A8AC-AAB7-28D2-1A7BB0F6A26F}|MovieShop\\MovieShop.csproj|a:\\facultate\\an 2 sem 2\\iss\\tob\\ubb-se-2026-tryingourbest\\movieshop\\viewmodels\\sellequipmentviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EA307B9B-A8AC-AAB7-28D2-1A7BB0F6A26F}|MovieShop\\MovieShop.csproj|solutionrelative:movieshop\\viewmodels\\sellequipmentviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EA307B9B-A8AC-AAB7-28D2-1A7BB0F6A26F}|MovieShop\\MovieShop.csproj|a:\\facultate\\an 2 sem 2\\iss\\tob\\ubb-se-2026-tryingourbest\\movieshop\\viewmodels\\marketplaceviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EA307B9B-A8AC-AAB7-28D2-1A7BB0F6A26F}|MovieShop\\MovieShop.csproj|solutionrelative:movieshop\\viewmodels\\marketplaceviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EA307B9B-A8AC-AAB7-28D2-1A7BB0F6A26F}|MovieShop\\MovieShop.csproj|a:\\facultate\\an 2 sem 2\\iss\\tob\\ubb-se-2026-tryingourbest\\movieshop\\viewmodels\\mainwindowviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EA307B9B-A8AC-AAB7-28D2-1A7BB0F6A26F}|MovieShop\\MovieShop.csproj|solutionrelative:movieshop\\viewmodels\\mainwindowviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EA307B9B-A8AC-AAB7-28D2-1A7BB0F6A26F}|MovieShop\\MovieShop.csproj|a:\\facultate\\an 2 sem 2\\iss\\tob\\ubb-se-2026-tryingourbest\\movieshop\\viewmodels\\flashsaleviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EA307B9B-A8AC-AAB7-28D2-1A7BB0F6A26F}|MovieShop\\MovieShop.csproj|solutionrelative:movieshop\\viewmodels\\flashsaleviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EA307B9B-A8AC-AAB7-28D2-1A7BB0F6A26F}|MovieShop\\MovieShop.csproj|a:\\facultate\\an 2 sem 2\\iss\\tob\\ubb-se-2026-tryingourbest\\movieshop\\viewmodels\\confirmreceiptviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EA307B9B-A8AC-AAB7-28D2-1A7BB0F6A26F}|MovieShop\\MovieShop.csproj|solutionrelative:movieshop\\viewmodels\\confirmreceiptviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EA307B9B-A8AC-AAB7-28D2-1A7BB0F6A26F}|MovieShop\\MovieShop.csproj|a:\\facultate\\an 2 sem 2\\iss\\tob\\ubb-se-2026-tryingourbest\\movieshop\\viewmodels\\buyequipmentviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EA307B9B-A8AC-AAB7-28D2-1A7BB0F6A26F}|MovieShop\\MovieShop.csproj|solutionrelative:movieshop\\viewmodels\\buyequipmentviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EA307B9B-A8AC-AAB7-28D2-1A7BB0F6A26F}|MovieShop\\MovieShop.csproj|a:\\facultate\\an 2 sem 2\\iss\\tob\\ubb-se-2026-tryingourbest\\movieshop\\services\\transactiontypemappers.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EA307B9B-A8AC-AAB7-28D2-1A7BB0F6A26F}|MovieShop\\MovieShop.csproj|solutionrelative:movieshop\\services\\transactiontypemappers.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EA307B9B-A8AC-AAB7-28D2-1A7BB0F6A26F}|MovieShop\\MovieShop.csproj|a:\\facultate\\an 2 sem 2\\iss\\tob\\ubb-se-2026-tryingourbest\\movieshop\\services\\saleservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EA307B9B-A8AC-AAB7-28D2-1A7BB0F6A26F}|MovieShop\\MovieShop.csproj|solutionrelative:movieshop\\services\\saleservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EA307B9B-A8AC-AAB7-28D2-1A7BB0F6A26F}|MovieShop\\MovieShop.csproj|a:\\facultate\\an 2 sem 2\\iss\\tob\\ubb-se-2026-tryingourbest\\movieshop\\repositories\\reviewrepo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EA307B9B-A8AC-AAB7-28D2-1A7BB0F6A26F}|MovieShop\\MovieShop.csproj|solutionrelative:movieshop\\repositories\\reviewrepo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EA307B9B-A8AC-AAB7-28D2-1A7BB0F6A26F}|MovieShop\\MovieShop.csproj|a:\\facultate\\an 2 sem 2\\iss\\tob\\ubb-se-2026-tryingourbest\\movieshop\\repositories\\movierepo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{EA307B9B-A8AC-AAB7-28D2-1A7BB0F6A26F}|MovieShop\\MovieShop.csproj|solutionrelative:movieshop\\repositories\\movierepo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EA307B9B-A8AC-AAB7-28D2-1A7BB0F6A26F}|MovieShop\\MovieShop.csproj|a:\\facultate\\an 2 sem 2\\iss\\tob\\ubb-se-2026-tryingourbest\\movieshop\\repositories\\inventoryrepo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EA307B9B-A8AC-AAB7-28D2-1A7BB0F6A26F}|MovieShop\\MovieShop.csproj|solutionrelative:movieshop\\repositories\\inventoryrepo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EA307B9B-A8AC-AAB7-28D2-1A7BB0F6A26F}|MovieShop\\MovieShop.csproj|a:\\facultate\\an 2 sem 2\\iss\\tob\\ubb-se-2026-tryingourbest\\movieshop\\repositories\\eventrepo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EA307B9B-A8AC-AAB7-28D2-1A7BB0F6A26F}|MovieShop\\MovieShop.csproj|solutionrelative:movieshop\\repositories\\eventrepo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EA307B9B-A8AC-AAB7-28D2-1A7BB0F6A26F}|MovieShop\\MovieShop.csproj|a:\\facultate\\an 2 sem 2\\iss\\tob\\ubb-se-2026-tryingourbest\\movieshop\\repositories\\activesalesrepo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EA307B9B-A8AC-AAB7-28D2-1A7BB0F6A26F}|MovieShop\\MovieShop.csproj|solutionrelative:movieshop\\repositories\\activesalesrepo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EA307B9B-A8AC-AAB7-28D2-1A7BB0F6A26F}|MovieShop\\MovieShop.csproj|a:\\facultate\\an 2 sem 2\\iss\\tob\\ubb-se-2026-tryingourbest\\movieshop\\queries\\tables.sql||{CC5D8DF0-88F4-4BB2-9DBB-B48CEE65C30A}",
+      "RelativeMoniker": "D:0:0:{EA307B9B-A8AC-AAB7-28D2-1A7BB0F6A26F}|MovieShop\\MovieShop.csproj|solutionrelative:movieshop\\queries\\tables.sql||{CC5D8DF0-88F4-4BB2-9DBB-B48CEE65C30A}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EA307B9B-A8AC-AAB7-28D2-1A7BB0F6A26F}|MovieShop\\MovieShop.csproj|a:\\facultate\\an 2 sem 2\\iss\\tob\\ubb-se-2026-tryingourbest\\movieshop\\queries\\inserts.sql||{CC5D8DF0-88F4-4BB2-9DBB-B48CEE65C30A}",
+      "RelativeMoniker": "D:0:0:{EA307B9B-A8AC-AAB7-28D2-1A7BB0F6A26F}|MovieShop\\MovieShop.csproj|solutionrelative:movieshop\\queries\\inserts.sql||{CC5D8DF0-88F4-4BB2-9DBB-B48CEE65C30A}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EA307B9B-A8AC-AAB7-28D2-1A7BB0F6A26F}|MovieShop\\MovieShop.csproj|a:\\facultate\\an 2 sem 2\\iss\\tob\\ubb-se-2026-tryingourbest\\movieshop\\models\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EA307B9B-A8AC-AAB7-28D2-1A7BB0F6A26F}|MovieShop\\MovieShop.csproj|solutionrelative:movieshop\\models\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EA307B9B-A8AC-AAB7-28D2-1A7BB0F6A26F}|MovieShop\\MovieShop.csproj|a:\\facultate\\an 2 sem 2\\iss\\tob\\ubb-se-2026-tryingourbest\\movieshop\\models\\sessionmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EA307B9B-A8AC-AAB7-28D2-1A7BB0F6A26F}|MovieShop\\MovieShop.csproj|solutionrelative:movieshop\\models\\sessionmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EA307B9B-A8AC-AAB7-28D2-1A7BB0F6A26F}|MovieShop\\MovieShop.csproj|a:\\facultate\\an 2 sem 2\\iss\\tob\\ubb-se-2026-tryingourbest\\movieshop\\models\\moviereview.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EA307B9B-A8AC-AAB7-28D2-1A7BB0F6A26F}|MovieShop\\MovieShop.csproj|solutionrelative:movieshop\\models\\moviereview.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EA307B9B-A8AC-AAB7-28D2-1A7BB0F6A26F}|MovieShop\\MovieShop.csproj|a:\\facultate\\an 2 sem 2\\iss\\tob\\ubb-se-2026-tryingourbest\\movieshop\\models\\movieevent.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EA307B9B-A8AC-AAB7-28D2-1A7BB0F6A26F}|MovieShop\\MovieShop.csproj|solutionrelative:movieshop\\models\\movieevent.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EA307B9B-A8AC-AAB7-28D2-1A7BB0F6A26F}|MovieShop\\MovieShop.csproj|a:\\facultate\\an 2 sem 2\\iss\\tob\\ubb-se-2026-tryingourbest\\movieshop\\models\\movie.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EA307B9B-A8AC-AAB7-28D2-1A7BB0F6A26F}|MovieShop\\MovieShop.csproj|solutionrelative:movieshop\\models\\movie.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EA307B9B-A8AC-AAB7-28D2-1A7BB0F6A26F}|MovieShop\\MovieShop.csproj|a:\\facultate\\an 2 sem 2\\iss\\tob\\ubb-se-2026-tryingourbest\\movieshop\\models\\equipment.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EA307B9B-A8AC-AAB7-28D2-1A7BB0F6A26F}|MovieShop\\MovieShop.csproj|solutionrelative:movieshop\\models\\equipment.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EA307B9B-A8AC-AAB7-28D2-1A7BB0F6A26F}|MovieShop\\MovieShop.csproj|a:\\facultate\\an 2 sem 2\\iss\\tob\\ubb-se-2026-tryingourbest\\movieshop\\models\\activesale.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EA307B9B-A8AC-AAB7-28D2-1A7BB0F6A26F}|MovieShop\\MovieShop.csproj|solutionrelative:movieshop\\models\\activesale.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EA307B9B-A8AC-AAB7-28D2-1A7BB0F6A26F}|MovieShop\\MovieShop.csproj|a:\\facultate\\an 2 sem 2\\iss\\tob\\ubb-se-2026-tryingourbest\\movieshop\\models\\navargs\\shopnavigationargs.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EA307B9B-A8AC-AAB7-28D2-1A7BB0F6A26F}|MovieShop\\MovieShop.csproj|solutionrelative:movieshop\\models\\navargs\\shopnavigationargs.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EA307B9B-A8AC-AAB7-28D2-1A7BB0F6A26F}|MovieShop\\MovieShop.csproj|a:\\facultate\\an 2 sem 2\\iss\\tob\\ubb-se-2026-tryingourbest\\movieshop\\models\\navargs\\movieextrapagesnavargs.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EA307B9B-A8AC-AAB7-28D2-1A7BB0F6A26F}|MovieShop\\MovieShop.csproj|solutionrelative:movieshop\\models\\navargs\\movieextrapagesnavargs.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EA307B9B-A8AC-AAB7-28D2-1A7BB0F6A26F}|MovieShop\\MovieShop.csproj|a:\\facultate\\an 2 sem 2\\iss\\tob\\ubb-se-2026-tryingourbest\\movieshop\\movieshop.csproj||{04B8AB82-A572-4FEF-95CE-5222444B6B64}|",
+      "RelativeMoniker": "D:0:0:{EA307B9B-A8AC-AAB7-28D2-1A7BB0F6A26F}|MovieShop\\MovieShop.csproj|solutionrelative:movieshop\\movieshop.csproj||{04B8AB82-A572-4FEF-95CE-5222444B6B64}|"
     },
     {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|ViewDataWindow_MSSQL__/_LocalDB__MSSQLLocalDB/C__USERS_MARIUS_SOURCE_REPOS_SE_MOVIES_UBB_SE_2026_VIBECODERS_MOVIESHOP_MOVIESHOPDB.MDF/True/SqlTable/dbo.Events.sql||{0058A1F7-65F3-4DB9-B3D0-CA7E64DD73CD}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{EA307B9B-A8AC-AAB7-28D2-1A7BB0F6A26F}|MovieShop\\MovieShop.csproj|c:\\users\\marius\\source\\repos\\se_movies\\ubb-se-2026-vibecoders\\movieshop\\repositories\\databasesingleton.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{EA307B9B-A8AC-AAB7-28D2-1A7BB0F6A26F}|MovieShop\\MovieShop.csproj|solutionrelative:movieshop\\repositories\\databasesingleton.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{EA307B9B-A8AC-AAB7-28D2-1A7BB0F6A26F}|MovieShop\\MovieShop.csproj|c:\\users\\marius\\source\\repos\\se_movies\\ubb-se-2026-vibecoders\\movieshop\\views\\moviedetailpage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{EA307B9B-A8AC-AAB7-28D2-1A7BB0F6A26F}|MovieShop\\MovieShop.csproj|solutionrelative:movieshop\\views\\moviedetailpage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{EA307B9B-A8AC-AAB7-28D2-1A7BB0F6A26F}|MovieShop\\MovieShop.csproj|c:\\users\\marius\\source\\repos\\se_movies\\ubb-se-2026-vibecoders\\movieshop\\views\\mainpage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{EA307B9B-A8AC-AAB7-28D2-1A7BB0F6A26F}|MovieShop\\MovieShop.csproj|solutionrelative:movieshop\\views\\mainpage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{EA307B9B-A8AC-AAB7-28D2-1A7BB0F6A26F}|MovieShop\\MovieShop.csproj|c:\\users\\marius\\source\\repos\\se_movies\\ubb-se-2026-vibecoders\\movieshop\\views\\mainpage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{EA307B9B-A8AC-AAB7-28D2-1A7BB0F6A26F}|MovieShop\\MovieShop.csproj|solutionrelative:movieshop\\views\\mainpage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{EA307B9B-A8AC-AAB7-28D2-1A7BB0F6A26F}|MovieShop\\MovieShop.csproj|c:\\users\\marius\\source\\repos\\se_movies\\ubb-se-2026-vibecoders\\movieshop\\views\\moviecatalogpage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{EA307B9B-A8AC-AAB7-28D2-1A7BB0F6A26F}|MovieShop\\MovieShop.csproj|solutionrelative:movieshop\\views\\moviecatalogpage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{EA307B9B-A8AC-AAB7-28D2-1A7BB0F6A26F}|MovieShop\\MovieShop.csproj|c:\\users\\marius\\source\\repos\\se_movies\\ubb-se-2026-vibecoders\\movieshop\\views\\moviecatalogpage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{EA307B9B-A8AC-AAB7-28D2-1A7BB0F6A26F}|MovieShop\\MovieShop.csproj|solutionrelative:movieshop\\views\\moviecatalogpage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{EA307B9B-A8AC-AAB7-28D2-1A7BB0F6A26F}|MovieShop\\MovieShop.csproj|c:\\users\\marius\\source\\repos\\se_movies\\ubb-se-2026-vibecoders\\movieshop\\models\\movie.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{EA307B9B-A8AC-AAB7-28D2-1A7BB0F6A26F}|MovieShop\\MovieShop.csproj|solutionrelative:movieshop\\models\\movie.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{EA307B9B-A8AC-AAB7-28D2-1A7BB0F6A26F}|MovieShop\\MovieShop.csproj|c:\\users\\marius\\source\\repos\\se_movies\\ubb-se-2026-vibecoders\\movieshop\\viewmodels\\movieviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{EA307B9B-A8AC-AAB7-28D2-1A7BB0F6A26F}|MovieShop\\MovieShop.csproj|solutionrelative:movieshop\\viewmodels\\movieviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|ViewDataWindow_MSSQL__/_LocalDB__MSSQLLocalDB/C__USERS_MARIUS_SOURCE_REPOS_SE_MOVIES_UBB_SE_2026_VIBECODERS_MOVIESHOP_MOVIESHOPDB.MDF/True/SqlTable/dbo.Reviews.sql||{0058A1F7-65F3-4DB9-B3D0-CA7E64DD73CD}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{EA307B9B-A8AC-AAB7-28D2-1A7BB0F6A26F}|MovieShop\\MovieShop.csproj|c:\\users\\marius\\source\\repos\\se_movies\\ubb-se-2026-vibecoders\\movieshop\\queries\\tables.sql||{CC5D8DF0-88F4-4BB2-9DBB-B48CEE65C30A}",
-      "RelativeMoniker": "D:0:0:{EA307B9B-A8AC-AAB7-28D2-1A7BB0F6A26F}|MovieShop\\MovieShop.csproj|solutionrelative:movieshop\\queries\\tables.sql||{CC5D8DF0-88F4-4BB2-9DBB-B48CEE65C30A}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|ViewDataWindow_MSSQL__/_LocalDB__MSSQLLocalDB/C__USERS_MARIUS_SOURCE_REPOS_SE_MOVIES_UBB_SE_2026_VIBECODERS_MOVIESHOP_MOVIESHOPDB.MDF/True/SqlTable/dbo.Movies.sql||{0058A1F7-65F3-4DB9-B3D0-CA7E64DD73CD}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{EA307B9B-A8AC-AAB7-28D2-1A7BB0F6A26F}|MovieShop\\MovieShop.csproj|c:\\users\\marius\\source\\repos\\se_movies\\ubb-se-2026-vibecoders\\movieshop\\views\\movieshopview.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{EA307B9B-A8AC-AAB7-28D2-1A7BB0F6A26F}|MovieShop\\MovieShop.csproj|solutionrelative:movieshop\\views\\movieshopview.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{EA307B9B-A8AC-AAB7-28D2-1A7BB0F6A26F}|MovieShop\\MovieShop.csproj|c:\\users\\marius\\source\\repos\\se_movies\\ubb-se-2026-vibecoders\\movieshop\\views\\movieshopview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{EA307B9B-A8AC-AAB7-28D2-1A7BB0F6A26F}|MovieShop\\MovieShop.csproj|solutionrelative:movieshop\\views\\movieshopview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{EA307B9B-A8AC-AAB7-28D2-1A7BB0F6A26F}|MovieShop\\MovieShop.csproj|c:\\users\\marius\\source\\repos\\se_movies\\ubb-se-2026-vibecoders\\movieshop\\viewmodels\\mainviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{EA307B9B-A8AC-AAB7-28D2-1A7BB0F6A26F}|MovieShop\\MovieShop.csproj|solutionrelative:movieshop\\viewmodels\\mainviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{EA307B9B-A8AC-AAB7-28D2-1A7BB0F6A26F}|MovieShop\\MovieShop.csproj|c:\\users\\marius\\source\\repos\\se_movies\\ubb-se-2026-vibecoders\\movieshop\\views\\walletview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{EA307B9B-A8AC-AAB7-28D2-1A7BB0F6A26F}|MovieShop\\MovieShop.csproj|solutionrelative:movieshop\\views\\walletview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{EA307B9B-A8AC-AAB7-28D2-1A7BB0F6A26F}|MovieShop\\MovieShop.csproj|c:\\users\\marius\\source\\repos\\se_movies\\ubb-se-2026-vibecoders\\movieshop\\repositories\\userrepo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{EA307B9B-A8AC-AAB7-28D2-1A7BB0F6A26F}|MovieShop\\MovieShop.csproj|solutionrelative:movieshop\\repositories\\userrepo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|ViewDataWindow_MSSQL__/_LocalDB__MSSQLLocalDB/C__USERS_MARIUS_SOURCE_REPOS_SE_MOVIES_UBB_SE_2026_VIBECODERS_MOVIESHOP_MOVIESHOPDB.MDF/True/SqlTable/dbo.Users.sql||{0058A1F7-65F3-4DB9-B3D0-CA7E64DD73CD}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{EA307B9B-A8AC-AAB7-28D2-1A7BB0F6A26F}|MovieShop\\MovieShop.csproj|c:\\users\\marius\\source\\repos\\se_movies\\ubb-se-2026-vibecoders\\movieshop\\viewmodels\\mainwindowviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{EA307B9B-A8AC-AAB7-28D2-1A7BB0F6A26F}|MovieShop\\MovieShop.csproj|solutionrelative:movieshop\\viewmodels\\mainwindowviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{EA307B9B-A8AC-AAB7-28D2-1A7BB0F6A26F}|MovieShop\\MovieShop.csproj|c:\\users\\marius\\source\\repos\\se_movies\\ubb-se-2026-vibecoders\\movieshop\\repositories\\activesalesrepo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{EA307B9B-A8AC-AAB7-28D2-1A7BB0F6A26F}|MovieShop\\MovieShop.csproj|solutionrelative:movieshop\\repositories\\activesalesrepo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|ViewDataWindow_MSSQL__/_LocalDB__MSSQLLocalDB/C__USERS_MARIUS_SOURCE_REPOS_SE_MOVIES_UBB_SE_2026_VIBECODERS_MOVIESHOP_MOVIESHOPDB.MDF/True/SqlTable/dbo.ActiveSales.sql||{0058A1F7-65F3-4DB9-B3D0-CA7E64DD73CD}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{EA307B9B-A8AC-AAB7-28D2-1A7BB0F6A26F}|MovieShop\\MovieShop.csproj|c:\\users\\marius\\source\\repos\\se_movies\\ubb-se-2026-vibecoders\\movieshop\\views\\flashsalebanner.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{EA307B9B-A8AC-AAB7-28D2-1A7BB0F6A26F}|MovieShop\\MovieShop.csproj|solutionrelative:movieshop\\views\\flashsalebanner.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{EA307B9B-A8AC-AAB7-28D2-1A7BB0F6A26F}|MovieShop\\MovieShop.csproj|c:\\users\\marius\\source\\repos\\se_movies\\ubb-se-2026-vibecoders\\movieshop\\views\\flashsalebanner.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{EA307B9B-A8AC-AAB7-28D2-1A7BB0F6A26F}|MovieShop\\MovieShop.csproj|solutionrelative:movieshop\\views\\flashsalebanner.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{EA307B9B-A8AC-AAB7-28D2-1A7BB0F6A26F}|MovieShop\\MovieShop.csproj|c:\\users\\marius\\source\\repos\\se_movies\\ubb-se-2026-vibecoders\\movieshop\\viewmodels\\flashsaleviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{EA307B9B-A8AC-AAB7-28D2-1A7BB0F6A26F}|MovieShop\\MovieShop.csproj|solutionrelative:movieshop\\viewmodels\\flashsaleviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{EA307B9B-A8AC-AAB7-28D2-1A7BB0F6A26F}|MovieShop\\MovieShop.csproj|c:\\users\\marius\\source\\repos\\se_movies\\ubb-se-2026-vibecoders\\movieshop\\queries\\inserts.sql||{CC5D8DF0-88F4-4BB2-9DBB-B48CEE65C30A}|CodeFrame",
+      "AbsoluteMoniker": "D:0:0:{EA307B9B-A8AC-AAB7-28D2-1A7BB0F6A26F}|MovieShop\\MovieShop.csproj|a:\\facultate\\an 2 sem 2\\iss\\tob\\ubb-se-2026-tryingourbest\\movieshop\\queries\\inserts.sql||{CC5D8DF0-88F4-4BB2-9DBB-B48CEE65C30A}|CodeFrame",
       "RelativeMoniker": "D:0:0:{EA307B9B-A8AC-AAB7-28D2-1A7BB0F6A26F}|MovieShop\\MovieShop.csproj|solutionrelative:movieshop\\queries\\inserts.sql||{CC5D8DF0-88F4-4BB2-9DBB-B48CEE65C30A}|CodeFrame"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EA307B9B-A8AC-AAB7-28D2-1A7BB0F6A26F}|MovieShop\\MovieShop.csproj|a:\\facultate\\an 2 sem 2\\iss\\tob\\ubb-se-2026-tryingourbest\\movieshop\\queries\\tables.sql||{CC5D8DF0-88F4-4BB2-9DBB-B48CEE65C30A}|CodeFrame",
+      "RelativeMoniker": "D:0:0:{EA307B9B-A8AC-AAB7-28D2-1A7BB0F6A26F}|MovieShop\\MovieShop.csproj|solutionrelative:movieshop\\queries\\tables.sql||{CC5D8DF0-88F4-4BB2-9DBB-B48CEE65C30A}|CodeFrame"
     }
   ],
   "DocumentGroupContainers": [
@@ -125,8 +297,12 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 10,
+          "SelectedChildIndex": 14,
           "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{b1e99781-ab81-11d0-b683-00aa00a3ee26}"
+            },
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{d78612c7-9962-4b83-95d9-268046dad23a}"
@@ -153,6 +329,10 @@
             },
             {
               "$type": "Bookmark",
+              "Name": "ST:0:0:{40ea2e6b-2121-4bb8-a43e-c83c04b51041}"
+            },
+            {
+              "$type": "Bookmark",
               "Name": "ST:0:0:{e5c86464-96be-4d7c-9a8b-abcb3bbf5f92}"
             },
             {
@@ -169,11 +349,725 @@
             },
             {
               "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "EquipmentRepo.cs",
+              "DocumentMoniker": "A:\\facultate\\an 2 sem 2\\iss\\TOB\\UBB-SE-2026-TryingOurBest\\MovieShop\\Repositories\\EquipmentRepo.cs",
+              "RelativeDocumentMoniker": "MovieShop\\Repositories\\EquipmentRepo.cs",
+              "ToolTip": "A:\\facultate\\an 2 sem 2\\iss\\TOB\\UBB-SE-2026-TryingOurBest\\MovieShop\\Repositories\\EquipmentRepo.cs*",
+              "RelativeToolTip": "MovieShop\\Repositories\\EquipmentRepo.cs*",
+              "ViewState": "AgIAAEkAAAAAAAAAAAAqwHMAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-26T18:47:02.508Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "DatabaseSingleton.cs",
+              "DocumentMoniker": "A:\\facultate\\an 2 sem 2\\iss\\TOB\\UBB-SE-2026-TryingOurBest\\MovieShop\\Repositories\\DatabaseSingleton.cs",
+              "RelativeDocumentMoniker": "MovieShop\\Repositories\\DatabaseSingleton.cs",
+              "ToolTip": "A:\\facultate\\an 2 sem 2\\iss\\TOB\\UBB-SE-2026-TryingOurBest\\MovieShop\\Repositories\\DatabaseSingleton.cs",
+              "RelativeToolTip": "MovieShop\\Repositories\\DatabaseSingleton.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAgwA0AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-26T15:05:26.149Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 0,
+              "Title": "EquipmentDetailPage.xaml.cs",
+              "DocumentMoniker": "A:\\facultate\\an 2 sem 2\\iss\\TOB\\UBB-SE-2026-TryingOurBest\\MovieShop\\Views\\EquipmentDetailPage.xaml.cs",
+              "RelativeDocumentMoniker": "MovieShop\\Views\\EquipmentDetailPage.xaml.cs",
+              "ToolTip": "A:\\facultate\\an 2 sem 2\\iss\\TOB\\UBB-SE-2026-TryingOurBest\\MovieShop\\Views\\EquipmentDetailPage.xaml.cs*",
+              "RelativeToolTip": "MovieShop\\Views\\EquipmentDetailPage.xaml.cs*",
+              "ViewState": "AgIAAE4AAAAAAAAAAAAqwHgAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-26T18:48:18.312Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "WalletView.xaml.cs",
+              "DocumentMoniker": "A:\\facultate\\an 2 sem 2\\iss\\TOB\\UBB-SE-2026-TryingOurBest\\MovieShop\\Views\\WalletView.xaml.cs",
+              "RelativeDocumentMoniker": "MovieShop\\Views\\WalletView.xaml.cs",
+              "ToolTip": "A:\\facultate\\an 2 sem 2\\iss\\TOB\\UBB-SE-2026-TryingOurBest\\MovieShop\\Views\\WalletView.xaml.cs",
+              "RelativeToolTip": "MovieShop\\Views\\WalletView.xaml.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABYAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-26T18:50:02.055Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "MovieDetailPage.xaml.cs",
+              "DocumentMoniker": "A:\\facultate\\an 2 sem 2\\iss\\TOB\\UBB-SE-2026-TryingOurBest\\MovieShop\\Views\\MovieDetailPage.xaml.cs",
+              "RelativeDocumentMoniker": "MovieShop\\Views\\MovieDetailPage.xaml.cs",
+              "ToolTip": "A:\\facultate\\an 2 sem 2\\iss\\TOB\\UBB-SE-2026-TryingOurBest\\MovieShop\\Views\\MovieDetailPage.xaml.cs",
+              "RelativeToolTip": "MovieShop\\Views\\MovieDetailPage.xaml.cs",
+              "ViewState": "AgIAAAUBAAAAAAAAAAAAACkBAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-26T12:30:06.478Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "MovieViewModel.cs",
+              "DocumentMoniker": "A:\\facultate\\an 2 sem 2\\iss\\TOB\\UBB-SE-2026-TryingOurBest\\MovieShop\\ViewModels\\MovieViewModel.cs",
+              "RelativeDocumentMoniker": "MovieShop\\ViewModels\\MovieViewModel.cs",
+              "ToolTip": "A:\\facultate\\an 2 sem 2\\iss\\TOB\\UBB-SE-2026-TryingOurBest\\MovieShop\\ViewModels\\MovieViewModel.cs",
+              "RelativeToolTip": "MovieShop\\ViewModels\\MovieViewModel.cs",
+              "ViewState": "AgIAAE4AAAAAAAAAAAAYwHMAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-25T23:51:53.795Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "MainViewModel.cs",
+              "DocumentMoniker": "A:\\facultate\\an 2 sem 2\\iss\\TOB\\UBB-SE-2026-TryingOurBest\\MovieShop\\ViewModels\\MainViewModel.cs",
+              "RelativeDocumentMoniker": "MovieShop\\ViewModels\\MainViewModel.cs",
+              "ToolTip": "A:\\facultate\\an 2 sem 2\\iss\\TOB\\UBB-SE-2026-TryingOurBest\\MovieShop\\ViewModels\\MainViewModel.cs",
+              "RelativeToolTip": "MovieShop\\ViewModels\\MainViewModel.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAH4AAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-25T21:23:53.906Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "UserRepo.cs",
+              "DocumentMoniker": "A:\\facultate\\an 2 sem 2\\iss\\TOB\\UBB-SE-2026-TryingOurBest\\MovieShop\\Repositories\\UserRepo.cs",
+              "RelativeDocumentMoniker": "MovieShop\\Repositories\\UserRepo.cs",
+              "ToolTip": "A:\\facultate\\an 2 sem 2\\iss\\TOB\\UBB-SE-2026-TryingOurBest\\MovieShop\\Repositories\\UserRepo.cs",
+              "RelativeToolTip": "MovieShop\\Repositories\\UserRepo.cs",
+              "ViewState": "AgIAAAgAAAAAAAAAAAAowDMAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-25T23:49:53.693Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "WalletViewModel.cs",
+              "DocumentMoniker": "A:\\facultate\\an 2 sem 2\\iss\\TOB\\UBB-SE-2026-TryingOurBest\\MovieShop\\ViewModels\\WalletViewModel.cs",
+              "RelativeDocumentMoniker": "MovieShop\\ViewModels\\WalletViewModel.cs",
+              "ToolTip": "A:\\facultate\\an 2 sem 2\\iss\\TOB\\UBB-SE-2026-TryingOurBest\\MovieShop\\ViewModels\\WalletViewModel.cs",
+              "RelativeToolTip": "MovieShop\\ViewModels\\WalletViewModel.cs",
+              "ViewState": "AgIAAPkAAAAAAAAAAAAqwBoBAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-26T18:47:54.163Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "TransactionRepo.cs",
+              "DocumentMoniker": "A:\\facultate\\an 2 sem 2\\iss\\TOB\\UBB-SE-2026-TryingOurBest\\MovieShop\\Repositories\\TransactionRepo.cs",
+              "RelativeDocumentMoniker": "MovieShop\\Repositories\\TransactionRepo.cs",
+              "ToolTip": "A:\\facultate\\an 2 sem 2\\iss\\TOB\\UBB-SE-2026-TryingOurBest\\MovieShop\\Repositories\\TransactionRepo.cs",
+              "RelativeToolTip": "MovieShop\\Repositories\\TransactionRepo.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAUwD0AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-26T18:47:16.774Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "Transaction.cs",
+              "DocumentMoniker": "A:\\facultate\\an 2 sem 2\\iss\\TOB\\UBB-SE-2026-TryingOurBest\\MovieShop\\Models\\Transaction.cs",
+              "RelativeDocumentMoniker": "MovieShop\\Models\\Transaction.cs",
+              "ToolTip": "A:\\facultate\\an 2 sem 2\\iss\\TOB\\UBB-SE-2026-TryingOurBest\\MovieShop\\Models\\Transaction.cs",
+              "RelativeToolTip": "MovieShop\\Models\\Transaction.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACIAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-26T18:46:37.554Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "StartPageEquipment.xaml.cs",
+              "DocumentMoniker": "A:\\facultate\\an 2 sem 2\\iss\\TOB\\UBB-SE-2026-TryingOurBest\\MovieShop\\Views\\StartPageEquipment.xaml.cs",
+              "RelativeDocumentMoniker": "MovieShop\\Views\\StartPageEquipment.xaml.cs",
+              "ToolTip": "A:\\facultate\\an 2 sem 2\\iss\\TOB\\UBB-SE-2026-TryingOurBest\\MovieShop\\Views\\StartPageEquipment.xaml.cs",
+              "RelativeToolTip": "MovieShop\\Views\\StartPageEquipment.xaml.cs",
+              "ViewState": "AgIAAAIAAAAAAAAAAAAkwCgAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-26T18:49:53.385Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "WalletView.xaml",
+              "DocumentMoniker": "A:\\facultate\\an 2 sem 2\\iss\\TOB\\UBB-SE-2026-TryingOurBest\\MovieShop\\Views\\WalletView.xaml",
+              "RelativeDocumentMoniker": "MovieShop\\Views\\WalletView.xaml",
+              "ToolTip": "A:\\facultate\\an 2 sem 2\\iss\\TOB\\UBB-SE-2026-TryingOurBest\\MovieShop\\Views\\WalletView.xaml",
+              "RelativeToolTip": "MovieShop\\Views\\WalletView.xaml",
+              "ViewState": "AgIAAIgAAAAAAAAAAAAqwLIAAAAHAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2026-03-26T12:18:38.717Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "StartPageEquipment.xaml",
+              "DocumentMoniker": "A:\\facultate\\an 2 sem 2\\iss\\TOB\\UBB-SE-2026-TryingOurBest\\MovieShop\\Views\\StartPageEquipment.xaml",
+              "RelativeDocumentMoniker": "MovieShop\\Views\\StartPageEquipment.xaml",
+              "ToolTip": "A:\\facultate\\an 2 sem 2\\iss\\TOB\\UBB-SE-2026-TryingOurBest\\MovieShop\\Views\\StartPageEquipment.xaml",
+              "RelativeToolTip": "MovieShop\\Views\\StartPageEquipment.xaml",
+              "ViewState": "AgIAAAkAAAAAAAAAAAAqwDMAAAAHAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2026-03-26T18:49:49.094Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "SellPage.xaml.cs",
+              "DocumentMoniker": "A:\\facultate\\an 2 sem 2\\iss\\TOB\\UBB-SE-2026-TryingOurBest\\MovieShop\\Views\\SellPage.xaml.cs",
+              "RelativeDocumentMoniker": "MovieShop\\Views\\SellPage.xaml.cs",
+              "ToolTip": "A:\\facultate\\an 2 sem 2\\iss\\TOB\\UBB-SE-2026-TryingOurBest\\MovieShop\\Views\\SellPage.xaml.cs",
+              "RelativeToolTip": "MovieShop\\Views\\SellPage.xaml.cs",
+              "ViewState": "AgIAACwAAAAAAAAAAAAUwFQAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-26T18:49:45.773Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "SellPage.xaml",
+              "DocumentMoniker": "A:\\facultate\\an 2 sem 2\\iss\\TOB\\UBB-SE-2026-TryingOurBest\\MovieShop\\Views\\SellPage.xaml",
+              "RelativeDocumentMoniker": "MovieShop\\Views\\SellPage.xaml",
+              "ToolTip": "A:\\facultate\\an 2 sem 2\\iss\\TOB\\UBB-SE-2026-TryingOurBest\\MovieShop\\Views\\SellPage.xaml",
+              "RelativeToolTip": "MovieShop\\Views\\SellPage.xaml",
+              "ViewState": "AgIAABkAAAAAAAAAAAAqwEMAAAAHAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2026-03-26T18:49:40.774Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "NavigationPage.xaml.cs",
+              "DocumentMoniker": "A:\\facultate\\an 2 sem 2\\iss\\TOB\\UBB-SE-2026-TryingOurBest\\MovieShop\\Views\\NavigationPage.xaml.cs",
+              "RelativeDocumentMoniker": "MovieShop\\Views\\NavigationPage.xaml.cs",
+              "ToolTip": "A:\\facultate\\an 2 sem 2\\iss\\TOB\\UBB-SE-2026-TryingOurBest\\MovieShop\\Views\\NavigationPage.xaml.cs",
+              "RelativeToolTip": "MovieShop\\Views\\NavigationPage.xaml.cs",
+              "ViewState": "AgIAACYAAAAAAAAAAAAiwE8AAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-26T18:49:36.952Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "NavigationPage.xaml",
+              "DocumentMoniker": "A:\\facultate\\an 2 sem 2\\iss\\TOB\\UBB-SE-2026-TryingOurBest\\MovieShop\\Views\\NavigationPage.xaml",
+              "RelativeDocumentMoniker": "MovieShop\\Views\\NavigationPage.xaml",
+              "ToolTip": "A:\\facultate\\an 2 sem 2\\iss\\TOB\\UBB-SE-2026-TryingOurBest\\MovieShop\\Views\\NavigationPage.xaml",
+              "RelativeToolTip": "MovieShop\\Views\\NavigationPage.xaml",
+              "ViewState": "AgIAADkAAAAAAAAAAAAqwGMAAAAHAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2026-03-26T18:49:32.956Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 19,
+              "Title": "MovieShopView.xaml",
+              "DocumentMoniker": "A:\\facultate\\an 2 sem 2\\iss\\TOB\\UBB-SE-2026-TryingOurBest\\MovieShop\\Views\\MovieShopView.xaml",
+              "RelativeDocumentMoniker": "MovieShop\\Views\\MovieShopView.xaml",
+              "ToolTip": "A:\\facultate\\an 2 sem 2\\iss\\TOB\\UBB-SE-2026-TryingOurBest\\MovieShop\\Views\\MovieShopView.xaml",
+              "RelativeToolTip": "MovieShop\\Views\\MovieShopView.xaml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABcAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2026-03-25T23:37:37.452Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "MovieShopView.xaml.cs",
+              "DocumentMoniker": "A:\\facultate\\an 2 sem 2\\iss\\TOB\\UBB-SE-2026-TryingOurBest\\MovieShop\\Views\\MovieShopView.xaml.cs",
+              "RelativeDocumentMoniker": "MovieShop\\Views\\MovieShopView.xaml.cs",
+              "ToolTip": "A:\\facultate\\an 2 sem 2\\iss\\TOB\\UBB-SE-2026-TryingOurBest\\MovieShop\\Views\\MovieShopView.xaml.cs",
+              "RelativeToolTip": "MovieShop\\Views\\MovieShopView.xaml.cs",
+              "ViewState": "AgIAAAgAAAAAAAAAAAAkwC4AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-26T12:42:06.952Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 20,
+              "Title": "MovieReviewsPage.xaml.cs",
+              "DocumentMoniker": "A:\\facultate\\an 2 sem 2\\iss\\TOB\\UBB-SE-2026-TryingOurBest\\MovieShop\\Views\\MovieReviewsPage.xaml.cs",
+              "RelativeDocumentMoniker": "MovieShop\\Views\\MovieReviewsPage.xaml.cs",
+              "ToolTip": "A:\\facultate\\an 2 sem 2\\iss\\TOB\\UBB-SE-2026-TryingOurBest\\MovieShop\\Views\\MovieReviewsPage.xaml.cs",
+              "RelativeToolTip": "MovieShop\\Views\\MovieReviewsPage.xaml.cs",
+              "ViewState": "AgIAAFQAAAAAAAAAAAAiwH0AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-26T15:23:59.95Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 21,
+              "Title": "MovieReviewsPage.xaml",
+              "DocumentMoniker": "A:\\facultate\\an 2 sem 2\\iss\\TOB\\UBB-SE-2026-TryingOurBest\\MovieShop\\Views\\MovieReviewsPage.xaml",
+              "RelativeDocumentMoniker": "MovieShop\\Views\\MovieReviewsPage.xaml",
+              "ToolTip": "A:\\facultate\\an 2 sem 2\\iss\\TOB\\UBB-SE-2026-TryingOurBest\\MovieShop\\Views\\MovieReviewsPage.xaml",
+              "RelativeToolTip": "MovieShop\\Views\\MovieReviewsPage.xaml",
+              "ViewState": "AgIAABgAAAAAAAAAAAAqwEIAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2026-03-26T18:49:18.158Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 22,
+              "Title": "MovieEventsPage.xaml.cs",
+              "DocumentMoniker": "A:\\facultate\\an 2 sem 2\\iss\\TOB\\UBB-SE-2026-TryingOurBest\\MovieShop\\Views\\MovieEventsPage.xaml.cs",
+              "RelativeDocumentMoniker": "MovieShop\\Views\\MovieEventsPage.xaml.cs",
+              "ToolTip": "A:\\facultate\\an 2 sem 2\\iss\\TOB\\UBB-SE-2026-TryingOurBest\\MovieShop\\Views\\MovieEventsPage.xaml.cs",
+              "RelativeToolTip": "MovieShop\\Views\\MovieEventsPage.xaml.cs",
+              "ViewState": "AgIAAHgAAAAAAAAAAAAUwKAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-26T18:49:15.341Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 23,
+              "Title": "MovieEventsPage.xaml",
+              "DocumentMoniker": "A:\\facultate\\an 2 sem 2\\iss\\TOB\\UBB-SE-2026-TryingOurBest\\MovieShop\\Views\\MovieEventsPage.xaml",
+              "RelativeDocumentMoniker": "MovieShop\\Views\\MovieEventsPage.xaml",
+              "ToolTip": "A:\\facultate\\an 2 sem 2\\iss\\TOB\\UBB-SE-2026-TryingOurBest\\MovieShop\\Views\\MovieEventsPage.xaml",
+              "RelativeToolTip": "MovieShop\\Views\\MovieEventsPage.xaml",
+              "ViewState": "AgIAACAAAAAAAAAAAAAqwEoAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2026-03-26T18:49:11.819Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 24,
+              "Title": "MovieDetailPage.xaml",
+              "DocumentMoniker": "A:\\facultate\\an 2 sem 2\\iss\\TOB\\UBB-SE-2026-TryingOurBest\\MovieShop\\Views\\MovieDetailPage.xaml",
+              "RelativeDocumentMoniker": "MovieShop\\Views\\MovieDetailPage.xaml",
+              "ToolTip": "A:\\facultate\\an 2 sem 2\\iss\\TOB\\UBB-SE-2026-TryingOurBest\\MovieShop\\Views\\MovieDetailPage.xaml",
+              "RelativeToolTip": "MovieShop\\Views\\MovieDetailPage.xaml",
+              "ViewState": "AgIAAE4AAAAAAAAAAAAqwHgAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2026-03-26T00:03:46.07Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 25,
+              "Title": "MovieCatalogPage.xaml.cs",
+              "DocumentMoniker": "A:\\facultate\\an 2 sem 2\\iss\\TOB\\UBB-SE-2026-TryingOurBest\\MovieShop\\Views\\MovieCatalogPage.xaml.cs",
+              "RelativeDocumentMoniker": "MovieShop\\Views\\MovieCatalogPage.xaml.cs",
+              "ToolTip": "A:\\facultate\\an 2 sem 2\\iss\\TOB\\UBB-SE-2026-TryingOurBest\\MovieShop\\Views\\MovieCatalogPage.xaml.cs",
+              "RelativeToolTip": "MovieShop\\Views\\MovieCatalogPage.xaml.cs",
+              "ViewState": "AgIAAL4AAAAAAAAAAAAiwOcAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-26T12:27:05.897Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 26,
+              "Title": "MovieCatalogPage.xaml",
+              "DocumentMoniker": "A:\\facultate\\an 2 sem 2\\iss\\TOB\\UBB-SE-2026-TryingOurBest\\MovieShop\\Views\\MovieCatalogPage.xaml",
+              "RelativeDocumentMoniker": "MovieShop\\Views\\MovieCatalogPage.xaml",
+              "ToolTip": "A:\\facultate\\an 2 sem 2\\iss\\TOB\\UBB-SE-2026-TryingOurBest\\MovieShop\\Views\\MovieCatalogPage.xaml",
+              "RelativeToolTip": "MovieShop\\Views\\MovieCatalogPage.xaml",
+              "ViewState": "AgIAAEUAAAAAAAAAAAAqwG8AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2026-03-26T12:24:16.888Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 27,
+              "Title": "MarketplacePage.xaml.cs",
+              "DocumentMoniker": "A:\\facultate\\an 2 sem 2\\iss\\TOB\\UBB-SE-2026-TryingOurBest\\MovieShop\\Views\\MarketplacePage.xaml.cs",
+              "RelativeDocumentMoniker": "MovieShop\\Views\\MarketplacePage.xaml.cs",
+              "ToolTip": "A:\\facultate\\an 2 sem 2\\iss\\TOB\\UBB-SE-2026-TryingOurBest\\MovieShop\\Views\\MarketplacePage.xaml.cs",
+              "RelativeToolTip": "MovieShop\\Views\\MarketplacePage.xaml.cs",
+              "ViewState": "AgIAAA8AAAAAAAAAAAAswDYAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-26T18:48:54.492Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 28,
+              "Title": "MarketplacePage.xaml",
+              "DocumentMoniker": "A:\\facultate\\an 2 sem 2\\iss\\TOB\\UBB-SE-2026-TryingOurBest\\MovieShop\\Views\\MarketplacePage.xaml",
+              "RelativeDocumentMoniker": "MovieShop\\Views\\MarketplacePage.xaml",
+              "ToolTip": "A:\\facultate\\an 2 sem 2\\iss\\TOB\\UBB-SE-2026-TryingOurBest\\MovieShop\\Views\\MarketplacePage.xaml",
+              "RelativeToolTip": "MovieShop\\Views\\MarketplacePage.xaml",
+              "ViewState": "AgIAAB4AAAAAAAAAAAAqwEgAAAAHAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2026-03-26T18:48:49.61Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 30,
+              "Title": "MainPage.xaml",
+              "DocumentMoniker": "A:\\facultate\\an 2 sem 2\\iss\\TOB\\UBB-SE-2026-TryingOurBest\\MovieShop\\Views\\MainPage.xaml",
+              "RelativeDocumentMoniker": "MovieShop\\Views\\MainPage.xaml",
+              "ToolTip": "A:\\facultate\\an 2 sem 2\\iss\\TOB\\UBB-SE-2026-TryingOurBest\\MovieShop\\Views\\MainPage.xaml",
+              "RelativeToolTip": "MovieShop\\Views\\MainPage.xaml",
+              "ViewState": "AgIAAFQAAAAAAAAAAAAqwH4AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2026-03-25T20:58:55.736Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 29,
+              "Title": "MainPage.xaml.cs",
+              "DocumentMoniker": "A:\\facultate\\an 2 sem 2\\iss\\TOB\\UBB-SE-2026-TryingOurBest\\MovieShop\\Views\\MainPage.xaml.cs",
+              "RelativeDocumentMoniker": "MovieShop\\Views\\MainPage.xaml.cs",
+              "ToolTip": "A:\\facultate\\an 2 sem 2\\iss\\TOB\\UBB-SE-2026-TryingOurBest\\MovieShop\\Views\\MainPage.xaml.cs",
+              "RelativeToolTip": "MovieShop\\Views\\MainPage.xaml.cs",
+              "ViewState": "AgIAAJgAAAAAAAAAAAAiwMEAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-26T14:05:26.218Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 31,
+              "Title": "InventoryView.xaml.cs",
+              "DocumentMoniker": "A:\\facultate\\an 2 sem 2\\iss\\TOB\\UBB-SE-2026-TryingOurBest\\MovieShop\\Views\\InventoryView.xaml.cs",
+              "RelativeDocumentMoniker": "MovieShop\\Views\\InventoryView.xaml.cs",
+              "ToolTip": "A:\\facultate\\an 2 sem 2\\iss\\TOB\\UBB-SE-2026-TryingOurBest\\MovieShop\\Views\\InventoryView.xaml.cs",
+              "RelativeToolTip": "MovieShop\\Views\\InventoryView.xaml.cs",
+              "ViewState": "AgIAAAQAAAAAAAAAAAAswCsAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-26T18:48:40.165Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 32,
+              "Title": "InventoryView.xaml",
+              "DocumentMoniker": "A:\\facultate\\an 2 sem 2\\iss\\TOB\\UBB-SE-2026-TryingOurBest\\MovieShop\\Views\\InventoryView.xaml",
+              "RelativeDocumentMoniker": "MovieShop\\Views\\InventoryView.xaml",
+              "ToolTip": "A:\\facultate\\an 2 sem 2\\iss\\TOB\\UBB-SE-2026-TryingOurBest\\MovieShop\\Views\\InventoryView.xaml",
+              "RelativeToolTip": "MovieShop\\Views\\InventoryView.xaml",
+              "ViewState": "AgIAADgAAAAAAAAAAAAqwGIAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2026-03-26T18:48:36.657Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 33,
+              "Title": "Header.xaml.cs",
+              "DocumentMoniker": "A:\\facultate\\an 2 sem 2\\iss\\TOB\\UBB-SE-2026-TryingOurBest\\MovieShop\\Views\\Header.xaml.cs",
+              "RelativeDocumentMoniker": "MovieShop\\Views\\Header.xaml.cs",
+              "ToolTip": "A:\\facultate\\an 2 sem 2\\iss\\TOB\\UBB-SE-2026-TryingOurBest\\MovieShop\\Views\\Header.xaml.cs",
+              "RelativeToolTip": "MovieShop\\Views\\Header.xaml.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABwAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-26T18:48:33.754Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 34,
+              "Title": "Header.xaml",
+              "DocumentMoniker": "A:\\facultate\\an 2 sem 2\\iss\\TOB\\UBB-SE-2026-TryingOurBest\\MovieShop\\Views\\Header.xaml",
+              "RelativeDocumentMoniker": "MovieShop\\Views\\Header.xaml",
+              "ToolTip": "A:\\facultate\\an 2 sem 2\\iss\\TOB\\UBB-SE-2026-TryingOurBest\\MovieShop\\Views\\Header.xaml",
+              "RelativeToolTip": "MovieShop\\Views\\Header.xaml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABcAAAAOAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2026-03-26T18:48:29.871Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 36,
+              "Title": "FlashSaleBanner.xaml",
+              "DocumentMoniker": "A:\\facultate\\an 2 sem 2\\iss\\TOB\\UBB-SE-2026-TryingOurBest\\MovieShop\\Views\\FlashSaleBanner.xaml",
+              "RelativeDocumentMoniker": "MovieShop\\Views\\FlashSaleBanner.xaml",
+              "ToolTip": "A:\\facultate\\an 2 sem 2\\iss\\TOB\\UBB-SE-2026-TryingOurBest\\MovieShop\\Views\\FlashSaleBanner.xaml",
+              "RelativeToolTip": "MovieShop\\Views\\FlashSaleBanner.xaml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABQAAAAOAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2026-03-25T21:19:20.645Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 35,
+              "Title": "FlashSaleBanner.xaml.cs",
+              "DocumentMoniker": "A:\\facultate\\an 2 sem 2\\iss\\TOB\\UBB-SE-2026-TryingOurBest\\MovieShop\\Views\\FlashSaleBanner.xaml.cs",
+              "RelativeDocumentMoniker": "MovieShop\\Views\\FlashSaleBanner.xaml.cs",
+              "ToolTip": "A:\\facultate\\an 2 sem 2\\iss\\TOB\\UBB-SE-2026-TryingOurBest\\MovieShop\\Views\\FlashSaleBanner.xaml.cs",
+              "RelativeToolTip": "MovieShop\\Views\\FlashSaleBanner.xaml.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAB8AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-25T21:21:56.441Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 37,
+              "Title": "BuyTicketPage.xaml.cs",
+              "DocumentMoniker": "A:\\facultate\\an 2 sem 2\\iss\\TOB\\UBB-SE-2026-TryingOurBest\\MovieShop\\Views\\BuyTicketPage.xaml.cs",
+              "RelativeDocumentMoniker": "MovieShop\\Views\\BuyTicketPage.xaml.cs",
+              "ToolTip": "A:\\facultate\\an 2 sem 2\\iss\\TOB\\UBB-SE-2026-TryingOurBest\\MovieShop\\Views\\BuyTicketPage.xaml.cs",
+              "RelativeToolTip": "MovieShop\\Views\\BuyTicketPage.xaml.cs",
+              "ViewState": "AgIAAG4AAAAAAAAAAAAqwJgAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-26T18:48:14.248Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 39,
+              "Title": "BoolToVisibilityConverter.cs",
+              "DocumentMoniker": "A:\\facultate\\an 2 sem 2\\iss\\TOB\\UBB-SE-2026-TryingOurBest\\MovieShop\\Views\\BoolToVisibilityConverter.cs",
+              "RelativeDocumentMoniker": "MovieShop\\Views\\BoolToVisibilityConverter.cs",
+              "ToolTip": "A:\\facultate\\an 2 sem 2\\iss\\TOB\\UBB-SE-2026-TryingOurBest\\MovieShop\\Views\\BoolToVisibilityConverter.cs",
+              "RelativeToolTip": "MovieShop\\Views\\BoolToVisibilityConverter.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-26T18:48:00.92Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 38,
+              "Title": "BuyTicketPage.xaml",
+              "DocumentMoniker": "A:\\facultate\\an 2 sem 2\\iss\\TOB\\UBB-SE-2026-TryingOurBest\\MovieShop\\Views\\BuyTicketPage.xaml",
+              "RelativeDocumentMoniker": "MovieShop\\Views\\BuyTicketPage.xaml",
+              "ToolTip": "A:\\facultate\\an 2 sem 2\\iss\\TOB\\UBB-SE-2026-TryingOurBest\\MovieShop\\Views\\BuyTicketPage.xaml",
+              "RelativeToolTip": "MovieShop\\Views\\BuyTicketPage.xaml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACgAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2026-03-26T18:48:03.96Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 40,
+              "Title": "EquipmentDetailPage.xaml",
+              "DocumentMoniker": "A:\\facultate\\an 2 sem 2\\iss\\TOB\\UBB-SE-2026-TryingOurBest\\MovieShop\\Views\\EquipmentDetailPage.xaml",
+              "RelativeDocumentMoniker": "MovieShop\\Views\\EquipmentDetailPage.xaml",
+              "ToolTip": "A:\\facultate\\an 2 sem 2\\iss\\TOB\\UBB-SE-2026-TryingOurBest\\MovieShop\\Views\\EquipmentDetailPage.xaml",
+              "RelativeToolTip": "MovieShop\\Views\\EquipmentDetailPage.xaml",
+              "ViewState": "AgIAAHgAAAAAAAAAAAAqwKIAAAAHAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2026-03-26T18:48:08.845Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 41,
+              "Title": "SellEquipmentViewModel.cs",
+              "DocumentMoniker": "A:\\facultate\\an 2 sem 2\\iss\\TOB\\UBB-SE-2026-TryingOurBest\\MovieShop\\ViewModels\\SellEquipmentViewModel.cs",
+              "RelativeDocumentMoniker": "MovieShop\\ViewModels\\SellEquipmentViewModel.cs",
+              "ToolTip": "A:\\facultate\\an 2 sem 2\\iss\\TOB\\UBB-SE-2026-TryingOurBest\\MovieShop\\ViewModels\\SellEquipmentViewModel.cs",
+              "RelativeToolTip": "MovieShop\\ViewModels\\SellEquipmentViewModel.cs",
+              "ViewState": "AgIAAD4AAAAAAAAAAAAUwGYAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-26T18:47:51.328Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 42,
+              "Title": "MarketplaceViewModel.cs",
+              "DocumentMoniker": "A:\\facultate\\an 2 sem 2\\iss\\TOB\\UBB-SE-2026-TryingOurBest\\MovieShop\\ViewModels\\MarketplaceViewModel.cs",
+              "RelativeDocumentMoniker": "MovieShop\\ViewModels\\MarketplaceViewModel.cs",
+              "ToolTip": "A:\\facultate\\an 2 sem 2\\iss\\TOB\\UBB-SE-2026-TryingOurBest\\MovieShop\\ViewModels\\MarketplaceViewModel.cs",
+              "RelativeToolTip": "MovieShop\\ViewModels\\MarketplaceViewModel.cs",
+              "ViewState": "AgIAACUAAAAAAAAAAAAswEwAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-26T18:47:44.639Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 43,
+              "Title": "MainWindowViewModel.cs",
+              "DocumentMoniker": "A:\\facultate\\an 2 sem 2\\iss\\TOB\\UBB-SE-2026-TryingOurBest\\MovieShop\\ViewModels\\MainWindowViewModel.cs",
+              "RelativeDocumentMoniker": "MovieShop\\ViewModels\\MainWindowViewModel.cs",
+              "ToolTip": "A:\\facultate\\an 2 sem 2\\iss\\TOB\\UBB-SE-2026-TryingOurBest\\MovieShop\\ViewModels\\MainWindowViewModel.cs",
+              "RelativeToolTip": "MovieShop\\ViewModels\\MainWindowViewModel.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACMAAAACAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-25T23:49:15.569Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 44,
+              "Title": "FlashSaleViewModel.cs",
+              "DocumentMoniker": "A:\\facultate\\an 2 sem 2\\iss\\TOB\\UBB-SE-2026-TryingOurBest\\MovieShop\\ViewModels\\FlashSaleViewModel.cs",
+              "RelativeDocumentMoniker": "MovieShop\\ViewModels\\FlashSaleViewModel.cs",
+              "ToolTip": "A:\\facultate\\an 2 sem 2\\iss\\TOB\\UBB-SE-2026-TryingOurBest\\MovieShop\\ViewModels\\FlashSaleViewModel.cs",
+              "RelativeToolTip": "MovieShop\\ViewModels\\FlashSaleViewModel.cs",
+              "ViewState": "AgIAAFgAAAAAAAAAAADwv38AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-25T21:11:08.631Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 45,
+              "Title": "ConfirmReceiptViewModel.cs",
+              "DocumentMoniker": "A:\\facultate\\an 2 sem 2\\iss\\TOB\\UBB-SE-2026-TryingOurBest\\MovieShop\\ViewModels\\ConfirmReceiptViewModel.cs",
+              "RelativeDocumentMoniker": "MovieShop\\ViewModels\\ConfirmReceiptViewModel.cs",
+              "ToolTip": "A:\\facultate\\an 2 sem 2\\iss\\TOB\\UBB-SE-2026-TryingOurBest\\MovieShop\\ViewModels\\ConfirmReceiptViewModel.cs",
+              "RelativeToolTip": "MovieShop\\ViewModels\\ConfirmReceiptViewModel.cs",
+              "ViewState": "AgIAAGEAAAAAAAAAAADwv4gAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-26T18:47:33.616Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 46,
+              "Title": "BuyEquipmentViewModel.cs",
+              "DocumentMoniker": "A:\\facultate\\an 2 sem 2\\iss\\TOB\\UBB-SE-2026-TryingOurBest\\MovieShop\\ViewModels\\BuyEquipmentViewModel.cs",
+              "RelativeDocumentMoniker": "MovieShop\\ViewModels\\BuyEquipmentViewModel.cs",
+              "ToolTip": "A:\\facultate\\an 2 sem 2\\iss\\TOB\\UBB-SE-2026-TryingOurBest\\MovieShop\\ViewModels\\BuyEquipmentViewModel.cs",
+              "RelativeToolTip": "MovieShop\\ViewModels\\BuyEquipmentViewModel.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAswCcAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-26T18:47:30.75Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 47,
+              "Title": "TransactionTypeMappers.cs",
+              "DocumentMoniker": "A:\\facultate\\an 2 sem 2\\iss\\TOB\\UBB-SE-2026-TryingOurBest\\MovieShop\\Services\\TransactionTypeMappers.cs",
+              "RelativeDocumentMoniker": "MovieShop\\Services\\TransactionTypeMappers.cs",
+              "ToolTip": "A:\\facultate\\an 2 sem 2\\iss\\TOB\\UBB-SE-2026-TryingOurBest\\MovieShop\\Services\\TransactionTypeMappers.cs",
+              "RelativeToolTip": "MovieShop\\Services\\TransactionTypeMappers.cs",
+              "ViewState": "AgIAAAEAAAAAAAAAAAAswCgAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-26T18:47:26.683Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 48,
+              "Title": "SaleService.cs",
+              "DocumentMoniker": "A:\\facultate\\an 2 sem 2\\iss\\TOB\\UBB-SE-2026-TryingOurBest\\MovieShop\\Services\\SaleService.cs",
+              "RelativeDocumentMoniker": "MovieShop\\Services\\SaleService.cs",
+              "ToolTip": "A:\\facultate\\an 2 sem 2\\iss\\TOB\\UBB-SE-2026-TryingOurBest\\MovieShop\\Services\\SaleService.cs",
+              "RelativeToolTip": "MovieShop\\Services\\SaleService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-26T18:47:23.808Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 50,
+              "Title": "MovieRepo.cs",
+              "DocumentMoniker": "A:\\facultate\\an 2 sem 2\\iss\\TOB\\UBB-SE-2026-TryingOurBest\\MovieShop\\Repositories\\MovieRepo.cs",
+              "RelativeDocumentMoniker": "MovieShop\\Repositories\\MovieRepo.cs",
+              "ToolTip": "A:\\facultate\\an 2 sem 2\\iss\\TOB\\UBB-SE-2026-TryingOurBest\\MovieShop\\Repositories\\MovieRepo.cs",
+              "RelativeToolTip": "MovieShop\\Repositories\\MovieRepo.cs",
+              "ViewState": "AgIAAKcAAAAAAAAAAAAqwNEAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-25T23:49:55.828Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 49,
+              "Title": "ReviewRepo.cs",
+              "DocumentMoniker": "A:\\facultate\\an 2 sem 2\\iss\\TOB\\UBB-SE-2026-TryingOurBest\\MovieShop\\Repositories\\ReviewRepo.cs",
+              "RelativeDocumentMoniker": "MovieShop\\Repositories\\ReviewRepo.cs",
+              "ToolTip": "A:\\facultate\\an 2 sem 2\\iss\\TOB\\UBB-SE-2026-TryingOurBest\\MovieShop\\Repositories\\ReviewRepo.cs",
+              "RelativeToolTip": "MovieShop\\Repositories\\ReviewRepo.cs",
+              "ViewState": "AgIAAB0AAAAAAAAAAAAiwEYAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-26T15:26:01.225Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 51,
+              "Title": "InventoryRepo.cs",
+              "DocumentMoniker": "A:\\facultate\\an 2 sem 2\\iss\\TOB\\UBB-SE-2026-TryingOurBest\\MovieShop\\Repositories\\InventoryRepo.cs",
+              "RelativeDocumentMoniker": "MovieShop\\Repositories\\InventoryRepo.cs",
+              "ToolTip": "A:\\facultate\\an 2 sem 2\\iss\\TOB\\UBB-SE-2026-TryingOurBest\\MovieShop\\Repositories\\InventoryRepo.cs",
+              "RelativeToolTip": "MovieShop\\Repositories\\InventoryRepo.cs",
+              "ViewState": "AgIAAEcAAAAAAAAAAAAiwHAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-26T18:47:08.296Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 52,
+              "Title": "EventRepo.cs",
+              "DocumentMoniker": "A:\\facultate\\an 2 sem 2\\iss\\TOB\\UBB-SE-2026-TryingOurBest\\MovieShop\\Repositories\\EventRepo.cs",
+              "RelativeDocumentMoniker": "MovieShop\\Repositories\\EventRepo.cs",
+              "ToolTip": "A:\\facultate\\an 2 sem 2\\iss\\TOB\\UBB-SE-2026-TryingOurBest\\MovieShop\\Repositories\\EventRepo.cs",
+              "RelativeToolTip": "MovieShop\\Repositories\\EventRepo.cs",
+              "ViewState": "AgIAAJUAAAAAAAAAAAAqwL8AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-26T18:47:05.313Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 53,
+              "Title": "ActiveSalesRepo.cs",
+              "DocumentMoniker": "A:\\facultate\\an 2 sem 2\\iss\\TOB\\UBB-SE-2026-TryingOurBest\\MovieShop\\Repositories\\ActiveSalesRepo.cs",
+              "RelativeDocumentMoniker": "MovieShop\\Repositories\\ActiveSalesRepo.cs",
+              "ToolTip": "A:\\facultate\\an 2 sem 2\\iss\\TOB\\UBB-SE-2026-TryingOurBest\\MovieShop\\Repositories\\ActiveSalesRepo.cs",
+              "RelativeToolTip": "MovieShop\\Repositories\\ActiveSalesRepo.cs",
+              "ViewState": "AgIAACQAAAAAAAAAAAAiwE0AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-25T21:23:38.658Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 54,
+              "Title": "Tables.sql ",
+              "DocumentMoniker": "A:\\facultate\\an 2 sem 2\\iss\\TOB\\UBB-SE-2026-TryingOurBest\\MovieShop\\Queries\\Tables.sql",
+              "RelativeDocumentMoniker": "MovieShop\\Queries\\Tables.sql",
+              "ToolTip": "A:\\facultate\\an 2 sem 2\\iss\\TOB\\UBB-SE-2026-TryingOurBest\\MovieShop\\Queries\\Tables.sql",
+              "RelativeToolTip": "MovieShop\\Queries\\Tables.sql",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000826|",
+              "WhenOpened": "2026-03-25T23:59:14.361Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 55,
               "Title": "Inserts.sql ",
-              "DocumentMoniker": "C:\\Users\\marius\\source\\repos\\SE_Movies\\UBB-SE-2026-VibeCoders\\MovieShop\\Queries\\Inserts.sql",
+              "DocumentMoniker": "A:\\facultate\\an 2 sem 2\\iss\\TOB\\UBB-SE-2026-TryingOurBest\\MovieShop\\Queries\\Inserts.sql",
               "RelativeDocumentMoniker": "MovieShop\\Queries\\Inserts.sql",
-              "ToolTip": "C:\\Users\\marius\\source\\repos\\SE_Movies\\UBB-SE-2026-VibeCoders\\MovieShop\\Queries\\Inserts.sql",
+              "ToolTip": "A:\\facultate\\an 2 sem 2\\iss\\TOB\\UBB-SE-2026-TryingOurBest\\MovieShop\\Queries\\Inserts.sql",
               "RelativeToolTip": "MovieShop\\Queries\\Inserts.sql",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000826|",
               "WhenOpened": "2026-03-26T12:33:43.37Z",
@@ -181,79 +1075,136 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "MovieReviewsPage.xaml.cs",
-              "DocumentMoniker": "C:\\Users\\marius\\source\\repos\\SE_Movies\\UBB-SE-2026-VibeCoders\\MovieShop\\Views\\MovieReviewsPage.xaml.cs",
-              "RelativeDocumentMoniker": "MovieShop\\Views\\MovieReviewsPage.xaml.cs",
-              "ToolTip": "C:\\Users\\marius\\source\\repos\\SE_Movies\\UBB-SE-2026-VibeCoders\\MovieShop\\Views\\MovieReviewsPage.xaml.cs",
-              "RelativeToolTip": "MovieShop\\Views\\MovieReviewsPage.xaml.cs",
-              "ViewState": "AgIAACsAAAAAAAAAAAA0wDYAAAAAAAAAAAAAAA==",
+              "DocumentIndex": 56,
+              "Title": "User.cs",
+              "DocumentMoniker": "A:\\facultate\\an 2 sem 2\\iss\\TOB\\UBB-SE-2026-TryingOurBest\\MovieShop\\Models\\User.cs",
+              "RelativeDocumentMoniker": "MovieShop\\Models\\User.cs",
+              "ToolTip": "A:\\facultate\\an 2 sem 2\\iss\\TOB\\UBB-SE-2026-TryingOurBest\\MovieShop\\Models\\User.cs",
+              "RelativeToolTip": "MovieShop\\Models\\User.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABQAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-26T15:23:59.95Z"
+              "WhenOpened": "2026-03-26T18:46:40.441Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "MovieDetailPage.xaml",
-              "DocumentMoniker": "C:\\Users\\marius\\source\\repos\\SE_Movies\\UBB-SE-2026-VibeCoders\\MovieShop\\Views\\MovieDetailPage.xaml",
-              "RelativeDocumentMoniker": "MovieShop\\Views\\MovieDetailPage.xaml",
-              "ToolTip": "C:\\Users\\marius\\source\\repos\\SE_Movies\\UBB-SE-2026-VibeCoders\\MovieShop\\Views\\MovieDetailPage.xaml",
-              "RelativeToolTip": "MovieShop\\Views\\MovieDetailPage.xaml",
-              "ViewState": "AgIAAAYAAAAAAAAAAAAAABQAAAAoAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2026-03-26T00:03:46.07Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "MovieDetailPage.xaml.cs",
-              "DocumentMoniker": "C:\\Users\\marius\\source\\repos\\SE_Movies\\UBB-SE-2026-VibeCoders\\MovieShop\\Views\\MovieDetailPage.xaml.cs",
-              "RelativeDocumentMoniker": "MovieShop\\Views\\MovieDetailPage.xaml.cs",
-              "ToolTip": "C:\\Users\\marius\\source\\repos\\SE_Movies\\UBB-SE-2026-VibeCoders\\MovieShop\\Views\\MovieDetailPage.xaml.cs",
-              "RelativeToolTip": "MovieShop\\Views\\MovieDetailPage.xaml.cs",
-              "ViewState": "AgIAAA4BAAAAAAAAAAAswBkBAAAwAAAAAAAAAA==",
+              "DocumentIndex": 57,
+              "Title": "SessionManager.cs",
+              "DocumentMoniker": "A:\\facultate\\an 2 sem 2\\iss\\TOB\\UBB-SE-2026-TryingOurBest\\MovieShop\\Models\\SessionManager.cs",
+              "RelativeDocumentMoniker": "MovieShop\\Models\\SessionManager.cs",
+              "ToolTip": "A:\\facultate\\an 2 sem 2\\iss\\TOB\\UBB-SE-2026-TryingOurBest\\MovieShop\\Models\\SessionManager.cs",
+              "RelativeToolTip": "MovieShop\\Models\\SessionManager.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-26T12:30:06.478Z"
+              "WhenOpened": "2026-03-26T18:46:34.684Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "MovieRepo.cs",
-              "DocumentMoniker": "C:\\Users\\marius\\source\\repos\\SE_Movies\\UBB-SE-2026-VibeCoders\\MovieShop\\Repositories\\MovieRepo.cs",
-              "RelativeDocumentMoniker": "MovieShop\\Repositories\\MovieRepo.cs",
-              "ToolTip": "C:\\Users\\marius\\source\\repos\\SE_Movies\\UBB-SE-2026-VibeCoders\\MovieShop\\Repositories\\MovieRepo.cs",
-              "RelativeToolTip": "MovieShop\\Repositories\\MovieRepo.cs",
-              "ViewState": "AgIAALYAAAAAAAAAAAAswMEAAAAyAAAAAAAAAA==",
+              "DocumentIndex": 58,
+              "Title": "MovieReview.cs",
+              "DocumentMoniker": "A:\\facultate\\an 2 sem 2\\iss\\TOB\\UBB-SE-2026-TryingOurBest\\MovieShop\\Models\\MovieReview.cs",
+              "RelativeDocumentMoniker": "MovieShop\\Models\\MovieReview.cs",
+              "ToolTip": "A:\\facultate\\an 2 sem 2\\iss\\TOB\\UBB-SE-2026-TryingOurBest\\MovieShop\\Models\\MovieReview.cs",
+              "RelativeToolTip": "MovieShop\\Models\\MovieReview.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-25T23:49:55.828Z"
+              "WhenOpened": "2026-03-26T18:46:32.175Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "DatabaseSingleton.cs",
-              "DocumentMoniker": "C:\\Users\\marius\\source\\repos\\SE_Movies\\UBB-SE-2026-VibeCoders\\MovieShop\\Repositories\\DatabaseSingleton.cs",
-              "RelativeDocumentMoniker": "MovieShop\\Repositories\\DatabaseSingleton.cs",
-              "ToolTip": "C:\\Users\\marius\\source\\repos\\SE_Movies\\UBB-SE-2026-VibeCoders\\MovieShop\\Repositories\\DatabaseSingleton.cs",
-              "RelativeToolTip": "MovieShop\\Repositories\\DatabaseSingleton.cs",
-              "ViewState": "AgIAABoAAAAAAAAAAAAxwBMAAAAAAAAAAAAAAA==",
+              "DocumentIndex": 59,
+              "Title": "MovieEvent.cs",
+              "DocumentMoniker": "A:\\facultate\\an 2 sem 2\\iss\\TOB\\UBB-SE-2026-TryingOurBest\\MovieShop\\Models\\MovieEvent.cs",
+              "RelativeDocumentMoniker": "MovieShop\\Models\\MovieEvent.cs",
+              "ToolTip": "A:\\facultate\\an 2 sem 2\\iss\\TOB\\UBB-SE-2026-TryingOurBest\\MovieShop\\Models\\MovieEvent.cs",
+              "RelativeToolTip": "MovieShop\\Models\\MovieEvent.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABQAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-26T15:05:26.149Z"
+              "WhenOpened": "2026-03-26T18:46:29.465Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "ReviewRepo.cs",
-              "DocumentMoniker": "C:\\Users\\marius\\source\\repos\\SE_Movies\\UBB-SE-2026-VibeCoders\\MovieShop\\Repositories\\ReviewRepo.cs",
-              "RelativeDocumentMoniker": "MovieShop\\Repositories\\ReviewRepo.cs",
-              "ToolTip": "C:\\Users\\marius\\source\\repos\\SE_Movies\\UBB-SE-2026-VibeCoders\\MovieShop\\Repositories\\ReviewRepo.cs",
-              "RelativeToolTip": "MovieShop\\Repositories\\ReviewRepo.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAiAAAAAAAAAA==",
+              "DocumentIndex": 61,
+              "Title": "Equipment.cs",
+              "DocumentMoniker": "A:\\facultate\\an 2 sem 2\\iss\\TOB\\UBB-SE-2026-TryingOurBest\\MovieShop\\Models\\Equipment.cs",
+              "RelativeDocumentMoniker": "MovieShop\\Models\\Equipment.cs",
+              "ToolTip": "A:\\facultate\\an 2 sem 2\\iss\\TOB\\UBB-SE-2026-TryingOurBest\\MovieShop\\Models\\Equipment.cs",
+              "RelativeToolTip": "MovieShop\\Models\\Equipment.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-26T15:26:01.225Z"
+              "WhenOpened": "2026-03-26T18:46:22.726Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 62,
+              "Title": "ActiveSale.cs",
+              "DocumentMoniker": "A:\\facultate\\an 2 sem 2\\iss\\TOB\\UBB-SE-2026-TryingOurBest\\MovieShop\\Models\\ActiveSale.cs",
+              "RelativeDocumentMoniker": "MovieShop\\Models\\ActiveSale.cs",
+              "ToolTip": "A:\\facultate\\an 2 sem 2\\iss\\TOB\\UBB-SE-2026-TryingOurBest\\MovieShop\\Models\\ActiveSale.cs",
+              "RelativeToolTip": "MovieShop\\Models\\ActiveSale.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABUAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-26T18:46:19.759Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 60,
+              "Title": "Movie.cs",
+              "DocumentMoniker": "A:\\facultate\\an 2 sem 2\\iss\\TOB\\UBB-SE-2026-TryingOurBest\\MovieShop\\Models\\Movie.cs",
+              "RelativeDocumentMoniker": "MovieShop\\Models\\Movie.cs",
+              "ToolTip": "A:\\facultate\\an 2 sem 2\\iss\\TOB\\UBB-SE-2026-TryingOurBest\\MovieShop\\Models\\Movie.cs",
+              "RelativeToolTip": "MovieShop\\Models\\Movie.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACYAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-26T12:39:02.261Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 63,
+              "Title": "ShopNavigationArgs.cs",
+              "DocumentMoniker": "A:\\facultate\\an 2 sem 2\\iss\\TOB\\UBB-SE-2026-TryingOurBest\\MovieShop\\Models\\NavArgs\\ShopNavigationArgs.cs",
+              "RelativeDocumentMoniker": "MovieShop\\Models\\NavArgs\\ShopNavigationArgs.cs",
+              "ToolTip": "A:\\facultate\\an 2 sem 2\\iss\\TOB\\UBB-SE-2026-TryingOurBest\\MovieShop\\Models\\NavArgs\\ShopNavigationArgs.cs",
+              "RelativeToolTip": "MovieShop\\Models\\NavArgs\\ShopNavigationArgs.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-26T18:46:16.898Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 64,
+              "Title": "MovieExtraPagesNavArgs.cs",
+              "DocumentMoniker": "A:\\facultate\\an 2 sem 2\\iss\\TOB\\UBB-SE-2026-TryingOurBest\\MovieShop\\Models\\NavArgs\\MovieExtraPagesNavArgs.cs",
+              "RelativeDocumentMoniker": "MovieShop\\Models\\NavArgs\\MovieExtraPagesNavArgs.cs",
+              "ToolTip": "A:\\facultate\\an 2 sem 2\\iss\\TOB\\UBB-SE-2026-TryingOurBest\\MovieShop\\Models\\NavArgs\\MovieExtraPagesNavArgs.cs",
+              "RelativeToolTip": "MovieShop\\Models\\NavArgs\\MovieExtraPagesNavArgs.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-26T18:45:58.691Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 65,
+              "Title": "MovieShop",
+              "DocumentMoniker": "A:\\facultate\\an 2 sem 2\\iss\\TOB\\UBB-SE-2026-TryingOurBest\\MovieShop\\MovieShop.csproj",
+              "RelativeDocumentMoniker": "MovieShop\\MovieShop.csproj",
+              "ToolTip": "A:\\facultate\\an 2 sem 2\\iss\\TOB\\UBB-SE-2026-TryingOurBest\\MovieShop\\MovieShop.csproj",
+              "RelativeToolTip": "MovieShop\\MovieShop.csproj",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2026-03-26T18:45:55.775Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 66,
               "Title": "dbo.Events.sql",
               "DocumentMoniker": "ViewDataWindow_MSSQL__/_LocalDB__MSSQLLocalDB/C__USERS_MARIUS_SOURCE_REPOS_SE_MOVIES_UBB_SE_2026_VIBECODERS_MOVIESHOP_MOVIESHOPDB.MDF/True/SqlTable/dbo.Events.sql",
               "ToolTip": "ViewDataWindow_MSSQL__/_LocalDB__MSSQLLocalDB/C__USERS_MARIUS_SOURCE_REPOS_SE_MOVIES_UBB_SE_2026_VIBECODERS_MOVIESHOP_MOVIESHOPDB.MDF/True/SqlTable/dbo.Events.sql",
@@ -262,79 +1213,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "MainPage.xaml.cs",
-              "DocumentMoniker": "C:\\Users\\marius\\source\\repos\\SE_Movies\\UBB-SE-2026-VibeCoders\\MovieShop\\Views\\MainPage.xaml.cs",
-              "RelativeDocumentMoniker": "MovieShop\\Views\\MainPage.xaml.cs",
-              "ToolTip": "C:\\Users\\marius\\source\\repos\\SE_Movies\\UBB-SE-2026-VibeCoders\\MovieShop\\Views\\MainPage.xaml.cs",
-              "RelativeToolTip": "MovieShop\\Views\\MainPage.xaml.cs",
-              "ViewState": "AgIAAIUAAAAAAAAAAAAiwJMAAAANAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-26T14:05:26.218Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "MainPage.xaml",
-              "DocumentMoniker": "C:\\Users\\marius\\source\\repos\\SE_Movies\\UBB-SE-2026-VibeCoders\\MovieShop\\Views\\MainPage.xaml",
-              "RelativeDocumentMoniker": "MovieShop\\Views\\MainPage.xaml",
-              "ToolTip": "C:\\Users\\marius\\source\\repos\\SE_Movies\\UBB-SE-2026-VibeCoders\\MovieShop\\Views\\MainPage.xaml",
-              "RelativeToolTip": "MovieShop\\Views\\MainPage.xaml",
-              "ViewState": "AgIAAEoAAAAAAAAAAAAAAFsAAABDAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2026-03-25T20:58:55.736Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 11,
-              "Title": "MovieCatalogPage.xaml",
-              "DocumentMoniker": "C:\\Users\\marius\\source\\repos\\SE_Movies\\UBB-SE-2026-VibeCoders\\MovieShop\\Views\\MovieCatalogPage.xaml",
-              "RelativeDocumentMoniker": "MovieShop\\Views\\MovieCatalogPage.xaml",
-              "ToolTip": "C:\\Users\\marius\\source\\repos\\SE_Movies\\UBB-SE-2026-VibeCoders\\MovieShop\\Views\\MovieCatalogPage.xaml",
-              "RelativeToolTip": "MovieShop\\Views\\MovieCatalogPage.xaml",
-              "ViewState": "AgIAADYAAAAAAAAAAAD4v0YAAAA9AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2026-03-26T12:24:16.888Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 10,
-              "Title": "MovieCatalogPage.xaml.cs",
-              "DocumentMoniker": "C:\\Users\\marius\\source\\repos\\SE_Movies\\UBB-SE-2026-VibeCoders\\MovieShop\\Views\\MovieCatalogPage.xaml.cs",
-              "RelativeDocumentMoniker": "MovieShop\\Views\\MovieCatalogPage.xaml.cs",
-              "ToolTip": "C:\\Users\\marius\\source\\repos\\SE_Movies\\UBB-SE-2026-VibeCoders\\MovieShop\\Views\\MovieCatalogPage.xaml.cs",
-              "RelativeToolTip": "MovieShop\\Views\\MovieCatalogPage.xaml.cs",
-              "ViewState": "AgIAAGwAAAAAAAAAAAAEwHoAAAA/AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-26T12:27:05.897Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 12,
-              "Title": "Movie.cs",
-              "DocumentMoniker": "C:\\Users\\marius\\source\\repos\\SE_Movies\\UBB-SE-2026-VibeCoders\\MovieShop\\Models\\Movie.cs",
-              "RelativeDocumentMoniker": "MovieShop\\Models\\Movie.cs",
-              "ToolTip": "C:\\Users\\marius\\source\\repos\\SE_Movies\\UBB-SE-2026-VibeCoders\\MovieShop\\Models\\Movie.cs",
-              "RelativeToolTip": "MovieShop\\Models\\Movie.cs",
-              "ViewState": "AgIAABIAAAAAAAAAAABBwBsAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-26T12:39:02.261Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 13,
-              "Title": "MovieViewModel.cs",
-              "DocumentMoniker": "C:\\Users\\marius\\source\\repos\\SE_Movies\\UBB-SE-2026-VibeCoders\\MovieShop\\ViewModels\\MovieViewModel.cs",
-              "RelativeDocumentMoniker": "MovieShop\\ViewModels\\MovieViewModel.cs",
-              "ToolTip": "C:\\Users\\marius\\source\\repos\\SE_Movies\\UBB-SE-2026-VibeCoders\\MovieShop\\ViewModels\\MovieViewModel.cs",
-              "RelativeToolTip": "MovieShop\\ViewModels\\MovieViewModel.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAFAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-25T23:51:53.795Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 14,
+              "DocumentIndex": 67,
               "Title": "dbo.Reviews.sql",
               "DocumentMoniker": "ViewDataWindow_MSSQL__/_LocalDB__MSSQLLocalDB/C__USERS_MARIUS_SOURCE_REPOS_SE_MOVIES_UBB_SE_2026_VIBECODERS_MOVIESHOP_MOVIESHOPDB.MDF/True/SqlTable/dbo.Reviews.sql",
               "ToolTip": "ViewDataWindow_MSSQL__/_LocalDB__MSSQLLocalDB/C__USERS_MARIUS_SOURCE_REPOS_SE_MOVIES_UBB_SE_2026_VIBECODERS_MOVIESHOP_MOVIESHOPDB.MDF/True/SqlTable/dbo.Reviews.sql",
@@ -343,30 +1222,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 15,
-              "Title": "Tables.sql",
-              "DocumentMoniker": "C:\\Users\\marius\\source\\repos\\SE_Movies\\UBB-SE-2026-VibeCoders\\MovieShop\\Queries\\Tables.sql",
-              "RelativeDocumentMoniker": "MovieShop\\Queries\\Tables.sql",
-              "ToolTip": "C:\\Users\\marius\\source\\repos\\SE_Movies\\UBB-SE-2026-VibeCoders\\MovieShop\\Queries\\Tables.sql",
-              "RelativeToolTip": "MovieShop\\Queries\\Tables.sql",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000826|",
-              "WhenOpened": "2026-03-25T23:59:14.361Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 17,
-              "Title": "MovieShopView.xaml.cs",
-              "DocumentMoniker": "C:\\Users\\marius\\source\\repos\\SE_Movies\\UBB-SE-2026-VibeCoders\\MovieShop\\Views\\MovieShopView.xaml.cs",
-              "RelativeDocumentMoniker": "MovieShop\\Views\\MovieShopView.xaml.cs",
-              "ToolTip": "C:\\Users\\marius\\source\\repos\\SE_Movies\\UBB-SE-2026-VibeCoders\\MovieShop\\Views\\MovieShopView.xaml.cs",
-              "RelativeToolTip": "MovieShop\\Views\\MovieShopView.xaml.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAA5AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-26T12:42:06.952Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 16,
+              "DocumentIndex": 68,
               "Title": "dbo.Movies.sql",
               "DocumentMoniker": "ViewDataWindow_MSSQL__/_LocalDB__MSSQLLocalDB/C__USERS_MARIUS_SOURCE_REPOS_SE_MOVIES_UBB_SE_2026_VIBECODERS_MOVIESHOP_MOVIESHOPDB.MDF/True/SqlTable/dbo.Movies.sql",
               "ToolTip": "ViewDataWindow_MSSQL__/_LocalDB__MSSQLLocalDB/C__USERS_MARIUS_SOURCE_REPOS_SE_MOVIES_UBB_SE_2026_VIBECODERS_MOVIESHOP_MOVIESHOPDB.MDF/True/SqlTable/dbo.Movies.sql",
@@ -375,43 +1231,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 18,
-              "Title": "MovieShopView.xaml",
-              "DocumentMoniker": "C:\\Users\\marius\\source\\repos\\SE_Movies\\UBB-SE-2026-VibeCoders\\MovieShop\\Views\\MovieShopView.xaml",
-              "RelativeDocumentMoniker": "MovieShop\\Views\\MovieShopView.xaml",
-              "ToolTip": "C:\\Users\\marius\\source\\repos\\SE_Movies\\UBB-SE-2026-VibeCoders\\MovieShop\\Views\\MovieShopView.xaml",
-              "RelativeToolTip": "MovieShop\\Views\\MovieShopView.xaml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAXAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2026-03-25T23:37:37.452Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 19,
-              "Title": "MainViewModel.cs",
-              "DocumentMoniker": "C:\\Users\\marius\\source\\repos\\SE_Movies\\UBB-SE-2026-VibeCoders\\MovieShop\\ViewModels\\MainViewModel.cs",
-              "RelativeDocumentMoniker": "MovieShop\\ViewModels\\MainViewModel.cs",
-              "ToolTip": "C:\\Users\\marius\\source\\repos\\SE_Movies\\UBB-SE-2026-VibeCoders\\MovieShop\\ViewModels\\MainViewModel.cs",
-              "RelativeToolTip": "MovieShop\\ViewModels\\MainViewModel.cs",
-              "ViewState": "AgIAAAsAAAAAAAAAAAAgwAkAAAARAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-25T21:23:53.906Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 20,
-              "Title": "WalletView.xaml",
-              "DocumentMoniker": "C:\\Users\\marius\\source\\repos\\SE_Movies\\UBB-SE-2026-VibeCoders\\MovieShop\\Views\\WalletView.xaml",
-              "RelativeDocumentMoniker": "MovieShop\\Views\\WalletView.xaml",
-              "ToolTip": "C:\\Users\\marius\\source\\repos\\SE_Movies\\UBB-SE-2026-VibeCoders\\MovieShop\\Views\\WalletView.xaml",
-              "RelativeToolTip": "MovieShop\\Views\\WalletView.xaml",
-              "ViewState": "AgIAACQAAAAAAAAAAAAAABMAAAAwAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2026-03-26T12:18:38.717Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 22,
+              "DocumentIndex": 69,
               "Title": "dbo.Users.sql",
               "DocumentMoniker": "ViewDataWindow_MSSQL__/_LocalDB__MSSQLLocalDB/C__USERS_MARIUS_SOURCE_REPOS_SE_MOVIES_UBB_SE_2026_VIBECODERS_MOVIESHOP_MOVIESHOPDB.MDF/True/SqlTable/dbo.Users.sql",
               "ToolTip": "ViewDataWindow_MSSQL__/_LocalDB__MSSQLLocalDB/C__USERS_MARIUS_SOURCE_REPOS_SE_MOVIES_UBB_SE_2026_VIBECODERS_MOVIESHOP_MOVIESHOPDB.MDF/True/SqlTable/dbo.Users.sql",
@@ -420,84 +1240,12 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 21,
-              "Title": "UserRepo.cs",
-              "DocumentMoniker": "C:\\Users\\marius\\source\\repos\\SE_Movies\\UBB-SE-2026-VibeCoders\\MovieShop\\Repositories\\UserRepo.cs",
-              "RelativeDocumentMoniker": "MovieShop\\Repositories\\UserRepo.cs",
-              "ToolTip": "C:\\Users\\marius\\source\\repos\\SE_Movies\\UBB-SE-2026-VibeCoders\\MovieShop\\Repositories\\UserRepo.cs",
-              "RelativeToolTip": "MovieShop\\Repositories\\UserRepo.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-25T23:49:53.693Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 23,
-              "Title": "MainWindowViewModel.cs",
-              "DocumentMoniker": "C:\\Users\\marius\\source\\repos\\SE_Movies\\UBB-SE-2026-VibeCoders\\MovieShop\\ViewModels\\MainWindowViewModel.cs",
-              "RelativeDocumentMoniker": "MovieShop\\ViewModels\\MainWindowViewModel.cs",
-              "ToolTip": "C:\\Users\\marius\\source\\repos\\SE_Movies\\UBB-SE-2026-VibeCoders\\MovieShop\\ViewModels\\MainWindowViewModel.cs",
-              "RelativeToolTip": "MovieShop\\ViewModels\\MainWindowViewModel.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-25T23:49:15.569Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 25,
+              "DocumentIndex": 70,
               "Title": "dbo.ActiveSales.sql",
               "DocumentMoniker": "ViewDataWindow_MSSQL__/_LocalDB__MSSQLLocalDB/C__USERS_MARIUS_SOURCE_REPOS_SE_MOVIES_UBB_SE_2026_VIBECODERS_MOVIESHOP_MOVIESHOPDB.MDF/True/SqlTable/dbo.ActiveSales.sql",
               "ToolTip": "ViewDataWindow_MSSQL__/_LocalDB__MSSQLLocalDB/C__USERS_MARIUS_SOURCE_REPOS_SE_MOVIES_UBB_SE_2026_VIBECODERS_MOVIESHOP_MOVIESHOPDB.MDF/True/SqlTable/dbo.ActiveSales.sql",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000826|",
               "WhenOpened": "2026-03-25T23:48:49.323Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 24,
-              "Title": "ActiveSalesRepo.cs",
-              "DocumentMoniker": "C:\\Users\\marius\\source\\repos\\SE_Movies\\UBB-SE-2026-VibeCoders\\MovieShop\\Repositories\\ActiveSalesRepo.cs",
-              "RelativeDocumentMoniker": "MovieShop\\Repositories\\ActiveSalesRepo.cs",
-              "ToolTip": "C:\\Users\\marius\\source\\repos\\SE_Movies\\UBB-SE-2026-VibeCoders\\MovieShop\\Repositories\\ActiveSalesRepo.cs",
-              "RelativeToolTip": "MovieShop\\Repositories\\ActiveSalesRepo.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAAhAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-25T21:23:38.658Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 26,
-              "Title": "FlashSaleBanner.xaml",
-              "DocumentMoniker": "C:\\Users\\marius\\source\\repos\\SE_Movies\\UBB-SE-2026-VibeCoders\\MovieShop\\Views\\FlashSaleBanner.xaml",
-              "RelativeDocumentMoniker": "MovieShop\\Views\\FlashSaleBanner.xaml",
-              "ToolTip": "C:\\Users\\marius\\source\\repos\\SE_Movies\\UBB-SE-2026-VibeCoders\\MovieShop\\Views\\FlashSaleBanner.xaml",
-              "RelativeToolTip": "MovieShop\\Views\\FlashSaleBanner.xaml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAqAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2026-03-25T21:19:20.645Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 27,
-              "Title": "FlashSaleBanner.xaml.cs",
-              "DocumentMoniker": "C:\\Users\\marius\\source\\repos\\SE_Movies\\UBB-SE-2026-VibeCoders\\MovieShop\\Views\\FlashSaleBanner.xaml.cs",
-              "RelativeDocumentMoniker": "MovieShop\\Views\\FlashSaleBanner.xaml.cs",
-              "ToolTip": "C:\\Users\\marius\\source\\repos\\SE_Movies\\UBB-SE-2026-VibeCoders\\MovieShop\\Views\\FlashSaleBanner.xaml.cs",
-              "RelativeToolTip": "MovieShop\\Views\\FlashSaleBanner.xaml.cs",
-              "ViewState": "AgIAAAkAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-25T21:21:56.441Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 28,
-              "Title": "FlashSaleViewModel.cs",
-              "DocumentMoniker": "C:\\Users\\marius\\source\\repos\\SE_Movies\\UBB-SE-2026-VibeCoders\\MovieShop\\ViewModels\\FlashSaleViewModel.cs",
-              "RelativeDocumentMoniker": "MovieShop\\ViewModels\\FlashSaleViewModel.cs",
-              "ToolTip": "C:\\Users\\marius\\source\\repos\\SE_Movies\\UBB-SE-2026-VibeCoders\\MovieShop\\ViewModels\\FlashSaleViewModel.cs",
-              "RelativeToolTip": "MovieShop\\ViewModels\\FlashSaleViewModel.cs",
-              "ViewState": "AgIAAD0AAAAAAAAAAAAmwFkAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-25T21:11:08.631Z"
             }
           ]
         }

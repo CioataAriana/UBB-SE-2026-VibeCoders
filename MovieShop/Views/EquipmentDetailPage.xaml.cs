@@ -11,6 +11,7 @@ namespace MovieShop.Views
     public sealed partial class EquipmentDetailPage : Page
     {
         private readonly EquipmentRepo _repo = new EquipmentRepo();
+        private readonly UserRepo _userRepo = new UserRepo();
         private Equipment _selectedItem;
 
         public EquipmentDetailPage(Equipment item)
@@ -36,37 +37,37 @@ namespace MovieShop.Views
                 {
                     ItemImage.Source = new Microsoft.UI.Xaml.Media.Imaging.BitmapImage(new Uri(_selectedItem.ImageUrl));
                 }
-                catch { /* Imagine invalidă */ }
+                catch { }
             }
 
-            bool canAfford = SessionManager.CurrentUserBalance >= _selectedItem.Price;
+            // Always fetch balance from DB so the check is never based on a stale cached value.
+            var currentBalance = _userRepo.GetBalance(SessionManager.CurrentUserID);
+            SessionManager.CurrentUserBalance = currentBalance;
+
+            bool canAfford = currentBalance >= _selectedItem.Price;
             ConfirmBuyButton.IsEnabled = canAfford;
             ErrorText.Visibility = canAfford ? Visibility.Collapsed : Visibility.Visible;
-            if (!canAfford) ErrorText.Text = "Insufficient funds in your wallet.";
+            if (!canAfford)
+                ErrorText.Text = $"Insufficient funds. Balance: {currentBalance:C} — Price: {_selectedItem.Price:C}";
         }
 
         private void BuyButton_Click(object sender, RoutedEventArgs e) => ShippingModal.Visibility = Visibility.Visible;
         private void CancelShipping_Click(object sender, RoutedEventArgs e) => ShippingModal.Visibility = Visibility.Collapsed;
 
-        private void ConfirmShipping_Click(object sender, RoutedEventArgs e)
+        private async void ConfirmShipping_Click(object sender, RoutedEventArgs e)
         {
             ModalErrorText.Visibility = Visibility.Collapsed;
             string error = "";
 
-            // 1. Validare Nume
             if (string.IsNullOrWhiteSpace(ModalNameInput.Text))
                 error += "- Name is required.\n";
 
-            // 2. Validare Adresă (minim 10 caractere)
             if (ModalAddressInput.Text.Length < 10)
                 error += "- Address too short (min 10 chars).\n";
 
-            // 3. Validare Telefon (Trebuie să fie exact 10 cifre)
             string phone = ModalPhoneInput.Text.Trim();
             if (phone.Length != 10 || !phone.All(char.IsDigit))
-            {
                 error += "- Phone must be exactly 10 digits.\n";
-            }
 
             if (!string.IsNullOrEmpty(error))
             {
@@ -84,22 +85,25 @@ namespace MovieShop.Views
                     ModalAddressInput.Text
                 );
 
-                if (App._window.Content is MovieShop.Views.NavigationPage navPage)
-                {
-                    navPage.ViewModel.Balance -= _selectedItem.Price;
-
-                    if (navPage.ViewModel.CurrentViewModel is WalletViewModel walletVM)
-                    {
-                        walletVM.Balance = navPage.ViewModel.Balance;
-                        _ = walletVM.LoadTransactionsAsync();
-                    }
-                }
+                // Refresh nav bar balance and wallet transaction list.
+                if (App._window.Content is NavigationPage navPage)
+                    navPage.ViewModel.RefreshWallet();
 
                 ShippingModal.Visibility = Visibility.Collapsed;
-                if (this.Parent is ContentControl contentArea)
+
+                // Show success message before navigating away.
+                var dialog = new ContentDialog
                 {
+                    Title = "Purchase successful",
+                    Content = $"\"{_selectedItem.Title}\" has been purchased and added to your inventory.",
+                    PrimaryButtonText = "OK",
+                    DefaultButton = ContentDialogButton.Primary,
+                    XamlRoot = XamlRoot
+                };
+                await dialog.ShowAsync();
+
+                if (this.Parent is ContentControl contentArea)
                     contentArea.Content = new MarketplacePage();
-                }
             }
             catch (Exception ex)
             {
@@ -111,9 +115,7 @@ namespace MovieShop.Views
         private void BackButton_Click(object sender, RoutedEventArgs e)
         {
             if (this.Parent is ContentControl contentArea)
-            {
                 contentArea.Content = new MarketplacePage();
-            }
         }
     }
 }

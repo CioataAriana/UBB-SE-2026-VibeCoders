@@ -106,6 +106,16 @@ namespace MovieShop.ViewModels
             _walletViewModel.Balance = b;
         }
 
+        /// <summary>
+        /// Refreshes both the nav bar balance and the wallet view model (balance + transaction list).
+        /// Call this after any purchase so the wallet stays in sync regardless of which page is active.
+        /// </summary>
+        public void RefreshWallet()
+        {
+            RefreshBalanceFromDatabase();
+            _ = _walletViewModel.LoadTransactionsAsync();
+        }
+
         private void NavigateToShop() => CurrentViewModel = "Shop";
         private void NavigateToWallet() => CurrentViewModel = _walletViewModel;
         private void NavigateToMarketplace() => CurrentViewModel = "Marketplace";

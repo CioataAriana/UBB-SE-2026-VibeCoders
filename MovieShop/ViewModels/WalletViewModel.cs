@@ -3,6 +3,7 @@ using System.ComponentModel;
 using System.Linq;
 using System.Threading.Tasks;
 using MovieShop.Models;
+using MovieShop.Repositories;
 using CommunityToolkit.Mvvm.Input;
 
 namespace MovieShop.ViewModels
@@ -22,9 +23,9 @@ namespace MovieShop.ViewModels
             get => _balance;
             set
             {
-                _balance = value; OnPropertyChanged(nameof(Balance));
+                _balance = value;
+                OnPropertyChanged(nameof(Balance));
                 OnPropertyChanged(nameof(DisplayBalance));
-
             }
         }
         public string DisplayBalance => Balance.ToString("C");
@@ -106,6 +107,10 @@ namespace MovieShop.ViewModels
         public IRelayCommand TopUpCommand { get; }
         public IAsyncRelayCommand LoadTransactionsCommand { get; }
 
+        // --- Repos ---
+        private readonly TransactionRepo _transactionRepo = new TransactionRepo();
+        private readonly UserRepo _userRepo = new UserRepo();
+
         // --- Constructor ---
         public WalletViewModel(int userID, decimal currentBalance)
         {
@@ -117,10 +122,6 @@ namespace MovieShop.ViewModels
         }
 
         // --- Load Transactions ---
-        // 1. Add the field
-        private readonly MovieShop.Repositories.TransactionRepo _transactionRepo = new MovieShop.Repositories.TransactionRepo();
-
-        // 2. Update LoadTransactionsAsync
         public async Task LoadTransactionsAsync()
         {
             IsLoading = true;
@@ -128,14 +129,11 @@ namespace MovieShop.ViewModels
 
             try
             {
-                // Offload DB work to a background thread to keep UI smooth
                 var result = await Task.Run(() => _transactionRepo.GetTransactionsByUserId(_currentUserID));
 
                 Transactions.Clear();
                 foreach (var t in result)
-                {
                     Transactions.Add(t);
-                }
             }
             catch (System.Exception ex)
             {
@@ -147,7 +145,6 @@ namespace MovieShop.ViewModels
             }
         }
 
-        // 3. Update LogTopUpTransaction to use the repo
         private void LogTopUpTransaction(decimal amount)
         {
             var transaction = new Transaction
@@ -159,12 +156,11 @@ namespace MovieShop.ViewModels
                 Timestamp = System.DateTime.Now
             };
 
-            // Save to DB
             Task.Run(() => _transactionRepo.LogTransaction(transaction));
 
-            // Also add to the local list so the UI updates immediately
             Transactions.Insert(0, transaction);
-        }        // --- Sort Transactions by Date Descending ---
+        }
+
         private void SortTransactions()
         {
             var sorted = Transactions.OrderByDescending(t => t.Timestamp).ToList();
@@ -198,7 +194,6 @@ namespace MovieShop.ViewModels
                 return false;
             }
 
-            // Only letters and spaces allowed
             foreach (char c in CardHolderName)
             {
                 if (!char.IsLetter(c) && c != ' ')
@@ -208,7 +203,6 @@ namespace MovieShop.ViewModels
                 }
             }
 
-            // Must have at least two words (first and last name)
             var parts = CardHolderName.Trim().Split(' ');
             if (parts.Length < 2 || string.IsNullOrWhiteSpace(parts[0]) || string.IsNullOrWhiteSpace(parts[1]))
             {
@@ -216,7 +210,6 @@ namespace MovieShop.ViewModels
                 return false;
             }
 
-            // Each name part must be at least 2 characters
             foreach (var part in parts)
             {
                 if (part.Length < 2)
@@ -268,10 +261,8 @@ namespace MovieShop.ViewModels
         private void UpdateBalance(decimal amount)
         {
             Balance += amount;
-            OnPropertyChanged(nameof(Balance));
-            // TODO: call UserRepository.UpdateBalance(_currentUserID, Balance)
+            _userRepo.UpdateBalance(_currentUserID, Balance);
         }
-
 
         private void ClearForm()
         {
@@ -285,8 +276,8 @@ namespace MovieShop.ViewModels
         public void OnTransactionCompleted(decimal amount)
         {
             Balance += amount;
-            OnPropertyChanged(nameof(Balance));
-            // TODO: refresh transaction list from DB
+            _userRepo.UpdateBalance(_currentUserID, Balance);
+            _ = LoadTransactionsAsync();
         }
     }
 }

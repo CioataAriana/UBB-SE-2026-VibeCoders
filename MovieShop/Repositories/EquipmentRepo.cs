@@ -10,9 +10,6 @@ namespace MovieShop.Repositories
     {
         DatabaseSingleton _db = DatabaseSingleton.Instance;
 
-        /// <summary>
-        /// Aduce toate echipamentele disponibile.
-        /// </summary>
         public List<Equipment> FetchAvailableEquipment()
         {
             var items = new List<Equipment>();
@@ -53,9 +50,6 @@ namespace MovieShop.Repositories
             return items;
         }
 
-        /// <summary>
-        /// Adaugă un echipament nou (Listare).
-        /// </summary>
         public void ListItem(Equipment item)
         {
             string query = @"INSERT INTO Equipment (SellerID, Title, Price, Status, Description, ImageUrl, Category, Condition) 
@@ -75,9 +69,6 @@ namespace MovieShop.Repositories
             _db.CloseConnection();
         }
 
-        /// <summary>
-        /// Tranzacție complexă: Scade banii, vinde produsul, loghează tranzacția.
-        /// </summary>
         public void PurchaseEquipment(int equipmentId, int buyerId, decimal price, string address)
         {
             _db.OpenConnection();
@@ -85,31 +76,27 @@ namespace MovieShop.Repositories
 
             try
             {
-                // 1. Scădem balanța cumpărătorului (Folosim coloana 'Balance' din clasa User)
+                // 1. Deduct buyer balance
                 string deductSql = "UPDATE Users SET Balance = Balance - @price WHERE ID = @bid";
                 SqlCommand cmd1 = new SqlCommand(deductSql, _db.Connection, sqlTrans);
                 cmd1.Parameters.AddWithValue("@price", price);
                 cmd1.Parameters.AddWithValue("@bid", buyerId);
                 cmd1.ExecuteNonQuery();
 
-                // 2. Marcăm produsul ca fiind vândut
+                // 2. Mark equipment as sold
                 string updateEquip = "UPDATE Equipment SET Status = 'Sold' WHERE ID = @eid";
                 SqlCommand cmd2 = new SqlCommand(updateEquip, _db.Connection, sqlTrans);
                 cmd2.Parameters.AddWithValue("@eid", equipmentId);
                 cmd2.ExecuteNonQuery();
 
-                // 3. Creăm înregistrarea în tabelul Transactions
-                // NOTA: Am adăugat SELECT-ul pentru a prelua automat SellerID-ul din tabelul Equipment
-                // 3. Creăm înregistrarea în tabelul Transactions
-                    
+                // 3. Log transaction — store amount as negative so the wallet shows it as a debit (-)
                 string logTrans = @"INSERT INTO Transactions (BuyerID, SellerID, EquipmentID, Amount, Status, ShippingAddress, Type, Timestamp) 
-                                SELECT @bid, SellerID, ID, @price, 'Completed', @addr, 'Marketplace', GETDATE()
+                                    SELECT @bid, SellerID, ID, @amount, 'Completed', @addr, 'EquipmentPurchase', GETDATE()
                                     FROM Equipment WHERE ID = @eid";
 
                 SqlCommand cmd3 = new SqlCommand(logTrans, _db.Connection, sqlTrans);
-
                 cmd3.Parameters.AddWithValue("@bid", buyerId);
-                cmd3.Parameters.AddWithValue("@price", price);
+                cmd3.Parameters.AddWithValue("@amount", -price);
                 cmd3.Parameters.AddWithValue("@addr", address);
                 cmd3.Parameters.AddWithValue("@eid", equipmentId);
                 cmd3.ExecuteNonQuery();

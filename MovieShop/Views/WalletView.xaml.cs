@@ -10,23 +10,14 @@ namespace MovieShop.Views
         public WalletView()
         {
             this.InitializeComponent();
-            LoadIfEmpty();
+            _ = ViewModel.LoadTransactionsAsync();
         }
 
         public WalletView(WalletViewModel viewModel)
         {
             ViewModel = viewModel;
             this.InitializeComponent();
-            LoadIfEmpty();
-        }
-
-        private void LoadIfEmpty()
-        {
-            // Only load mock data if no transactions exist yet
-            if (ViewModel.Transactions.Count == 0)
-            {
-                _ = ViewModel.LoadTransactionsAsync();
-            }
+            _ = ViewModel.LoadTransactionsAsync();
         }
     }
 }
