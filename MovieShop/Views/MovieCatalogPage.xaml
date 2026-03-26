@@ -64,19 +64,42 @@
                                 PointerEntered="MovieCard_PointerEntered"
                                 PointerExited="MovieCard_PointerExited">
                             <StackPanel Spacing="8" Padding="10">
-                                <Border Height="260" Background="#1A1A1A" CornerRadius="6">
-                                    <Image Source="{x:Bind ImageUrl}" Stretch="UniformToFill"/>
-                                </Border>
+
+                                <Grid Height="260">
+                                    <Border Background="#1A1A1A" CornerRadius="6">
+                                        <Image Source="{x:Bind ImageUrl}" Stretch="UniformToFill"/>
+                                    </Border>
+
+                                    <Border Background="#CC5555" CornerRadius="12" Padding="8,4"
+                                            HorizontalAlignment="Left" VerticalAlignment="Top"
+                                            Margin="10,10,0,0"
+                                            Visibility="{x:Bind SaleVisibility, Mode=OneWay}">
+                                        <TextBlock Text="SALE" FontSize="12" FontWeight="Bold" Foreground="White"/>
+                                    </Border>
+                                </Grid>
+
                                 <TextBlock Text="{x:Bind Title}" Foreground="White" FontWeight="SemiBold" TextTrimming="CharacterEllipsis" MaxLines="2" TextWrapping="Wrap"/>
+
                                 <TextBlock Text="{x:Bind RatingAndReviewCountText, Mode=OneWay}"
                                            Foreground="#FFC107"
                                            FontWeight="SemiBold"
                                            TextWrapping="Wrap"/>
+
                                 <StackPanel Orientation="Horizontal" Spacing="8" VerticalAlignment="Center">
-                                    <StackPanel Orientation="Horizontal" Spacing="2">
-                                        <TextBlock Text="$" Foreground="#1DB954" FontWeight="Bold"/>
-                                        <TextBlock Text="{x:Bind OriginalPriceText, Mode=OneWay}" Foreground="#1DB954" FontWeight="Bold"/>
-                                    </StackPanel>
+
+                                    <TextBlock Text="{x:Bind OriginalPriceText, Mode=OneWay}" 
+                                               Foreground="Gray" 
+                                               FontSize="14" 
+                                               TextDecorations="Strikethrough"
+                                               VerticalAlignment="Center"
+                                               Visibility="{x:Bind SaleVisibility, Mode=OneWay}"/>
+
+                                    <TextBlock Text="{x:Bind CurrentPriceText, Mode=OneWay}" 
+                   Foreground="{x:Bind PriceColor, Mode=OneWay}" 
+                   FontSize="16" 
+                   FontWeight="Bold"
+                   VerticalAlignment="Center"/>
+
                                 </StackPanel>
                             </StackPanel>
                         </Border>

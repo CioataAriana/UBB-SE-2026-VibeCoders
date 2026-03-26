@@ -19,11 +19,24 @@ public sealed class MovieCatalogItem
     public int ID => Movie.ID;
     public string Title => Movie.Title;
     public string? ImageUrl => Movie.ImageUrl;
-    public string OriginalPriceText => Movie.OriginalPriceText;
     public double Rating => Movie.Rating;
     public int ReviewCount { get; }
 
     public string RatingAndReviewCountText => $"Ratings ({ReviewCount}): {Rating:0.0} / 10";
+
+    public bool IsOnSale => Movie.HasActiveSale;
+
+    public string OriginalPriceText => $"$ {Movie.Price:0.00}";
+
+    public string CurrentPriceText => $"$ {Movie.GetEffectivePrice():0.00}";
+
+    public Microsoft.UI.Xaml.Visibility SaleVisibility => IsOnSale
+        ? Microsoft.UI.Xaml.Visibility.Visible
+        : Microsoft.UI.Xaml.Visibility.Collapsed;
+
+    public Microsoft.UI.Xaml.Media.SolidColorBrush PriceColor => IsOnSale
+        ? new Microsoft.UI.Xaml.Media.SolidColorBrush(Microsoft.UI.Colors.IndianRed)
+        : new Microsoft.UI.Xaml.Media.SolidColorBrush(Windows.UI.Color.FromArgb(255, 29, 185, 84));
 
     public MovieCatalogItem(Movie movie, int reviewCount)
     {

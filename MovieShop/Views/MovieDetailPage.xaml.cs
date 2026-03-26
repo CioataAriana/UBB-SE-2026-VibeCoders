@@ -60,22 +60,18 @@ public sealed partial class MovieDetailPage : Page
         if (_movie == null)
             return;
 
-        PriceBlock.Inlines.Clear();
+        
+        PriceBlock.Text = $"${_movie.DiscountedPriceText}";
 
-        var label = new Run
+        if (_movie.HasActiveSale)
         {
-            Text = "Price: ",
-            Foreground = new SolidColorBrush(Microsoft.UI.Colors.White)
-        };
-        PriceBlock.Inlines.Add(label);
-
-        var only = new Run
+            OriginalPriceBlock.Visibility = Visibility.Visible;
+            OriginalPriceBlock.Text = $"${_movie.OriginalPriceText}";
+        }
+        else
         {
-            Text = _movie.Price.ToString("C"),
-            Foreground = new SolidColorBrush(Color.FromArgb(255, 29, 185, 84)),
-            FontWeight = FontWeights.Bold
-        };
-        PriceBlock.Inlines.Add(only);
+            OriginalPriceBlock.Visibility = Visibility.Collapsed;
+        }
     }
 
     private void TrySetPoster(string? url)
@@ -153,7 +149,7 @@ public sealed partial class MovieDetailPage : Page
         var confirm = new ContentDialog
         {
             Title = "Confirm purchase",
-            Content = $"Buy \"{_movie.Title}\" for {_movie.Price:C}? This will be charged to your balance.",
+            Content = $"Buy \"{_movie.Title}\" for {_movie.GetEffectivePrice():C}? This will be charged to your balance.",
             PrimaryButtonText = "Buy",
             CloseButtonText = "Cancel",
             DefaultButton = ContentDialogButton.Primary,
@@ -165,8 +161,7 @@ public sealed partial class MovieDetailPage : Page
 
         try
         {
-            await Task.Run(() => _movieRepo.PurchaseMovie(SessionManager.CurrentUserID, _movie.ID));
-
+            await Task.Run(() => _movieRepo.PurchaseMovie(SessionManager.CurrentUserID, _movie.ID, _movie.GetEffectivePrice()));
             _mainVm.RefreshBalanceFromDatabase();
             SessionManager.CurrentUserBalance = _mainVm.Balance;
 

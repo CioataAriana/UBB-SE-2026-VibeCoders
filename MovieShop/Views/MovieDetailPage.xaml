@@ -64,9 +64,23 @@
                                FontSize="18"
                                Foreground="#FFC107"/>
 
-                    <TextBlock x:Name="PriceBlock"
-                               FontSize="28"
-                               TextWrapping="Wrap"/>
+                    <StackPanel Orientation="Horizontal" Spacing="12" VerticalAlignment="Center" Margin="0,0,0,16">
+
+                        <TextBlock x:Name="OriginalPriceBlock"
+                                           Foreground="Gray"
+                                           FontSize="20"
+                                           TextDecorations="Strikethrough"
+                                           VerticalAlignment="Bottom"
+                                           Margin="0,0,0,3"
+                                           Visibility="Collapsed"/>
+
+                        <TextBlock x:Name="PriceBlock"
+                                        FontSize="28"
+                                        Foreground="#1DB954"
+                                        FontWeight="Bold"
+                                        TextWrapping="Wrap"/>
+
+                    </StackPanel>
 
                     <Button x:Name="BuyMovieButton"
                             Content="Buy movie"

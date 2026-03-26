@@ -79,7 +79,7 @@ namespace MovieShop.Repositories
             }
         }
 
-        public void PurchaseMovie(int userId, int movieId)
+        public void PurchaseMovie(int userId, int movieId, decimal finalPrice)
         {
             if (userId <= 0)
                 throw new InvalidOperationException("You must be logged in to purchase.");
@@ -88,6 +88,7 @@ namespace MovieShop.Repositories
             using var sqlTrans = _db.Connection.BeginTransaction();
             try
             {
+                //Check if they already own it
                 int ownedCount;
                 string checkOwned = @"SELECT COUNT(*) FROM OwnedMovies WHERE UserID = @uid AND MovieID = @mid";
                 using (var cmd = new SqlCommand(checkOwned, _db.Connection, sqlTrans))
@@ -100,21 +101,12 @@ namespace MovieShop.Repositories
                 if (ownedCount > 0)
                     throw new InvalidOperationException("You already own this movie.");
 
-                decimal basePrice;
-                string getPrice = @"SELECT Price FROM Movies WHERE ID = @mid";
-                using (var cmd = new SqlCommand(getPrice, _db.Connection, sqlTrans))
-                {
-                    cmd.Parameters.AddWithValue("@mid", movieId);
-                    var pr = cmd.ExecuteScalar();
-                    if (pr == null || pr == DBNull.Value) throw new InvalidOperationException("Movie not found.");
-                    basePrice = Convert.ToDecimal(pr);
-                }
-
+                // Deduct from wallet using the finalPrice passed from the UI
                 string deductSql = @"UPDATE Users SET Balance = Balance - @price WHERE ID = @uid AND Balance >= @price";
                 int updated;
                 using (var cmd = new SqlCommand(deductSql, _db.Connection, sqlTrans))
                 {
-                    cmd.Parameters.AddWithValue("@price", basePrice);
+                    cmd.Parameters.AddWithValue("@price", finalPrice);
                     cmd.Parameters.AddWithValue("@uid", userId);
                     updated = cmd.ExecuteNonQuery();
                 }
@@ -122,6 +114,7 @@ namespace MovieShop.Repositories
                 if (updated == 0)
                     throw new InvalidOperationException("Insufficient balance.");
 
+                // Insert into OwnedMovies
                 string insertOwned = @"INSERT INTO OwnedMovies (UserID, MovieID) VALUES (@uid, @mid)";
                 using (var cmd = new SqlCommand(insertOwned, _db.Connection, sqlTrans))
                 {
@@ -130,12 +123,13 @@ namespace MovieShop.Repositories
                     cmd.ExecuteNonQuery();
                 }
 
+                // log transaction using discounted finalPrice
                 string insertTx = @"INSERT INTO Transactions (BuyerID, SellerID, EquipmentID, MovieID, EventID, Amount, Type, Status, Timestamp, ShippingAddress) VALUES (@buyerID, NULL, NULL, @movieID, NULL, @amount, @type, @status, @timestamp, NULL)";
                 using (var cmd = new SqlCommand(insertTx, _db.Connection, sqlTrans))
                 {
                     cmd.Parameters.AddWithValue("@buyerID", userId);
                     cmd.Parameters.AddWithValue("@movieID", movieId);
-                    cmd.Parameters.AddWithValue("@amount", -basePrice);
+                    cmd.Parameters.AddWithValue("@amount", -finalPrice);
                     cmd.Parameters.AddWithValue("@type", "MoviePurchase");
                     cmd.Parameters.AddWithValue("@status", "Completed");
                     cmd.Parameters.AddWithValue("@timestamp", DateTime.Now);
@@ -154,7 +148,6 @@ namespace MovieShop.Repositories
                 _db.CloseConnection();
             }
         }
-
         private static Movie MapMovie(SqlDataReader reader)
         {
             return new Movie
