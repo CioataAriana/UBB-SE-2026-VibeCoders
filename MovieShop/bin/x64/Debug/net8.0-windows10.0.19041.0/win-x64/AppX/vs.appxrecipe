@@ -29,7 +29,7 @@
     <AppXManifest Include="C:\Users\marius\source\repos\SE_Movies\UBB-SE-2026-VibeCoders\MovieShop\bin\x64\Debug\net8.0-windows10.0.19041.0\win-x64\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2026-03-26T00:10:16.657</Modified>
+      <Modified>2026-03-26T00:24:47.299</Modified>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
@@ -39,11 +39,11 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\marius\source\repos\SE_Movies\UBB-SE-2026-VibeCoders\MovieShop\obj\x64\Debug\net8.0-windows10.0.19041.0\win-x64\apphost.exe">
       <PackagePath>MovieShop.exe</PackagePath>
-      <Modified>2026-03-26T00:10:16.007</Modified>
+      <Modified>2026-03-26T00:24:45.973</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\marius\source\repos\SE_Movies\UBB-SE-2026-VibeCoders\MovieShop\obj\x64\Debug\net8.0-windows10.0.19041.0\win-x64\MovieShop.dll">
       <PackagePath>MovieShop.dll</PackagePath>
-      <Modified>2026-03-26T00:10:15.991</Modified>
+      <Modified>2026-03-26T00:24:45.849</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\marius\.nuget\packages\microsoft.netcore.app.runtime.win-x64\8.0.23\runtimes\win-x64\lib\net8.0\Microsoft.CSharp.dll">
       <PackagePath>Microsoft.CSharp.dll</PackagePath>
