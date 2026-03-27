@@ -1,0 +1,158 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1" MembersFormat="NameAndType">
+  <Class Name="MovieShop.Models.MovieReviewsNavArgs">
+    <Position X="0.5" Y="2" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAEAAAAAAAACAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\NavArgs\MovieExtraPagesNavArgs.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MovieShop.Models.MovieEventsNavArgs">
+    <Position X="3.25" Y="0.5" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAEAAAAAAAACAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\NavArgs\MovieExtraPagesNavArgs.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MovieShop.Models.MovieCatalogNavArgs">
+    <Position X="9" Y="4.5" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAABAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\NavArgs\ShopNavigationArgs.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MovieShop.Models.MovieDetailNavArgs">
+    <Position X="0.5" Y="0.5" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAEAAAAAAAACAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\NavArgs\ShopNavigationArgs.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MovieShop.Models.ActiveSale">
+    <Position X="9" Y="6" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAIAAAAkAAAAAAAAAAAIAAgAAAAAAAAAAACAAA=</HashCode>
+      <FileName>Models\ActiveSale.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MovieShop.Models.Equipment">
+    <Position X="0.5" Y="5.25" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAQAAEAQCggEAAAAAAAAAAAAAAAAABAAAAAAAACAA=</HashCode>
+      <FileName>Models\Equipment.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MovieShop.Models.Movie">
+    <Position X="6" Y="0.5" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAYABAAQAggEAAQEBQAAAAAAAAAAEAAAAAAAAAIAA=</HashCode>
+      <FileName>Models\Movie.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MovieShop.Models.MovieEvent">
+    <Position X="6" Y="4.5" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAggEAAIAIAgAIAAAAAAAUBAAAAAAAAAAA=</HashCode>
+      <FileName>Models\MovieEvent.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MovieShop.Models.MovieReview">
+    <Position X="3.25" Y="2" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAABAAEAAAAgAAAASAAAAgAAAAAAAEAAACAAAAAAAA=</HashCode>
+      <FileName>Models\MovieReview.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MovieShop.Models.SessionManager">
+    <Position X="0.5" Y="3.5" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAgAAAAAIAAAAAAAAAAAAAAAAAACAAAAAAA=</HashCode>
+      <FileName>Models\SessionManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MovieShop.Models.Transaction">
+    <Position X="9" Y="0.5" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>ACACAAAEaAAAgAAAAAADAACAAAAAAgEhAQAAAAAAAAA=</HashCode>
+      <FileName>Models\Transaction.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MovieShop.Models.User">
+    <Position X="3.25" Y="5" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AACAAAAAACAAgAAAAQgAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\User.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MovieShop.Repositories.ActiveSalesRepo">
+    <Position X="15" Y="3.75" Width="4.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAgAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAgCAAA=</HashCode>
+      <FileName>Repositories\ActiveSalesRepo.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MovieShop.Repositories.DatabaseSingleton">
+    <Position X="16.75" Y="0.75" Width="5.5" />
+    <TypeIdentifier>
+      <HashCode>AAAEAAAAAAAAAAEAAAAAABAAAQAAAAAAQAAAAAAABAA=</HashCode>
+      <FileName>Repositories\DatabaseSingleton.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MovieShop.Repositories.EquipmentRepo">
+    <Position X="19.75" Y="3.75" Width="4.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAgAAAAAAAAAAABQAAAAAAAIAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Repositories\EquipmentRepo.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MovieShop.Repositories.EventRepo">
+    <Position X="15" Y="6" Width="4.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAgAAABAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAABAg=</HashCode>
+      <FileName>Repositories\EventRepo.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MovieShop.Repositories.InventoryRepo">
+    <Position X="19" Y="7.75" Width="3" />
+    <TypeIdentifier>
+      <HashCode>AAAAgAAAAEAAAAAAAAAAAAAAAAAAAAEAAAAAAAABAAA=</HashCode>
+      <FileName>Repositories\InventoryRepo.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MovieShop.Repositories.MovieRepo">
+    <Position X="19.75" Y="6" Width="4.5" />
+    <TypeIdentifier>
+      <HashCode>AgAEgAAAAAAAAAAAAAAABAAAAAAAQAAIAAAAAAAABAA=</HashCode>
+      <FileName>Repositories\MovieRepo.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MovieShop.Repositories.ReviewRepo">
+    <Position X="17.25" Y="8.75" Width="3" />
+    <TypeIdentifier>
+      <HashCode>AAAAkAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Repositories\ReviewRepo.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MovieShop.Repositories.TransactionRepo">
+    <Position X="19" Y="8.75" Width="3.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAgAAAAAAAAAAAAAAACAAAAAAAAAAAABAAAAAAAAA=</HashCode>
+      <FileName>Repositories\TransactionRepo.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MovieShop.Repositories.UserRepo">
+    <Position X="20.75" Y="8.75" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAgAAAAAAAAAAAAAAAAAAAAAAAAAIACAAAAAAAAAA=</HashCode>
+      <FileName>Repositories\UserRepo.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Enum Name="MovieShop.Models.EquipmentStatus">
+    <Position X="0.5" Y="8" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAABBAAAAAAAAAAAAAIAAAAAA=</HashCode>
+      <FileName>Models\Equipment.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
