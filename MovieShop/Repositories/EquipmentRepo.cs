@@ -76,20 +76,17 @@ namespace MovieShop.Repositories
 
             try
             {
-                // 1. Deduct buyer balance
                 string deductSql = "UPDATE Users SET Balance = Balance - @price WHERE ID = @bid";
                 SqlCommand cmd1 = new SqlCommand(deductSql, _db.Connection, sqlTrans);
                 cmd1.Parameters.AddWithValue("@price", price);
                 cmd1.Parameters.AddWithValue("@bid", buyerId);
                 cmd1.ExecuteNonQuery();
 
-                // 2. Mark equipment as sold
                 string updateEquip = "UPDATE Equipment SET Status = 'Sold' WHERE ID = @eid";
                 SqlCommand cmd2 = new SqlCommand(updateEquip, _db.Connection, sqlTrans);
                 cmd2.Parameters.AddWithValue("@eid", equipmentId);
                 cmd2.ExecuteNonQuery();
 
-                // 3. Log transaction — store amount as negative so the wallet shows it as a debit (-)
                 string logTrans = @"INSERT INTO Transactions (BuyerID, SellerID, EquipmentID, Amount, Status, ShippingAddress, Type, Timestamp) 
                                     SELECT @bid, SellerID, ID, @amount, 'Completed', @addr, 'EquipmentPurchase', GETDATE()
                                     FROM Equipment WHERE ID = @eid";

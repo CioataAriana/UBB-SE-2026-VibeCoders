@@ -10,9 +10,6 @@ namespace MovieShop.Repositories
     {
         DatabaseSingleton _db = DatabaseSingleton.Instance;
 
-        /// <summary>
-        /// For each movie, the largest discount among all currently active sales (best price for the customer).
-        /// </summary>
         public Dictionary<int, decimal> GetBestDiscountPercentByMovieId()
         {
             var map = new Dictionary<int, decimal>();

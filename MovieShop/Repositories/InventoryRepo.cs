@@ -62,7 +62,7 @@ namespace MovieShop.Repositories
                 {
                     cmd.Parameters.AddWithValue("@buyerID", userId);
                     cmd.Parameters.AddWithValue("@movieID", movieId);
-                    cmd.Parameters.AddWithValue("@amount", 0); // removal does not affect balance by default
+                    cmd.Parameters.AddWithValue("@amount", 0); 
                     cmd.Parameters.AddWithValue("@type", "RemoveOwnedMovie");
                     cmd.Parameters.AddWithValue("@status", "Completed");
                     cmd.Parameters.AddWithValue("@timestamp", DateTime.Now);
