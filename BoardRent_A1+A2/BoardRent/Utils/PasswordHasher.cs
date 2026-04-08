@@ -25,11 +25,17 @@ namespace BoardRent.Utils
 
         public static bool VerifyPassword(string password, string hashedPasswordWithSalt)
         {
-            var parts = hashedPasswordWithSalt.Split(':');
-            if (parts.Length != 2) return false;
 
-            byte[] salt = Convert.FromBase64String(parts[0]);
-            byte[] storedHash = Convert.FromBase64String(parts[1]);
+            const int ExpectedComponentCount = 2;
+            const int SaltIndex = 0;
+            const int HashIndex = 1;
+
+            var hashComponents = hashedPasswordWithSalt.Split(':');
+            if (hashComponents.Length != ExpectedComponentCount) 
+                return false;
+
+            byte[] salt = Convert.FromBase64String(hashComponents[SaltIndex]);
+            byte[] storedHash = Convert.FromBase64String(hashComponents[HashIndex]);
 
             byte[] computedHash = Rfc2898DeriveBytes.Pbkdf2(password, salt, Iterations, HashAlgorithmName.SHA256, HashSize);
 

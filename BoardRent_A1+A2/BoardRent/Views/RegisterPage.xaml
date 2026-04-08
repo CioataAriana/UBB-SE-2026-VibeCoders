@@ -50,7 +50,11 @@
                         <ColumnDefinition Width="*"/>
                         <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
-                    <TextBox Header="Country (optional)" Text="{Binding Country, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Grid.Column="0" />
+                    <ComboBox Header="Country (optional)"
+                              SelectedItem="{Binding Country, Mode=TwoWay}"
+                              ItemsSource="{Binding AvailableCountries}"
+                              Grid.Column="0" 
+                              HorizontalAlignment="Stretch"/>
                     <TextBox Header="City (optional)" Text="{Binding City, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Grid.Column="1" />
                 </Grid>
 

@@ -99,11 +99,12 @@ namespace BoardRent.Repositories
         public async Task<List<User>> GetAllAsync(int page, int pageSize)
         {
             var users = new List<User>();
+            int offsetCalculation = (page - 1) * pageSize;
 
             using (var command = Connection.CreateCommand())
             {
                 command.CommandText = "SELECT * FROM [User] ORDER BY CreatedAt OFFSET @Offset ROWS FETCH NEXT @PageSize ROWS ONLY";
-                command.Parameters.AddWithValue("@Offset", (page - 1) * pageSize);
+                command.Parameters.AddWithValue("@Offset", offsetCalculation);
                 command.Parameters.AddWithValue("@PageSize", pageSize);
 
                 using (var reader = await command.ExecuteReaderAsync())
@@ -208,10 +209,10 @@ namespace BoardRent.Repositories
             using (var command = Connection.CreateCommand())
             {
                 command.CommandText = @"
-                    SELECT r.Id, r.Name
-                    FROM Role r
-                    INNER JOIN UserRoles ur ON ur.RoleId = r.Id
-                    WHERE ur.UserId = @UserId";
+                    SELECT Role.Id, Role.Name
+                    FROM Role
+                    INNER JOIN UserRoles ON UserRoles.RoleId = Role.Id
+                    WHERE UserRoles.UserId = @UserId";
                 command.Parameters.AddWithValue("@UserId", userId);
 
                 using (var reader = await command.ExecuteReaderAsync())

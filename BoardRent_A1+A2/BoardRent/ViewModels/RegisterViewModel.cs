@@ -3,7 +3,9 @@ using BoardRent.Services;
 using BoardRent.Views;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
+using CommunityToolkit.WinUI.UI.Controls.TextToolbarSymbols;
 using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace BoardRent.ViewModels
@@ -19,6 +21,13 @@ namespace BoardRent.ViewModels
         [ObservableProperty] private string confirmPassword = string.Empty;
         [ObservableProperty] private string phoneNumber = string.Empty;
         [ObservableProperty] private string country = string.Empty;
+        public List<string> AvailableCountries { get; } = new List<string>
+        {
+            "Romania",
+            "Germany",
+            "France"
+        };
+
         [ObservableProperty] private string city = string.Empty;
         [ObservableProperty] private string streetName = string.Empty;
         [ObservableProperty] private string streetNumber = string.Empty;
@@ -51,40 +60,9 @@ namespace BoardRent.ViewModels
         {
             ClearErrors();
 
-            bool hasClientError = false;
-
-            if (string.IsNullOrWhiteSpace(DisplayName))
-            {
-                DisplayNameError = "Display name is required.";
-                hasClientError = true;
-            }
-            if (string.IsNullOrWhiteSpace(Username))
-            {
-                UsernameError = "Username is required.";
-                hasClientError = true;
-            }
-            if (string.IsNullOrWhiteSpace(Email))
-            {
-                EmailError = "Email is required.";
-                hasClientError = true;
-            }
-            if (string.IsNullOrWhiteSpace(Password))
-            {
-                PasswordError = "Password is required.";
-                hasClientError = true;
-            }
-            if (string.IsNullOrWhiteSpace(ConfirmPassword))
-            {
-                ConfirmPasswordError = "Please confirm your password.";
-                hasClientError = true;
-            }
-
-            if (hasClientError)
-                return;
-
             IsLoading = true;
 
-            var registerDto = new RegisterDto
+            var registrationRequest = new RegisterDto
             {
                 DisplayName = this.DisplayName,
                 Username = this.Username,
@@ -98,34 +76,36 @@ namespace BoardRent.ViewModels
                 StreetNumber = this.StreetNumber
             };
 
-            var result = await _authService.RegisterAsync(registerDto);
+            var registrationResult = await _authService.RegisterAsync(registrationRequest);
 
-            if (result.Success)
+            if (registrationResult.Success)
             {
                 App.NavigateTo(typeof(ProfilePage), clearBackStack: true);
             }
             else
             {
-                var fieldErrors = result.Error.Split(';', StringSplitOptions.RemoveEmptyEntries);
-                foreach (var fe in fieldErrors)
+                const int MaximumSplitSubstrings = 2;
+                var parsedFieldErrors = registrationResult.Error.Split(';', StringSplitOptions.RemoveEmptyEntries);
+               
+                foreach (var fieldError in parsedFieldErrors)
                 {
-                    var parts = fe.Split('|', 2);
-                    if (parts.Length == 2)
+                    var errorComponents = fieldError.Split('|', MaximumSplitSubstrings);
+                    if (errorComponents.Length == MaximumSplitSubstrings)
                     {
-                        switch (parts[0])
+                        switch (errorComponents[0])
                         {
-                            case "DisplayName": DisplayNameError = parts[1]; break;
-                            case "Username": UsernameError = parts[1]; break;
-                            case "Email": EmailError = parts[1]; break;
-                            case "Password": PasswordError = parts[1]; break;
-                            case "ConfirmPassword": ConfirmPasswordError = parts[1]; break;
-                            case "PhoneNumber": PhoneNumberError = parts[1]; break;
-                            default: ErrorMessage = parts[1]; break;
+                            case "DisplayName": DisplayNameError = errorComponents[1]; break;
+                            case "Username": UsernameError = errorComponents[1]; break;
+                            case "Email": EmailError = errorComponents[1]; break;
+                            case "Password": PasswordError = errorComponents[1]; break;
+                            case "ConfirmPassword": ConfirmPasswordError = errorComponents[1]; break;
+                            case "PhoneNumber": PhoneNumberError = errorComponents[1]; break;
+                            default: ErrorMessage = errorComponents[1]; break;
                         }
                     }
                     else
                     {
-                        ErrorMessage = fe;
+                        ErrorMessage = fieldError;
                     }
                 }
             }

@@ -24,61 +24,66 @@ namespace BoardRent.Services
             _unitOfWorkFactory = unitOfWorkFactory;
         }
 
-        public async Task<ServiceResult<bool>> RegisterAsync(RegisterDto dto)
+        public async Task<ServiceResult<bool>> RegisterAsync(RegisterDto registrationRequest)
         {
-            var errors = new List<string>();
+            var validationErrors = new List<string>();
 
-            if (string.IsNullOrWhiteSpace(dto.DisplayName) || dto.DisplayName.Length < 2 || dto.DisplayName.Length > 50)
-                errors.Add("DisplayName|Display name must be between 2 and 50 characters long.");
+            const int MinimumDisplayNameLength = 2;
+            const int MaximumDisplayNameLength = 50;
+            const int MinimumUsernameLength = 3;
+            const int MaximumUsernameLength = 30;
 
-            if (string.IsNullOrWhiteSpace(dto.Username) || dto.Username.Length < 3 || dto.Username.Length > 30
-                || !Regex.IsMatch(dto.Username, @"^[a-zA-Z0-9_]+$"))
-                errors.Add("Username|Username must be 3–30 characters and contain only letters, numbers, and underscores.");
+            if (string.IsNullOrWhiteSpace(registrationRequest.DisplayName) || registrationRequest.DisplayName.Length < MinimumDisplayNameLength || registrationRequest.DisplayName.Length > MaximumDisplayNameLength)
+                validationErrors.Add("DisplayName|Display name must be between 2 and 50 characters long.");
 
-            if (string.IsNullOrWhiteSpace(dto.Email))
-                errors.Add("Email|Email is required.");
+            if (string.IsNullOrWhiteSpace(registrationRequest.Username) || registrationRequest.Username.Length < MinimumUsernameLength || registrationRequest.Username.Length > MaximumUsernameLength
+                || !Regex.IsMatch(registrationRequest.Username, @"^[a-zA-Z0-9_]+$"))
+                validationErrors.Add("Username|Username must be 3–30 characters and contain only letters, numbers, and underscores.");
 
-            var (pwValid, pwError) = PasswordValidator.Validate(dto.Password);
-            if (!pwValid)
-                errors.Add($"Password|{pwError}");
+            if (string.IsNullOrWhiteSpace(registrationRequest.Email))
+                validationErrors.Add("Email|Email is required.");
 
-            if (dto.Password != dto.ConfirmPassword)
-                errors.Add("ConfirmPassword|Passwords do not match.");
+            var (isPasswordValid, passwordErrorMessage) = PasswordValidator.Validate(registrationRequest.Password);
+            if (!isPasswordValid)
+                validationErrors.Add($"Password|{passwordErrorMessage}");
 
-            if (!string.IsNullOrWhiteSpace(dto.PhoneNumber))
+            if (registrationRequest.Password != registrationRequest.ConfirmPassword)
+                validationErrors.Add("ConfirmPassword|Passwords do not match.");
+
+            if (!string.IsNullOrWhiteSpace(registrationRequest.PhoneNumber))
             {
-                if (!Regex.IsMatch(dto.PhoneNumber, @"^\+?\d{7,15}$"))
-                    errors.Add("PhoneNumber|Phone number format is invalid.");
+                if (!Regex.IsMatch(registrationRequest.PhoneNumber, @"^\+?\d{7,15}$"))
+                    validationErrors.Add("PhoneNumber|Phone number format is invalid.");
             }
 
-            if (errors.Any())
-                return ServiceResult<bool>.Fail(string.Join(";", errors));
+            if (validationErrors.Any())
+                return ServiceResult<bool>.Fail(string.Join(";", validationErrors));
 
-            using (var uow = _unitOfWorkFactory.Create())
+            using (var unitOfWork = _unitOfWorkFactory.Create())
             {
-                await uow.OpenAsync();
-                ((UserRepository)_userRepository).SetUnitOfWork(uow);
+                await unitOfWork.OpenAsync();
+                ((UserRepository)_userRepository).SetUnitOfWork(unitOfWork);
 
-                var existingUsername = await _userRepository.GetByUsernameAsync(dto.Username);
+                var existingUsername = await _userRepository.GetByUsernameAsync(registrationRequest.Username);
                 if (existingUsername != null)
                     return ServiceResult<bool>.Fail("Username|Username is already taken.");
 
-                var existingEmail = await _userRepository.GetByEmailAsync(dto.Email);
+                var existingEmail = await _userRepository.GetByEmailAsync(registrationRequest.Email);
                 if (existingEmail != null)
                     return ServiceResult<bool>.Fail("Email|Email is already registered.");
 
                 var newUser = new User
                 {
                     Id = Guid.NewGuid(),
-                    DisplayName = dto.DisplayName,
-                    Username = dto.Username,
-                    Email = dto.Email,
-                    PhoneNumber = string.IsNullOrWhiteSpace(dto.PhoneNumber) ? null : dto.PhoneNumber,
-                    Country = string.IsNullOrWhiteSpace(dto.Country) ? null : dto.Country,
-                    City = string.IsNullOrWhiteSpace(dto.City) ? null : dto.City,
-                    StreetName = string.IsNullOrWhiteSpace(dto.StreetName) ? null : dto.StreetName,
-                    StreetNumber = string.IsNullOrWhiteSpace(dto.StreetNumber) ? null : dto.StreetNumber,
-                    PasswordHash = PasswordHasher.HashPassword(dto.Password),
+                    DisplayName = registrationRequest.DisplayName,
+                    Username = registrationRequest.Username,
+                    Email = registrationRequest.Email,
+                    PhoneNumber = string.IsNullOrWhiteSpace(registrationRequest.PhoneNumber) ? null : registrationRequest.PhoneNumber,
+                    Country = string.IsNullOrWhiteSpace(registrationRequest.Country) ? null : registrationRequest.Country,
+                    City = string.IsNullOrWhiteSpace(registrationRequest.City) ? null : registrationRequest.City,
+                    StreetName = string.IsNullOrWhiteSpace(registrationRequest.StreetName) ? null : registrationRequest.StreetName,
+                    StreetNumber = string.IsNullOrWhiteSpace(registrationRequest.StreetNumber) ? null : registrationRequest.StreetNumber,
+                    PasswordHash = PasswordHasher.HashPassword(registrationRequest.Password),
                     CreatedAt = DateTime.UtcNow,
                     UpdatedAt = DateTime.UtcNow,
                     IsSuspended = false

@@ -6,7 +6,9 @@ namespace BoardRent.Utils
     {
         public static (bool IsValid, string Error) Validate(string password)
         {
-            if (string.IsNullOrWhiteSpace(password) || password.Length < 8)
+            const int MinimumPasswordLength = 8;
+
+            if (string.IsNullOrWhiteSpace(password) || password.Length < MinimumPasswordLength)
                 return (false, "Password must be at least 8 characters long.");
 
             if (!Regex.IsMatch(password, @"[A-Z]"))
