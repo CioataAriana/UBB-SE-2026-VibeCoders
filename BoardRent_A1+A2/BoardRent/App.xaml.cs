@@ -1,16 +1,20 @@
-﻿using BoardRent.Data;
-using BoardRent.Repositories;
-using BoardRent.Services;
-using BoardRent.ViewModels;
-using BoardRent.Views;
-using CommunityToolkit.Mvvm.DependencyInjection;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.UI.Xaml;
-using Microsoft.UI.Xaml.Controls;
-using System;
+﻿// <copyright file="App.xaml.cs" company="BoardRent">
+// Copyright (c) BoardRent. All rights reserved.
+// </copyright>
 
 namespace BoardRent
 {
+    using System;
+    using BoardRent.Data;
+    using BoardRent.Repositories;
+    using BoardRent.Services;
+    using BoardRent.ViewModels;
+    using BoardRent.Views;
+    using CommunityToolkit.Mvvm.DependencyInjection;
+    using Microsoft.Extensions.DependencyInjection;
+    using Microsoft.UI.Xaml;
+    using Microsoft.UI.Xaml.Controls;
+
     public partial class App : Application
     {
         public static Window _window;
@@ -18,7 +22,7 @@ namespace BoardRent
 
         public App()
         {
-            InitializeComponent();
+            this.InitializeComponent();
 
             Ioc.Default.ConfigureServices(
                 new ServiceCollection()
@@ -32,28 +36,14 @@ namespace BoardRent
                 .AddSingleton<IAuthService, AuthService>()
                 .AddSingleton<IUserService, UserService>()
                 .AddSingleton<IAdminService, AdminService>()
-                .AddSingleton<IFilePickerService, FilePickerService>() 
+                .AddSingleton<IFilePickerService, FilePickerService>()
 
                 .AddTransient<LoginViewModel>()
                 .AddTransient<RegisterViewModel>()
                 .AddTransient<ProfileViewModel>()
                 .AddTransient<AdminViewModel>()
 
-                .BuildServiceProvider()
-            );
-        }
-
-        protected override void OnLaunched(LaunchActivatedEventArgs args)
-        {
-            _window = new MainWindow();
-            _rootFrame = new Frame();
-            _window.Content = _rootFrame;
-            _window.Activate();
-
-            var db = new AppDbContext();
-            db.EnsureCreated();
-
-            NavigateTo(typeof(LoginPage));
+                .BuildServiceProvider());
         }
 
         public static void NavigateTo(Type pageType, bool clearBackStack = false)
@@ -71,6 +61,19 @@ namespace BoardRent
             {
                 _rootFrame.GoBack();
             }
+        }
+
+        protected override void OnLaunched(LaunchActivatedEventArgs args)
+        {
+            _window = new MainWindow();
+            _rootFrame = new Frame();
+            _window.Content = _rootFrame;
+            _window.Activate();
+
+            var db = new AppDbContext();
+            db.EnsureCreated();
+
+            NavigateTo(typeof(LoginPage));
         }
     }
 }

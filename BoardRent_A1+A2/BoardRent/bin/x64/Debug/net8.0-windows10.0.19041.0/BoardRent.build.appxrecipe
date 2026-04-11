@@ -355,7 +355,7 @@
     <AppxPackagedFile Include="C:\Users\georg\.nuget\packages\microsoft.web.webview2\1.0.3179.45\lib_manual\net8.0-windows10.0.17763.0\Microsoft.Web.WebView2.Core.Projection.dll">
       <PackagePath>Microsoft.Web.WebView2.Core.Projection.dll</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="D:\My Documents\OneDrive\Desktop\OOP\UBB-SE-2026-TryingOurBest\BoardRent_A1+A2\BoardRent\bin\x64\Debug\net8.0-windows10.0.19041.0\BoardRent.deps.json">
+    <AppxPackagedFile Include="D:\My Documents\OneDrive\Desktop\OOP\UBB-SE-2026-TryingOurBest\BoardRent_A1+A2\BoardRent\obj\x64\Debug\net8.0-windows10.0.19041.0\BoardRent.deps.json">
       <PackagePath>BoardRent.deps.json</PackagePath>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\georg\.nuget\packages\colorcode.winui\2.0.13\lib\net5.0-windows10.0.18362\ColorCode.WinUI.pri">
