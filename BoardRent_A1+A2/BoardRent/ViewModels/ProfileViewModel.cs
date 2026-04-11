@@ -24,26 +24,35 @@ namespace BoardRent.ViewModels
     {
         private readonly IUserService _userService;
         private readonly IAuthService _authService;
+        private readonly IFilePickerService _filePickerService;
+        private string _pendingAvatarPath; // stores the local path for preview before saving
 
         public ICommand SaveProfileCommand { get; }
-        public ICommand UploadAvatarCommand { get; }
+        public ICommand SelectAvatarCommand { get; }
 
         public ICommand RemoveAvatarCommand { get; }
 
         public ICommand SaveNewPasswordCommand { get; }
 
         public ICommand SignOutCommand { get; }
+        public ICommand NavigateToAdminPanelCommand { get; } // New command for code-behind removal
 
-        public ProfileViewModel(IUserService userService, IAuthService authService)
+        public ProfileViewModel(IUserService userService, IAuthService authService, IFilePickerService filePickerService)
         {
             _userService = userService;
             _authService = authService;
+            _filePickerService = filePickerService;
             SaveProfileCommand = new RelayCommand(async () => await SaveProfile());
             RemoveAvatarCommand = new RelayCommand(async () => await RemoveAvatar());
-            UploadAvatarCommand = new RelayCommand(async () => await UploadAvatar());
-            SaveNewPasswordCommand = new RelayCommand(async () => await SaveNewPassword());
+            SelectAvatarCommand = new RelayCommand(async () => await SelectAvatar()); SaveNewPasswordCommand = new RelayCommand(async () => await SaveNewPassword());
             SignOutCommand= new RelayCommand(async () => await SignOut());
+            NavigateToAdminPanelCommand = new RelayCommand(NavigateToAdminPanel);
             //LoadProfile();
+        }
+
+        private void NavigateToAdminPanel()
+        {
+            App.NavigateTo(typeof(AdminPage));
         }
 
         public Visibility AdminButtonVisibility =>
@@ -141,11 +150,11 @@ namespace BoardRent.ViewModels
 
         private async Task SaveProfile()
         {
-            var userId = SessionContext.GetInstance().UserId;
+            var currentUserId = SessionContext.GetInstance().UserId;
 
-            var dto = new UserProfileDataTransferObject
+            var profileUpdateData = new UserProfileDataTransferObject
             {
-                Id = userId,
+                Id = currentUserId,
                 Username = Username,
                 DisplayName = DisplayName,
                 Email = Email,
@@ -156,92 +165,73 @@ namespace BoardRent.ViewModels
                 StreetNumber = StreetNumber
             };
 
-            var result = await _userService.UpdateProfileAsync(userId, dto);
+            var updateResult = await _userService.UpdateProfileAsync(currentUserId, profileUpdateData);
 
-            if (result.Success)
+            if (updateResult.Success)
             {
-                DisplayNameError = "";
-                PhoneError = "";
-                StreetNumberError = "";
-                EmailError = "";
+                // UM-036: Only upload the avatar if the user actually clicked "Save" and a new file is pending
+                if (!string.IsNullOrEmpty(_pendingAvatarPath))
+                {
+                    AvatarUrl = await _userService.UploadAvatarAsync(currentUserId, _pendingAvatarPath);
+                    _pendingAvatarPath = null; // Clear pending state
+                }
+
+                DisplayNameError = ""; PhoneError = ""; StreetNumberError = ""; EmailError = "";
 
                 var session = SessionContext.GetInstance();
-                var user = new Domain.User
+                var updatedUser = new Domain.User
                 {
                     Id = session.UserId,
                     Username = Username,
                     DisplayName = DisplayName
                 };
-                session.Populate(user, session.Role);
-
+                session.Populate(updatedUser, session.Role);
                 Debug.WriteLine("Profile updated successfully");
             }
+
             else
             {
-                DisplayNameError = "";
-                PhoneError = "";
-                StreetNumberError = "";
-                EmailError = "";
+                DisplayNameError = ""; PhoneError = ""; StreetNumberError = ""; EmailError = "";
 
-                var fieldErrors = result.Error.Split(';', StringSplitOptions.RemoveEmptyEntries);
+                var fieldErrorsList = updateResult.Error.Split(';', StringSplitOptions.RemoveEmptyEntries);
 
-                foreach (var fe in fieldErrors)
+                // Renamed 'fe' to 'fieldError'
+                foreach (var fieldError in fieldErrorsList)
                 {
-                    var parts = fe.Split('|', 2);
-                    if (parts.Length != 2) continue;
-                    var field = parts[0];
-                    var message = parts[1];
+                    var errorComponents = fieldError.Split('|', 2);
+                    if (errorComponents.Length != 2) continue;
 
-                    switch (field)
+                    var fieldName = errorComponents[0];
+                    var errorMessage = errorComponents[1];
+
+                    switch (fieldName)
                     {
-                        case "DisplayName":
-                            DisplayNameError = message;
-                            break;
-                        case "PhoneNumber":
-                            PhoneError = message;
-                            break;
-                        case "StreetNumber":
-                            StreetNumberError = message;
-                            break;
-                        case "Email":
-                            EmailError = message;
-                            break;
+                        case "DisplayName": DisplayNameError = errorMessage; break;
+                        case "PhoneNumber": PhoneError = errorMessage; break;
+                        case "StreetNumber": StreetNumberError = errorMessage; break;
+                        case "Email": EmailError = errorMessage; break;
                     }
                 }
             }
         }
 
-        public async Task<string> UploadAvatar(Guid userId, string filePath)
+        public async Task SelectAvatar()
         {
+            // MVVM Compliant file picking
+            var selectedFilePath = await _filePickerService.PickImageFileAsync();
+            if (selectedFilePath == null) return;
 
-            return await _userService.UploadAvatarAsync(userId, filePath);
-        }
-
-        public async Task UploadAvatar()
-        {
-            var picker = new FileOpenPicker();
-            var hwnd = WindowNative.GetWindowHandle(App._window);
-            InitializeWithWindow.Initialize(picker, hwnd);
-
-            picker.FileTypeFilter.Add(".jpg");
-            picker.FileTypeFilter.Add(".png");
-
-            var file = await picker.PickSingleFileAsync();
-            if (file == null) return;
-
-            var userId = SessionContext.GetInstance().UserId;
-            var savedPath = await _userService.UploadAvatarAsync(userId, file.Path);
-
-            AvatarUrl = savedPath;
-
-            
+            // UM-036: Show preview immediately, but do NOT upload yet.
+            _pendingAvatarPath = selectedFilePath;
+            AvatarUrl = selectedFilePath;
         }
 
         public async Task RemoveAvatar()
         {
-            var userId = SessionContext.GetInstance().UserId;
-            await _userService.RemoveAvatarAsync(userId);
+            var currentUserId = SessionContext.GetInstance().UserId;
+            await _userService.RemoveAvatarAsync(currentUserId);
             AvatarUrl = null;
+            _pendingAvatarPath = null;
         }
 
         public async Task SignOut()

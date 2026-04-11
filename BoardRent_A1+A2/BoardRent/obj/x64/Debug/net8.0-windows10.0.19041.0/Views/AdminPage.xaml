@@ -1,0 +1,108 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Page x:ConnectionId='1'
+    x:Class="BoardRent.Views.AdminPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:BoardRent.Views"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:controls="using:CommunityToolkit.WinUI.UI.Controls"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Grid Padding="20">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <!-- Header -->
+        <Grid Grid.Row="0" Margin="0,0,0,20">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+            <TextBlock Text="User Administration" Style="{StaticResource TitleTextBlockStyle}" VerticalAlignment="Center" />
+            <Button x:ConnectionId='17' Grid.Column="1" Content="Sign Out" VerticalAlignment="Center"                          />
+        </Grid>
+
+        <!-- Permission Guard -->
+        <InfoBar x:ConnectionId='2' Grid.Row="1" 
+                                                               
+                 Severity="Error"
+                 Title="Unauthorized"
+                 Message="UM-043: You do not have permission to access the User Administration page. Administrator role is required." 
+                 Margin="0,0,0,20"/>
+
+        <!-- Error Message -->
+        <InfoBar x:ConnectionId='3' Grid.Row="1"
+                                                              
+                 Severity="Error"
+                                                                       
+                 Margin="0,0,0,20"/>
+
+        <!-- Data Grid -->
+        <controls:DataGrid x:ConnectionId='4' 
+            Grid.Row="2"
+                                                               
+                                                                       
+            AutoGenerateColumns="False"
+                                                                     
+            x:Name="UsersDataGrid">
+            <controls:DataGrid.Columns>
+                <controls:DataGridTextColumn Header="Display Name" Binding="{Binding DisplayName}" />
+                <controls:DataGridTextColumn Header="Username" Binding="{Binding Username}" />
+                <controls:DataGridTextColumn Header="Email" Binding="{Binding Email}" />
+                
+                <!-- Status Column -->
+                <controls:DataGridTemplateColumn Header="Status">
+                    <controls:DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding IsSuspended}" FontSize="12" VerticalAlignment="Center"/>
+                        </DataTemplate>
+                    </controls:DataGridTemplateColumn.CellTemplate>
+                </controls:DataGridTemplateColumn>
+
+                <!-- Locked Column -->
+                <controls:DataGridTemplateColumn Header="Locked">
+                    <controls:DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding IsLocked}" FontSize="12" VerticalAlignment="Center"/>
+                        </DataTemplate>
+                    </controls:DataGridTemplateColumn.CellTemplate>
+                </controls:DataGridTemplateColumn>
+
+            </controls:DataGrid.Columns>
+        </controls:DataGrid>
+
+        <!-- Actions Panel below grid for selected user since commands inside WinUI DataGridTemplateColumn are often challenging -->
+        <StackPanel x:ConnectionId='5' Grid.Row="2" VerticalAlignment="Bottom" HorizontalAlignment="Right" Orientation="Horizontal" Spacing="10" Margin="0,10,20,10"
+                                                                             >
+            <!-- We could map Converters, but here is a simple Actions bar per prompt -->
+            <Button x:ConnectionId='11' Content="Suspend User"                                                 />
+            <Button x:ConnectionId='12' Content="Unsuspend User"                                                   />
+            <Button x:ConnectionId='13' Content="Reset Pass"                                />
+            <Button x:ConnectionId='14' Content="Unlock"                                                   />
+        </StackPanel>
+
+        <!-- Pagination Footer -->
+        <Grid x:ConnectionId='6' Grid.Row="3" Margin="0,20,0,0"                                                          >
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+            <TextBlock Text="Showing users" VerticalAlignment="Center" />
+            <StackPanel Grid.Column="1" Orientation="Horizontal" Spacing="10">
+                <Button x:ConnectionId='7' Content="Prev"                                                  />
+                <TextBlock Text="Page" VerticalAlignment="Center" />
+                <TextBlock x:ConnectionId='8'                                                    VerticalAlignment="Center" FontWeight="Bold"/>
+                <TextBlock Text="of" VerticalAlignment="Center" />
+                <TextBlock x:ConnectionId='9'                                                   VerticalAlignment="Center" />
+                <Button x:ConnectionId='10' Content="Next"                                              />
+            </StackPanel>
+        </Grid>
+    </Grid>
+</Page>
+

@@ -20,7 +20,7 @@
                     <TextBlock Text="My profile" Foreground="White" VerticalAlignment="Center"/>
                     <Button Content="Admin Panel" Background="#FF8C00" Foreground="White"
                             Visibility="{Binding AdminButtonVisibility}"
-                            Click="AdminPanel_Click"/>
+                            Command="{Binding NavigateToAdminPanelCommand}"/>
                 </StackPanel>
                 <Button Content="Sign out" Background="Red" Foreground="White" HorizontalAlignment="Right" Margin="0,5,10,5" Command="{Binding SignOutCommand}"/>
             </Grid>
@@ -52,8 +52,8 @@
                                     <Button Content="Upload Avatar"
                                             Background="Blue"
                                             Foreground="White"
-                                            Command="{Binding UploadAvatarCommand}"/>
-                                </StackPanel>
+                                            Command="{Binding SelectAvatarCommand}"/>   
+                                </StackPanel>       
                             </StackPanel>
 
                             <Grid ColumnSpacing="20" RowSpacing="5">

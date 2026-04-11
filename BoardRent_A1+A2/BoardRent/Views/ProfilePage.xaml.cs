@@ -24,9 +24,6 @@ namespace BoardRent.Views
             };
         }
 
-        private void AdminPanel_Click(object sender, RoutedEventArgs e)
-        {
-            App.NavigateTo(typeof(AdminPage));
-        }
+        
     }
 }

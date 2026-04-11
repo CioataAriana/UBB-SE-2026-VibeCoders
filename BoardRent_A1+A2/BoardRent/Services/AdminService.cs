@@ -34,42 +34,42 @@ namespace BoardRent.Services
             if (!IsAuthorized())
                 return ServiceResult<List<UserProfileDataTransferObject>>.Fail("Unauthorized access.");
 
-            using (var uow = _unitOfWorkFactory.Create())
+            using (var unitOfWork = _unitOfWorkFactory.Create())
             {
-                await uow.OpenAsync();
-                ((UserRepository)_userRepository).SetUnitOfWork(uow);
-                ((FailedLoginRepository)_failedLoginRepository).SetUnitOfWork(uow);
+                await unitOfWork.OpenAsync();
+                ((UserRepository)_userRepository).SetUnitOfWork(unitOfWork);
+                ((FailedLoginRepository)_failedLoginRepository).SetUnitOfWork(unitOfWork);
 
                 var users = await _userRepository.GetAllAsync(page, pageSize);
 
                 var dtos = new List<UserProfileDataTransferObject>();
-                foreach (var u in users)
+                foreach (var userEntity in users)
                 {
-                    var firstRole = u.Roles?.FirstOrDefault();
-                    var failedAttempt = await _failedLoginRepository.GetByUserIdAsync(u.Id);
+                    var firstRole = userEntity.Roles?.FirstOrDefault();
+                    var failedAttempt = await _failedLoginRepository.GetByUserIdAsync(userEntity.Id);
                     bool isLocked = failedAttempt != null
                         && failedAttempt.LockedUntil.HasValue
                         && failedAttempt.LockedUntil.Value > DateTime.UtcNow;
 
                     dtos.Add(new UserProfileDataTransferObject
                     {
-                        Id = u.Id,
-                        Username = u.Username,
-                        DisplayName = u.DisplayName,
-                        Email = u.Email,
-                        PhoneNumber = u.PhoneNumber,
-                        AvatarUrl = u.AvatarUrl,
+                        Id = userEntity.Id,
+                        Username = userEntity.Username,
+                        DisplayName = userEntity.DisplayName,
+                        Email = userEntity.Email,
+                        PhoneNumber = userEntity.PhoneNumber,
+                        AvatarUrl = userEntity.AvatarUrl,
                         Role = new RoleDataTransferObject
                         {
                             Id = firstRole?.Id ?? Guid.Empty,
                             Name = firstRole?.Name ?? "Standard User"
                         },
-                        IsSuspended = u.IsSuspended,
+                        IsSuspended = userEntity.IsSuspended,
                         IsLocked = isLocked,
-                        Country = u.Country,
-                        City = u.City,
-                        StreetName = u.StreetName,
-                        StreetNumber = u.StreetNumber
+                        Country = userEntity.Country,
+                        City = userEntity.City,
+                        StreetName = userEntity.StreetName,
+                        StreetNumber = userEntity.StreetNumber
                     });
                 }
 
@@ -82,10 +82,10 @@ namespace BoardRent.Services
             if (!IsAuthorized())
                 return ServiceResult<bool>.Fail("Unauthorized access.");
 
-            using (var uow = _unitOfWorkFactory.Create())
+            using (var unitOfWork = _unitOfWorkFactory.Create())
             {
-                await uow.OpenAsync();
-                ((UserRepository)_userRepository).SetUnitOfWork(uow);
+                await unitOfWork.OpenAsync();
+                ((UserRepository)_userRepository).SetUnitOfWork(unitOfWork);
 
                 var user = await _userRepository.GetByIdAsync(userId);
                 if (user == null)
@@ -103,10 +103,10 @@ namespace BoardRent.Services
             if (!IsAuthorized())
                 return ServiceResult<bool>.Fail("Unauthorized access.");
 
-            using (var uow = _unitOfWorkFactory.Create())
+            using (var unitOfWork = _unitOfWorkFactory.Create())
             {
-                await uow.OpenAsync();
-                ((UserRepository)_userRepository).SetUnitOfWork(uow);
+                await unitOfWork.OpenAsync();
+                ((UserRepository)_userRepository).SetUnitOfWork(unitOfWork);
 
                 var user = await _userRepository.GetByIdAsync(userId);
                 if (user == null)
@@ -127,10 +127,10 @@ namespace BoardRent.Services
             if (string.IsNullOrWhiteSpace(newPassword) || newPassword.Length < 6)
                 return ServiceResult<bool>.Fail("Password must be at least 6 characters long.");
 
-            using (var uow = _unitOfWorkFactory.Create())
+            using (var unitOfWork = _unitOfWorkFactory.Create())
             {
-                await uow.OpenAsync();
-                ((UserRepository)_userRepository).SetUnitOfWork(uow);
+                await unitOfWork.OpenAsync();
+                ((UserRepository)_userRepository).SetUnitOfWork(unitOfWork);
 
                 var user = await _userRepository.GetByIdAsync(userId);
                 if (user == null)
@@ -148,10 +148,10 @@ namespace BoardRent.Services
             if (!IsAuthorized())
                 return ServiceResult<bool>.Fail("Unauthorized access.");
 
-            using (var uow = _unitOfWorkFactory.Create())
+            using (var unitOfWork = _unitOfWorkFactory.Create())
             {
-                await uow.OpenAsync();
-                ((FailedLoginRepository)_failedLoginRepository).SetUnitOfWork(uow);
+                await unitOfWork.OpenAsync();
+                ((FailedLoginRepository)_failedLoginRepository).SetUnitOfWork(unitOfWork);
 
                 await _failedLoginRepository.ResetAsync(userId);
 

@@ -32,6 +32,7 @@ namespace BoardRent
                 .AddSingleton<IAuthService, AuthService>()
                 .AddSingleton<IUserService, UserService>()
                 .AddSingleton<IAdminService, AdminService>()
+                .AddSingleton<IFilePickerService, FilePickerService>() 
 
                 .AddTransient<LoginViewModel>()
                 .AddTransient<RegisterViewModel>()

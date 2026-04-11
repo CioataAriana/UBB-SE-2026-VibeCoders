@@ -100,11 +100,11 @@ namespace BoardRent.Services
 
         public async Task<ServiceResult<UserProfileDataTransferObject>> LoginAsync(LoginDataTransferObject dto)
         {
-            using (var uow = _unitOfWorkFactory.Create())
+            using (var unitOfWork = _unitOfWorkFactory.Create())
             {
-                await uow.OpenAsync();
-                ((UserRepository)_userRepository).SetUnitOfWork(uow);
-                ((FailedLoginRepository)_failedLoginRepository).SetUnitOfWork(uow);
+                await unitOfWork.OpenAsync();
+                ((UserRepository)_userRepository).SetUnitOfWork(unitOfWork);
+                ((FailedLoginRepository)_failedLoginRepository).SetUnitOfWork(unitOfWork);
 
                 User user = await _userRepository.GetByUsernameAsync(dto.UsernameOrEmail);
                 if (user == null)
