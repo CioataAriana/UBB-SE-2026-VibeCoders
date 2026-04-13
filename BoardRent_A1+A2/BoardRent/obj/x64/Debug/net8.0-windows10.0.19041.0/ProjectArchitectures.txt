@@ -1,1 +1,1 @@
-C:\Users\marius\source\repos\ISS_2\UBB-SE-2026-TryingOurBest\BoardRent_A1+A2\BoardRent\BoardRent.csproj;x64
+A:\facultate\an 2 sem 2\iss\A3.2\UBB-SE-2026-TryingOurBest\BoardRent_A1+A2\BoardRent\BoardRent.csproj;x64

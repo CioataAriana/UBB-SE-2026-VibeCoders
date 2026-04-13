@@ -10,18 +10,20 @@ namespace BoardRent.Repositories
     {
         void SetUnitOfWork(IUnitOfWork unitOfWork);
 
-        Task<User> GetByIdAsync(Guid id);
+        Task<User> GetByIdentifierAsync(Guid identifier);
 
         Task<User> GetByUsernameAsync(string username);
 
-        Task<User> GetByEmailAsync(string email);
+        Task<User> GetByEmailAsync(string emailAddress);
 
-        Task<List<User>> GetAllAsync(int page, int pageSize);
+        Task<List<User>> GetPageAsync(int pageNumber, int pageSize);
 
-        Task AddAsync(User user);
+        Task<int> GetTotalCountAsync();
 
-        Task UpdateAsync(User user);
+        Task AddAsync(User userEntity);
 
-        Task AddRoleAsync(Guid userId, string roleName);
+        Task UpdateAsync(User userEntity);
+
+        Task AddRoleAsync(Guid userIdentifier, string roleName);
     }
 }

@@ -29,16 +29,13 @@ namespace BoardRent.Services
             this.sessionContext = sessionContext;
         }
 
-        private bool IsAuthorized()
+        public async Task<ServiceResult<PaginatedResult<UserProfileDataTransferObject>>> GetAllUsersAsync(
+            int pageNumber,
+            int pageSize)
         {
-            return this.sessionContext.IsLoggedIn && this.sessionContext.Role == "Administrator";
-        }
-
-        public async Task<ServiceResult<List<UserProfileDataTransferObject>>> GetAllUsersAsync(int pageNumber, int pageSize)
-        {
-            if (!this.IsAuthorized())
+            if (!this.IsCurrentUserAdministrator())
             {
-                return ServiceResult<List<UserProfileDataTransferObject>>.Fail("Unauthorized access.");
+                return ServiceResult<PaginatedResult<UserProfileDataTransferObject>>.Fail("Unauthorized access.");
             }
 
             using (IUnitOfWork unitOfWork = this.unitOfWorkFactory.Create())
@@ -47,18 +44,20 @@ namespace BoardRent.Services
                 this.userRepository.SetUnitOfWork(unitOfWork);
                 this.failedLoginRepository.SetUnitOfWork(unitOfWork);
 
-                List<User> userEntities = await this.userRepository.GetAllAsync(pageNumber, pageSize);
+                List<User> userEntities = await this.userRepository.GetPageAsync(pageNumber, pageSize);
+                int totalUserCount = await this.userRepository.GetTotalCountAsync();
 
-                List<UserProfileDataTransferObject> userProfileDtos = new List<UserProfileDataTransferObject>();
+                var userProfileDtos = new List<UserProfileDataTransferObject>();
 
                 foreach (User userEntity in userEntities)
                 {
-                    Role firstRole = userEntity.Roles?.FirstOrDefault();
-                    FailedLoginAttempt failedAttempt = await this.failedLoginRepository.GetByUserIdAsync(userEntity.Id);
+                    Role primaryRole = userEntity.Roles?.FirstOrDefault();
+                    FailedLoginAttempt failedLoginRecord =
+                        await this.failedLoginRepository.GetByUserIdAsync(userEntity.Id);
 
-                    bool isLocked = failedAttempt != null
-                        && failedAttempt.LockedUntil.HasValue
-                        && failedAttempt.LockedUntil.Value > DateTime.UtcNow;
+                    bool accountIsLocked = failedLoginRecord != null
+                        && failedLoginRecord.LockedUntil.HasValue
+                        && failedLoginRecord.LockedUntil.Value > DateTime.UtcNow;
 
                     userProfileDtos.Add(new UserProfileDataTransferObject
                     {
@@ -70,11 +69,11 @@ namespace BoardRent.Services
                         AvatarUrl = userEntity.AvatarUrl,
                         Role = new RoleDataTransferObject
                         {
-                            Id = firstRole?.Id ?? Guid.Empty,
-                            Name = firstRole?.Name ?? "Standard User"
+                            Id = primaryRole?.Id ?? Guid.Empty,
+                            Name = primaryRole?.Name ?? "Standard User"
                         },
                         IsSuspended = userEntity.IsSuspended,
-                        IsLocked = isLocked,
+                        IsLocked = accountIsLocked,
                         Country = userEntity.Country,
                         City = userEntity.City,
                         StreetName = userEntity.StreetName,
@@ -82,13 +81,21 @@ namespace BoardRent.Services
                     });
                 }
 
-                return ServiceResult<List<UserProfileDataTransferObject>>.Ok(userProfileDtos);
+                var paginatedResult = new PaginatedResult<UserProfileDataTransferObject>
+                {
+                    Items = userProfileDtos,
+                    TotalItemCount = totalUserCount,
+                    PageNumber = pageNumber,
+                    PageSize = pageSize
+                };
+
+                return ServiceResult<PaginatedResult<UserProfileDataTransferObject>>.Ok(paginatedResult);
             }
         }
 
-        public async Task<ServiceResult<bool>> SuspendUserAsync(Guid userId)
+        public async Task<ServiceResult<bool>> SuspendUserAsync(Guid userIdentifier)
         {
-            if (!this.IsAuthorized())
+            if (!this.IsCurrentUserAdministrator())
             {
                 return ServiceResult<bool>.Fail("Unauthorized access.");
             }
@@ -98,22 +105,23 @@ namespace BoardRent.Services
                 await unitOfWork.OpenAsync();
                 this.userRepository.SetUnitOfWork(unitOfWork);
 
-                User userEntity = await this.userRepository.GetByIdAsync(userId);
+                User userEntity = await this.userRepository.GetByIdentifierAsync(userIdentifier);
                 if (userEntity == null)
                 {
                     return ServiceResult<bool>.Fail("User not found.");
                 }
 
                 userEntity.IsSuspended = true;
+                userEntity.UpdatedAt = DateTime.UtcNow;
                 await this.userRepository.UpdateAsync(userEntity);
 
                 return ServiceResult<bool>.Ok(true);
             }
         }
 
-        public async Task<ServiceResult<bool>> UnsuspendUserAsync(Guid userId)
+        public async Task<ServiceResult<bool>> UnsuspendUserAsync(Guid userIdentifier)
         {
-            if (!this.IsAuthorized())
+            if (!this.IsCurrentUserAdministrator())
             {
                 return ServiceResult<bool>.Fail("Unauthorized access.");
             }
@@ -123,22 +131,23 @@ namespace BoardRent.Services
                 await unitOfWork.OpenAsync();
                 this.userRepository.SetUnitOfWork(unitOfWork);
 
-                User userEntity = await this.userRepository.GetByIdAsync(userId);
+                User userEntity = await this.userRepository.GetByIdentifierAsync(userIdentifier);
                 if (userEntity == null)
                 {
                     return ServiceResult<bool>.Fail("User not found.");
                 }
 
                 userEntity.IsSuspended = false;
+                userEntity.UpdatedAt = DateTime.UtcNow;
                 await this.userRepository.UpdateAsync(userEntity);
 
                 return ServiceResult<bool>.Ok(true);
             }
         }
 
-        public async Task<ServiceResult<bool>> ResetPasswordAsync(Guid userId, string newPassword)
+        public async Task<ServiceResult<bool>> ResetPasswordAsync(Guid userIdentifier, string newPassword)
         {
-            if (!this.IsAuthorized())
+            if (!this.IsCurrentUserAdministrator())
             {
                 return ServiceResult<bool>.Fail("Unauthorized access.");
             }
@@ -146,7 +155,7 @@ namespace BoardRent.Services
             const int MinimumPasswordLength = 6;
             if (string.IsNullOrWhiteSpace(newPassword) || newPassword.Length < MinimumPasswordLength)
             {
-                return ServiceResult<bool>.Fail("Password must be at least 6 characters long.");
+                return ServiceResult<bool>.Fail($"Password must be at least {MinimumPasswordLength} characters long.");
             }
 
             using (IUnitOfWork unitOfWork = this.unitOfWorkFactory.Create())
@@ -154,22 +163,23 @@ namespace BoardRent.Services
                 await unitOfWork.OpenAsync();
                 this.userRepository.SetUnitOfWork(unitOfWork);
 
-                User userEntity = await this.userRepository.GetByIdAsync(userId);
+                User userEntity = await this.userRepository.GetByIdentifierAsync(userIdentifier);
                 if (userEntity == null)
                 {
                     return ServiceResult<bool>.Fail("User not found.");
                 }
 
                 userEntity.PasswordHash = PasswordHasher.HashPassword(newPassword);
+                userEntity.UpdatedAt = DateTime.UtcNow;
                 await this.userRepository.UpdateAsync(userEntity);
 
                 return ServiceResult<bool>.Ok(true);
             }
         }
 
-        public async Task<ServiceResult<bool>> UnlockAccountAsync(Guid userId)
+        public async Task<ServiceResult<bool>> UnlockAccountAsync(Guid userIdentifier)
         {
-            if (!this.IsAuthorized())
+            if (!this.IsCurrentUserAdministrator())
             {
                 return ServiceResult<bool>.Fail("Unauthorized access.");
             }
@@ -179,10 +189,17 @@ namespace BoardRent.Services
                 await unitOfWork.OpenAsync();
                 this.failedLoginRepository.SetUnitOfWork(unitOfWork);
 
-                await this.failedLoginRepository.ResetAsync(userId);
+                await this.failedLoginRepository.ResetAsync(userIdentifier);
 
                 return ServiceResult<bool>.Ok(true);
             }
+        }
+
+        // ── Private helpers ──────────────────────────────────────────────────────
+        private bool IsCurrentUserAdministrator()
+        {
+            return this.sessionContext.IsLoggedIn
+                && this.sessionContext.Role == "Administrator";
         }
     }
 }

@@ -18,7 +18,7 @@ namespace BoardRent.Repositories
             this.unitOfWork = unitOfWork;
         }
 
-        public async Task<User> GetByIdAsync(Guid identifier)
+        public async Task<User> GetByIdentifierAsync(Guid identifier)
         {
             User userEntity = null;
 
@@ -31,14 +31,14 @@ namespace BoardRent.Repositories
                 {
                     if (await dataReader.ReadAsync())
                     {
-                        userEntity = this.MapDataReaderToUserEntity(dataReader);
+                        userEntity = this.MapDataReaderToUser(dataReader);
                     }
                 }
             }
 
             if (userEntity != null)
             {
-                userEntity.Roles = await this.LoadUserRolesAsync(userEntity.Id);
+                userEntity.Roles = await this.LoadRolesForUserAsync(userEntity.Id);
             }
 
             return userEntity;
@@ -57,14 +57,14 @@ namespace BoardRent.Repositories
                 {
                     if (await dataReader.ReadAsync())
                     {
-                        userEntity = this.MapDataReaderToUserEntity(dataReader);
+                        userEntity = this.MapDataReaderToUser(dataReader);
                     }
                 }
             }
 
             if (userEntity != null)
             {
-                userEntity.Roles = await this.LoadUserRolesAsync(userEntity.Id);
+                userEntity.Roles = await this.LoadRolesForUserAsync(userEntity.Id);
             }
 
             return userEntity;
@@ -83,46 +83,62 @@ namespace BoardRent.Repositories
                 {
                     if (await dataReader.ReadAsync())
                     {
-                        userEntity = this.MapDataReaderToUserEntity(dataReader);
+                        userEntity = this.MapDataReaderToUser(dataReader);
                     }
                 }
             }
 
             if (userEntity != null)
             {
-                userEntity.Roles = await this.LoadUserRolesAsync(userEntity.Id);
+                userEntity.Roles = await this.LoadRolesForUserAsync(userEntity.Id);
             }
 
             return userEntity;
         }
 
-        public async Task<List<User>> GetAllAsync(int pageNumber, int pageSize)
+        public async Task<List<User>> GetPageAsync(int pageNumber, int pageSize)
         {
             var userList = new List<User>();
-            const int PaginationOffsetAdjustment = 1;
-            int offsetCalculation = (pageNumber - PaginationOffsetAdjustment) * pageSize;
+            const int PageNumberToOffsetAdjustment = 1;
+            int rowOffset = (pageNumber - PageNumberToOffsetAdjustment) * pageSize;
 
             using (var sqlCommand = this.DatabaseConnection.CreateCommand())
             {
-                sqlCommand.CommandText = "SELECT * FROM [User] ORDER BY CreatedAt OFFSET @Offset ROWS FETCH NEXT @PageSize ROWS ONLY";
-                sqlCommand.Parameters.AddWithValue("@Offset", offsetCalculation);
+                sqlCommand.CommandText = @"
+                    SELECT * FROM [User]
+                    ORDER BY CreatedAt
+                    OFFSET @RowOffset ROWS FETCH NEXT @PageSize ROWS ONLY";
+
+                sqlCommand.Parameters.AddWithValue("@RowOffset", rowOffset);
                 sqlCommand.Parameters.AddWithValue("@PageSize", pageSize);
 
                 using (var dataReader = await sqlCommand.ExecuteReaderAsync())
                 {
                     while (await dataReader.ReadAsync())
                     {
-                        userList.Add(this.MapDataReaderToUserEntity(dataReader));
+                        userList.Add(this.MapDataReaderToUser(dataReader));
                     }
                 }
             }
 
             foreach (var userEntity in userList)
             {
-                userEntity.Roles = await this.LoadUserRolesAsync(userEntity.Id);
+                userEntity.Roles = await this.LoadRolesForUserAsync(userEntity.Id);
             }
 
             return userList;
+        }
+
+        public async Task<int> GetTotalCountAsync()
+        {
+            using (var sqlCommand = this.DatabaseConnection.CreateCommand())
+            {
+                sqlCommand.CommandText = "SELECT COUNT(1) FROM [User]";
+                object scalarResult = await sqlCommand.ExecuteScalarAsync();
+                return scalarResult != null && scalarResult != DBNull.Value
+                    ? (int)scalarResult
+                    : 0;
+            }
         }
 
         public async Task AddAsync(User userEntity)
@@ -130,8 +146,13 @@ namespace BoardRent.Repositories
             using (var sqlCommand = this.DatabaseConnection.CreateCommand())
             {
                 sqlCommand.CommandText = @"
-                    INSERT INTO [User] (Id, Username, DisplayName, Email, PasswordHash, PhoneNumber, AvatarUrl, IsSuspended, CreatedAt, UpdatedAt, StreetName, StreetNumber, Country, City)
-                    VALUES (@Identifier, @Username, @DisplayName, @EmailAddress, @PasswordHash, @PhoneNumber, @AvatarUrl, @IsSuspended, @CreatedAt, @UpdatedAt, @StreetName, @StreetNumber, @Country, @City)";
+                    INSERT INTO [User]
+                        (Id, Username, DisplayName, Email, PasswordHash, PhoneNumber, AvatarUrl,
+                         IsSuspended, CreatedAt, UpdatedAt, StreetName, StreetNumber, Country, City)
+                    VALUES
+                        (@Identifier, @Username, @DisplayName, @EmailAddress, @PasswordHash,
+                         @PhoneNumber, @AvatarUrl, @IsSuspended, @CreatedAt, @UpdatedAt,
+                         @StreetName, @StreetNumber, @Country, @City)";
 
                 sqlCommand.Parameters.AddWithValue("@Identifier", userEntity.Id);
                 sqlCommand.Parameters.AddWithValue("@Username", userEntity.Username);
@@ -158,17 +179,17 @@ namespace BoardRent.Repositories
             {
                 sqlCommand.CommandText = @"
                     UPDATE [User] SET
-                        DisplayName = @DisplayName,
-                        Email = @EmailAddress,
+                        DisplayName  = @DisplayName,
+                        Email        = @EmailAddress,
                         PasswordHash = @PasswordHash,
-                        PhoneNumber = @PhoneNumber,
-                        AvatarUrl = @AvatarUrl,
-                        IsSuspended = @IsSuspended,
-                        UpdatedAt = @UpdatedAt,
-                        StreetName = @StreetName,
+                        PhoneNumber  = @PhoneNumber,
+                        AvatarUrl    = @AvatarUrl,
+                        IsSuspended  = @IsSuspended,
+                        UpdatedAt    = @UpdatedAt,
+                        StreetName   = @StreetName,
                         StreetNumber = @StreetNumber,
-                        Country = @Country,
-                        City = @City
+                        Country      = @Country,
+                        City         = @City
                     WHERE Id = @Identifier";
 
                 sqlCommand.Parameters.AddWithValue("@Identifier", userEntity.Id);
@@ -188,15 +209,15 @@ namespace BoardRent.Repositories
             }
         }
 
-        public async Task AddRoleAsync(Guid identifier, string roleName)
+        public async Task AddRoleAsync(Guid userIdentifier, string roleName)
         {
-            Guid? roleIdentifier = await this.GetRoleIdByNameAsync(roleName);
+            Guid? roleIdentifier = await this.GetRoleIdentifierByNameAsync(roleName);
             if (!roleIdentifier.HasValue)
             {
                 return;
             }
 
-            bool userAlreadyHasRole = await this.UserHasRoleAsync(identifier, roleIdentifier.Value);
+            bool userAlreadyHasRole = await this.UserHasRoleAsync(userIdentifier, roleIdentifier.Value);
             if (userAlreadyHasRole)
             {
                 return;
@@ -205,13 +226,14 @@ namespace BoardRent.Repositories
             using (var sqlCommand = this.DatabaseConnection.CreateCommand())
             {
                 sqlCommand.CommandText = "INSERT INTO UserRoles (UserId, RoleId) VALUES (@UserIdentifier, @RoleIdentifier)";
-                sqlCommand.Parameters.AddWithValue("@UserIdentifier", identifier);
+                sqlCommand.Parameters.AddWithValue("@UserIdentifier", userIdentifier);
                 sqlCommand.Parameters.AddWithValue("@RoleIdentifier", roleIdentifier.Value);
                 await sqlCommand.ExecuteNonQueryAsync();
             }
         }
 
-        private async Task<Guid?> GetRoleIdByNameAsync(string roleName)
+        // ── Private helpers ──────────────────────────────────────────────────────
+        private async Task<Guid?> GetRoleIdentifierByNameAsync(string roleName)
         {
             using (var sqlCommand = this.DatabaseConnection.CreateCommand())
             {
@@ -236,15 +258,21 @@ namespace BoardRent.Repositories
                     SELECT COUNT(1)
                     FROM UserRoles
                     WHERE UserId = @UserIdentifier AND RoleId = @RoleIdentifier";
+
                 sqlCommand.Parameters.AddWithValue("@UserIdentifier", userIdentifier);
                 sqlCommand.Parameters.AddWithValue("@RoleIdentifier", roleIdentifier);
 
                 object scalarResult = await sqlCommand.ExecuteScalarAsync();
-                return scalarResult != null && scalarResult != DBNull.Value;
+
+                // Bug fix: the original code forgot to cast and compare the count value,
+                // so it would always return true for any non-null result.
+                return scalarResult != null
+                    && scalarResult != DBNull.Value
+                    && (int)scalarResult > 0;
             }
         }
 
-        private async Task<List<Role>> LoadUserRolesAsync(Guid identifier)
+        private async Task<List<Role>> LoadRolesForUserAsync(Guid userIdentifier)
         {
             var roleList = new List<Role>();
 
@@ -256,7 +284,7 @@ namespace BoardRent.Repositories
                     INNER JOIN UserRoles PivotTable ON PivotTable.RoleId = TargetRole.Id
                     WHERE PivotTable.UserId = @UserIdentifier";
 
-                sqlCommand.Parameters.AddWithValue("@UserIdentifier", identifier);
+                sqlCommand.Parameters.AddWithValue("@UserIdentifier", userIdentifier);
 
                 using (var dataReader = await sqlCommand.ExecuteReaderAsync())
                 {
@@ -274,7 +302,7 @@ namespace BoardRent.Repositories
             return roleList;
         }
 
-        private User MapDataReaderToUserEntity(SqlDataReader dataReader)
+        private User MapDataReaderToUser(SqlDataReader dataReader)
         {
             return new User
             {
@@ -283,15 +311,21 @@ namespace BoardRent.Repositories
                 DisplayName = dataReader.GetString(dataReader.GetOrdinal("DisplayName")),
                 Email = dataReader.GetString(dataReader.GetOrdinal("Email")),
                 PasswordHash = dataReader.GetString(dataReader.GetOrdinal("PasswordHash")),
-                PhoneNumber = dataReader.IsDBNull(dataReader.GetOrdinal("PhoneNumber")) ? null : dataReader.GetString(dataReader.GetOrdinal("PhoneNumber")),
-                AvatarUrl = dataReader.IsDBNull(dataReader.GetOrdinal("AvatarUrl")) ? null : dataReader.GetString(dataReader.GetOrdinal("AvatarUrl")),
+                PhoneNumber = dataReader.IsDBNull(dataReader.GetOrdinal("PhoneNumber"))
+                                   ? null : dataReader.GetString(dataReader.GetOrdinal("PhoneNumber")),
+                AvatarUrl = dataReader.IsDBNull(dataReader.GetOrdinal("AvatarUrl"))
+                                   ? null : dataReader.GetString(dataReader.GetOrdinal("AvatarUrl")),
                 IsSuspended = dataReader.GetBoolean(dataReader.GetOrdinal("IsSuspended")),
                 CreatedAt = dataReader.GetDateTime(dataReader.GetOrdinal("CreatedAt")),
                 UpdatedAt = dataReader.GetDateTime(dataReader.GetOrdinal("UpdatedAt")),
-                StreetName = dataReader.IsDBNull(dataReader.GetOrdinal("StreetName")) ? null : dataReader.GetString(dataReader.GetOrdinal("StreetName")),
-                StreetNumber = dataReader.IsDBNull(dataReader.GetOrdinal("StreetNumber")) ? null : dataReader.GetString(dataReader.GetOrdinal("StreetNumber")),
-                Country = dataReader.IsDBNull(dataReader.GetOrdinal("Country")) ? null : dataReader.GetString(dataReader.GetOrdinal("Country")),
-                City = dataReader.IsDBNull(dataReader.GetOrdinal("City")) ? null : dataReader.GetString(dataReader.GetOrdinal("City")),
+                StreetName = dataReader.IsDBNull(dataReader.GetOrdinal("StreetName"))
+                                   ? null : dataReader.GetString(dataReader.GetOrdinal("StreetName")),
+                StreetNumber = dataReader.IsDBNull(dataReader.GetOrdinal("StreetNumber"))
+                                   ? null : dataReader.GetString(dataReader.GetOrdinal("StreetNumber")),
+                Country = dataReader.IsDBNull(dataReader.GetOrdinal("Country"))
+                                   ? null : dataReader.GetString(dataReader.GetOrdinal("Country")),
+                City = dataReader.IsDBNull(dataReader.GetOrdinal("City"))
+                                   ? null : dataReader.GetString(dataReader.GetOrdinal("City")),
                 Roles = new List<Role>()
             };
         }

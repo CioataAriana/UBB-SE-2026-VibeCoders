@@ -12,12 +12,14 @@ namespace BoardRent.ViewModels
     public partial class AdminViewModel : BaseViewModel
     {
         private const int DefaultPageSize = 10;
+
         private readonly IAdminService adminService;
         private readonly IAuthService authService;
         private readonly ISessionContext sessionContext;
 
         [ObservableProperty]
-        private ObservableCollection<UserProfileDataTransferObject> users = new ObservableCollection<UserProfileDataTransferObject>();
+        private ObservableCollection<UserProfileDataTransferObject> users =
+            new ObservableCollection<UserProfileDataTransferObject>();
 
         [ObservableProperty]
         [NotifyCanExecuteChangedFor(nameof(SuspendUserCommand))]
@@ -34,33 +36,35 @@ namespace BoardRent.ViewModels
         [NotifyCanExecuteChangedFor(nameof(NextPageCommand))]
         private int totalPages = 1;
 
-        public AdminViewModel(IAdminService adminService, IAuthService authService, ISessionContext sessionContext)
+        public AdminViewModel(
+            IAdminService adminService,
+            IAuthService authService,
+            ISessionContext sessionContext)
         {
             this.adminService = adminService;
             this.authService = authService;
             this.sessionContext = sessionContext;
 
-            // Folosim numele complet pentru extensie
             TaskUtilities.FireAndForgetSafeAsync(this.LoadUsersAsync());
         }
 
-        public bool IsUnauthorized => !this.sessionContext.IsLoggedIn || this.sessionContext.Role != "Administrator";
+        public bool IsUnauthorized =>
+            !this.sessionContext.IsLoggedIn || this.sessionContext.Role != "Administrator";
 
         public async Task LoadUsersAsync()
         {
             this.IsLoading = true;
             this.ErrorMessage = string.Empty;
 
-            var serviceResult = await this.adminService.GetAllUsersAsync(this.CurrentPage, DefaultPageSize);
+            var serviceResult =
+                await this.adminService.GetAllUsersAsync(this.CurrentPage, DefaultPageSize);
 
             if (serviceResult.Success && serviceResult.Data != null)
             {
-                this.Users = new ObservableCollection<UserProfileDataTransferObject>(serviceResult.Data);
+                this.Users = new ObservableCollection<UserProfileDataTransferObject>(
+                    serviceResult.Data.Items);
 
-                // Logică pentru calcularea paginilor fără numere magice
-                this.TotalPages = serviceResult.Data.Count == DefaultPageSize
-                    ? this.CurrentPage + 1
-                    : this.CurrentPage;
+                this.TotalPages = serviceResult.Data.TotalPageCount;
             }
             else
             {
@@ -77,19 +81,15 @@ namespace BoardRent.ViewModels
                 return;
             }
 
-            var serviceResult = await this.adminService.ResetPasswordAsync(this.SelectedUser.Id, newPassword);
+            var serviceResult =
+                await this.adminService.ResetPasswordAsync(this.SelectedUser.Id, newPassword);
 
-            if (serviceResult.Success)
-            {
-                this.ErrorMessage = "Password has been reset successfully.";
-            }
-            else
-            {
-                this.ErrorMessage = serviceResult.Error;
-            }
+            this.ErrorMessage = serviceResult.Success
+                ? "Password has been reset successfully."
+                : serviceResult.Error;
         }
 
-        [RelayCommand(CanExecute = nameof(CanModifySelectedUser))]
+        [RelayCommand(CanExecute = nameof(HasSelectedUser))]
         private async Task SuspendUserAsync()
         {
             if (this.SelectedUser == null)
@@ -101,7 +101,6 @@ namespace BoardRent.ViewModels
 
             if (serviceResult.Success)
             {
-                this.SelectedUser.IsSuspended = true;
                 await this.LoadUsersAsync();
             }
             else
@@ -110,7 +109,7 @@ namespace BoardRent.ViewModels
             }
         }
 
-        [RelayCommand(CanExecute = nameof(CanModifySelectedUser))]
+        [RelayCommand(CanExecute = nameof(HasSelectedUser))]
         private async Task UnsuspendUserAsync()
         {
             if (this.SelectedUser == null)
@@ -122,7 +121,6 @@ namespace BoardRent.ViewModels
 
             if (serviceResult.Success)
             {
-                this.SelectedUser.IsSuspended = false;
                 await this.LoadUsersAsync();
             }
             else
@@ -131,14 +129,16 @@ namespace BoardRent.ViewModels
             }
         }
 
-        [RelayCommand(CanExecute = nameof(CanModifySelectedUser))]
+        [RelayCommand(CanExecute = nameof(HasSelectedUser))]
         private async Task ResetPasswordAsync()
         {
-            // Metodă asincronă goală pentru activarea comenzii în interfață
+            // This command is intentionally empty in the ViewModel.
+            // The View is responsible for prompting the administrator for the new
+            // password and then calling ResetPasswordWithValueAsync directly.
             await Task.CompletedTask;
         }
 
-        [RelayCommand(CanExecute = nameof(CanModifySelectedUser))]
+        [RelayCommand(CanExecute = nameof(HasSelectedUser))]
         private async Task UnlockAccountAsync()
         {
             if (this.SelectedUser == null)
@@ -146,16 +146,12 @@ namespace BoardRent.ViewModels
                 return;
             }
 
-            var serviceResult = await this.adminService.UnlockAccountAsync(this.SelectedUser.Id);
+            var serviceResult =
+                await this.adminService.UnlockAccountAsync(this.SelectedUser.Id);
 
-            if (serviceResult.Success)
-            {
-                this.ErrorMessage = "Account unlocked successfully.";
-            }
-            else
-            {
-                this.ErrorMessage = serviceResult.Error;
-            }
+            this.ErrorMessage = serviceResult.Success
+                ? "Account unlocked successfully."
+                : serviceResult.Error;
         }
 
         [RelayCommand(CanExecute = nameof(CanGoToPreviousPage))]
@@ -185,19 +181,11 @@ namespace BoardRent.ViewModels
             this.OnPropertyChanged(nameof(this.IsUnauthorized));
         }
 
-        private bool CanModifySelectedUser()
-        {
-            return this.SelectedUser != null;
-        }
+        // ── CanExecute predicates ────────────────────────────────────────────────
+        private bool HasSelectedUser() => this.SelectedUser != null;
 
-        private bool CanGoToPreviousPage()
-        {
-            return this.CurrentPage > 1;
-        }
+        private bool CanGoToPreviousPage() => this.CurrentPage > 1;
 
-        private bool CanGoToNextPage()
-        {
-            return this.CurrentPage < this.TotalPages;
-        }
+        private bool CanGoToNextPage() => this.CurrentPage < this.TotalPages;
     }
 }
