@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("BoardRent")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+3793f32b7ba5452c5265f654219ae63249361375")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+49181a11b86b3f5eb48e2a5ebb0820886203c05a")]
 [assembly: System.Reflection.AssemblyProductAttribute("BoardRent")]
 [assembly: System.Reflection.AssemblyTitleAttribute("BoardRent")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
