@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "2R/JElf7f48=",
+  "dgSpecHash": "T48wUYv1qxs=",
   "success": true,
   "projectFilePath": "D:\\My Documents\\OneDrive\\Desktop\\OOP\\UBB-SE-2026-TryingOurBest\\BoardRent_A1+A2\\BoardRent.Core\\BoardRent.Core.csproj",
   "expectedPackageFiles": [
@@ -23,6 +23,7 @@
     "C:\\Users\\georg\\.nuget\\packages\\microsoft.identitymodel.protocols.openidconnect\\8.16.0\\microsoft.identitymodel.protocols.openidconnect.8.16.0.nupkg.sha512",
     "C:\\Users\\georg\\.nuget\\packages\\microsoft.identitymodel.tokens\\8.16.0\\microsoft.identitymodel.tokens.8.16.0.nupkg.sha512",
     "C:\\Users\\georg\\.nuget\\packages\\microsoft.sqlserver.server\\1.0.0\\microsoft.sqlserver.server.1.0.0.nupkg.sha512",
+    "C:\\Users\\georg\\.nuget\\packages\\stylecop.analyzers\\1.1.118\\stylecop.analyzers.1.1.118.nupkg.sha512",
     "C:\\Users\\georg\\.nuget\\packages\\system.configuration.configurationmanager\\8.0.1\\system.configuration.configurationmanager.8.0.1.nupkg.sha512",
     "C:\\Users\\georg\\.nuget\\packages\\system.diagnostics.eventlog\\8.0.1\\system.diagnostics.eventlog.8.0.1.nupkg.sha512",
     "C:\\Users\\georg\\.nuget\\packages\\system.identitymodel.tokens.jwt\\8.16.0\\system.identitymodel.tokens.jwt.8.16.0.nupkg.sha512",

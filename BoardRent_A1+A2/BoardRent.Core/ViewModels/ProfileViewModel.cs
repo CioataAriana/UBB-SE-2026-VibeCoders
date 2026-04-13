@@ -163,7 +163,7 @@
             if (passwordChangeResult.Success)
             {
                 this.ErrorMessage = "Password updated. Redirecting to login...";
-                await Task.Delay(2000); 
+                await Task.Delay(2000);
                 await this.SignOutAsync();
             }
             else

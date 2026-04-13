@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("BoardRent.Tests")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+1d3c3a4f87742fd0e5821e72d2c1f0d4b7b90219")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+cbde72c7acf5d21e645306032380ac16947bc56c")]
 [assembly: System.Reflection.AssemblyProductAttribute("BoardRent.Tests")]
 [assembly: System.Reflection.AssemblyTitleAttribute("BoardRent.Tests")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

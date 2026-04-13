@@ -5,7 +5,7 @@ namespace BoardRent.ViewModels
     using System.Threading.Tasks;
     using BoardRent.DataTransferObjects;
     using BoardRent.Services;
-    using BoardRent.Utils; 
+    using BoardRent.Utils;
     using CommunityToolkit.Mvvm.ComponentModel;
     using CommunityToolkit.Mvvm.Input;
 

@@ -149,3 +149,4 @@ D:\My Documents\OneDrive\Desktop\OOP\UBB-SE-2026-TryingOurBest\BoardRent_A1+A2\B
 D:\My Documents\OneDrive\Desktop\OOP\UBB-SE-2026-TryingOurBest\BoardRent_A1+A2\BoardRent.Tests\obj\x64\Debug\net8.0-windows10.0.19041.0\BoardRent.Tests.pdb
 D:\My Documents\OneDrive\Desktop\OOP\UBB-SE-2026-TryingOurBest\BoardRent_A1+A2\BoardRent.Tests\obj\x64\Debug\net8.0-windows10.0.19041.0\BoardRent.Tests.genruntimeconfig.cache
 D:\My Documents\OneDrive\Desktop\OOP\UBB-SE-2026-TryingOurBest\BoardRent_A1+A2\BoardRent.Tests\obj\x64\Debug\net8.0-windows10.0.19041.0\ref\BoardRent.Tests.dll
+D:\My Documents\OneDrive\Desktop\OOP\UBB-SE-2026-TryingOurBest\BoardRent_A1+A2\BoardRent.Tests\bin\x64\Debug\net8.0-windows10.0.19041.0\BoardRent.Core.xml

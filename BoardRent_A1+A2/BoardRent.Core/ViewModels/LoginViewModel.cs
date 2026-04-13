@@ -1,13 +1,12 @@
 namespace BoardRent.ViewModels
 {
+    using System;
+    using System.Threading.Tasks;
     using BoardRent.DataTransferObjects;
     using BoardRent.Services;
     using BoardRent.Utils;
     using CommunityToolkit.Mvvm.ComponentModel;
     using CommunityToolkit.Mvvm.Input;
-    using System;
-    using System.Threading.Tasks;
-
     public partial class LoginViewModel : BaseViewModel
     {
         private readonly IAuthService authService;
