@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "D:\\UBB-SE-2026-TryingOurBest-main\\BoardRent_A1+A2\\BoardRent.Core\\BoardRent.Core.csproj": {}
+    "C:\\Users\\marius\\source\\repos\\ISS_2\\UBB-SE-2026-TryingOurBest\\BoardRent_A1+A2\\BoardRent.Core\\BoardRent.Core.csproj": {}
   },
   "projects": {
-    "D:\\UBB-SE-2026-TryingOurBest-main\\BoardRent_A1+A2\\BoardRent.Core\\BoardRent.Core.csproj": {
+    "C:\\Users\\marius\\source\\repos\\ISS_2\\UBB-SE-2026-TryingOurBest\\BoardRent_A1+A2\\BoardRent.Core\\BoardRent.Core.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\UBB-SE-2026-TryingOurBest-main\\BoardRent_A1+A2\\BoardRent.Core\\BoardRent.Core.csproj",
+        "projectUniqueName": "C:\\Users\\marius\\source\\repos\\ISS_2\\UBB-SE-2026-TryingOurBest\\BoardRent_A1+A2\\BoardRent.Core\\BoardRent.Core.csproj",
         "projectName": "BoardRent.Core",
-        "projectPath": "D:\\UBB-SE-2026-TryingOurBest-main\\BoardRent_A1+A2\\BoardRent.Core\\BoardRent.Core.csproj",
-        "packagesPath": "C:\\Users\\ovidi\\.nuget\\packages\\",
-        "outputPath": "D:\\UBB-SE-2026-TryingOurBest-main\\BoardRent_A1+A2\\BoardRent.Core\\obj\\",
+        "projectPath": "C:\\Users\\marius\\source\\repos\\ISS_2\\UBB-SE-2026-TryingOurBest\\BoardRent_A1+A2\\BoardRent.Core\\BoardRent.Core.csproj",
+        "packagesPath": "C:\\Users\\marius\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\marius\\source\\repos\\ISS_2\\UBB-SE-2026-TryingOurBest\\BoardRent_A1+A2\\BoardRent.Core\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\ovidi\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\marius\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -81,7 +81,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.103/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.102/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

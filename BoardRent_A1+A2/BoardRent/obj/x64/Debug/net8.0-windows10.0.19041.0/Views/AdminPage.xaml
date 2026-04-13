@@ -30,7 +30,7 @@
 
         <!-- Permission Guard -->
         <InfoBar x:ConnectionId='2' Grid.Row="1" 
-                                                               
+                                                                         
                  Severity="Error"
                  Title="Unauthorized"
                  Message="UM-043: You do not have permission to access the User Administration page. Administrator role is required." 

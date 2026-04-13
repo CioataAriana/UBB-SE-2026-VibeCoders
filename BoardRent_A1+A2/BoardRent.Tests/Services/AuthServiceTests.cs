@@ -87,6 +87,70 @@
         }
 
         [Fact]
+        public async Task LoginAsync_UsernameAndPassword_LogsInSuccessfully()
+        {
+            string plainPassword = "Password123!";
+            User testUser = new User
+            {
+                Id = Guid.NewGuid(),
+                Username = "existing_user",
+                DisplayName = "Existing User",
+                Email = "existing_user@test.com",
+                PasswordHash = PasswordHasher.HashPassword(plainPassword),
+                Roles = new List<Role> { new Role { Name = "Administrator" } }
+            };
+
+            LoginDataTransferObject loginRequest = new LoginDataTransferObject
+            {
+                UsernameOrEmail = "existing_user",
+                Password = plainPassword
+            };
+
+            this.mockUserRepository.Setup(repository => repository.GetByUsernameAsync("existing_user")).ReturnsAsync(testUser);
+            this.mockFailedLoginRepository.Setup(repository => repository.GetByUserIdAsync(testUser.Id)).ReturnsAsync((FailedLoginAttempt)null);
+
+            ServiceResult<UserProfileDataTransferObject> loginResult = await this.systemUnderTest.LoginAsync(loginRequest);
+
+            Assert.True(loginResult.Success);
+            Assert.Equal("existing_user", loginResult.Data.Username);
+            Assert.Equal("Existing User", loginResult.Data.DisplayName);
+            Assert.Equal("Administrator", loginResult.Data.Role.Name);
+            this.mockSessionContext.Verify(context => context.Populate(testUser, "Administrator"), Times.Once);
+            this.mockFailedLoginRepository.Verify(repository => repository.ResetAsync(testUser.Id), Times.Once);
+        }
+
+        [Fact]
+        public async Task LoginAsync_EmailAndPassword_LogsInSuccessfully()
+        {
+            string plainPassword = "Password123!";
+            User testUser = new User
+            {
+                Id = Guid.NewGuid(),
+                Username = "user_from_email",
+                DisplayName = "Email User",
+                Email = "email_user@test.com",
+                PasswordHash = PasswordHasher.HashPassword(plainPassword),
+                Roles = new List<Role> { new Role { Name = "Standard User" } }
+            };
+
+            LoginDataTransferObject loginRequest = new LoginDataTransferObject
+            {
+                UsernameOrEmail = "email_user@test.com",
+                Password = plainPassword
+            };
+
+            this.mockUserRepository.Setup(repository => repository.GetByUsernameAsync("email_user@test.com")).ReturnsAsync((User)null);
+            this.mockUserRepository.Setup(repository => repository.GetByEmailAsync("email_user@test.com")).ReturnsAsync(testUser);
+            this.mockFailedLoginRepository.Setup(repository => repository.GetByUserIdAsync(testUser.Id)).ReturnsAsync((FailedLoginAttempt)null);
+
+            ServiceResult<UserProfileDataTransferObject> loginResult = await this.systemUnderTest.LoginAsync(loginRequest);
+
+            Assert.True(loginResult.Success);
+            Assert.Equal("email_user@test.com", loginRequest.UsernameOrEmail);
+            this.mockUserRepository.Verify(repository => repository.GetByEmailAsync("email_user@test.com"), Times.Once);
+        }
+
+        [Fact]
         public async Task LoginAsync_UserIsSuspended_ReturnsFailResult()
         {
             LoginDataTransferObject loginRequest = new LoginDataTransferObject
@@ -102,6 +166,35 @@
 
             Assert.False(loginResult.Success);
             Assert.Equal("This account has been suspended.", loginResult.Error);
+        }
+
+        [Fact]
+        public async Task LoginAsync_AccountLocked_ReturnsLockMessageWithRemainingTime()
+        {
+            LoginDataTransferObject loginRequest = new LoginDataTransferObject
+            {
+                UsernameOrEmail = "locked_user",
+                Password = "AnyPassword123!"
+            };
+
+            User lockedUser = new User
+            {
+                Id = Guid.NewGuid(),
+                Username = "locked_user",
+                PasswordHash = PasswordHasher.HashPassword("AnyPassword123!"),
+                IsSuspended = false
+            };
+
+            this.mockUserRepository.Setup(repository => repository.GetByUsernameAsync("locked_user")).ReturnsAsync(lockedUser);
+            this.mockFailedLoginRepository.Setup(repository => repository.GetByUserIdAsync(lockedUser.Id)).ReturnsAsync(
+                new FailedLoginAttempt { UserId = lockedUser.Id, FailedAttempts = 5, LockedUntil = DateTime.UtcNow.AddMinutes(10) });
+
+            ServiceResult<UserProfileDataTransferObject> loginResult = await this.systemUnderTest.LoginAsync(loginRequest);
+
+            Assert.False(loginResult.Success);
+            Assert.Contains("This account is locked.", loginResult.Error);
+            Assert.Matches(@".*\d{2}:\d{2}\.$", loginResult.Error);
+            this.mockFailedLoginRepository.Verify(repository => repository.IncrementAsync(It.IsAny<Guid>()), Times.Never);
         }
 
         [Fact]
@@ -125,6 +218,7 @@
             };
 
             this.mockUserRepository.Setup(repository => repository.GetByUsernameAsync("test_user")).ReturnsAsync(testUser);
+            this.mockFailedLoginRepository.Setup(repository => repository.GetByUserIdAsync(testUser.Id)).ReturnsAsync((FailedLoginAttempt)null);
 
             ServiceResult<UserProfileDataTransferObject> loginResult = await this.systemUnderTest.LoginAsync(loginRequest);
 

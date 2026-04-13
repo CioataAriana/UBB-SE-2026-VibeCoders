@@ -10,6 +10,7 @@ namespace BoardRent.ViewModels
     public partial class LoginViewModel : BaseViewModel
     {
         private readonly IAuthService authService;
+        private readonly ILoginPreferenceStore loginPreferenceStore;
 
         [ObservableProperty]
         private string usernameOrEmail = string.Empty;
@@ -20,9 +21,11 @@ namespace BoardRent.ViewModels
         [ObservableProperty]
         private bool rememberMe;
 
-        public LoginViewModel(IAuthService authService)
+        public LoginViewModel(IAuthService authService, ILoginPreferenceStore loginPreferenceStore)
         {
             this.authService = authService;
+            this.loginPreferenceStore = loginPreferenceStore;
+            this.UsernameOrEmail = this.loginPreferenceStore.GetRememberedUsername();
         }
 
         public Action<string> OnLoginSuccess { get; set; }
@@ -53,6 +56,15 @@ namespace BoardRent.ViewModels
 
             if (loginResult.Success && loginResult.Data != null)
             {
+                if (this.RememberMe)
+                {
+                    this.loginPreferenceStore.SaveRememberedUsername(this.UsernameOrEmail);
+                }
+                else
+                {
+                    this.loginPreferenceStore.ClearRememberedUsername();
+                }
+
                 string userRole = loginResult.Data.Role?.Name ?? "Standard User";
                 this.OnLoginSuccess?.Invoke(userRole);
             }

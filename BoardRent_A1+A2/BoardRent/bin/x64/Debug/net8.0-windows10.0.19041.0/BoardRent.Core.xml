@@ -12,6 +12,7 @@
             <inheritdoc/>
             <inheritdoc/>
             <inheritdoc/>
+            <inheritdoc/>
         </member>
         <member name="P:BoardRent.ViewModels.AdminViewModel.Users">
             <inheritdoc cref="F:BoardRent.ViewModels.AdminViewModel.users"/>
@@ -60,6 +61,12 @@
         </member>
         <member name="P:BoardRent.ViewModels.AdminViewModel.NextPageCommand">
             <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand"/> instance wrapping <see cref="M:BoardRent.ViewModels.AdminViewModel.NextPageAsync"/>.</summary>
+        </member>
+        <member name="F:BoardRent.ViewModels.AdminViewModel.signOutCommand">
+            <summary>The backing field for <see cref="P:BoardRent.ViewModels.AdminViewModel.SignOutCommand"/>.</summary>
+        </member>
+        <member name="P:BoardRent.ViewModels.AdminViewModel.SignOutCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand"/> instance wrapping <see cref="M:BoardRent.ViewModels.AdminViewModel.SignOutAsync"/>.</summary>
         </member>
         <member name="T:BoardRent.ViewModels.BaseViewModel">
             <inheritdoc/>

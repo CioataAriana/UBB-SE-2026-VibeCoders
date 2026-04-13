@@ -12,12 +12,15 @@
     public class LoginViewModelTests
     {
         private readonly Mock<IAuthService> mockAuthService;
+        private readonly Mock<ILoginPreferenceStore> mockLoginPreferenceStore;
         private readonly LoginViewModel systemUnderTest;
 
         public LoginViewModelTests()
         {
             this.mockAuthService = new Mock<IAuthService>();
-            this.systemUnderTest = new LoginViewModel(this.mockAuthService.Object);
+            this.mockLoginPreferenceStore = new Mock<ILoginPreferenceStore>();
+            this.mockLoginPreferenceStore.Setup(store => store.GetRememberedUsername()).Returns(string.Empty);
+            this.systemUnderTest = new LoginViewModel(this.mockAuthService.Object, this.mockLoginPreferenceStore.Object);
         }
 
         [Fact]
@@ -47,6 +50,16 @@
             // Assert
             Assert.Equal("Administrator", capturedRole);
             this.mockAuthService.Verify(service => service.LoginAsync(It.IsAny<LoginDataTransferObject>()), Times.Once);
+        }
+
+        [Fact]
+        public void Constructor_WhenRememberedUsernameExists_PrefillsUsername()
+        {
+            this.mockLoginPreferenceStore.Setup(store => store.GetRememberedUsername()).Returns("remembered_user");
+
+            LoginViewModel localViewModel = new LoginViewModel(this.mockAuthService.Object, this.mockLoginPreferenceStore.Object);
+
+            Assert.Equal("remembered_user", localViewModel.UsernameOrEmail);
         }
 
         [Fact]
@@ -127,6 +140,51 @@
 
             // Assert
             Assert.Equal("Standard User", capturedRole);
+        }
+
+        [Fact]
+        public async Task LoginAsync_RememberMeEnabled_SavesUsernameOnly()
+        {
+            this.systemUnderTest.UsernameOrEmail = "saved_user";
+            this.systemUnderTest.Password = "Password123!";
+            this.systemUnderTest.RememberMe = true;
+
+            this.mockAuthService
+                .Setup(service => service.LoginAsync(It.IsAny<LoginDataTransferObject>()))
+                .ReturnsAsync(ServiceResult<UserProfileDataTransferObject>.Ok(
+                    new UserProfileDataTransferObject
+                    {
+                        Username = "saved_user",
+                        Role = new RoleDataTransferObject { Name = "Standard User" }
+                    }));
+
+            this.systemUnderTest.LoginCommand.Execute(null);
+            await Task.Delay(150);
+
+            this.mockLoginPreferenceStore.Verify(store => store.SaveRememberedUsername("saved_user"), Times.Once);
+            this.mockLoginPreferenceStore.Verify(store => store.ClearRememberedUsername(), Times.Never);
+        }
+
+        [Fact]
+        public async Task LoginAsync_RememberMeDisabled_ClearsRememberedUsername()
+        {
+            this.systemUnderTest.UsernameOrEmail = "user_to_clear";
+            this.systemUnderTest.Password = "Password123!";
+            this.systemUnderTest.RememberMe = false;
+
+            this.mockAuthService
+                .Setup(service => service.LoginAsync(It.IsAny<LoginDataTransferObject>()))
+                .ReturnsAsync(ServiceResult<UserProfileDataTransferObject>.Ok(
+                    new UserProfileDataTransferObject
+                    {
+                        Username = "user_to_clear",
+                        Role = new RoleDataTransferObject { Name = "Standard User" }
+                    }));
+
+            this.systemUnderTest.LoginCommand.Execute(null);
+            await Task.Delay(150);
+
+            this.mockLoginPreferenceStore.Verify(store => store.ClearRememberedUsername(), Times.Once);
         }
     }
 }

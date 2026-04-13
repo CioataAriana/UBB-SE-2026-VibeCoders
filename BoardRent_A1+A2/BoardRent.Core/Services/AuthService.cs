@@ -1,9 +1,7 @@
 namespace BoardRent.Services
 {
     using System;
-    using System.Collections.Generic;
     using System.Linq;
-    using System.Text.RegularExpressions;
     using System.Threading.Tasks;
     using BoardRent.Data;
     using BoardRent.DataTransferObjects;
@@ -86,6 +84,16 @@ namespace BoardRent.Services
                 if (userEntity.IsSuspended)
                 {
                     return ServiceResult<UserProfileDataTransferObject>.Fail("This account has been suspended.");
+                }
+
+                FailedLoginAttempt existingFailedAttempt = await this.failedLoginRepository.GetByUserIdAsync(userEntity.Id);
+                if (existingFailedAttempt?.LockedUntil > DateTime.UtcNow)
+                {
+                    TimeSpan remainingLockTime = existingFailedAttempt.LockedUntil.Value - DateTime.UtcNow;
+                    int remainingMinutes = Math.Max(0, remainingLockTime.Minutes + (remainingLockTime.Hours * 60));
+                    int remainingSeconds = Math.Max(0, remainingLockTime.Seconds);
+                    return ServiceResult<UserProfileDataTransferObject>.Fail(
+                        $"This account is locked. Try again in {remainingMinutes:D2}:{remainingSeconds:D2}.");
                 }
 
                 if (!PasswordHasher.VerifyPassword(loginRequest.Password, userEntity.PasswordHash))
