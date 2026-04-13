@@ -23,7 +23,6 @@
         [Fact]
         public async Task RegisterAsync_SuccessfulRegistration_InvokesSuccessCallback()
         {
-            // Arrange
             bool wasNavigationCalled = false;
             this.systemUnderTest.OnRegistrationSuccess = () => wasNavigationCalled = true;
 
@@ -35,11 +34,8 @@
                 .Setup(service => service.RegisterAsync(It.IsAny<RegisterDataTransferObject>()))
                 .ReturnsAsync(ServiceResult<bool>.Ok(true));
 
-            // Act
-            this.systemUnderTest.RegisterCommand.Execute(null);
-            await Task.Delay(150);
+            await this.systemUnderTest.RegisterCommand.ExecuteAsync(null);
 
-            // Assert
             Assert.True(wasNavigationCalled);
             this.mockAuthService.Verify(service => service.RegisterAsync(It.IsAny<RegisterDataTransferObject>()), Times.Once);
         }
@@ -47,8 +43,7 @@
         [Fact]
         public async Task RegisterAsync_FieldValidationError_MapsErrorsToCorrectProperties()
         {
-            // Arrange
-            // Simulăm un format de eroare combinat: Username duplicat și parolă prea scurtă
+
             string validationErrorMessage = "Username|Username already exists;Password|Password is too short";
             ServiceResult<bool> failResult = ServiceResult<bool>.Fail(validationErrorMessage);
 
@@ -56,11 +51,8 @@
                 .Setup(service => service.RegisterAsync(It.IsAny<RegisterDataTransferObject>()))
                 .ReturnsAsync(failResult);
 
-            // Act
-            this.systemUnderTest.RegisterCommand.Execute(null);
-            await Task.Delay(150);
+            await this.systemUnderTest.RegisterCommand.ExecuteAsync(null);
 
-            // Assert
             Assert.Equal("Username already exists", this.systemUnderTest.UsernameError);
             Assert.Equal("Password is too short", this.systemUnderTest.PasswordError);
             Assert.False(this.systemUnderTest.IsLoading);
@@ -69,52 +61,65 @@
         [Fact]
         public async Task RegisterAsync_GeneralError_SetsGeneralErrorMessage()
         {
-            // Arrange
             string generalError = "Server connection lost";
             this.mockAuthService
                 .Setup(service => service.RegisterAsync(It.IsAny<RegisterDataTransferObject>()))
                 .ReturnsAsync(ServiceResult<bool>.Fail(generalError));
 
-            // Act
-            this.systemUnderTest.RegisterCommand.Execute(null);
-            await Task.Delay(150);
+            await this.systemUnderTest.RegisterCommand.ExecuteAsync(null);
 
-            // Assert
             Assert.Equal(generalError, this.systemUnderTest.ErrorMessage);
-            // Verificăm că erorile specifice pe câmpuri au rămas goale
             Assert.Equal(string.Empty, this.systemUnderTest.EmailError);
         }
 
         [Fact]
         public void GoToLogin_CommandExecuted_InvokesNavigateBackRequest()
         {
-            // Arrange
             bool wasBackNavigationCalled = false;
             this.systemUnderTest.OnNavigateBackRequest = () => wasBackNavigationCalled = true;
 
-            // Act
             this.systemUnderTest.GoToLoginCommand.Execute(null);
 
-            // Assert
             Assert.True(wasBackNavigationCalled);
         }
 
         [Fact]
         public async Task RegisterAsync_ClearErrors_RemovesOldErrorsBeforeNewAttempt()
         {
-            // Arrange
             this.systemUnderTest.UsernameError = "Old error";
 
             this.mockAuthService
                 .Setup(service => service.RegisterAsync(It.IsAny<RegisterDataTransferObject>()))
                 .ReturnsAsync(ServiceResult<bool>.Ok(true));
 
-            // Act
-            this.systemUnderTest.RegisterCommand.Execute(null);
-            await Task.Delay(150);
+            await this.systemUnderTest.RegisterCommand.ExecuteAsync(null);
 
-            // Assert
             Assert.Equal(string.Empty, this.systemUnderTest.UsernameError);
+        }
+
+        [Fact]
+        public async Task RegisterAsync_ValidData_MapsPropertiesToDataTransferObjectCorrectly()
+        {
+            this.systemUnderTest.DisplayName = "John Doe";
+            this.systemUnderTest.Username = "johndoe99";
+            this.systemUnderTest.Email = "john@example.com";
+            this.systemUnderTest.Password = "SecurePass123!";
+            this.systemUnderTest.ConfirmPassword = "SecurePass123!";
+            this.systemUnderTest.PhoneNumber = "1234567890";
+
+            this.mockAuthService
+                .Setup(service => service.RegisterAsync(It.IsAny<RegisterDataTransferObject>()))
+                .ReturnsAsync(ServiceResult<bool>.Ok(true));
+
+            await this.systemUnderTest.RegisterCommand.ExecuteAsync(null);
+
+            this.mockAuthService.Verify(service => service.RegisterAsync(It.Is<RegisterDataTransferObject>(dto =>
+                dto.DisplayName == "John Doe" &&
+                dto.Username == "johndoe99" &&
+                dto.Email == "john@example.com" &&
+                dto.Password == "SecurePass123!" &&
+                dto.ConfirmPassword == "SecurePass123!" &&
+                dto.PhoneNumber == "1234567890")), Times.Once);
         }
     }
 }
