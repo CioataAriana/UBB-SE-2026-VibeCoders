@@ -1,5 +1,5 @@
-﻿// <copyright file="App.xaml.cs" company="BoardRent">
-// Copyright (c) BoardRent. All rights reserved.
+﻿// <copyright file="App.xaml.cs" company="PlaceholderCompany">
+// Copyright (c) PlaceholderCompany. All rights reserved.
 // </copyright>
 
 namespace BoardRent
@@ -15,6 +15,9 @@ namespace BoardRent
     using Microsoft.UI.Xaml;
     using Microsoft.UI.Xaml.Controls;
 
+    /// <summary>
+    /// Represents the main application class for BoardRent.
+    /// </summary>
     public partial class App : Application
     {
         public static Window _window;

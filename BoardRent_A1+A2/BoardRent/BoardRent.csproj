@@ -17,10 +17,14 @@
 		<CodeAnalysisRuleSet>SE.ruleset</CodeAnalysisRuleSet>
 	</PropertyGroup>
   <ItemGroup>
+    <None Remove="stylecop.json" />
     <None Remove="Views\AdminPage.xaml" />
     <None Remove="Views\LoginPage.xaml" />
     <None Remove="Views\ProfilePage.xaml" />
     <None Remove="Views\RegisterPage.xaml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AdditionalFiles Include="stylecop.json" />
   </ItemGroup>
 
   <ItemGroup>
