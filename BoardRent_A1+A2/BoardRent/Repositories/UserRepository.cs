@@ -1,28 +1,28 @@
-using BoardRent.Data;
-using BoardRent.Domain;
-using Microsoft.Data.SqlClient;
-using System;
-using System.Collections.Generic;
-using System.Threading.Tasks;
-
 namespace BoardRent.Repositories
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Threading.Tasks;
+    using BoardRent.Data;
+    using BoardRent.Domain;
+    using Microsoft.Data.SqlClient;
+
     public class UserRepository : IUserRepository
     {
-        private IUnitOfWork _unitOfWork;
+        private IUnitOfWork unitOfWork;
+
+        private SqlConnection DatabaseConnection => this.unitOfWork.Connection;
 
         public void SetUnitOfWork(IUnitOfWork unitOfWork)
         {
-            _unitOfWork = unitOfWork;
+            this.unitOfWork = unitOfWork;
         }
-
-        private SqlConnection DatabaseConnection => _unitOfWork.Connection;
 
         public async Task<User> GetByIdAsync(Guid identifier)
         {
             User userEntity = null;
 
-            using (var sqlCommand = DatabaseConnection.CreateCommand())
+            using (var sqlCommand = this.DatabaseConnection.CreateCommand())
             {
                 sqlCommand.CommandText = "SELECT * FROM [User] WHERE Id = @Identifier";
                 sqlCommand.Parameters.AddWithValue("@Identifier", identifier);
@@ -31,14 +31,14 @@ namespace BoardRent.Repositories
                 {
                     if (await dataReader.ReadAsync())
                     {
-                        userEntity = MapDataReaderToUserEntity(dataReader);
+                        userEntity = this.MapDataReaderToUserEntity(dataReader);
                     }
                 }
             }
 
             if (userEntity != null)
             {
-                userEntity.Roles = await LoadUserRolesAsync(userEntity.Id);
+                userEntity.Roles = await this.LoadUserRolesAsync(userEntity.Id);
             }
 
             return userEntity;
@@ -48,7 +48,7 @@ namespace BoardRent.Repositories
         {
             User userEntity = null;
 
-            using (var sqlCommand = DatabaseConnection.CreateCommand())
+            using (var sqlCommand = this.DatabaseConnection.CreateCommand())
             {
                 sqlCommand.CommandText = "SELECT * FROM [User] WHERE Username = @Username";
                 sqlCommand.Parameters.AddWithValue("@Username", username);
@@ -57,14 +57,14 @@ namespace BoardRent.Repositories
                 {
                     if (await dataReader.ReadAsync())
                     {
-                        userEntity = MapDataReaderToUserEntity(dataReader);
+                        userEntity = this.MapDataReaderToUserEntity(dataReader);
                     }
                 }
             }
 
             if (userEntity != null)
             {
-                userEntity.Roles = await LoadUserRolesAsync(userEntity.Id);
+                userEntity.Roles = await this.LoadUserRolesAsync(userEntity.Id);
             }
 
             return userEntity;
@@ -74,7 +74,7 @@ namespace BoardRent.Repositories
         {
             User userEntity = null;
 
-            using (var sqlCommand = DatabaseConnection.CreateCommand())
+            using (var sqlCommand = this.DatabaseConnection.CreateCommand())
             {
                 sqlCommand.CommandText = "SELECT * FROM [User] WHERE Email = @EmailAddress";
                 sqlCommand.Parameters.AddWithValue("@EmailAddress", emailAddress);
@@ -83,14 +83,14 @@ namespace BoardRent.Repositories
                 {
                     if (await dataReader.ReadAsync())
                     {
-                        userEntity = MapDataReaderToUserEntity(dataReader);
+                        userEntity = this.MapDataReaderToUserEntity(dataReader);
                     }
                 }
             }
 
             if (userEntity != null)
             {
-                userEntity.Roles = await LoadUserRolesAsync(userEntity.Id);
+                userEntity.Roles = await this.LoadUserRolesAsync(userEntity.Id);
             }
 
             return userEntity;
@@ -102,8 +102,7 @@ namespace BoardRent.Repositories
             const int PaginationOffsetAdjustment = 1;
             int offsetCalculation = (pageNumber - PaginationOffsetAdjustment) * pageSize;
 
-
-            using (var sqlCommand = DatabaseConnection.CreateCommand())
+            using (var sqlCommand = this.DatabaseConnection.CreateCommand())
             {
                 sqlCommand.CommandText = "SELECT * FROM [User] ORDER BY CreatedAt OFFSET @Offset ROWS FETCH NEXT @PageSize ROWS ONLY";
                 sqlCommand.Parameters.AddWithValue("@Offset", offsetCalculation);
@@ -113,14 +112,14 @@ namespace BoardRent.Repositories
                 {
                     while (await dataReader.ReadAsync())
                     {
-                        userList.Add(MapDataReaderToUserEntity(dataReader));
+                        userList.Add(this.MapDataReaderToUserEntity(dataReader));
                     }
                 }
             }
 
             foreach (var userEntity in userList)
             {
-                userEntity.Roles = await LoadUserRolesAsync(userEntity.Id);
+                userEntity.Roles = await this.LoadUserRolesAsync(userEntity.Id);
             }
 
             return userList;
@@ -128,7 +127,7 @@ namespace BoardRent.Repositories
 
         public async Task AddAsync(User userEntity)
         {
-            using (var sqlCommand = DatabaseConnection.CreateCommand())
+            using (var sqlCommand = this.DatabaseConnection.CreateCommand())
             {
                 sqlCommand.CommandText = @"
                     INSERT INTO [User] (Id, Username, DisplayName, Email, PasswordHash, PhoneNumber, AvatarUrl, IsSuspended, CreatedAt, UpdatedAt, StreetName, StreetNumber, Country, City)
@@ -155,7 +154,7 @@ namespace BoardRent.Repositories
 
         public async Task UpdateAsync(User userEntity)
         {
-            using (var sqlCommand = DatabaseConnection.CreateCommand())
+            using (var sqlCommand = this.DatabaseConnection.CreateCommand())
             {
                 sqlCommand.CommandText = @"
                     UPDATE [User] SET
@@ -191,7 +190,7 @@ namespace BoardRent.Repositories
 
         public async Task AddRoleAsync(Guid identifier, string roleName)
         {
-            using (var sqlCommand = DatabaseConnection.CreateCommand())
+            using (var sqlCommand = this.DatabaseConnection.CreateCommand())
             {
                 sqlCommand.CommandText = @"
                     DECLARE @RoleIdentifier UNIQUEIDENTIFIER = (SELECT Id FROM Role WHERE Name = @RoleName);
@@ -209,7 +208,7 @@ namespace BoardRent.Repositories
         {
             var roleList = new List<Role>();
 
-            using (var sqlCommand = DatabaseConnection.CreateCommand())
+            using (var sqlCommand = this.DatabaseConnection.CreateCommand())
             {
                 sqlCommand.CommandText = @"
                     SELECT TargetRole.Id, TargetRole.Name

@@ -1,27 +1,26 @@
-using BoardRent.Data;
-using BoardRent.Domain;
-using BoardRent.DataTransferObjects;
-using BoardRent.Repositories;
-using BoardRent.Utils;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text.RegularExpressions;
-using System.Threading.Tasks;
-
 namespace BoardRent.Services
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Text.RegularExpressions;
+    using System.Threading.Tasks;
+    using BoardRent.Data;
+    using BoardRent.DataTransferObjects;
+    using BoardRent.Domain;
+    using BoardRent.Repositories;
+    using BoardRent.Utils;
     public class AuthService : IAuthService
     {
-        private readonly IUserRepository _userRepository;
-        private readonly IFailedLoginRepository _failedLoginRepository;
-        private readonly IUnitOfWorkFactory _unitOfWorkFactory;
+        private readonly IUserRepository userRepository;
+        private readonly IFailedLoginRepository failedLoginRepository;
+        private readonly IUnitOfWorkFactory unitOfWorkFactory;
 
         public AuthService(IUserRepository userRepository, IFailedLoginRepository failedLoginRepository, IUnitOfWorkFactory unitOfWorkFactory)
         {
-            _userRepository = userRepository;
-            _failedLoginRepository = failedLoginRepository;
-            _unitOfWorkFactory = unitOfWorkFactory;
+            this.userRepository = userRepository;
+            this.failedLoginRepository = failedLoginRepository;
+            this.unitOfWorkFactory = unitOfWorkFactory;
         }
 
         public async Task<ServiceResult<bool>> RegisterAsync(RegisterDataTransferObject registrationRequest)
@@ -34,43 +33,63 @@ namespace BoardRent.Services
             const int MaximumUsernameLength = 30;
 
             if (string.IsNullOrWhiteSpace(registrationRequest.DisplayName) || registrationRequest.DisplayName.Length < MinimumDisplayNameLength || registrationRequest.DisplayName.Length > MaximumDisplayNameLength)
+            {
                 validationErrors.Add("DisplayName|Display name must be between 2 and 50 characters long.");
+            }
 
             if (string.IsNullOrWhiteSpace(registrationRequest.Username) || registrationRequest.Username.Length < MinimumUsernameLength || registrationRequest.Username.Length > MaximumUsernameLength
                 || !Regex.IsMatch(registrationRequest.Username, @"^[a-zA-Z0-9_]+$"))
+            {
                 validationErrors.Add("Username|Username must be 3–30 characters and contain only letters, numbers, and underscores.");
+            }
 
             if (string.IsNullOrWhiteSpace(registrationRequest.Email))
+            {
                 validationErrors.Add("Email|Email is required.");
+            }
 
             var (isPasswordValid, passwordErrorMessage) = PasswordValidator.Validate(registrationRequest.Password);
             if (!isPasswordValid)
+            {
                 validationErrors.Add($"Password|{passwordErrorMessage}");
+            }
 
             if (registrationRequest.Password != registrationRequest.ConfirmPassword)
+            {
                 validationErrors.Add("ConfirmPassword|Passwords do not match.");
+            }
 
             if (!string.IsNullOrWhiteSpace(registrationRequest.PhoneNumber))
             {
                 if (!Regex.IsMatch(registrationRequest.PhoneNumber, @"^\+?\d{7,15}$"))
+                {
                     validationErrors.Add("PhoneNumber|Phone number format is invalid.");
+                }
             }
 
             if (validationErrors.Any())
+            {
                 return ServiceResult<bool>.Fail(string.Join(";", validationErrors));
+            }
 
-            using (var unitOfWork = _unitOfWorkFactory.Create())
+            using (var unitOfWork = this.unitOfWorkFactory.Create())
             {
                 await unitOfWork.OpenAsync();
-                ((UserRepository)_userRepository).SetUnitOfWork(unitOfWork);
 
-                var existingUsername = await _userRepository.GetByUsernameAsync(registrationRequest.Username);
+                // Folosim interfața, nu facem cast la clasa concretă
+                this.userRepository.SetUnitOfWork(unitOfWork);
+
+                var existingUsername = await this.userRepository.GetByUsernameAsync(registrationRequest.Username);
                 if (existingUsername != null)
+                {
                     return ServiceResult<bool>.Fail("Username|Username is already taken.");
+                }
 
-                var existingEmail = await _userRepository.GetByEmailAsync(registrationRequest.Email);
+                var existingEmail = await this.userRepository.GetByEmailAsync(registrationRequest.Email);
                 if (existingEmail != null)
+                {
                     return ServiceResult<bool>.Fail("Email|Email is already registered.");
+                }
 
                 var newUser = new User
                 {
@@ -86,30 +105,31 @@ namespace BoardRent.Services
                     PasswordHash = PasswordHasher.HashPassword(registrationRequest.Password),
                     CreatedAt = DateTime.UtcNow,
                     UpdatedAt = DateTime.UtcNow,
-                    IsSuspended = false
+                    IsSuspended = false,
                 };
 
-                await _userRepository.AddAsync(newUser);
-                await _userRepository.AddRoleAsync(newUser.Id, "Standard User");
+                await this.userRepository.AddAsync(newUser);
+                await this.userRepository.AddRoleAsync(newUser.Id, "Standard User");
 
                 SessionContext.GetInstance().Populate(newUser, "Standard User");
             }
 
             return ServiceResult<bool>.Ok(true);
         }
-
         public async Task<ServiceResult<UserProfileDataTransferObject>> LoginAsync(LoginDataTransferObject dto)
         {
-            using (var unitOfWork = _unitOfWorkFactory.Create())
+            using (var unitOfWork = this.unitOfWorkFactory.Create())
             {
                 await unitOfWork.OpenAsync();
-                ((UserRepository)_userRepository).SetUnitOfWork(unitOfWork);
-                ((FailedLoginRepository)_failedLoginRepository).SetUnitOfWork(unitOfWork);
 
-                User user = await _userRepository.GetByUsernameAsync(dto.UsernameOrEmail);
+                // folosim interfața, eliminăm (UserRepository)
+                this.userRepository.SetUnitOfWork(unitOfWork);
+                this.failedLoginRepository.SetUnitOfWork(unitOfWork);
+
+                User user = await this.userRepository.GetByUsernameAsync(dto.UsernameOrEmail);
                 if (user == null)
                 {
-                    user = await _userRepository.GetByEmailAsync(dto.UsernameOrEmail);
+                    user = await this.userRepository.GetByEmailAsync(dto.UsernameOrEmail);
                 }
 
                 if (user == null)
@@ -122,7 +142,7 @@ namespace BoardRent.Services
                     return ServiceResult<UserProfileDataTransferObject>.Fail("This account has been suspended. Please contact support.");
                 }
 
-                var failedAttempt = await _failedLoginRepository.GetByUserIdAsync(user.Id);
+                var failedAttempt = await this.failedLoginRepository.GetByUserIdAsync(user.Id);
                 if (failedAttempt != null && failedAttempt.LockedUntil.HasValue)
                 {
                     if (failedAttempt.LockedUntil.Value > DateTime.UtcNow)
@@ -136,11 +156,11 @@ namespace BoardRent.Services
 
                 if (!PasswordHasher.VerifyPassword(dto.Password, user.PasswordHash))
                 {
-                    await _failedLoginRepository.IncrementAsync(user.Id);
+                    await this.failedLoginRepository.IncrementAsync(user.Id);
                     return ServiceResult<UserProfileDataTransferObject>.Fail("Invalid username or password.");
                 }
 
-                await _failedLoginRepository.ResetAsync(user.Id);
+                await this.failedLoginRepository.ResetAsync(user.Id);
 
                 var firstRole = user.Roles?.FirstOrDefault();
                 string roleName = firstRole?.Name ?? "Standard User";
@@ -150,7 +170,7 @@ namespace BoardRent.Services
                 var roleDto = new RoleDataTransferObject
                 {
                     Id = firstRole?.Id ?? Guid.Empty,
-                    Name = roleName
+                    Name = roleName,
                 };
 
                 var profileDto = new UserProfileDataTransferObject
@@ -166,7 +186,7 @@ namespace BoardRent.Services
                     Country = user.Country,
                     City = user.City,
                     StreetName = user.StreetName,
-                    StreetNumber = user.StreetNumber
+                    StreetNumber = user.StreetNumber,
                 };
 
                 return ServiceResult<UserProfileDataTransferObject>.Ok(profileDto);

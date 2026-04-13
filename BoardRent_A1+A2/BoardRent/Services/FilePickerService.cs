@@ -1,18 +1,23 @@
-﻿using System;
-using System.Threading.Tasks;
-using Windows.Storage.Pickers;
-using WinRT.Interop;
-
-namespace BoardRent.Services
+﻿namespace BoardRent.Services
 {
+    using System;
+    using System.Threading.Tasks;
+    using Windows.Storage.Pickers;
+    using WinRT.Interop;
+
     public class FilePickerService : IFilePickerService
     {
         public async Task<string> PickImageFileAsync()
         {
+            // Verificăm dacă suntem în context de aplicație sau de test
+            if (App.Window == null)
+            {
+                return null;
+            }
+
             var picker = new FileOpenPicker();
-            
-            var windowHandle = WindowNative.GetWindowHandle(App._window);
-            InitializeWithWindow.Initialize(picker, windowHandle);
+            var windowHandle = WinRT.Interop.WindowNative.GetWindowHandle(App.Window);
+            WinRT.Interop.InitializeWithWindow.Initialize(picker, windowHandle);
 
             picker.FileTypeFilter.Add(".jpg");
             picker.FileTypeFilter.Add(".png");

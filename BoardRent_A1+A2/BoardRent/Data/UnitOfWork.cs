@@ -1,44 +1,45 @@
-using Microsoft.Data.SqlClient;
-using System.Threading.Tasks;
-
 namespace BoardRent.Data
 {
+    using System.Threading.Tasks;
+    using Microsoft.Data.SqlClient;
+
     public class UnitOfWork : IUnitOfWork
     {
-        private readonly AppDbContext _dbContext;
-        private SqlConnection _connection;
+        private readonly AppDbContext dbContext;
+        private SqlConnection connection;
 
         public UnitOfWork(AppDbContext dbContext)
         {
-            _dbContext = dbContext;
+            this.dbContext = dbContext;
         }
 
         public SqlConnection Connection
         {
             get
             {
-                if (_connection == null)
+                if (this.connection == null)
                 {
-                    _connection = _dbContext.CreateConnection();
+                    this.connection = this.dbContext.CreateConnection();
                 }
-                return _connection;
+
+                return this.connection;
             }
         }
 
         public async Task OpenAsync()
         {
-            if (Connection.State != System.Data.ConnectionState.Open)
+            if (this.Connection.State != System.Data.ConnectionState.Open)
             {
-                await Connection.OpenAsync();
+                await this.Connection.OpenAsync();
             }
         }
 
         public void Dispose()
         {
-            if (_connection != null)
+            if (this.connection != null)
             {
-                _connection.Dispose();
-                _connection = null;
+                this.connection.Dispose();
+                this.connection = null;
             }
         }
     }

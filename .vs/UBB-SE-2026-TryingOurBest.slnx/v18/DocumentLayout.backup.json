@@ -66,8 +66,7 @@
               "RelativeToolTip": "MovieShop\\Services\\SaleService.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-25T10:05:40.073Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-03-25T10:05:40.073Z"
             },
             {
               "$type": "Document",
@@ -79,8 +78,7 @@
               "RelativeToolTip": "MovieShop\\Models\\ActiveSale.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-25T10:05:15.225Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-03-25T10:05:15.225Z"
             },
             {
               "$type": "Document",
@@ -92,8 +90,7 @@
               "RelativeToolTip": "MovieShop\\Views\\WalletView.xaml.cs",
               "ViewState": "AgIAAAwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-24T19:53:34.391Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-03-24T19:53:34.391Z"
             },
             {
               "$type": "Document",
@@ -105,8 +102,7 @@
               "RelativeToolTip": "MovieShop\\Models\\User.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-24T19:52:45.526Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-03-24T19:52:45.526Z"
             },
             {
               "$type": "Document",
@@ -118,8 +114,7 @@
               "RelativeToolTip": "MovieShop\\Models\\Transaction.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-24T19:52:43.855Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-03-24T19:52:43.855Z"
             },
             {
               "$type": "Document",
@@ -129,7 +124,7 @@
               "RelativeDocumentMoniker": "MovieShop\\Repositories\\EquipmentRepo.cs",
               "ToolTip": "D:\\My Documents\\OneDrive\\Desktop\\OOP\\UBB-SE-2026-TryingOurBest\\MovieShop\\Repositories\\EquipmentRepo.cs",
               "RelativeToolTip": "MovieShop\\Repositories\\EquipmentRepo.cs",
-              "ViewState": "AgIAABIAAAAAAAAAAAAmwBcAAABNAAAAAAAAAA==",
+              "ViewState": "AgIAABIAAAAAAAAAAAAmwBcAAAARAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-03-24T19:52:27.597Z",
               "EditorCaption": ""
@@ -144,8 +139,7 @@
               "RelativeToolTip": "MovieShop\\Views\\NavigationPage.xaml",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2026-03-24T19:53:39.677Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-03-24T19:53:39.677Z"
             },
             {
               "$type": "Document",
@@ -157,8 +151,7 @@
               "RelativeToolTip": "MovieShop\\Models\\Equipment.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-24T19:52:34.285Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-03-24T19:52:34.285Z"
             },
             {
               "$type": "Document",
@@ -170,8 +163,7 @@
               "RelativeToolTip": "MovieShop\\Views\\MovieShopView.xaml.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAZAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-24T19:53:40.655Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-03-24T19:53:40.655Z"
             },
             {
               "$type": "Document",
@@ -183,8 +175,7 @@
               "RelativeToolTip": "MovieShop\\Models\\Movie.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-24T19:52:42.764Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-03-24T19:52:42.764Z"
             },
             {
               "$type": "Document",
@@ -196,8 +187,7 @@
               "RelativeToolTip": "MovieShop\\MovieShop.csproj.user",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003464|",
-              "WhenOpened": "2026-03-24T19:51:08.84Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-03-24T19:51:08.84Z"
             }
           ]
         }

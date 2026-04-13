@@ -41,7 +41,10 @@ namespace BoardRent.Views
 
         private async void OnResetPasswordClicked(object sender, RoutedEventArgs e)
         {
-            if (ViewModel.SelectedUser == null) return;
+            if (ViewModel.SelectedUser == null)
+            {
+                return;
+            }
 
             var dialog = new ContentDialog
             {

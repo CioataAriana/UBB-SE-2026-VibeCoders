@@ -1,15 +1,15 @@
+using System.Threading.Tasks;
 using BoardRent.DataTransferObjects;
 using BoardRent.Services;
 using BoardRent.Views;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
-using System.Threading.Tasks;
 
 namespace BoardRent.ViewModels
 {
     public partial class LoginViewModel : BaseViewModel
     {
-        private readonly IAuthService _authService;
+        private readonly IAuthService authService;
 
         [ObservableProperty]
         private string usernameOrEmail = string.Empty;
@@ -22,30 +22,30 @@ namespace BoardRent.ViewModels
 
         public LoginViewModel(IAuthService authService)
         {
-            _authService = authService;
+            this.authService = authService;
         }
 
         [RelayCommand]
         private async Task LoginAsync()
         {
-            ErrorMessage = string.Empty;
+            this.ErrorMessage = string.Empty;
 
-            if (string.IsNullOrWhiteSpace(UsernameOrEmail) || string.IsNullOrWhiteSpace(Password))
+            if (string.IsNullOrWhiteSpace(this.UsernameOrEmail) || string.IsNullOrWhiteSpace(this.Password))
             {
-                ErrorMessage = "Please enter both username/email and password.";
+                this.ErrorMessage = "Please enter both username/email and password.";
                 return;
             }
 
-            IsLoading = true;
+            this.IsLoading = true;
 
             var loginDto = new LoginDataTransferObject
             {
                 UsernameOrEmail = this.UsernameOrEmail,
                 Password = this.Password,
-                RememberMe = this.RememberMe
+                RememberMe = this.RememberMe,
             };
 
-            var result = await _authService.LoginAsync(loginDto);
+            var result = await this.authService.LoginAsync(loginDto);
 
             if (result.Success)
             {
@@ -60,10 +60,10 @@ namespace BoardRent.ViewModels
             }
             else
             {
-                ErrorMessage = result.Error ?? "Login failed.";
+                this.ErrorMessage = result.Error ?? "Login failed.";
             }
 
-            IsLoading = false;
+            this.IsLoading = false;
         }
 
         [RelayCommand]

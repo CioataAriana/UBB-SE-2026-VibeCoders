@@ -1,36 +1,36 @@
-﻿using BoardRent.Data;
+﻿using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Threading.Tasks;
+using BoardRent.Data;
 using BoardRent.DataTransferObjects;
 using BoardRent.Domain;
 using BoardRent.Repositories;
 using BoardRent.Services;
 using BoardRent.Utils;
-using Moq;
-using System;
-using System.Collections.Generic;
-using System.Data;
-using System.IO;
-using System.Threading.Tasks;
 using Xunit;
+using Moq;
+
 
 namespace BoardRent.Tests.Services
 {
     public class UserServiceTests
     {
-        private readonly Mock<IUserRepository> _mockUserRepository;
-        private readonly Mock<IUnitOfWorkFactory> _mockUnitOfWorkFactory;
-        private readonly Mock<IUnitOfWork> _mockUnitOfWork;
-        private readonly UserService _systemUnderTest;
+        private readonly Mock<IUserRepository> mockUserRepository;
+        private readonly Mock<IUnitOfWorkFactory> mockUnitOfWorkFactory;
+        private readonly Mock<IUnitOfWork> mockUnitOfWork;
+        private readonly UserService systemUnderTest;
 
         public UserServiceTests()
         {
-            _mockUserRepository = new Mock<IUserRepository>();
-            _mockUnitOfWorkFactory = new Mock<IUnitOfWorkFactory>();
-            _mockUnitOfWork = new Mock<IUnitOfWork>();
+            this.mockUserRepository = new Mock<IUserRepository>();
+            this.mockUnitOfWorkFactory = new Mock<IUnitOfWorkFactory>();
+            this.mockUnitOfWork = new Mock<IUnitOfWork>();
 
-            _mockUnitOfWork.Setup(u => u.OpenAsync()).Returns(Task.CompletedTask);
-            _mockUnitOfWorkFactory.Setup(f => f.Create()).Returns(_mockUnitOfWork.Object);
+            this.mockUnitOfWork.Setup(u => u.OpenAsync()).Returns(Task.CompletedTask);
+            this.mockUnitOfWorkFactory.Setup(f => f.Create()).Returns(this.mockUnitOfWork.Object);
 
-            _systemUnderTest = new UserService(_mockUserRepository.Object, _mockUnitOfWorkFactory.Object);
+            this.systemUnderTest = new UserService(this.mockUserRepository.Object, this.mockUnitOfWorkFactory.Object);
         }
 
         #region GetProfileAsync Tests
@@ -40,10 +40,10 @@ namespace BoardRent.Tests.Services
         {
             // Arrange
             var userId = Guid.NewGuid();
-            _mockUserRepository.Setup(repo => repo.GetByIdAsync(userId)).ReturnsAsync((User)null);
+            this.mockUserRepository.Setup(repo => repo.GetByIdAsync(userId)).ReturnsAsync((User)null);
 
             // Act
-            var result = await _systemUnderTest.GetProfileAsync(userId);
+            var result = await this.systemUnderTest.GetProfileAsync(userId);
 
             // Assert
             Assert.False(result.Success);
@@ -63,10 +63,10 @@ namespace BoardRent.Tests.Services
                 Roles = new List<Role> { new Role { Id = Guid.NewGuid(), Name = "Standard User" } }
             };
 
-            _mockUserRepository.Setup(repo => repo.GetByIdAsync(userId)).ReturnsAsync(user);
+            this.mockUserRepository.Setup(repo => repo.GetByIdAsync(userId)).ReturnsAsync(user);
 
             // Act
-            var result = await _systemUnderTest.GetProfileAsync(userId);
+            var result = await this.systemUnderTest.GetProfileAsync(userId);
 
             // Assert
             Assert.True(result.Success);
@@ -85,10 +85,10 @@ namespace BoardRent.Tests.Services
             // Arrange
             var userId = Guid.NewGuid();
             var updateData = new UserProfileDataTransferObject { DisplayName = "Valid Name" };
-            _mockUserRepository.Setup(repo => repo.GetByIdAsync(userId)).ReturnsAsync((User)null);
+            this.mockUserRepository.Setup(repo => repo.GetByIdAsync(userId)).ReturnsAsync((User)null);
 
             // Act
-            var result = await _systemUnderTest.UpdateProfileAsync(userId, updateData);
+            var result = await this.systemUnderTest.UpdateProfileAsync(userId, updateData);
 
             // Assert
             Assert.False(result.Success);
@@ -103,10 +103,10 @@ namespace BoardRent.Tests.Services
             var user = new User { Id = userId };
             var updateData = new UserProfileDataTransferObject { DisplayName = "A" }; // Too short
 
-            _mockUserRepository.Setup(repo => repo.GetByIdAsync(userId)).ReturnsAsync(user);
+            this.mockUserRepository.Setup(repo => repo.GetByIdAsync(userId)).ReturnsAsync(user);
 
             // Act
-            var result = await _systemUnderTest.UpdateProfileAsync(userId, updateData);
+            var result = await this.systemUnderTest.UpdateProfileAsync(userId, updateData);
 
             // Assert
             Assert.False(result.Success);
@@ -125,10 +125,10 @@ namespace BoardRent.Tests.Services
                 PhoneNumber = "invalid_phone_number"
             };
 
-            _mockUserRepository.Setup(repo => repo.GetByIdAsync(userId)).ReturnsAsync(user);
+            this.mockUserRepository.Setup(repo => repo.GetByIdAsync(userId)).ReturnsAsync(user);
 
             // Act
-            var result = await _systemUnderTest.UpdateProfileAsync(userId, updateData);
+            var result = await this.systemUnderTest.UpdateProfileAsync(userId, updateData);
 
             // Assert
             Assert.False(result.Success);
@@ -147,10 +147,10 @@ namespace BoardRent.Tests.Services
                 StreetNumber = "12345678901" // > 10 chars
             };
 
-            _mockUserRepository.Setup(repo => repo.GetByIdAsync(userId)).ReturnsAsync(user);
+            this.mockUserRepository.Setup(repo => repo.GetByIdAsync(userId)).ReturnsAsync(user);
 
             // Act
-            var result = await _systemUnderTest.UpdateProfileAsync(userId, updateData);
+            var result = await this.systemUnderTest.UpdateProfileAsync(userId, updateData);
 
             // Assert
             Assert.False(result.Success);
@@ -171,11 +171,11 @@ namespace BoardRent.Tests.Services
 
             var otherUser = new User { Id = Guid.NewGuid(), Email = "new@test.com" };
 
-            _mockUserRepository.Setup(repo => repo.GetByIdAsync(userId)).ReturnsAsync(existingUser);
-            _mockUserRepository.Setup(repo => repo.GetByEmailAsync("new@test.com")).ReturnsAsync(otherUser);
+            this.mockUserRepository.Setup(repo => repo.GetByIdAsync(userId)).ReturnsAsync(existingUser);
+            this.mockUserRepository.Setup(repo => repo.GetByEmailAsync("new@test.com")).ReturnsAsync(otherUser);
 
             // Act
-            var result = await _systemUnderTest.UpdateProfileAsync(userId, updateData);
+            var result = await this.systemUnderTest.UpdateProfileAsync(userId, updateData);
 
             // Assert
             Assert.False(result.Success);
@@ -194,17 +194,17 @@ namespace BoardRent.Tests.Services
                 Email = "new@test.com"
             };
 
-            _mockUserRepository.Setup(repo => repo.GetByIdAsync(userId)).ReturnsAsync(existingUser);
-            _mockUserRepository.Setup(repo => repo.GetByEmailAsync("new@test.com")).ReturnsAsync((User)null);
+            this.mockUserRepository.Setup(repo => repo.GetByIdAsync(userId)).ReturnsAsync(existingUser);
+            this.mockUserRepository.Setup(repo => repo.GetByEmailAsync("new@test.com")).ReturnsAsync((User)null);
 
             // Act
-            var result = await _systemUnderTest.UpdateProfileAsync(userId, updateData);
+            var result = await this.systemUnderTest.UpdateProfileAsync(userId, updateData);
 
             // Assert
             Assert.True(result.Success);
             Assert.Equal("Updated Name", existingUser.DisplayName);
             Assert.Equal("new@test.com", existingUser.Email);
-            _mockUserRepository.Verify(repo => repo.UpdateAsync(existingUser), Times.Once);
+            this.mockUserRepository.Verify(repo => repo.UpdateAsync(existingUser), Times.Once);
         }
 
         #endregion
@@ -216,10 +216,10 @@ namespace BoardRent.Tests.Services
         {
             // Arrange
             var userId = Guid.NewGuid();
-            _mockUserRepository.Setup(repo => repo.GetByIdAsync(userId)).ReturnsAsync((User)null);
+            this.mockUserRepository.Setup(repo => repo.GetByIdAsync(userId)).ReturnsAsync((User)null);
 
             // Act
-            var result = await _systemUnderTest.ChangePasswordAsync(userId, "oldpass", "newpass");
+            var result = await this.systemUnderTest.ChangePasswordAsync(userId, "oldpass", "newpass");
 
             // Assert
             Assert.False(result.Success);
@@ -234,10 +234,10 @@ namespace BoardRent.Tests.Services
             var existingHash = PasswordHasher.HashPassword("CorrectOldPassword123!");
             var user = new User { Id = userId, PasswordHash = existingHash };
 
-            _mockUserRepository.Setup(repo => repo.GetByIdAsync(userId)).ReturnsAsync(user);
+            this.mockUserRepository.Setup(repo => repo.GetByIdAsync(userId)).ReturnsAsync(user);
 
             // Act
-            var result = await _systemUnderTest.ChangePasswordAsync(userId, "WrongPassword!", "NewValidPass123!");
+            var result = await this.systemUnderTest.ChangePasswordAsync(userId, "WrongPassword!", "NewValidPass123!");
 
             // Assert
             Assert.False(result.Success);
@@ -252,10 +252,10 @@ namespace BoardRent.Tests.Services
             var existingHash = PasswordHasher.HashPassword("CorrectOldPassword123!");
             var user = new User { Id = userId, PasswordHash = existingHash };
 
-            _mockUserRepository.Setup(repo => repo.GetByIdAsync(userId)).ReturnsAsync(user);
+            this.mockUserRepository.Setup(repo => repo.GetByIdAsync(userId)).ReturnsAsync(user);
 
             // Act
-            var result = await _systemUnderTest.ChangePasswordAsync(userId, "CorrectOldPassword123!", "weak");
+            var result = await this.systemUnderTest.ChangePasswordAsync(userId, "CorrectOldPassword123!", "weak");
 
             // Assert
             Assert.False(result.Success);
@@ -270,15 +270,15 @@ namespace BoardRent.Tests.Services
             var existingHash = PasswordHasher.HashPassword("CorrectOldPassword123!");
             var user = new User { Id = userId, PasswordHash = existingHash };
 
-            _mockUserRepository.Setup(repo => repo.GetByIdAsync(userId)).ReturnsAsync(user);
+            this.mockUserRepository.Setup(repo => repo.GetByIdAsync(userId)).ReturnsAsync(user);
 
             // Act
-            var result = await _systemUnderTest.ChangePasswordAsync(userId, "CorrectOldPassword123!", "NewValidPass123!");
+            var result = await this.systemUnderTest.ChangePasswordAsync(userId, "CorrectOldPassword123!", "NewValidPass123!");
 
             // Assert
             Assert.True(result.Success);
             Assert.NotEqual(existingHash, user.PasswordHash);
-            _mockUserRepository.Verify(repo => repo.UpdateAsync(user), Times.Once);
+            this.mockUserRepository.Verify(repo => repo.UpdateAsync(user), Times.Once);
         }
 
         #endregion
@@ -290,10 +290,10 @@ namespace BoardRent.Tests.Services
         {
             // Arrange
             var userId = Guid.NewGuid();
-            _mockUserRepository.Setup(repo => repo.GetByIdAsync(userId)).ReturnsAsync((User)null);
+            this.mockUserRepository.Setup(repo => repo.GetByIdAsync(userId)).ReturnsAsync((User)null);
 
             // Act & Assert
-            await Assert.ThrowsAsync<Exception>(() => _systemUnderTest.UploadAvatarAsync(userId, "dummyPath.jpg"));
+            await Assert.ThrowsAsync<Exception>(() => this.systemUnderTest.UploadAvatarAsync(userId, "dummyPath.jpg"));
         }
 
         [Fact]
@@ -302,7 +302,7 @@ namespace BoardRent.Tests.Services
             // Arrange
             var userId = Guid.NewGuid();
             var user = new User { Id = userId };
-            _mockUserRepository.Setup(repo => repo.GetByIdAsync(userId)).ReturnsAsync(user);
+            this.mockUserRepository.Setup(repo => repo.GetByIdAsync(userId)).ReturnsAsync(user);
 
             // Create a dummy file to avoid FileNotFoundException during File.Copy
             var tempFilePath = Path.GetTempFileName();
@@ -310,12 +310,12 @@ namespace BoardRent.Tests.Services
             try
             {
                 // Act
-                var resultPath = await _systemUnderTest.UploadAvatarAsync(userId, tempFilePath);
+                var resultPath = await this.systemUnderTest.UploadAvatarAsync(userId, tempFilePath);
 
                 // Assert
                 Assert.NotNull(resultPath);
                 Assert.Equal(resultPath, user.AvatarUrl);
-                _mockUserRepository.Verify(repo => repo.UpdateAsync(user), Times.Once);
+                this.mockUserRepository.Verify(repo => repo.UpdateAsync(user), Times.Once);
             }
             finally
             {
@@ -336,10 +336,10 @@ namespace BoardRent.Tests.Services
         {
             // Arrange
             var userId = Guid.NewGuid();
-            _mockUserRepository.Setup(repo => repo.GetByIdAsync(userId)).ReturnsAsync((User)null);
+            this.mockUserRepository.Setup(repo => repo.GetByIdAsync(userId)).ReturnsAsync((User)null);
 
             // Act & Assert
-            await Assert.ThrowsAsync<Exception>(() => _systemUnderTest.RemoveAvatarAsync(userId));
+            await Assert.ThrowsAsync<Exception>(() => this.systemUnderTest.RemoveAvatarAsync(userId));
         }
 
         [Fact]
@@ -348,14 +348,14 @@ namespace BoardRent.Tests.Services
             // Arrange
             var userId = Guid.NewGuid();
             var user = new User { Id = userId, AvatarUrl = "C:/existing/avatar.png" };
-            _mockUserRepository.Setup(repo => repo.GetByIdAsync(userId)).ReturnsAsync(user);
+            this.mockUserRepository.Setup(repo => repo.GetByIdAsync(userId)).ReturnsAsync(user);
 
             // Act
-            await _systemUnderTest.RemoveAvatarAsync(userId);
+            await this.systemUnderTest.RemoveAvatarAsync(userId);
 
             // Assert
             Assert.Null(user.AvatarUrl);
-            _mockUserRepository.Verify(repo => repo.UpdateAsync(user), Times.Once);
+            this.mockUserRepository.Verify(repo => repo.UpdateAsync(user), Times.Once);
         }
 
         #endregion

@@ -1,25 +1,21 @@
-using BoardRent.Data;
-using BoardRent.Domain;
-using Microsoft.Data.SqlClient;
-using System;
-using System.Threading.Tasks;
-
 namespace BoardRent.Repositories
 {
+    using System;
+    using System.Threading.Tasks;
+    using BoardRent.Data;
+    using BoardRent.Domain;
+    using Microsoft.Data.SqlClient;
     public class FailedLoginRepository : IFailedLoginRepository
     {
-        private IUnitOfWork _unitOfWork;
-
+        private IUnitOfWork unitOfWork;
+        private SqlConnection Connection => this.unitOfWork.Connection;
         public void SetUnitOfWork(IUnitOfWork unitOfWork)
         {
-            _unitOfWork = unitOfWork;
+            this.unitOfWork = unitOfWork;
         }
-
-        private SqlConnection Connection => _unitOfWork.Connection;
-
         public async Task<FailedLoginAttempt?> GetByUserIdAsync(Guid userId)
         {
-            using (var command = Connection.CreateCommand())
+            using (var command = this.Connection.CreateCommand())
             {
                 command.CommandText = "SELECT * FROM FailedLoginAttempt WHERE UserId = @UserId";
                 command.Parameters.AddWithValue("@UserId", userId);
@@ -28,21 +24,23 @@ namespace BoardRent.Repositories
                 {
                     if (await reader.ReadAsync())
                     {
-                        return MapFailedLoginAttempt(reader);
+                        return this.MapFailedLoginAttempt(reader);
                     }
                 }
             }
 
             return null;
         }
-
         public async Task IncrementAsync(Guid userId)
         {
-            using (var command = Connection.CreateCommand())
+            using (var command = this.Connection.CreateCommand())
             {
                 command.CommandText = @"
                     IF EXISTS (SELECT 1 FROM FailedLoginAttempt WHERE UserId = @UserId)
-                        UPDATE FailedLoginAttempt SET FailedAttempts = FailedAttempts + 1, LockedUntil = CASE WHEN FailedAttempts + 1 >= 5 THEN DATEADD(minute, 15, GETUTCDATE()) ELSE NULL END WHERE UserId = @UserId
+                        UPDATE FailedLoginAttempt 
+                        SET FailedAttempts = FailedAttempts + 1, 
+                            LockedUntil = CASE WHEN FailedAttempts + 1 >= 5 THEN DATEADD(minute, 15, GETUTCDATE()) ELSE NULL END 
+                        WHERE UserId = @UserId
                     ELSE
                         INSERT INTO FailedLoginAttempt (UserId, FailedAttempts, LockedUntil) VALUES (@UserId, 1, NULL)";
 
@@ -51,10 +49,9 @@ namespace BoardRent.Repositories
                 await command.ExecuteNonQueryAsync();
             }
         }
-
         public async Task ResetAsync(Guid userId)
         {
-            using (var command = Connection.CreateCommand())
+            using (var command = this.Connection.CreateCommand())
             {
                 command.CommandText = @"
                     UPDATE FailedLoginAttempt
@@ -66,7 +63,6 @@ namespace BoardRent.Repositories
                 await command.ExecuteNonQueryAsync();
             }
         }
-
         private FailedLoginAttempt MapFailedLoginAttempt(SqlDataReader reader)
         {
             return new FailedLoginAttempt

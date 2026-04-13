@@ -1,8 +1,8 @@
+using System;
 using BoardRent.ViewModels;
 using CommunityToolkit.Mvvm.DependencyInjection;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
-using System;
 
 namespace BoardRent.Views
 {

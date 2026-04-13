@@ -1,54 +1,54 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using BoardRent.Domain;
-
-namespace BoardRent.Utils
+﻿namespace BoardRent.Utils
 {
+    using System;
+    using BoardRent.Domain;
     public class SessionContext
     {
-        private static SessionContext _instance;
-
-        public Guid UserId { get; private set; }
-        public string Username { get; private set; }
-        public string DisplayName { get; private set; }
-        public string Role { get; private set; }
-        public bool IsLoggedIn { get; private set; }
+        private static SessionContext instance;
 
         private SessionContext()
         {
         }
 
+        public Guid UserId { get; private set; }
+
+        public string Username { get; private set; }
+
+        public string DisplayName { get; private set; }
+
+        public string Role { get; private set; }
+
+        public bool IsLoggedIn { get; private set; }
+
         public static SessionContext GetInstance()
         {
-            if (_instance == null)
+            if (instance == null)
             {
-                _instance = new SessionContext();
+                instance = new SessionContext();
             }
-            return _instance;
+
+            return instance;
         }
 
         public void Populate(User user, string role)
         {
             if (user != null)
             {
-                UserId = user.Id;
-                Username = user.Username;
-                DisplayName = user.DisplayName;
-                Role = role;
-                IsLoggedIn = true;
+                this.UserId = user.Id;
+                this.Username = user.Username;
+                this.DisplayName = user.DisplayName;
+                this.Role = role;
+                this.IsLoggedIn = true;
             }
         }
 
         public void Clear()
         {
-            UserId = Guid.Empty;
-            Username = null;
-            DisplayName = null;
-            Role = null;
-            IsLoggedIn = false;
+            this.UserId = Guid.Empty;
+            this.Username = null;
+            this.DisplayName = null;
+            this.Role = null;
+            this.IsLoggedIn = false;
         }
     }
 }

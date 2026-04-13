@@ -2,16 +2,16 @@ namespace BoardRent.Data
 {
     public class UnitOfWorkFactory : IUnitOfWorkFactory
     {
-        private readonly AppDbContext _dbContext;
+        private readonly AppDbContext dbContext;
 
         public UnitOfWorkFactory(AppDbContext dbContext)
         {
-            _dbContext = dbContext;
+            this.dbContext = dbContext;
         }
 
         public IUnitOfWork Create()
         {
-            return new UnitOfWork(_dbContext);
+            return new UnitOfWork(this.dbContext);
         }
     }
 }

@@ -1,77 +1,66 @@
-﻿// <copyright file="App.xaml.cs" company="PlaceholderCompany">
-// Copyright (c) PlaceholderCompany. All rights reserved.
-// </copyright>
+﻿using System;
+using BoardRent.Data;
+using BoardRent.Repositories;
+using BoardRent.Services;
+using BoardRent.ViewModels;
+using BoardRent.Views;
+using CommunityToolkit.Mvvm.DependencyInjection;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.UI.Xaml;
+using Microsoft.UI.Xaml.Controls;
 
 namespace BoardRent
 {
-    using System;
-    using BoardRent.Data;
-    using BoardRent.Repositories;
-    using BoardRent.Services;
-    using BoardRent.ViewModels;
-    using BoardRent.Views;
-    using CommunityToolkit.Mvvm.DependencyInjection;
-    using Microsoft.Extensions.DependencyInjection;
-    using Microsoft.UI.Xaml;
-    using Microsoft.UI.Xaml.Controls;
-
-    /// <summary>
-    /// Represents the main application class for BoardRent.
-    /// </summary>
     public partial class App : Application
     {
-        public static Window _window;
-        private static Frame _rootFrame;
-
         public App()
         {
             this.InitializeComponent();
 
             Ioc.Default.ConfigureServices(
                 new ServiceCollection()
-
                 .AddSingleton<AppDbContext>()
                 .AddSingleton<IUnitOfWorkFactory, UnitOfWorkFactory>()
-
                 .AddSingleton<IUserRepository, UserRepository>()
                 .AddSingleton<IFailedLoginRepository, FailedLoginRepository>()
-
                 .AddSingleton<IAuthService, AuthService>()
                 .AddSingleton<IUserService, UserService>()
                 .AddSingleton<IAdminService, AdminService>()
                 .AddSingleton<IFilePickerService, FilePickerService>()
-
                 .AddTransient<LoginViewModel>()
                 .AddTransient<RegisterViewModel>()
                 .AddTransient<ProfileViewModel>()
                 .AddTransient<AdminViewModel>()
-
                 .BuildServiceProvider());
         }
 
+        public static Window Window { get; private set; }
+
+        private static Frame RootFrame { get; set; }
+
         public static void NavigateTo(Type pageType, bool clearBackStack = false)
         {
-            _rootFrame?.Navigate(pageType);
-            if (clearBackStack && _rootFrame != null)
+            RootFrame?.Navigate(pageType);
+            if (clearBackStack && RootFrame != null)
             {
-                _rootFrame.BackStack.Clear();
+                RootFrame.BackStack.Clear();
             }
         }
 
         public static void NavigateBack()
         {
-            if (_rootFrame != null && _rootFrame.CanGoBack)
+            if (RootFrame != null && RootFrame.CanGoBack)
             {
-                _rootFrame.GoBack();
+                RootFrame.GoBack();
             }
         }
 
         protected override void OnLaunched(LaunchActivatedEventArgs args)
         {
-            _window = new MainWindow();
-            _rootFrame = new Frame();
-            _window.Content = _rootFrame;
-            _window.Activate();
+            Window = new MainWindow();
+            RootFrame = new Frame();
+            Window.Content = RootFrame;
+            Window.Activate();
 
             var db = new AppDbContext();
             db.EnsureCreated();

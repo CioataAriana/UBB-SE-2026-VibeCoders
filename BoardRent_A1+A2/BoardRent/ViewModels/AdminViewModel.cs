@@ -1,20 +1,20 @@
-using System;
-using System.Collections.ObjectModel;
-using System.Threading.Tasks;
-using BoardRent.DataTransferObjects;
-using BoardRent.Services;
-using CommunityToolkit.Mvvm.ComponentModel;
-using CommunityToolkit.Mvvm.Input;
-
 namespace BoardRent.ViewModels
 {
+    using System;
+    using System.Collections.ObjectModel;
+    using System.Threading.Tasks;
+    using BoardRent.DataTransferObjects;
+    using BoardRent.Services;
+    using CommunityToolkit.Mvvm.ComponentModel;
+    using CommunityToolkit.Mvvm.Input;
+
     public partial class AdminViewModel : BaseViewModel
     {
-        private readonly IAdminService _adminService;
         private const int PageSize = 10;
+        private readonly IAdminService adminService;
 
         [ObservableProperty]
-        private ObservableCollection<UserProfileDataTransferObject> users = new();
+        private ObservableCollection<UserProfileDataTransferObject> users = new ();
 
         [ObservableProperty]
         [NotifyCanExecuteChangedFor(nameof(SuspendUserCommand))]
@@ -33,123 +33,138 @@ namespace BoardRent.ViewModels
 
         public AdminViewModel(IAdminService adminService)
         {
-            _adminService = adminService;
-            LoadUsersAsync().FireAndForgetSafeAsync();
+            this.adminService = adminService;
+            this.LoadUsersAsync().FireAndForgetSafeAsync();
         }
 
         public async Task LoadUsersAsync()
         {
-            IsLoading = true;
-            ErrorMessage = string.Empty;
+            this.IsLoading = true;
+            this.ErrorMessage = string.Empty;
 
-            var result = await _adminService.GetAllUsersAsync(CurrentPage, PageSize);
+            var result = await this.adminService.GetAllUsersAsync(this.CurrentPage, PageSize);
             if (result.Success && result.Data != null)
             {
-                Users = new ObservableCollection<UserProfileDataTransferObject>(result.Data);
-                // Currently repository doesn't give TotalPages, assume 1 for now or dynamically calculate if data length < PageSize
-                // This is a placeholder since blocked on repositories
-                TotalPages = result.Data.Count == PageSize ? CurrentPage + 1 : CurrentPage; 
+                this.Users = new ObservableCollection<UserProfileDataTransferObject>(result.Data);
+                this.TotalPages = result.Data.Count == PageSize ? this.CurrentPage + 1 : this.CurrentPage;
             }
             else
             {
-                ErrorMessage = result.Error ?? "Failed to load users.";
+                this.ErrorMessage = result.Error ?? "Failed to load users.";
             }
 
-            IsLoading = false;
+            this.IsLoading = false;
+        }
+
+        public async Task ResetPasswordWithValueAsync(string newPassword)
+        {
+            if (this.SelectedUser == null)
+            {
+                return;
+            }
+
+            var result = await this.adminService.ResetPasswordAsync(this.SelectedUser.Id, newPassword);
+            if (result.Success)
+            {
+                this.ErrorMessage = "Password has been reset successfully.";
+            }
+            else
+            {
+                this.ErrorMessage = result.Error;
+            }
         }
 
         [RelayCommand(CanExecute = nameof(CanModifySelectedUser))]
         private async Task SuspendUserAsync()
         {
-            if (SelectedUser == null) return;
-            var result = await _adminService.SuspendUserAsync(SelectedUser.Id);
+            if (this.SelectedUser == null)
+            {
+                return;
+            }
+
+            var result = await this.adminService.SuspendUserAsync(this.SelectedUser.Id);
             if (result.Success)
             {
-                SelectedUser.IsSuspended = true;
-                // Refresh list or trigger property changed
-                await LoadUsersAsync();
+                this.SelectedUser.IsSuspended = true;
+                await this.LoadUsersAsync();
             }
             else
             {
-                ErrorMessage = result.Error;
+                this.ErrorMessage = result.Error;
             }
         }
 
         [RelayCommand(CanExecute = nameof(CanModifySelectedUser))]
         private async Task UnsuspendUserAsync()
         {
-            if (SelectedUser == null) return;
-            var result = await _adminService.UnsuspendUserAsync(SelectedUser.Id);
+            if (this.SelectedUser == null)
+            {
+                return;
+            }
+
+            var result = await this.adminService.UnsuspendUserAsync(this.SelectedUser.Id);
             if (result.Success)
             {
-                SelectedUser.IsSuspended = false;
-                await LoadUsersAsync();
+                this.SelectedUser.IsSuspended = false;
+                await this.LoadUsersAsync();
             }
             else
             {
-                ErrorMessage = result.Error;
+                this.ErrorMessage = result.Error;
             }
         }
 
         [RelayCommand(CanExecute = nameof(CanModifySelectedUser))]
         private async Task ResetPasswordAsync()
         {
-            // This is kept as a no-op; the actual reset is done via ResetPasswordWithValueAsync
-            // triggered from the code-behind dialog.
-        }
-
-        public async Task ResetPasswordWithValueAsync(string newPassword)
-        {
-            if (SelectedUser == null) return;
-            var result = await _adminService.ResetPasswordAsync(SelectedUser.Id, newPassword);
-            if (result.Success)
-            {
-                ErrorMessage = "Password has been reset successfully.";
-            }
-            else
-            {
-                ErrorMessage = result.Error;
-            }
+            // Placeholder for command activation
+            await Task.CompletedTask;
         }
 
         [RelayCommand(CanExecute = nameof(CanModifySelectedUser))]
         private async Task UnlockAccountAsync()
         {
-            if (SelectedUser == null) return;
-            var result = await _adminService.UnlockAccountAsync(SelectedUser.Id);
+            if (this.SelectedUser == null)
+            {
+                return;
+            }
+
+            var result = await this.adminService.UnlockAccountAsync(this.SelectedUser.Id);
             if (result.Success)
             {
-                ErrorMessage = "Account unlocked successfully.";
+                this.ErrorMessage = "Account unlocked successfully.";
             }
             else
             {
-                ErrorMessage = result.Error;
+                this.ErrorMessage = result.Error;
             }
         }
 
         [RelayCommand(CanExecute = nameof(CanGoToPreviousPage))]
         private async Task PreviousPageAsync()
         {
-            if (CurrentPage > 1)
+            if (this.CurrentPage > 1)
             {
-                CurrentPage--;
-                await LoadUsersAsync();
+                this.CurrentPage--;
+                await this.LoadUsersAsync();
             }
         }
 
         [RelayCommand(CanExecute = nameof(CanGoToNextPage))]
         private async Task NextPageAsync()
         {
-            if (CurrentPage < TotalPages)
+            if (this.CurrentPage < this.TotalPages)
             {
-                CurrentPage++;
-                await LoadUsersAsync();
+                this.CurrentPage++;
+                await this.LoadUsersAsync();
             }
         }
 
-        private bool CanModifySelectedUser() => SelectedUser != null;
-        private bool CanGoToPreviousPage() => CurrentPage > 1;
-        private bool CanGoToNextPage() => CurrentPage < TotalPages;
+        private bool CanModifySelectedUser() => this.SelectedUser != null;
+
+        private bool CanGoToPreviousPage() => this.CurrentPage > 1;
+
+        private bool CanGoToNextPage() => this.CurrentPage < this.TotalPages;
     }
 
     public static class TaskExtensions
@@ -162,7 +177,7 @@ namespace BoardRent.ViewModels
             }
             catch (Exception)
             {
-                // Handle or log exception
+                // Log or handle exception
             }
         }
     }

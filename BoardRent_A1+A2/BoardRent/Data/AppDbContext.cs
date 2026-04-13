@@ -1,12 +1,13 @@
-﻿using Microsoft.Data.SqlClient;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿// <copyright file="AppDbContext.cs" company="BoardRent">
+// Copyright (c) BoardRent. All rights reserved.
+// </copyright>
 
 namespace BoardRent.Data
 {
+    using System;
+    using System.Threading.Tasks;
+    using Microsoft.Data.SqlClient;
+
     public class AppDbContext
     {
         private const string ConnectionString =
@@ -31,19 +32,17 @@ namespace BoardRent.Data
                 masterCommand.ExecuteNonQuery();
             }
 
-            using var connection = CreateConnection();
+            using var connection = this.CreateConnection();
             connection.Open();
 
             using var command = connection.CreateCommand();
             command.CommandText = @"
-                -- Roles Table
                 IF NOT EXISTS (SELECT * FROM sys.tables WHERE name = 'Role')
                 CREATE TABLE Role (
                     Id UNIQUEIDENTIFIER PRIMARY KEY DEFAULT NEWID(),
                     Name NVARCHAR(50) NOT NULL UNIQUE
                 );
                 
-                -- Users Table
                 IF NOT EXISTS (SELECT * FROM sys.tables WHERE name = 'User')
                 CREATE TABLE [User] (
                     Id UNIQUEIDENTIFIER PRIMARY KEY DEFAULT NEWID(),
@@ -62,7 +61,6 @@ namespace BoardRent.Data
                     City NVARCHAR(100) NULL
                 );
 
-                -- UserRoles Table
                 IF NOT EXISTS (SELECT * FROM sys.tables WHERE name = 'UserRoles')
                 CREATE TABLE UserRoles (
                     UserId UNIQUEIDENTIFIER NOT NULL,
@@ -72,7 +70,6 @@ namespace BoardRent.Data
                     FOREIGN KEY (RoleId) REFERENCES Role(Id) ON DELETE CASCADE
                 );
 
-                -- FailedLoginAttempt Table
                 IF NOT EXISTS (SELECT * FROM sys.tables WHERE name = 'FailedLoginAttempt')
                 CREATE TABLE FailedLoginAttempt (
                     UserId UNIQUEIDENTIFIER PRIMARY KEY,
@@ -93,12 +90,9 @@ namespace BoardRent.Data
                     DECLARE @adminRoleId UNIQUEIDENTIFIER = (SELECT Id FROM Role WHERE Name = 'Administrator');
 
                     INSERT INTO [User] (Id, Username, DisplayName, Email, PasswordHash, IsSuspended, CreatedAt, UpdatedAt)
-                    VALUES (
-                        @adminId, 'admin', 'Administrator', 'admin@boardrent.com', '0Or88pPVbOSyUxu9djhSTw==:+uoeZ/oHtxEVK8bHfS5Eh/5chC0LoKdNvZjAVQhu7aw=', 0, GETUTCDATE(), GETUTCDATE()
-                    );
+                    VALUES (@adminId, 'admin', 'Administrator', 'admin@boardrent.com', '0Or88pPVbOSyUxu9djhSTw==:+uoeZ/oHtxEVK8bHfS5Eh/5chC0LoKdNvZjAVQhu7aw=', 0, GETUTCDATE(), GETUTCDATE());
 
-                    INSERT INTO UserRoles (UserId, RoleId)
-                    VALUES (@adminId, @adminRoleId);
+                    INSERT INTO UserRoles (UserId, RoleId) VALUES (@adminId, @adminRoleId);
                 END
             ";
 
