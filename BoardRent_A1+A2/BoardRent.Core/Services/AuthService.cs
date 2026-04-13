@@ -13,6 +13,8 @@ namespace BoardRent.Services
 
     public class AuthService : IAuthService
     {
+        private const int MaximumFailedAttempts = 5;
+        private const string GenericLoginFailureMessage = "Sign-in was unsuccessful.";
         private readonly IUserRepository userRepository;
         private readonly IFailedLoginRepository failedLoginRepository;
         private readonly IUnitOfWorkFactory unitOfWorkFactory;
@@ -80,18 +82,31 @@ namespace BoardRent.Services
 
                 if (userEntity == null)
                 {
-                    return ServiceResult<UserProfileDataTransferObject>.Fail("Invalid username or password.");
+                    return ServiceResult<UserProfileDataTransferObject>.Fail(GenericLoginFailureMessage);
                 }
 
                 if (userEntity.IsSuspended)
                 {
-                    return ServiceResult<UserProfileDataTransferObject>.Fail("This account has been suspended.");
+                    return ServiceResult<UserProfileDataTransferObject>.Fail(GenericLoginFailureMessage);
+                }
+
+                FailedLoginAttempt? failedLoginState = await this.failedLoginRepository.GetByUserIdAsync(userEntity.Id);
+                if (this.IsAccountLocked(failedLoginState, out string lockMessage))
+                {
+                    return ServiceResult<UserProfileDataTransferObject>.Fail(lockMessage);
                 }
 
                 if (!PasswordHasher.VerifyPassword(loginRequest.Password, userEntity.PasswordHash))
                 {
                     await this.failedLoginRepository.IncrementAsync(userEntity.Id);
-                    return ServiceResult<UserProfileDataTransferObject>.Fail("Invalid username or password.");
+
+                    FailedLoginAttempt? updatedFailedLoginState = await this.failedLoginRepository.GetByUserIdAsync(userEntity.Id);
+                    if (this.IsAccountLocked(updatedFailedLoginState, out string postFailureLockMessage))
+                    {
+                        return ServiceResult<UserProfileDataTransferObject>.Fail(postFailureLockMessage);
+                    }
+
+                    return ServiceResult<UserProfileDataTransferObject>.Fail(GenericLoginFailureMessage);
                 }
 
                 await this.failedLoginRepository.ResetAsync(userEntity.Id);
@@ -110,6 +125,26 @@ namespace BoardRent.Services
 
                 return ServiceResult<UserProfileDataTransferObject>.Ok(profileDto);
             }
+        }
+
+        private bool IsAccountLocked(FailedLoginAttempt? failedLoginState, out string lockMessage)
+        {
+            lockMessage = string.Empty;
+            if (failedLoginState == null || !failedLoginState.LockedUntil.HasValue)
+            {
+                return false;
+            }
+
+            DateTime utcNow = DateTime.UtcNow;
+            if (failedLoginState.LockedUntil.Value <= utcNow)
+            {
+                return false;
+            }
+
+            TimeSpan timeRemaining = failedLoginState.LockedUntil.Value - utcNow;
+            int remainingMinutes = (int)Math.Ceiling(timeRemaining.TotalMinutes);
+            lockMessage = $"Account locked due to {MaximumFailedAttempts} failed sign-in attempts. Try again in {remainingMinutes} minute(s).";
+            return true;
         }
 
         public async Task<ServiceResult<bool>> LogoutAsync()

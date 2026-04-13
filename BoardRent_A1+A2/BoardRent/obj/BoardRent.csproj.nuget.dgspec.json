@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "D:\\My Documents\\OneDrive\\Desktop\\OOP\\UBB-SE-2026-TryingOurBest\\BoardRent_A1+A2\\BoardRent\\BoardRent.csproj": {}
+    "C:\\Users\\marius\\source\\repos\\ISS_2\\UBB-SE-2026-TryingOurBest\\BoardRent_A1+A2\\BoardRent\\BoardRent.csproj": {}
   },
   "projects": {
-    "D:\\My Documents\\OneDrive\\Desktop\\OOP\\UBB-SE-2026-TryingOurBest\\BoardRent_A1+A2\\BoardRent.Core\\BoardRent.Core.csproj": {
+    "C:\\Users\\marius\\source\\repos\\ISS_2\\UBB-SE-2026-TryingOurBest\\BoardRent_A1+A2\\BoardRent.Core\\BoardRent.Core.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\My Documents\\OneDrive\\Desktop\\OOP\\UBB-SE-2026-TryingOurBest\\BoardRent_A1+A2\\BoardRent.Core\\BoardRent.Core.csproj",
+        "projectUniqueName": "C:\\Users\\marius\\source\\repos\\ISS_2\\UBB-SE-2026-TryingOurBest\\BoardRent_A1+A2\\BoardRent.Core\\BoardRent.Core.csproj",
         "projectName": "BoardRent.Core",
-        "projectPath": "D:\\My Documents\\OneDrive\\Desktop\\OOP\\UBB-SE-2026-TryingOurBest\\BoardRent_A1+A2\\BoardRent.Core\\BoardRent.Core.csproj",
-        "packagesPath": "C:\\Users\\georg\\.nuget\\packages\\",
-        "outputPath": "D:\\My Documents\\OneDrive\\Desktop\\OOP\\UBB-SE-2026-TryingOurBest\\BoardRent_A1+A2\\BoardRent.Core\\obj\\",
+        "projectPath": "C:\\Users\\marius\\source\\repos\\ISS_2\\UBB-SE-2026-TryingOurBest\\BoardRent_A1+A2\\BoardRent.Core\\BoardRent.Core.csproj",
+        "packagesPath": "C:\\Users\\marius\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\marius\\source\\repos\\ISS_2\\UBB-SE-2026-TryingOurBest\\BoardRent_A1+A2\\BoardRent.Core\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\georg\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\marius\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -44,7 +44,7 @@
           "auditLevel": "low",
           "auditMode": "direct"
         },
-        "SdkAnalysisLevel": "10.0.200"
+        "SdkAnalysisLevel": "10.0.100"
       },
       "frameworks": {
         "net8.0": {
@@ -81,24 +81,24 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.201/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.102/PortableRuntimeIdentifierGraph.json"
         }
       }
     },
-    "D:\\My Documents\\OneDrive\\Desktop\\OOP\\UBB-SE-2026-TryingOurBest\\BoardRent_A1+A2\\BoardRent\\BoardRent.csproj": {
+    "C:\\Users\\marius\\source\\repos\\ISS_2\\UBB-SE-2026-TryingOurBest\\BoardRent_A1+A2\\BoardRent\\BoardRent.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\My Documents\\OneDrive\\Desktop\\OOP\\UBB-SE-2026-TryingOurBest\\BoardRent_A1+A2\\BoardRent\\BoardRent.csproj",
+        "projectUniqueName": "C:\\Users\\marius\\source\\repos\\ISS_2\\UBB-SE-2026-TryingOurBest\\BoardRent_A1+A2\\BoardRent\\BoardRent.csproj",
         "projectName": "BoardRent",
-        "projectPath": "D:\\My Documents\\OneDrive\\Desktop\\OOP\\UBB-SE-2026-TryingOurBest\\BoardRent_A1+A2\\BoardRent\\BoardRent.csproj",
-        "packagesPath": "C:\\Users\\georg\\.nuget\\packages\\",
-        "outputPath": "D:\\My Documents\\OneDrive\\Desktop\\OOP\\UBB-SE-2026-TryingOurBest\\BoardRent_A1+A2\\BoardRent\\obj\\",
+        "projectPath": "C:\\Users\\marius\\source\\repos\\ISS_2\\UBB-SE-2026-TryingOurBest\\BoardRent_A1+A2\\BoardRent\\BoardRent.csproj",
+        "packagesPath": "C:\\Users\\marius\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\marius\\source\\repos\\ISS_2\\UBB-SE-2026-TryingOurBest\\BoardRent_A1+A2\\BoardRent\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\georg\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\marius\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -113,8 +113,8 @@
           "net8.0-windows10.0.19041": {
             "targetAlias": "net8.0-windows10.0.19041.0",
             "projectReferences": {
-              "D:\\My Documents\\OneDrive\\Desktop\\OOP\\UBB-SE-2026-TryingOurBest\\BoardRent_A1+A2\\BoardRent.Core\\BoardRent.Core.csproj": {
-                "projectPath": "D:\\My Documents\\OneDrive\\Desktop\\OOP\\UBB-SE-2026-TryingOurBest\\BoardRent_A1+A2\\BoardRent.Core\\BoardRent.Core.csproj"
+              "C:\\Users\\marius\\source\\repos\\ISS_2\\UBB-SE-2026-TryingOurBest\\BoardRent_A1+A2\\BoardRent.Core\\BoardRent.Core.csproj": {
+                "projectPath": "C:\\Users\\marius\\source\\repos\\ISS_2\\UBB-SE-2026-TryingOurBest\\BoardRent_A1+A2\\BoardRent.Core\\BoardRent.Core.csproj"
               }
             }
           }
@@ -129,7 +129,7 @@
           "auditLevel": "low",
           "auditMode": "direct"
         },
-        "SdkAnalysisLevel": "10.0.200"
+        "SdkAnalysisLevel": "10.0.100"
       },
       "frameworks": {
         "net8.0-windows10.0.19041": {
@@ -184,27 +184,27 @@
           "downloadDependencies": [
             {
               "name": "Microsoft.AspNetCore.App.Runtime.win-arm64",
-              "version": "[8.0.25, 8.0.25]"
+              "version": "[8.0.23, 8.0.23]"
             },
             {
               "name": "Microsoft.AspNetCore.App.Runtime.win-x64",
-              "version": "[8.0.25, 8.0.25]"
+              "version": "[8.0.23, 8.0.23]"
             },
             {
               "name": "Microsoft.AspNetCore.App.Runtime.win-x86",
-              "version": "[8.0.25, 8.0.25]"
+              "version": "[8.0.23, 8.0.23]"
             },
             {
               "name": "Microsoft.NETCore.App.Runtime.win-arm64",
-              "version": "[8.0.25, 8.0.25]"
+              "version": "[8.0.23, 8.0.23]"
             },
             {
               "name": "Microsoft.NETCore.App.Runtime.win-x64",
-              "version": "[8.0.25, 8.0.25]"
+              "version": "[8.0.23, 8.0.23]"
             },
             {
               "name": "Microsoft.NETCore.App.Runtime.win-x86",
-              "version": "[8.0.25, 8.0.25]"
+              "version": "[8.0.23, 8.0.23]"
             },
             {
               "name": "Microsoft.Windows.SDK.NET.Ref",
@@ -212,15 +212,15 @@
             },
             {
               "name": "Microsoft.WindowsDesktop.App.Runtime.win-arm64",
-              "version": "[8.0.25, 8.0.25]"
+              "version": "[8.0.23, 8.0.23]"
             },
             {
               "name": "Microsoft.WindowsDesktop.App.Runtime.win-x64",
-              "version": "[8.0.25, 8.0.25]"
+              "version": "[8.0.23, 8.0.23]"
             },
             {
               "name": "Microsoft.WindowsDesktop.App.Runtime.win-x86",
-              "version": "[8.0.25, 8.0.25]"
+              "version": "[8.0.23, 8.0.23]"
             }
           ],
           "frameworkReferences": {
@@ -231,7 +231,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.201/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.102/PortableRuntimeIdentifierGraph.json"
         }
       },
       "runtimes": {

@@ -7,6 +7,8 @@ namespace BoardRent.Repositories
     using Microsoft.Data.SqlClient;
     public class FailedLoginRepository : IFailedLoginRepository
     {
+        private const int MaximumFailedAttempts = 5;
+        private const int LockoutDurationMinutes = 15;
         private IUnitOfWork unitOfWork;
         private SqlConnection Connection => this.unitOfWork.Connection;
         public void SetUnitOfWork(IUnitOfWork unitOfWork)
@@ -33,20 +35,37 @@ namespace BoardRent.Repositories
         }
         public async Task IncrementAsync(Guid userId)
         {
-            using (var command = this.Connection.CreateCommand())
+            FailedLoginAttempt currentAttempt = await this.GetByUserIdAsync(userId);
+            int nextFailedAttempts = (currentAttempt?.FailedAttempts ?? 0) + 1;
+            DateTime? nextLockedUntil = nextFailedAttempts >= MaximumFailedAttempts
+                ? DateTime.UtcNow.AddMinutes(LockoutDurationMinutes)
+                : null;
+
+            if (currentAttempt == null)
             {
-                command.CommandText = @"
-                    IF EXISTS (SELECT 1 FROM FailedLoginAttempt WHERE UserId = @UserId)
-                        UPDATE FailedLoginAttempt 
-                        SET FailedAttempts = FailedAttempts + 1, 
-                            LockedUntil = CASE WHEN FailedAttempts + 1 >= 5 THEN DATEADD(minute, 15, GETUTCDATE()) ELSE NULL END 
-                        WHERE UserId = @UserId
-                    ELSE
-                        INSERT INTO FailedLoginAttempt (UserId, FailedAttempts, LockedUntil) VALUES (@UserId, 1, NULL)";
+                using (var insertCommand = this.Connection.CreateCommand())
+                {
+                    insertCommand.CommandText = @"
+                        INSERT INTO FailedLoginAttempt (UserId, FailedAttempts, LockedUntil)
+                        VALUES (@UserId, @FailedAttempts, @LockedUntil)";
+                    insertCommand.Parameters.AddWithValue("@UserId", userId);
+                    insertCommand.Parameters.AddWithValue("@FailedAttempts", nextFailedAttempts);
+                    insertCommand.Parameters.AddWithValue("@LockedUntil", nextLockedUntil ?? (object)DBNull.Value);
+                    await insertCommand.ExecuteNonQueryAsync();
+                }
+                return;
+            }
 
-                command.Parameters.AddWithValue("@UserId", userId);
-
-                await command.ExecuteNonQueryAsync();
+            using (var updateCommand = this.Connection.CreateCommand())
+            {
+                updateCommand.CommandText = @"
+                    UPDATE FailedLoginAttempt
+                    SET FailedAttempts = @FailedAttempts, LockedUntil = @LockedUntil
+                    WHERE UserId = @UserId";
+                updateCommand.Parameters.AddWithValue("@UserId", userId);
+                updateCommand.Parameters.AddWithValue("@FailedAttempts", nextFailedAttempts);
+                updateCommand.Parameters.AddWithValue("@LockedUntil", nextLockedUntil ?? (object)DBNull.Value);
+                await updateCommand.ExecuteNonQueryAsync();
             }
         }
         public async Task ResetAsync(Guid userId)

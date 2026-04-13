@@ -190,17 +190,54 @@ namespace BoardRent.Repositories
 
         public async Task AddRoleAsync(Guid identifier, string roleName)
         {
+            Guid? roleIdentifier = await this.GetRoleIdByNameAsync(roleName);
+            if (!roleIdentifier.HasValue)
+            {
+                return;
+            }
+
+            bool userAlreadyHasRole = await this.UserHasRoleAsync(identifier, roleIdentifier.Value);
+            if (userAlreadyHasRole)
+            {
+                return;
+            }
+
             using (var sqlCommand = this.DatabaseConnection.CreateCommand())
             {
-                sqlCommand.CommandText = @"
-                    DECLARE @RoleIdentifier UNIQUEIDENTIFIER = (SELECT Id FROM Role WHERE Name = @RoleName);
-                    IF @RoleIdentifier IS NOT NULL AND NOT EXISTS (SELECT 1 FROM UserRoles WHERE UserId = @UserIdentifier AND RoleId = @RoleIdentifier)
-                        INSERT INTO UserRoles (UserId, RoleId) VALUES (@UserIdentifier, @RoleIdentifier);";
-
+                sqlCommand.CommandText = "INSERT INTO UserRoles (UserId, RoleId) VALUES (@UserIdentifier, @RoleIdentifier)";
                 sqlCommand.Parameters.AddWithValue("@UserIdentifier", identifier);
+                sqlCommand.Parameters.AddWithValue("@RoleIdentifier", roleIdentifier.Value);
+                await sqlCommand.ExecuteNonQueryAsync();
+            }
+        }
+
+        private async Task<Guid?> GetRoleIdByNameAsync(string roleName)
+        {
+            using (var sqlCommand = this.DatabaseConnection.CreateCommand())
+            {
+                sqlCommand.CommandText = "SELECT Id FROM Role WHERE Name = @RoleName";
                 sqlCommand.Parameters.AddWithValue("@RoleName", roleName);
 
-                await sqlCommand.ExecuteNonQueryAsync();
+                object scalarResult = await sqlCommand.ExecuteScalarAsync();
+                if (scalarResult == null || scalarResult == DBNull.Value)
+                {
+                    return null;
+                }
+
+                return (Guid)scalarResult;
+            }
+        }
+
+        private async Task<bool> UserHasRoleAsync(Guid userIdentifier, Guid roleIdentifier)
+        {
+            using (var sqlCommand = this.DatabaseConnection.CreateCommand())
+            {
+                sqlCommand.CommandText = "SELECT COUNT(1) FROM UserRoles WHERE UserId = @UserIdentifier AND RoleId = @RoleIdentifier";
+                sqlCommand.Parameters.AddWithValue("@UserIdentifier", userIdentifier);
+                sqlCommand.Parameters.AddWithValue("@RoleIdentifier", roleIdentifier);
+
+                int matchingRows = Convert.ToInt32(await sqlCommand.ExecuteScalarAsync());
+                return matchingRows > 0;
             }
         }
 

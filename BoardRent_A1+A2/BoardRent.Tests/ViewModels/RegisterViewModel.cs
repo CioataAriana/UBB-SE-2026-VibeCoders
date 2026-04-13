@@ -43,7 +43,6 @@
         [Fact]
         public async Task RegisterAsync_FieldValidationError_MapsErrorsToCorrectProperties()
         {
-
             string validationErrorMessage = "Username|Username already exists;Password|Password is too short";
             ServiceResult<bool> failResult = ServiceResult<bool>.Fail(validationErrorMessage);
 
