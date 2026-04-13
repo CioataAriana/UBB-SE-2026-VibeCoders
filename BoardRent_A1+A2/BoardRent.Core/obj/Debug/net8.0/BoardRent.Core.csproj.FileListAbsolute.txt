@@ -1,0 +1,13 @@
+D:\My Documents\OneDrive\Desktop\OOP\UBB-SE-2026-TryingOurBest\BoardRent_A1+A2\BoardRent.Core\obj\Debug\net8.0\BoardRent.Core.csproj.AssemblyReference.cache
+D:\My Documents\OneDrive\Desktop\OOP\UBB-SE-2026-TryingOurBest\BoardRent_A1+A2\BoardRent.Core\obj\Debug\net8.0\BoardRent.Core.GeneratedMSBuildEditorConfig.editorconfig
+D:\My Documents\OneDrive\Desktop\OOP\UBB-SE-2026-TryingOurBest\BoardRent_A1+A2\BoardRent.Core\obj\Debug\net8.0\BoardRent.Core.AssemblyInfoInputs.cache
+D:\My Documents\OneDrive\Desktop\OOP\UBB-SE-2026-TryingOurBest\BoardRent_A1+A2\BoardRent.Core\obj\Debug\net8.0\BoardRent.Core.AssemblyInfo.cs
+D:\My Documents\OneDrive\Desktop\OOP\UBB-SE-2026-TryingOurBest\BoardRent_A1+A2\BoardRent.Core\obj\Debug\net8.0\BoardRent.Core.csproj.CoreCompileInputs.cache
+D:\My Documents\OneDrive\Desktop\OOP\UBB-SE-2026-TryingOurBest\BoardRent_A1+A2\BoardRent.Core\obj\Debug\net8.0\BoardRent.Core.sourcelink.json
+D:\My Documents\OneDrive\Desktop\OOP\UBB-SE-2026-TryingOurBest\BoardRent_A1+A2\BoardRent.Core\bin\Debug\net8.0\BoardRent.Core.deps.json
+D:\My Documents\OneDrive\Desktop\OOP\UBB-SE-2026-TryingOurBest\BoardRent_A1+A2\BoardRent.Core\bin\Debug\net8.0\BoardRent.Core.dll
+D:\My Documents\OneDrive\Desktop\OOP\UBB-SE-2026-TryingOurBest\BoardRent_A1+A2\BoardRent.Core\bin\Debug\net8.0\BoardRent.Core.pdb
+D:\My Documents\OneDrive\Desktop\OOP\UBB-SE-2026-TryingOurBest\BoardRent_A1+A2\BoardRent.Core\obj\Debug\net8.0\BoardRent.Core.dll
+D:\My Documents\OneDrive\Desktop\OOP\UBB-SE-2026-TryingOurBest\BoardRent_A1+A2\BoardRent.Core\obj\Debug\net8.0\refint\BoardRent.Core.dll
+D:\My Documents\OneDrive\Desktop\OOP\UBB-SE-2026-TryingOurBest\BoardRent_A1+A2\BoardRent.Core\obj\Debug\net8.0\BoardRent.Core.pdb
+D:\My Documents\OneDrive\Desktop\OOP\UBB-SE-2026-TryingOurBest\BoardRent_A1+A2\BoardRent.Core\obj\Debug\net8.0\ref\BoardRent.Core.dll

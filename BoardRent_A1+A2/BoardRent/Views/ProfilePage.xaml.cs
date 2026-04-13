@@ -1,10 +1,11 @@
-using System.Diagnostics;
-using BoardRent.ViewModels;
-using CommunityToolkit.Mvvm.DependencyInjection;
-using Microsoft.UI.Xaml.Controls;
-
 namespace BoardRent.Views
 {
+    using System;
+    using BoardRent.ViewModels;
+    using CommunityToolkit.Mvvm.DependencyInjection;
+    using Microsoft.UI.Xaml;
+    using Microsoft.UI.Xaml.Controls;
+
     public sealed partial class ProfilePage : Page
     {
         public ProfilePage()
@@ -14,16 +15,17 @@ namespace BoardRent.Views
             this.ViewModel = Ioc.Default.GetService<ProfileViewModel>();
             this.DataContext = this.ViewModel;
 
-            this.ViewModel.Navigate = (type) =>
+            this.ViewModel.OnSignOutSuccess = () =>
             {
-                App.NavigateTo(type, true);
+                App.NavigateTo(typeof(LoginPage), true);
             };
 
-            this.Loaded += async (s, e) =>
+            this.Loaded += async (object sender, RoutedEventArgs eventArgs) =>
             {
-                await this.ViewModel.LoadProfile();
+                await this.ViewModel.LoadProfileAsync();
             };
         }
+
         public ProfileViewModel ViewModel { get; }
     }
 }

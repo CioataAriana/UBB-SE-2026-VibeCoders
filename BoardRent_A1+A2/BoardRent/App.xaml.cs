@@ -4,6 +4,7 @@ using BoardRent.Repositories;
 using BoardRent.Services;
 using BoardRent.ViewModels;
 using BoardRent.Views;
+using BoardRent.Utils;
 using CommunityToolkit.Mvvm.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.UI.Xaml;
@@ -27,6 +28,7 @@ namespace BoardRent
                 .AddSingleton<IUserService, UserService>()
                 .AddSingleton<IAdminService, AdminService>()
                 .AddSingleton<IFilePickerService, FilePickerService>()
+                .AddSingleton<ISessionContext, SessionContext>() // <--- ADĂUGAT CRITIC PENTRU DECUPLARE
                 .AddTransient<LoginViewModel>()
                 .AddTransient<RegisterViewModel>()
                 .AddTransient<ProfileViewModel>()
@@ -62,8 +64,8 @@ namespace BoardRent
             Window.Content = RootFrame;
             Window.Activate();
 
-            var db = new AppDbContext();
-            db.EnsureCreated();
+            var databaseContext = new AppDbContext();
+            databaseContext.EnsureCreated();
 
             NavigateTo(typeof(LoginPage));
         }

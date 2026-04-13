@@ -2,6 +2,7 @@
 {
     using System;
     using System.Threading.Tasks;
+    using Windows.Storage;
     using Windows.Storage.Pickers;
     using WinRT.Interop;
 
@@ -15,15 +16,17 @@
                 return null;
             }
 
-            var picker = new FileOpenPicker();
-            var windowHandle = WinRT.Interop.WindowNative.GetWindowHandle(App.Window);
-            WinRT.Interop.InitializeWithWindow.Initialize(picker, windowHandle);
+            FileOpenPicker fileOpenPicker = new FileOpenPicker();
 
-            picker.FileTypeFilter.Add(".jpg");
-            picker.FileTypeFilter.Add(".png");
+            IntPtr windowHandle = WindowNative.GetWindowHandle(App.Window);
+            InitializeWithWindow.Initialize(fileOpenPicker, windowHandle);
 
-            var file = await picker.PickSingleFileAsync();
-            return file?.Path;
+            fileOpenPicker.FileTypeFilter.Add(".jpg");
+            fileOpenPicker.FileTypeFilter.Add(".png");
+
+            StorageFile selectedFile = await fileOpenPicker.PickSingleFileAsync();
+
+            return selectedFile?.Path;
         }
     }
 }

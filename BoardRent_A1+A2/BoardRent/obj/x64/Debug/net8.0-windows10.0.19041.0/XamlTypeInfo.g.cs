@@ -950,7 +950,6 @@ namespace BoardRent.BoardRent_XamlTypeInfo
                 userType = new global::BoardRent.BoardRent_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("BoardRent.ViewModels.BaseViewModel"));
                 userType.StaticInitializer = StaticInitializer_51_AdminViewModel;
                 userType.SetIsReturnTypeStub();
-                userType.SetIsLocalType();
                 xamlType = userType;
                 break;
 
@@ -958,7 +957,6 @@ namespace BoardRent.BoardRent_XamlTypeInfo
                 userType = new global::BoardRent.BoardRent_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("CommunityToolkit.Mvvm.ComponentModel.ObservableObject"));
                 userType.Activator = Activate_52_BaseViewModel;
                 userType.StaticInitializer = StaticInitializer_52_BaseViewModel;
-                userType.SetIsLocalType();
                 xamlType = userType;
                 break;
 
@@ -1001,7 +999,6 @@ namespace BoardRent.BoardRent_XamlTypeInfo
                 userType = new global::BoardRent.BoardRent_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("BoardRent.ViewModels.BaseViewModel"));
                 userType.StaticInitializer = StaticInitializer_57_LoginViewModel;
                 userType.SetIsReturnTypeStub();
-                userType.SetIsLocalType();
                 xamlType = userType;
                 break;
 
@@ -1102,7 +1099,6 @@ namespace BoardRent.BoardRent_XamlTypeInfo
                 userType = new global::BoardRent.BoardRent_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("BoardRent.ViewModels.BaseViewModel"));
                 userType.StaticInitializer = StaticInitializer_68_ProfileViewModel;
                 userType.SetIsReturnTypeStub();
-                userType.SetIsLocalType();
                 xamlType = userType;
                 break;
 
@@ -1119,7 +1115,6 @@ namespace BoardRent.BoardRent_XamlTypeInfo
                 userType = new global::BoardRent.BoardRent_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("BoardRent.ViewModels.BaseViewModel"));
                 userType.StaticInitializer = StaticInitializer_70_RegisterViewModel;
                 userType.SetIsReturnTypeStub();
-                userType.SetIsLocalType();
                 xamlType = userType;
                 break;
 

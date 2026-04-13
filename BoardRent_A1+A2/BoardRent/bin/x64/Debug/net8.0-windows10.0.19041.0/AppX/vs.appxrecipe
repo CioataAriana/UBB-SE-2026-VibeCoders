@@ -29,21 +29,21 @@
     <AppXManifest Include="D:\My Documents\OneDrive\Desktop\OOP\UBB-SE-2026-TryingOurBest\BoardRent_A1+A2\BoardRent\bin\x64\Debug\net8.0-windows10.0.19041.0\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2026-04-13T11:04:11.103</Modified>
+      <Modified>2026-04-13T13:26:14.078</Modified>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
     <AppxPackagedFile Include="D:\My Documents\OneDrive\Desktop\OOP\UBB-SE-2026-TryingOurBest\BoardRent_A1+A2\BoardRent\bin\x64\Debug\net8.0-windows10.0.19041.0\BoardRent.runtimeconfig.json">
       <PackagePath>BoardRent.runtimeconfig.json</PackagePath>
-      <Modified>2026-04-13T10:29:39.692</Modified>
+      <Modified>2026-04-13T13:16:09.116</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\My Documents\OneDrive\Desktop\OOP\UBB-SE-2026-TryingOurBest\BoardRent_A1+A2\BoardRent\obj\x64\Debug\net8.0-windows10.0.19041.0\apphost.exe">
       <PackagePath>BoardRent.exe</PackagePath>
-      <Modified>2026-04-13T11:04:10.146</Modified>
+      <Modified>2026-04-13T13:26:13.427</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\My Documents\OneDrive\Desktop\OOP\UBB-SE-2026-TryingOurBest\BoardRent_A1+A2\BoardRent\obj\x64\Debug\net8.0-windows10.0.19041.0\BoardRent.dll">
       <PackagePath>BoardRent.dll</PackagePath>
-      <Modified>2026-04-13T11:04:10.127</Modified>
+      <Modified>2026-04-13T13:26:13.421</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\georg\.nuget\packages\microsoft.windows.sdk.net.ref\10.0.19041.57\lib\net8.0\Microsoft.Windows.SDK.NET.dll">
       <PackagePath>Microsoft.Windows.SDK.NET.dll</PackagePath>
@@ -65,9 +65,9 @@
       <PackagePath>CommunityToolkit.Common.dll</PackagePath>
       <Modified>2021-11-18T21:56:24.000</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\georg\.nuget\packages\communitytoolkit.mvvm\8.4.0\lib\net8.0-windows10.0.17763\CommunityToolkit.Mvvm.dll">
+    <AppxPackagedFile Include="C:\Users\georg\.nuget\packages\communitytoolkit.mvvm\8.4.2\lib\net8.0-windows10.0.17763\CommunityToolkit.Mvvm.dll">
       <PackagePath>CommunityToolkit.Mvvm.dll</PackagePath>
-      <Modified>2024-12-12T07:54:40.000</Modified>
+      <Modified>2026-03-24T23:20:02.000</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\georg\.nuget\packages\communitytoolkit.winui\7.1.2\lib\net5.0-windows10.0.18362\CommunityToolkit.WinUI.dll">
       <PackagePath>CommunityToolkit.WinUI.dll</PackagePath>
@@ -469,13 +469,17 @@
       <PackagePath>Microsoft.Web.WebView2.Core.dll</PackagePath>
       <Modified>2025-03-30T09:04:20.000</Modified>
     </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\My Documents\OneDrive\Desktop\OOP\UBB-SE-2026-TryingOurBest\BoardRent_A1+A2\BoardRent.Core\bin\Debug\net8.0\BoardRent.Core.dll">
+      <PackagePath>BoardRent.Core.dll</PackagePath>
+      <Modified>2026-04-13T13:26:12.025</Modified>
+    </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\georg\.nuget\packages\microsoft.web.webview2\1.0.3179.45\lib_manual\net8.0-windows10.0.17763.0\Microsoft.Web.WebView2.Core.Projection.dll">
       <PackagePath>Microsoft.Web.WebView2.Core.Projection.dll</PackagePath>
       <Modified>2025-03-30T09:04:20.000</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\My Documents\OneDrive\Desktop\OOP\UBB-SE-2026-TryingOurBest\BoardRent_A1+A2\BoardRent\obj\x64\Debug\net8.0-windows10.0.19041.0\BoardRent.deps.json">
       <PackagePath>BoardRent.deps.json</PackagePath>
-      <Modified>2026-04-13T10:29:21.371</Modified>
+      <Modified>2026-04-13T13:16:09.526</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\georg\.nuget\packages\colorcode.winui\2.0.13\lib\net5.0-windows10.0.18362\ColorCode.WinUI.pri">
       <PackagePath>ColorCode.WinUI.pri</PackagePath>
@@ -551,7 +555,7 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\My Documents\OneDrive\Desktop\OOP\UBB-SE-2026-TryingOurBest\BoardRent_A1+A2\BoardRent\bin\x64\Debug\net8.0-windows10.0.19041.0\resources.pri">
       <PackagePath>resources.pri</PackagePath>
-      <Modified>2026-04-13T10:29:39.949</Modified>
+      <Modified>2026-04-13T13:16:09.370</Modified>
     </AppxPackagedFile>
   </ItemGroup>
   <ItemGroup>

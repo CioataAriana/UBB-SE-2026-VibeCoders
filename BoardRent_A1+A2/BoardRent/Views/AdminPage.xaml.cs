@@ -1,67 +1,79 @@
-using System;
-using System.ComponentModel;
-using BoardRent.ViewModels;
-using BoardRent.Utils;
-using CommunityToolkit.Mvvm.DependencyInjection;
-using Microsoft.UI.Xaml;
-using Microsoft.UI.Xaml.Controls;
-
 namespace BoardRent.Views
 {
+    using System;
+    using System.ComponentModel;
+    using BoardRent.ViewModels;
+    using BoardRent.Utils;
+    using CommunityToolkit.Mvvm.DependencyInjection;
+    using Microsoft.UI.Xaml;
+    using Microsoft.UI.Xaml.Controls;
+
     public sealed partial class AdminPage : Page, INotifyPropertyChanged
     {
-        public AdminViewModel ViewModel { get; }
+        private readonly ISessionContext sessionContext;
 
         public AdminPage()
         {
-            InitializeComponent();
-            ViewModel = Ioc.Default.GetService<AdminViewModel>();
-            ViewModel.PropertyChanged += ViewModel_PropertyChanged;
-        }
+            this.InitializeComponent();
 
-        public bool IsUnauthorized => !SessionContext.GetInstance().IsLoggedIn || SessionContext.GetInstance().Role != "Administrator";
-        public Visibility IsAuthorizedVisibility => IsUnauthorized ? Visibility.Collapsed : Visibility.Visible;
-        public bool IsErrorVisible => ViewModel != null && !string.IsNullOrEmpty(ViewModel.ErrorMessage);
+            this.sessionContext = Ioc.Default.GetService<ISessionContext>();
+            this.ViewModel = Ioc.Default.GetService<AdminViewModel>();
+
+            this.ViewModel.PropertyChanged += this.ViewModel_PropertyChanged;
+        }
 
         public event PropertyChangedEventHandler PropertyChanged;
 
-        private void ViewModel_PropertyChanged(object sender, PropertyChangedEventArgs e)
+        public AdminViewModel ViewModel { get; }
+
+        public bool IsUnauthorized => !this.sessionContext.IsLoggedIn || this.sessionContext.Role != "Administrator";
+
+        public Visibility IsAuthorizedVisibility => this.IsUnauthorized ? Visibility.Collapsed : Visibility.Visible;
+
+        public bool IsErrorVisible => this.ViewModel != null && !string.IsNullOrEmpty(this.ViewModel.ErrorMessage);
+
+        private void ViewModel_PropertyChanged(object sender, PropertyChangedEventArgs eventArgs)
         {
-            if (e.PropertyName == nameof(AdminViewModel.ErrorMessage))
+            if (eventArgs.PropertyName == nameof(AdminViewModel.ErrorMessage))
             {
-                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(IsErrorVisible)));
+                this.PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(this.IsErrorVisible)));
             }
         }
 
-        private void OnSignOutClicked(object sender, RoutedEventArgs e)
+        private void OnSignOutClicked(object sender, RoutedEventArgs eventArgs)
         {
-            SessionContext.GetInstance().Clear();
-            App.NavigateTo(typeof(LoginPage), clearBackStack: true);
+            this.sessionContext.Clear();
+            App.NavigateTo(typeof(LoginPage), true);
         }
 
-        private async void OnResetPasswordClicked(object sender, RoutedEventArgs e)
+        private async void OnResetPasswordClicked(object sender, RoutedEventArgs eventArgs)
         {
-            if (ViewModel.SelectedUser == null)
+            if (this.ViewModel.SelectedUser == null)
             {
                 return;
             }
 
-            var dialog = new ContentDialog
+            ContentDialog resetPasswordDialog = new ContentDialog
             {
-                Title = $"Reset password for {ViewModel.SelectedUser.Username}",
+                Title = $"Reset password for {this.ViewModel.SelectedUser.Username}",
                 PrimaryButtonText = "Reset",
                 CloseButtonText = "Cancel",
                 DefaultButton = ContentDialogButton.Primary,
                 XamlRoot = this.XamlRoot
             };
 
-            var passwordBox = new PasswordBox { PlaceholderText = "Enter new password" };
-            dialog.Content = passwordBox;
-
-            var result = await dialog.ShowAsync();
-            if (result == ContentDialogResult.Primary && !string.IsNullOrWhiteSpace(passwordBox.Password))
+            PasswordBox newPasswordBox = new PasswordBox
             {
-                await ViewModel.ResetPasswordWithValueAsync(passwordBox.Password);
+                PlaceholderText = "Enter new password"
+            };
+
+            resetPasswordDialog.Content = newPasswordBox;
+
+            ContentDialogResult dialogResult = await resetPasswordDialog.ShowAsync();
+
+            if (dialogResult == ContentDialogResult.Primary && !string.IsNullOrWhiteSpace(newPasswordBox.Password))
+            {
+                await this.ViewModel.ResetPasswordWithValueAsync(newPasswordBox.Password);
             }
         }
     }

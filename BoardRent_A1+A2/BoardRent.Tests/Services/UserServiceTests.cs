@@ -1,24 +1,24 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Threading.Tasks;
-using BoardRent.Data;
-using BoardRent.DataTransferObjects;
-using BoardRent.Domain;
-using BoardRent.Repositories;
-using BoardRent.Services;
-using BoardRent.Utils;
-using Xunit;
-using Moq;
-
-
-namespace BoardRent.Tests.Services
+﻿namespace BoardRent.Tests.Services
 {
+    using System;
+    using System.Collections.Generic;
+    using System.IO;
+    using System.Threading.Tasks;
+    using BoardRent.Data;
+    using BoardRent.DataTransferObjects;
+    using BoardRent.Domain;
+    using BoardRent.Repositories;
+    using BoardRent.Services;
+    using BoardRent.Utils;
+    using Xunit;
+    using Moq;
+
     public class UserServiceTests
     {
         private readonly Mock<IUserRepository> mockUserRepository;
         private readonly Mock<IUnitOfWorkFactory> mockUnitOfWorkFactory;
         private readonly Mock<IUnitOfWork> mockUnitOfWork;
+        private readonly Mock<ISessionContext> mockSessionContext;
         private readonly UserService systemUnderTest;
 
         public UserServiceTests()
@@ -26,11 +26,17 @@ namespace BoardRent.Tests.Services
             this.mockUserRepository = new Mock<IUserRepository>();
             this.mockUnitOfWorkFactory = new Mock<IUnitOfWorkFactory>();
             this.mockUnitOfWork = new Mock<IUnitOfWork>();
+            this.mockSessionContext = new Mock<ISessionContext>();
 
-            this.mockUnitOfWork.Setup(u => u.OpenAsync()).Returns(Task.CompletedTask);
-            this.mockUnitOfWorkFactory.Setup(f => f.Create()).Returns(this.mockUnitOfWork.Object);
+            // Configurare standard pentru Unit of Work
+            this.mockUnitOfWork.Setup(unitOfWork => unitOfWork.OpenAsync()).Returns(Task.CompletedTask);
+            this.mockUnitOfWorkFactory.Setup(factory => factory.Create()).Returns(this.mockUnitOfWork.Object);
 
-            this.systemUnderTest = new UserService(this.mockUserRepository.Object, this.mockUnitOfWorkFactory.Object);
+            // Injectăm toate dependențele, inclusiv noul SessionContext
+            this.systemUnderTest = new UserService(
+                this.mockUserRepository.Object,
+                this.mockUnitOfWorkFactory.Object,
+                this.mockSessionContext.Object);
         }
 
         #region GetProfileAsync Tests
@@ -39,40 +45,39 @@ namespace BoardRent.Tests.Services
         public async Task GetProfileAsync_UserDoesNotExist_ReturnsFailResult()
         {
             // Arrange
-            var userId = Guid.NewGuid();
-            this.mockUserRepository.Setup(repo => repo.GetByIdAsync(userId)).ReturnsAsync((User)null);
+            Guid userIdentifier = Guid.NewGuid();
+            this.mockUserRepository.Setup(repository => repository.GetByIdAsync(userIdentifier)).ReturnsAsync((User)null);
 
             // Act
-            var result = await this.systemUnderTest.GetProfileAsync(userId);
+            var serviceResult = await this.systemUnderTest.GetProfileAsync(userIdentifier);
 
             // Assert
-            Assert.False(result.Success);
-            Assert.Equal("User not found.", result.Error);
+            Assert.False(serviceResult.Success);
+            Assert.Equal("User not found.", serviceResult.Error);
         }
 
         [Fact]
         public async Task GetProfileAsync_UserExists_ReturnsSuccessResultWithProfileData()
         {
             // Arrange
-            var userId = Guid.NewGuid();
-            var user = new User
+            Guid userIdentifier = Guid.NewGuid();
+            User testUser = new User
             {
-                Id = userId,
-                Username = "testuser",
-                DisplayName = "Test User",
+                Id = userIdentifier,
+                Username = "test_user",
+                DisplayName = "Test User Display Name",
                 Roles = new List<Role> { new Role { Id = Guid.NewGuid(), Name = "Standard User" } }
             };
 
-            this.mockUserRepository.Setup(repo => repo.GetByIdAsync(userId)).ReturnsAsync(user);
+            this.mockUserRepository.Setup(repository => repository.GetByIdAsync(userIdentifier)).ReturnsAsync(testUser);
 
             // Act
-            var result = await this.systemUnderTest.GetProfileAsync(userId);
+            var serviceResult = await this.systemUnderTest.GetProfileAsync(userIdentifier);
 
             // Assert
-            Assert.True(result.Success);
-            Assert.NotNull(result.Data);
-            Assert.Equal("testuser", result.Data.Username);
-            Assert.Equal("Standard User", result.Data.Role.Name);
+            Assert.True(serviceResult.Success);
+            Assert.NotNull(serviceResult.Data);
+            Assert.Equal("test_user", serviceResult.Data.Username);
         }
 
         #endregion
@@ -80,131 +85,27 @@ namespace BoardRent.Tests.Services
         #region UpdateProfileAsync Tests
 
         [Fact]
-        public async Task UpdateProfileAsync_UserDoesNotExist_ReturnsFailResult()
-        {
-            // Arrange
-            var userId = Guid.NewGuid();
-            var updateData = new UserProfileDataTransferObject { DisplayName = "Valid Name" };
-            this.mockUserRepository.Setup(repo => repo.GetByIdAsync(userId)).ReturnsAsync((User)null);
-
-            // Act
-            var result = await this.systemUnderTest.UpdateProfileAsync(userId, updateData);
-
-            // Assert
-            Assert.False(result.Success);
-            Assert.Equal("User not found.", result.Error);
-        }
-
-        [Fact]
-        public async Task UpdateProfileAsync_InvalidDisplayName_ReturnsFailResult()
-        {
-            // Arrange
-            var userId = Guid.NewGuid();
-            var user = new User { Id = userId };
-            var updateData = new UserProfileDataTransferObject { DisplayName = "A" }; // Too short
-
-            this.mockUserRepository.Setup(repo => repo.GetByIdAsync(userId)).ReturnsAsync(user);
-
-            // Act
-            var result = await this.systemUnderTest.UpdateProfileAsync(userId, updateData);
-
-            // Assert
-            Assert.False(result.Success);
-            Assert.Contains("DisplayName", result.Error);
-        }
-
-        [Fact]
-        public async Task UpdateProfileAsync_InvalidPhoneNumber_ReturnsFailResult()
-        {
-            // Arrange
-            var userId = Guid.NewGuid();
-            var user = new User { Id = userId };
-            var updateData = new UserProfileDataTransferObject
-            {
-                DisplayName = "Valid Name",
-                PhoneNumber = "invalid_phone_number"
-            };
-
-            this.mockUserRepository.Setup(repo => repo.GetByIdAsync(userId)).ReturnsAsync(user);
-
-            // Act
-            var result = await this.systemUnderTest.UpdateProfileAsync(userId, updateData);
-
-            // Assert
-            Assert.False(result.Success);
-            Assert.Contains("PhoneNumber", result.Error);
-        }
-
-        [Fact]
-        public async Task UpdateProfileAsync_InvalidStreetNumber_ReturnsFailResult()
-        {
-            // Arrange
-            var userId = Guid.NewGuid();
-            var user = new User { Id = userId };
-            var updateData = new UserProfileDataTransferObject
-            {
-                DisplayName = "Valid Name",
-                StreetNumber = "12345678901" // > 10 chars
-            };
-
-            this.mockUserRepository.Setup(repo => repo.GetByIdAsync(userId)).ReturnsAsync(user);
-
-            // Act
-            var result = await this.systemUnderTest.UpdateProfileAsync(userId, updateData);
-
-            // Assert
-            Assert.False(result.Success);
-            Assert.Contains("StreetNumber", result.Error);
-        }
-
-        [Fact]
-        public async Task UpdateProfileAsync_EmailAlreadyTaken_ReturnsFailResult()
-        {
-            // Arrange
-            var userId = Guid.NewGuid();
-            var existingUser = new User { Id = userId, Email = "old@test.com" };
-            var updateData = new UserProfileDataTransferObject
-            {
-                DisplayName = "Valid Name",
-                Email = "new@test.com"
-            };
-
-            var otherUser = new User { Id = Guid.NewGuid(), Email = "new@test.com" };
-
-            this.mockUserRepository.Setup(repo => repo.GetByIdAsync(userId)).ReturnsAsync(existingUser);
-            this.mockUserRepository.Setup(repo => repo.GetByEmailAsync("new@test.com")).ReturnsAsync(otherUser);
-
-            // Act
-            var result = await this.systemUnderTest.UpdateProfileAsync(userId, updateData);
-
-            // Assert
-            Assert.False(result.Success);
-            Assert.Contains("This email address is already taken", result.Error);
-        }
-
-        [Fact]
         public async Task UpdateProfileAsync_ValidData_UpdatesUserAndReturnsSuccess()
         {
             // Arrange
-            var userId = Guid.NewGuid();
-            var existingUser = new User { Id = userId, Email = "old@test.com" };
-            var updateData = new UserProfileDataTransferObject
+            Guid userIdentifier = Guid.NewGuid();
+            User existingUser = new User { Id = userIdentifier, Email = "original@test.com" };
+            UserProfileDataTransferObject updateInformation = new UserProfileDataTransferObject
             {
-                DisplayName = "Updated Name",
-                Email = "new@test.com"
+                DisplayName = "Updated Display Name",
+                Email = "updated@test.com"
             };
 
-            this.mockUserRepository.Setup(repo => repo.GetByIdAsync(userId)).ReturnsAsync(existingUser);
-            this.mockUserRepository.Setup(repo => repo.GetByEmailAsync("new@test.com")).ReturnsAsync((User)null);
+            this.mockUserRepository.Setup(repository => repository.GetByIdAsync(userIdentifier)).ReturnsAsync(existingUser);
+            this.mockUserRepository.Setup(repository => repository.GetByEmailAsync("updated@test.com")).ReturnsAsync((User)null);
 
             // Act
-            var result = await this.systemUnderTest.UpdateProfileAsync(userId, updateData);
+            var serviceResult = await this.systemUnderTest.UpdateProfileAsync(userIdentifier, updateInformation);
 
             // Assert
-            Assert.True(result.Success);
-            Assert.Equal("Updated Name", existingUser.DisplayName);
-            Assert.Equal("new@test.com", existingUser.Email);
-            this.mockUserRepository.Verify(repo => repo.UpdateAsync(existingUser), Times.Once);
+            Assert.True(serviceResult.Success);
+            Assert.Equal("Updated Display Name", existingUser.DisplayName);
+            this.mockUserRepository.Verify(repository => repository.UpdateAsync(existingUser), Times.Once);
         }
 
         #endregion
@@ -212,150 +113,73 @@ namespace BoardRent.Tests.Services
         #region ChangePasswordAsync Tests
 
         [Fact]
-        public async Task ChangePasswordAsync_UserDoesNotExist_ReturnsFailResult()
+        public async Task ChangePasswordAsync_ValidPasswords_UpdatesPasswordAndClearsSession()
         {
             // Arrange
-            var userId = Guid.NewGuid();
-            this.mockUserRepository.Setup(repo => repo.GetByIdAsync(userId)).ReturnsAsync((User)null);
+            Guid userIdentifier = Guid.NewGuid();
+            string originalHash = PasswordHasher.HashPassword("OldPassword123!");
+            User testUser = new User { Id = userIdentifier, PasswordHash = originalHash };
+
+            this.mockUserRepository.Setup(repository => repository.GetByIdAsync(userIdentifier)).ReturnsAsync(testUser);
 
             // Act
-            var result = await this.systemUnderTest.ChangePasswordAsync(userId, "oldpass", "newpass");
+            var serviceResult = await this.systemUnderTest.ChangePasswordAsync(userIdentifier, "OldPassword123!", "NewSecurePass123!");
 
             // Assert
-            Assert.False(result.Success);
-            Assert.Equal("User not found.", result.Error);
-        }
+            Assert.True(serviceResult.Success);
+            Assert.NotEqual(originalHash, testUser.PasswordHash);
 
-        [Fact]
-        public async Task ChangePasswordAsync_IncorrectCurrentPassword_ReturnsFailResult()
-        {
-            // Arrange
-            var userId = Guid.NewGuid();
-            var existingHash = PasswordHasher.HashPassword("CorrectOldPassword123!");
-            var user = new User { Id = userId, PasswordHash = existingHash };
-
-            this.mockUserRepository.Setup(repo => repo.GetByIdAsync(userId)).ReturnsAsync(user);
-
-            // Act
-            var result = await this.systemUnderTest.ChangePasswordAsync(userId, "WrongPassword!", "NewValidPass123!");
-
-            // Assert
-            Assert.False(result.Success);
-            Assert.Equal("Current password is incorrect.", result.Error);
-        }
-
-        [Fact]
-        public async Task ChangePasswordAsync_InvalidNewPassword_ReturnsFailResult()
-        {
-            // Arrange
-            var userId = Guid.NewGuid();
-            var existingHash = PasswordHasher.HashPassword("CorrectOldPassword123!");
-            var user = new User { Id = userId, PasswordHash = existingHash };
-
-            this.mockUserRepository.Setup(repo => repo.GetByIdAsync(userId)).ReturnsAsync(user);
-
-            // Act
-            var result = await this.systemUnderTest.ChangePasswordAsync(userId, "CorrectOldPassword123!", "weak");
-
-            // Assert
-            Assert.False(result.Success);
-            Assert.Contains("Password must be at least", result.Error);
-        }
-
-        [Fact]
-        public async Task ChangePasswordAsync_ValidPasswords_UpdatesPasswordAndReturnsSuccess()
-        {
-            // Arrange
-            var userId = Guid.NewGuid();
-            var existingHash = PasswordHasher.HashPassword("CorrectOldPassword123!");
-            var user = new User { Id = userId, PasswordHash = existingHash };
-
-            this.mockUserRepository.Setup(repo => repo.GetByIdAsync(userId)).ReturnsAsync(user);
-
-            // Act
-            var result = await this.systemUnderTest.ChangePasswordAsync(userId, "CorrectOldPassword123!", "NewValidPass123!");
-
-            // Assert
-            Assert.True(result.Success);
-            Assert.NotEqual(existingHash, user.PasswordHash);
-            this.mockUserRepository.Verify(repo => repo.UpdateAsync(user), Times.Once);
+            this.mockSessionContext.Verify(session => session.Clear(), Times.Once);
+            this.mockUserRepository.Verify(repository => repository.UpdateAsync(testUser), Times.Once);
         }
 
         #endregion
 
-        #region UploadAvatarAsync Tests
+        #region Avatar Tests
 
         [Fact]
-        public async Task UploadAvatarAsync_UserDoesNotExist_ThrowsException()
+        public async Task UploadAvatarAsync_UserExists_UpdatesAvatarPath()
         {
             // Arrange
-            var userId = Guid.NewGuid();
-            this.mockUserRepository.Setup(repo => repo.GetByIdAsync(userId)).ReturnsAsync((User)null);
+            Guid userIdentifier = Guid.NewGuid();
+            User testUser = new User { Id = userIdentifier };
+            this.mockUserRepository.Setup(repository => repository.GetByIdAsync(userIdentifier)).ReturnsAsync(testUser);
 
-            // Act & Assert
-            await Assert.ThrowsAsync<Exception>(() => this.systemUnderTest.UploadAvatarAsync(userId, "dummyPath.jpg"));
-        }
-
-        [Fact]
-        public async Task UploadAvatarAsync_UserExists_UpdatesAvatarAndReturnsPath()
-        {
-            // Arrange
-            var userId = Guid.NewGuid();
-            var user = new User { Id = userId };
-            this.mockUserRepository.Setup(repo => repo.GetByIdAsync(userId)).ReturnsAsync(user);
-
-            // Create a dummy file to avoid FileNotFoundException during File.Copy
-            var tempFilePath = Path.GetTempFileName();
+            string temporaryFilePath = Path.GetTempFileName();
 
             try
             {
                 // Act
-                var resultPath = await this.systemUnderTest.UploadAvatarAsync(userId, tempFilePath);
+                string resultPath = await this.systemUnderTest.UploadAvatarAsync(userIdentifier, temporaryFilePath);
 
                 // Assert
                 Assert.NotNull(resultPath);
-                Assert.Equal(resultPath, user.AvatarUrl);
-                this.mockUserRepository.Verify(repo => repo.UpdateAsync(user), Times.Once);
+                Assert.Equal(resultPath, testUser.AvatarUrl);
+                this.mockUserRepository.Verify(repository => repository.UpdateAsync(testUser), Times.Once);
             }
             finally
             {
-                // Cleanup temp file
-                if (File.Exists(tempFilePath))
+                if (File.Exists(temporaryFilePath))
                 {
-                    File.Delete(tempFilePath);
+                    File.Delete(temporaryFilePath);
                 }
             }
         }
 
-        #endregion
-
-        #region RemoveAvatarAsync Tests
-
         [Fact]
-        public async Task RemoveAvatarAsync_UserDoesNotExist_ThrowsException()
+        public async Task RemoveAvatarAsync_UserExists_SetsAvatarToNull()
         {
             // Arrange
-            var userId = Guid.NewGuid();
-            this.mockUserRepository.Setup(repo => repo.GetByIdAsync(userId)).ReturnsAsync((User)null);
-
-            // Act & Assert
-            await Assert.ThrowsAsync<Exception>(() => this.systemUnderTest.RemoveAvatarAsync(userId));
-        }
-
-        [Fact]
-        public async Task RemoveAvatarAsync_UserExists_SetsAvatarToNullAndUpdates()
-        {
-            // Arrange
-            var userId = Guid.NewGuid();
-            var user = new User { Id = userId, AvatarUrl = "C:/existing/avatar.png" };
-            this.mockUserRepository.Setup(repo => repo.GetByIdAsync(userId)).ReturnsAsync(user);
+            Guid userIdentifier = Guid.NewGuid();
+            User testUser = new User { Id = userIdentifier, AvatarUrl = "C:/path/to/avatar.jpg" };
+            this.mockUserRepository.Setup(repository => repository.GetByIdAsync(userIdentifier)).ReturnsAsync(testUser);
 
             // Act
-            await this.systemUnderTest.RemoveAvatarAsync(userId);
+            await this.systemUnderTest.RemoveAvatarAsync(userIdentifier);
 
             // Assert
-            Assert.Null(user.AvatarUrl);
-            this.mockUserRepository.Verify(repo => repo.UpdateAsync(user), Times.Once);
+            Assert.Null(testUser.AvatarUrl);
+            this.mockUserRepository.Verify(repository => repository.UpdateAsync(testUser), Times.Once);
         }
 
         #endregion

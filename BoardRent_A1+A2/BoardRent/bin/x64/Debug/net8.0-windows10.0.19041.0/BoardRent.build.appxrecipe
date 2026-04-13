@@ -49,7 +49,7 @@
     <AppxPackagedFile Include="C:\Users\georg\.nuget\packages\communitytoolkit.common\7.1.2\lib\net5.0\CommunityToolkit.Common.dll">
       <PackagePath>CommunityToolkit.Common.dll</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\georg\.nuget\packages\communitytoolkit.mvvm\8.4.0\lib\net8.0-windows10.0.17763\CommunityToolkit.Mvvm.dll">
+    <AppxPackagedFile Include="C:\Users\georg\.nuget\packages\communitytoolkit.mvvm\8.4.2\lib\net8.0-windows10.0.17763\CommunityToolkit.Mvvm.dll">
       <PackagePath>CommunityToolkit.Mvvm.dll</PackagePath>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\georg\.nuget\packages\communitytoolkit.winui\7.1.2\lib\net5.0-windows10.0.18362\CommunityToolkit.WinUI.dll">
@@ -351,6 +351,9 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\georg\.nuget\packages\microsoft.web.webview2\1.0.3179.45\runtimes\win-x64\native_uap\Microsoft.Web.WebView2.Core.dll">
       <PackagePath>Microsoft.Web.WebView2.Core.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\My Documents\OneDrive\Desktop\OOP\UBB-SE-2026-TryingOurBest\BoardRent_A1+A2\BoardRent.Core\bin\Debug\net8.0\BoardRent.Core.dll">
+      <PackagePath>BoardRent.Core.dll</PackagePath>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\georg\.nuget\packages\microsoft.web.webview2\1.0.3179.45\lib_manual\net8.0-windows10.0.17763.0\Microsoft.Web.WebView2.Core.Projection.dll">
       <PackagePath>Microsoft.Web.WebView2.Core.Projection.dll</PackagePath>

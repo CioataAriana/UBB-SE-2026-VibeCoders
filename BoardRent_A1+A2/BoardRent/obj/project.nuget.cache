@@ -1,13 +1,13 @@
 {
   "version": 2,
-  "dgSpecHash": "+poiOsOpxEE=",
+  "dgSpecHash": "dbclKHvfxnQ=",
   "success": true,
   "projectFilePath": "D:\\My Documents\\OneDrive\\Desktop\\OOP\\UBB-SE-2026-TryingOurBest\\BoardRent_A1+A2\\BoardRent\\BoardRent.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\georg\\.nuget\\packages\\colorcode.core\\2.0.13\\colorcode.core.2.0.13.nupkg.sha512",
     "C:\\Users\\georg\\.nuget\\packages\\colorcode.winui\\2.0.13\\colorcode.winui.2.0.13.nupkg.sha512",
     "C:\\Users\\georg\\.nuget\\packages\\communitytoolkit.common\\7.1.2\\communitytoolkit.common.7.1.2.nupkg.sha512",
-    "C:\\Users\\georg\\.nuget\\packages\\communitytoolkit.mvvm\\8.4.0\\communitytoolkit.mvvm.8.4.0.nupkg.sha512",
+    "C:\\Users\\georg\\.nuget\\packages\\communitytoolkit.mvvm\\8.4.2\\communitytoolkit.mvvm.8.4.2.nupkg.sha512",
     "C:\\Users\\georg\\.nuget\\packages\\communitytoolkit.winui\\7.1.2\\communitytoolkit.winui.7.1.2.nupkg.sha512",
     "C:\\Users\\georg\\.nuget\\packages\\communitytoolkit.winui.ui\\7.1.2\\communitytoolkit.winui.ui.7.1.2.nupkg.sha512",
     "C:\\Users\\georg\\.nuget\\packages\\communitytoolkit.winui.ui.controls\\7.1.2\\communitytoolkit.winui.ui.controls.7.1.2.nupkg.sha512",

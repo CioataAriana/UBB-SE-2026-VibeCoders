@@ -48,16 +48,16 @@
           }
         }
       },
-      "CommunityToolkit.Mvvm/8.4.0": {
+      "CommunityToolkit.Mvvm/8.4.2": {
         "type": "package",
         "compile": {
           "lib/net8.0-windows10.0.17763/CommunityToolkit.Mvvm.dll": {
-            "related": ".pdb;.xml"
+            "related": ".xml"
           }
         },
         "runtime": {
           "lib/net8.0-windows10.0.17763/CommunityToolkit.Mvvm.dll": {
-            "related": ".pdb;.xml"
+            "related": ".xml"
           }
         },
         "build": {
@@ -2380,6 +2380,20 @@
         "runtime": {
           "lib/netstandard1.3/System.Xml.XDocument.dll": {}
         }
+      },
+      "BoardRent.Core/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v8.0",
+        "dependencies": {
+          "CommunityToolkit.Mvvm": "8.4.2",
+          "Microsoft.Data.SqlClient": "7.0.0"
+        },
+        "compile": {
+          "bin/placeholder/BoardRent.Core.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/BoardRent.Core.dll": {}
+        }
       }
     },
     "net8.0-windows10.0.19041/win-arm64": {
@@ -2429,16 +2443,16 @@
           }
         }
       },
-      "CommunityToolkit.Mvvm/8.4.0": {
+      "CommunityToolkit.Mvvm/8.4.2": {
         "type": "package",
         "compile": {
           "lib/net8.0-windows10.0.17763/CommunityToolkit.Mvvm.dll": {
-            "related": ".pdb;.xml"
+            "related": ".xml"
           }
         },
         "runtime": {
           "lib/net8.0-windows10.0.17763/CommunityToolkit.Mvvm.dll": {
-            "related": ".pdb;.xml"
+            "related": ".xml"
           }
         },
         "build": {
@@ -4954,6 +4968,20 @@
         "runtime": {
           "lib/netstandard1.3/System.Xml.XDocument.dll": {}
         }
+      },
+      "BoardRent.Core/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v8.0",
+        "dependencies": {
+          "CommunityToolkit.Mvvm": "8.4.2",
+          "Microsoft.Data.SqlClient": "7.0.0"
+        },
+        "compile": {
+          "bin/placeholder/BoardRent.Core.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/BoardRent.Core.dll": {}
+        }
       }
     },
     "net8.0-windows10.0.19041/win-x64": {
@@ -5003,16 +5031,16 @@
           }
         }
       },
-      "CommunityToolkit.Mvvm/8.4.0": {
+      "CommunityToolkit.Mvvm/8.4.2": {
         "type": "package",
         "compile": {
           "lib/net8.0-windows10.0.17763/CommunityToolkit.Mvvm.dll": {
-            "related": ".pdb;.xml"
+            "related": ".xml"
           }
         },
         "runtime": {
           "lib/net8.0-windows10.0.17763/CommunityToolkit.Mvvm.dll": {
-            "related": ".pdb;.xml"
+            "related": ".xml"
           }
         },
         "build": {
@@ -7528,6 +7556,20 @@
         "runtime": {
           "lib/netstandard1.3/System.Xml.XDocument.dll": {}
         }
+      },
+      "BoardRent.Core/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v8.0",
+        "dependencies": {
+          "CommunityToolkit.Mvvm": "8.4.2",
+          "Microsoft.Data.SqlClient": "7.0.0"
+        },
+        "compile": {
+          "bin/placeholder/BoardRent.Core.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/BoardRent.Core.dll": {}
+        }
       }
     },
     "net8.0-windows10.0.19041/win-x86": {
@@ -7577,16 +7619,16 @@
           }
         }
       },
-      "CommunityToolkit.Mvvm/8.4.0": {
+      "CommunityToolkit.Mvvm/8.4.2": {
         "type": "package",
         "compile": {
           "lib/net8.0-windows10.0.17763/CommunityToolkit.Mvvm.dll": {
-            "related": ".pdb;.xml"
+            "related": ".xml"
           }
         },
         "runtime": {
           "lib/net8.0-windows10.0.17763/CommunityToolkit.Mvvm.dll": {
-            "related": ".pdb;.xml"
+            "related": ".xml"
           }
         },
         "build": {
@@ -10102,6 +10144,20 @@
         "runtime": {
           "lib/netstandard1.3/System.Xml.XDocument.dll": {}
         }
+      },
+      "BoardRent.Core/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v8.0",
+        "dependencies": {
+          "CommunityToolkit.Mvvm": "8.4.2",
+          "Microsoft.Data.SqlClient": "7.0.0"
+        },
+        "compile": {
+          "bin/placeholder/BoardRent.Core.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/BoardRent.Core.dll": {}
+        }
       }
     }
   },
@@ -10159,10 +10215,10 @@
         "lib/netstandard2.1/CommunityToolkit.Common.xml"
       ]
     },
-    "CommunityToolkit.Mvvm/8.4.0": {
-      "sha512": "tqVU8yc/ADO9oiTRyTnwhFN68hCwvkliMierptWOudIAvWY1mWCh5VFh+guwHJmpMwfg0J0rY+yyd5Oy7ty9Uw==",
+    "CommunityToolkit.Mvvm/8.4.2": {
+      "sha512": "WadCzGEc2U+3e20avRLng4qNtt4zoOGWrdUISqJWrHe3/FSnrYjuM5Sb4yQb09LhkBXrrI4Zt3dLKgRMbItsrg==",
       "type": "package",
-      "path": "communitytoolkit.mvvm/8.4.0",
+      "path": "communitytoolkit.mvvm/8.4.2",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -10175,6 +10231,8 @@
         "analyzers/dotnet/roslyn4.12/cs/CommunityToolkit.Mvvm.SourceGenerators.dll",
         "analyzers/dotnet/roslyn4.3/cs/CommunityToolkit.Mvvm.CodeFixers.dll",
         "analyzers/dotnet/roslyn4.3/cs/CommunityToolkit.Mvvm.SourceGenerators.dll",
+        "analyzers/dotnet/roslyn5.0/cs/CommunityToolkit.Mvvm.CodeFixers.dll",
+        "analyzers/dotnet/roslyn5.0/cs/CommunityToolkit.Mvvm.SourceGenerators.dll",
         "build/CommunityToolkit.Mvvm.FeatureSwitches.targets",
         "build/CommunityToolkit.Mvvm.SourceGenerators.targets",
         "build/CommunityToolkit.Mvvm.Windows.targets",
@@ -10185,19 +10243,15 @@
         "buildTransitive/CommunityToolkit.Mvvm.Windows.targets",
         "buildTransitive/CommunityToolkit.Mvvm.WindowsSdk.targets",
         "buildTransitive/CommunityToolkit.Mvvm.targets",
-        "communitytoolkit.mvvm.8.4.0.nupkg.sha512",
+        "communitytoolkit.mvvm.8.4.2.nupkg.sha512",
         "communitytoolkit.mvvm.nuspec",
         "lib/net8.0-windows10.0.17763/CommunityToolkit.Mvvm.dll",
-        "lib/net8.0-windows10.0.17763/CommunityToolkit.Mvvm.pdb",
         "lib/net8.0-windows10.0.17763/CommunityToolkit.Mvvm.xml",
         "lib/net8.0/CommunityToolkit.Mvvm.dll",
-        "lib/net8.0/CommunityToolkit.Mvvm.pdb",
         "lib/net8.0/CommunityToolkit.Mvvm.xml",
         "lib/netstandard2.0/CommunityToolkit.Mvvm.dll",
-        "lib/netstandard2.0/CommunityToolkit.Mvvm.pdb",
         "lib/netstandard2.0/CommunityToolkit.Mvvm.xml",
         "lib/netstandard2.1/CommunityToolkit.Mvvm.dll",
-        "lib/netstandard2.1/CommunityToolkit.Mvvm.pdb",
         "lib/netstandard2.1/CommunityToolkit.Mvvm.xml"
       ]
     },
@@ -17205,11 +17259,17 @@
         "system.xml.xdocument.4.3.0.nupkg.sha512",
         "system.xml.xdocument.nuspec"
       ]
+    },
+    "BoardRent.Core/1.0.0": {
+      "type": "project",
+      "path": "../BoardRent.Core/BoardRent.Core.csproj",
+      "msbuildProject": "../BoardRent.Core/BoardRent.Core.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net8.0-windows10.0.19041": [
-      "CommunityToolkit.Mvvm >= 8.4.0",
+      "BoardRent.Core >= 1.0.0",
+      "CommunityToolkit.Mvvm >= 8.4.2",
       "CommunityToolkit.WinUI.UI.Controls >= 7.1.2",
       "CommunityToolkit.WinUI.UI.Controls.DataGrid >= 7.1.2",
       "Microsoft.Data.SqlClient >= 7.0.0",
@@ -17250,7 +17310,11 @@
       "frameworks": {
         "net8.0-windows10.0.19041": {
           "targetAlias": "net8.0-windows10.0.19041.0",
-          "projectReferences": {}
+          "projectReferences": {
+            "D:\\My Documents\\OneDrive\\Desktop\\OOP\\UBB-SE-2026-TryingOurBest\\BoardRent_A1+A2\\BoardRent.Core\\BoardRent.Core.csproj": {
+              "projectPath": "D:\\My Documents\\OneDrive\\Desktop\\OOP\\UBB-SE-2026-TryingOurBest\\BoardRent_A1+A2\\BoardRent.Core\\BoardRent.Core.csproj"
+            }
+          }
         }
       },
       "warningProperties": {
@@ -17271,7 +17335,7 @@
         "dependencies": {
           "CommunityToolkit.Mvvm": {
             "target": "Package",
-            "version": "[8.4.0, )"
+            "version": "[8.4.2, )"
           },
           "CommunityToolkit.WinUI.UI.Controls": {
             "target": "Package",
