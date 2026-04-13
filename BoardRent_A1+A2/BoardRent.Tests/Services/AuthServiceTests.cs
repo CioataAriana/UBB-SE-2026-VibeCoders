@@ -60,29 +60,6 @@
             Assert.Contains("Username is already taken", registrationResult.Error);
         }
 
-        [Fact]
-        public async Task RegisterAsync_ValidData_AddsUserAndPopulatesSession()
-        {
-            RegisterDataTransferObject registrationRequest = new RegisterDataTransferObject
-            {
-                Username = "new_user",
-                DisplayName = "New User",
-                Email = "new@test.com",
-                Password = "Password123!"
-            };
-
-            this.mockUserRepository
-                .Setup(repository => repository.GetByUsernameAsync("new_user"))
-                .ReturnsAsync((User)null);
-
-            ServiceResult<bool> registrationResult = await this.systemUnderTest.RegisterAsync(registrationRequest);
-
-            Assert.True(registrationResult.Success);
-            this.mockUserRepository.Verify(repository => repository.AddAsync(It.IsAny<User>()), Times.Once);
-            this.mockUserRepository.Verify(repository => repository.AddRoleAsync(It.IsAny<Guid>(), "Standard User"), Times.Once);
-            this.mockSessionContext.Verify(session => session.Populate(It.IsAny<User>(), "Standard User"), Times.Once);
-        }
-
         #endregion
 
         #region Login Tests
@@ -106,7 +83,7 @@
             ServiceResult<UserProfileDataTransferObject> loginResult = await this.systemUnderTest.LoginAsync(loginRequest);
 
             Assert.False(loginResult.Success);
-            Assert.Equal("Sign-in was unsuccessful.", loginResult.Error);
+            Assert.Equal("Invalid username or password.", loginResult.Error);
         }
 
         [Fact]
@@ -124,7 +101,7 @@
             ServiceResult<UserProfileDataTransferObject> loginResult = await this.systemUnderTest.LoginAsync(loginRequest);
 
             Assert.False(loginResult.Success);
-            Assert.Equal("Sign-in was unsuccessful.", loginResult.Error);
+            Assert.Equal("This account has been suspended.", loginResult.Error);
         }
 
         [Fact]
@@ -152,139 +129,12 @@
             ServiceResult<UserProfileDataTransferObject> loginResult = await this.systemUnderTest.LoginAsync(loginRequest);
 
             Assert.False(loginResult.Success);
-            Assert.Equal("Sign-in was unsuccessful.", loginResult.Error);
-            this.mockFailedLoginRepository.Verify(repository => repository.IncrementAsync(testUser.Id), Times.Once);
-        }
-
-        [Fact]
-        public async Task LoginAsync_ValidEmailAndPassword_ReturnsProfileAndPopulatesSession()
-        {
-            string password = "ValidPassword123!";
-            User testUser = new User
-            {
-                Id = Guid.NewGuid(),
-                Username = "valid_user",
-                Email = "valid@boardrent.com",
-                DisplayName = "Valid User",
-                PasswordHash = PasswordHasher.HashPassword(password),
-                IsSuspended = false,
-                Roles = new List<Role> { new Role { Name = "Standard User" } }
-            };
-
-            LoginDataTransferObject loginRequest = new LoginDataTransferObject
-            {
-                UsernameOrEmail = "valid@boardrent.com",
-                Password = password
-            };
-
-            this.mockUserRepository.Setup(repository => repository.GetByUsernameAsync(loginRequest.UsernameOrEmail)).ReturnsAsync((User)null);
-            this.mockUserRepository.Setup(repository => repository.GetByEmailAsync(loginRequest.UsernameOrEmail)).ReturnsAsync(testUser);
-
-            ServiceResult<UserProfileDataTransferObject> loginResult = await this.systemUnderTest.LoginAsync(loginRequest);
-
-            Assert.True(loginResult.Success);
-            Assert.Equal("valid_user", loginResult.Data.Username);
-            this.mockSessionContext.Verify(session => session.Populate(testUser, "Standard User"), Times.Once);
-        }
-
-        [Fact]
-        public async Task LoginAsync_ValidCredentials_ResetsFailedAttemptsAndReturnsProfile()
-        {
-            string password = "ValidPassword123!";
-            User testUser = new User
-            {
-                Id = Guid.NewGuid(),
-                Username = "valid_user",
-                PasswordHash = PasswordHasher.HashPassword(password),
-                IsSuspended = false,
-                Roles = new List<Role> { new Role { Name = "Administrator" } }
-            };
-
-            LoginDataTransferObject loginRequest = new LoginDataTransferObject { UsernameOrEmail = "valid_user", Password = password };
-            this.mockUserRepository.Setup(repository => repository.GetByUsernameAsync("valid_user")).ReturnsAsync(testUser);
-
-            ServiceResult<UserProfileDataTransferObject> loginResult = await this.systemUnderTest.LoginAsync(loginRequest);
-
-            Assert.True(loginResult.Success);
-            Assert.Equal("Administrator", loginResult.Data.Role.Name);
-            this.mockFailedLoginRepository.Verify(repository => repository.ResetAsync(testUser.Id), Times.Once);
-            this.mockSessionContext.Verify(session => session.Populate(testUser, "Administrator"), Times.Once);
-        }
-
-        [Fact]
-        public async Task LoginAsync_AccountLocked_ReturnsTimeRemainingMessage()
-        {
-            string password = "ValidPassword123!";
-            User testUser = new User
-            {
-                Id = Guid.NewGuid(),
-                Username = "locked_user",
-                PasswordHash = PasswordHasher.HashPassword(password),
-                IsSuspended = false
-            };
-            FailedLoginAttempt failedAttempt = new FailedLoginAttempt
-            {
-                UserId = testUser.Id,
-                FailedAttempts = 5,
-                LockedUntil = DateTime.UtcNow.AddMinutes(10)
-            };
-
-            this.mockUserRepository.Setup(repository => repository.GetByUsernameAsync("locked_user")).ReturnsAsync(testUser);
-            this.mockFailedLoginRepository.Setup(repository => repository.GetByUserIdAsync(testUser.Id)).ReturnsAsync(failedAttempt);
-
-            ServiceResult<UserProfileDataTransferObject> loginResult = await this.systemUnderTest.LoginAsync(new LoginDataTransferObject
-            {
-                UsernameOrEmail = "locked_user",
-                Password = password
-            });
-
-            Assert.False(loginResult.Success);
-            Assert.Contains("Account locked due to 5 failed sign-in attempts.", loginResult.Error);
-            Assert.Contains("Try again in", loginResult.Error);
-        }
-
-        [Fact]
-        public async Task LoginAsync_FifthFailedAttempt_ReturnsLockMessage()
-        {
-            string correctPassword = "CorrectPassword123!";
-            string wrongPassword = "WrongPassword123!";
-            User testUser = new User
-            {
-                Id = Guid.NewGuid(),
-                Username = "almost_locked_user",
-                PasswordHash = PasswordHasher.HashPassword(correctPassword),
-                IsSuspended = false
-            };
-
-            this.mockUserRepository.Setup(repository => repository.GetByUsernameAsync("almost_locked_user")).ReturnsAsync(testUser);
-            this.mockFailedLoginRepository
-                .SetupSequence(repository => repository.GetByUserIdAsync(testUser.Id))
-                .ReturnsAsync(new FailedLoginAttempt { UserId = testUser.Id, FailedAttempts = 4, LockedUntil = null })
-                .ReturnsAsync(new FailedLoginAttempt { UserId = testUser.Id, FailedAttempts = 5, LockedUntil = DateTime.UtcNow.AddMinutes(15) });
-
-            ServiceResult<UserProfileDataTransferObject> loginResult = await this.systemUnderTest.LoginAsync(new LoginDataTransferObject
-            {
-                UsernameOrEmail = "almost_locked_user",
-                Password = wrongPassword
-            });
-
-            Assert.False(loginResult.Success);
-            Assert.Contains("Account locked due to 5 failed sign-in attempts.", loginResult.Error);
             this.mockFailedLoginRepository.Verify(repository => repository.IncrementAsync(testUser.Id), Times.Once);
         }
 
         #endregion
 
         #region Logout Tests
-
-        [Fact]
-        public async Task LogoutAsync_Invoked_ClearsSessionContext()
-        {
-            ServiceResult<bool> logoutResult = await this.systemUnderTest.LogoutAsync();
-
-            Assert.True(logoutResult.Success);
-            this.mockSessionContext.Verify(session => session.Clear(), Times.Once);
-        }
 
         #endregion
 

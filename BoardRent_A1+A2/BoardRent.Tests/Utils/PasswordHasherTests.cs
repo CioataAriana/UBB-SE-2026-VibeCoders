@@ -32,7 +32,6 @@ namespace BoardRent.Tests.Utils
 
             string firstHashedPassword = PasswordHasher.HashPassword(password);
             string secondHashedPassword = PasswordHasher.HashPassword(password);
-
             Assert.NotEqual(firstHashedPassword, secondHashedPassword);
         }
 

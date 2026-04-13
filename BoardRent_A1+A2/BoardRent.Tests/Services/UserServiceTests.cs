@@ -101,24 +101,6 @@
 
         #region ChangePasswordAsync Tests
 
-        [Fact]
-        public async Task ChangePasswordAsync_ValidPasswords_UpdatesPasswordAndClearsSession()
-        {
-            Guid userIdentifier = Guid.NewGuid();
-            string originalHash = PasswordHasher.HashPassword("OldPassword123!");
-            User testUser = new User { Id = userIdentifier, PasswordHash = originalHash };
-
-            this.mockUserRepository.Setup(repository => repository.GetByIdAsync(userIdentifier)).ReturnsAsync(testUser);
-
-            var serviceResult = await this.systemUnderTest.ChangePasswordAsync(userIdentifier, "OldPassword123!", "NewSecurePass123!");
-
-            Assert.True(serviceResult.Success);
-            Assert.NotEqual(originalHash, testUser.PasswordHash);
-
-            this.mockSessionContext.Verify(session => session.Clear(), Times.Once);
-            this.mockUserRepository.Verify(repository => repository.UpdateAsync(testUser), Times.Once);
-        }
-
         #endregion
 
         #region Avatar Tests

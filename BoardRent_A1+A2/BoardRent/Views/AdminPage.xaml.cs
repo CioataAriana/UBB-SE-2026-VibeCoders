@@ -3,20 +3,16 @@ namespace BoardRent.Views
     using System;
     using System.ComponentModel;
     using BoardRent.ViewModels;
-    using BoardRent.Utils;
     using CommunityToolkit.Mvvm.DependencyInjection;
     using Microsoft.UI.Xaml;
     using Microsoft.UI.Xaml.Controls;
 
     public sealed partial class AdminPage : Page, INotifyPropertyChanged
     {
-        private readonly ISessionContext sessionContext;
-
         public AdminPage()
         {
             this.InitializeComponent();
 
-            this.sessionContext = Ioc.Default.GetService<ISessionContext>();
             this.ViewModel = Ioc.Default.GetService<AdminViewModel>();
 
             this.ViewModel.PropertyChanged += this.ViewModel_PropertyChanged;
@@ -26,7 +22,7 @@ namespace BoardRent.Views
 
         public AdminViewModel ViewModel { get; }
 
-        public bool IsUnauthorized => !this.sessionContext.IsLoggedIn || this.sessionContext.Role != "Administrator";
+        public bool IsUnauthorized => this.ViewModel.IsUnauthorized;
 
         public Visibility IsAuthorizedVisibility => this.IsUnauthorized ? Visibility.Collapsed : Visibility.Visible;
 
@@ -40,9 +36,9 @@ namespace BoardRent.Views
             }
         }
 
-        private void OnSignOutClicked(object sender, RoutedEventArgs eventArgs)
+        private async void OnSignOutClicked(object sender, RoutedEventArgs eventArgs)
         {
-            this.sessionContext.Clear();
+            await this.ViewModel.SignOutCommand.ExecuteAsync(null);
             App.NavigateTo(typeof(LoginPage), true);
         }
 

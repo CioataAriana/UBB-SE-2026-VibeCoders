@@ -28,7 +28,6 @@ namespace BoardRent
                 .AddSingleton<IUserService, UserService>()
                 .AddSingleton<IAdminService, AdminService>()
                 .AddSingleton<IFilePickerService, FilePickerService>()
-                .AddSingleton<ILoginPreferenceStore, LoginPreferenceStore>()
                 .AddSingleton<ISessionContext, SessionContext>() // <--- ADĂUGAT CRITIC PENTRU DECUPLARE
                 .AddTransient<LoginViewModel>()
                 .AddTransient<RegisterViewModel>()

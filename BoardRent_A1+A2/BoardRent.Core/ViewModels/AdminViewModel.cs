@@ -13,6 +13,8 @@ namespace BoardRent.ViewModels
     {
         private const int DefaultPageSize = 10;
         private readonly IAdminService adminService;
+        private readonly IAuthService authService;
+        private readonly ISessionContext sessionContext;
 
         [ObservableProperty]
         private ObservableCollection<UserProfileDataTransferObject> users = new ObservableCollection<UserProfileDataTransferObject>();
@@ -32,13 +34,17 @@ namespace BoardRent.ViewModels
         [NotifyCanExecuteChangedFor(nameof(NextPageCommand))]
         private int totalPages = 1;
 
-        public AdminViewModel(IAdminService adminService)
+        public AdminViewModel(IAdminService adminService, IAuthService authService, ISessionContext sessionContext)
         {
             this.adminService = adminService;
+            this.authService = authService;
+            this.sessionContext = sessionContext;
 
             // Folosim numele complet pentru extensie
             TaskUtilities.FireAndForgetSafeAsync(this.LoadUsersAsync());
         }
+
+        public bool IsUnauthorized => !this.sessionContext.IsLoggedIn || this.sessionContext.Role != "Administrator";
 
         public async Task LoadUsersAsync()
         {
@@ -170,6 +176,13 @@ namespace BoardRent.ViewModels
                 this.CurrentPage++;
                 await this.LoadUsersAsync();
             }
+        }
+
+        [RelayCommand]
+        private async Task SignOutAsync()
+        {
+            await this.authService.LogoutAsync();
+            this.OnPropertyChanged(nameof(this.IsUnauthorized));
         }
 
         private bool CanModifySelectedUser()

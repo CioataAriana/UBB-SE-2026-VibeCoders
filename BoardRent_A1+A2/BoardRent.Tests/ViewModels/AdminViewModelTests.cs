@@ -13,11 +13,17 @@
     public class AdminViewModelTests
     {
         private readonly Mock<IAdminService> mockAdminService;
+        private readonly Mock<IAuthService> mockAuthService;
+        private readonly Mock<ISessionContext> mockSessionContext;
         private readonly AdminViewModel systemUnderTest;
 
         public AdminViewModelTests()
         {
             this.mockAdminService = new Mock<IAdminService>();
+            this.mockAuthService = new Mock<IAuthService>();
+            this.mockSessionContext = new Mock<ISessionContext>();
+            this.mockSessionContext.Setup(session => session.IsLoggedIn).Returns(true);
+            this.mockSessionContext.Setup(session => session.Role).Returns("Administrator");
 
             // ViewModel-ul apelează LoadUsersAsync în constructor via FireAndForgetSafeAsync.
             // Setup-ul de bază asigură că nu crapă la inițializare.
@@ -25,7 +31,10 @@
                 .Setup(service => service.GetAllUsersAsync(It.IsAny<int>(), It.IsAny<int>()))
                 .ReturnsAsync(ServiceResult<List<UserProfileDataTransferObject>>.Ok(new List<UserProfileDataTransferObject>()));
 
-            this.systemUnderTest = new AdminViewModel(this.mockAdminService.Object);
+            this.systemUnderTest = new AdminViewModel(
+                this.mockAdminService.Object,
+                this.mockAuthService.Object,
+                this.mockSessionContext.Object);
         }
 
         [Fact]

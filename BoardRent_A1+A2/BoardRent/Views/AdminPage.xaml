@@ -30,7 +30,7 @@
 
         <!-- Permission Guard -->
         <InfoBar Grid.Row="1" 
-                 IsOpen="{x:Bind IsUnauthorized, Mode=OneWay}" 
+                 IsOpen="{x:Bind ViewModel.IsUnauthorized, Mode=OneWay}" 
                  Severity="Error"
                  Title="Unauthorized"
                  Message="UM-043: You do not have permission to access the User Administration page. Administrator role is required." 
