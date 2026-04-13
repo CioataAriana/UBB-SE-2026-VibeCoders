@@ -24,38 +24,44 @@ namespace BoardRent.Services
         private readonly IUnitOfWorkFactory unitOfWorkFactory;
         private readonly ISessionContext sessionContext;
 
-        public UserService(IUserRepository userRepository, IUnitOfWorkFactory unitOfWorkFactory, ISessionContext sessionContext)
+        public UserService(
+            IUserRepository userRepository,
+            IUnitOfWorkFactory unitOfWorkFactory,
+            ISessionContext sessionContext)
         {
             this.userRepository = userRepository;
             this.unitOfWorkFactory = unitOfWorkFactory;
             this.sessionContext = sessionContext;
         }
 
-        public async Task<ServiceResult<UserProfileDataTransferObject>> GetProfileAsync(Guid userId)
+        public async Task<ServiceResult<UserProfileDataTransferObject>> GetProfileAsync(Guid userIdentifier)
         {
             using (var unitOfWork = this.unitOfWorkFactory.Create())
             {
                 await unitOfWork.OpenAsync();
                 this.userRepository.SetUnitOfWork(unitOfWork);
 
-                var userEntity = await this.userRepository.GetByIdAsync(userId);
+                var userEntity = await this.userRepository.GetByIdentifierAsync(userIdentifier);
                 if (userEntity == null)
                 {
                     return ServiceResult<UserProfileDataTransferObject>.Fail("User not found.");
                 }
 
-                return ServiceResult<UserProfileDataTransferObject>.Ok(this.MapEntityToProfileDataTransferObject(userEntity));
+                return ServiceResult<UserProfileDataTransferObject>.Ok(
+                    this.MapEntityToProfileDto(userEntity));
             }
         }
 
-        public async Task<ServiceResult<bool>> UpdateProfileAsync(Guid userId, UserProfileDataTransferObject profileUpdateData)
+        public async Task<ServiceResult<bool>> UpdateProfileAsync(
+            Guid userIdentifier,
+            UserProfileDataTransferObject profileUpdateData)
         {
             using (var unitOfWork = this.unitOfWorkFactory.Create())
             {
                 await unitOfWork.OpenAsync();
                 this.userRepository.SetUnitOfWork(unitOfWork);
 
-                var userEntity = await this.userRepository.GetByIdAsync(userId);
+                var userEntity = await this.userRepository.GetByIdentifierAsync(userIdentifier);
                 if (userEntity == null)
                 {
                     return ServiceResult<bool>.Fail("User not found.");
@@ -63,10 +69,13 @@ namespace BoardRent.Services
 
                 var validationErrors = this.ValidateProfileDetails(profileUpdateData);
 
-                if (!string.IsNullOrWhiteSpace(profileUpdateData.Email) && profileUpdateData.Email != userEntity.Email)
+                if (!string.IsNullOrWhiteSpace(profileUpdateData.Email)
+                    && profileUpdateData.Email != userEntity.Email)
                 {
-                    var userWithDuplicateEmail = await this.userRepository.GetByEmailAsync(profileUpdateData.Email);
-                    if (userWithDuplicateEmail != null && userWithDuplicateEmail.Id != userId)
+                    var userWithDuplicateEmail =
+                        await this.userRepository.GetByEmailAsync(profileUpdateData.Email);
+
+                    if (userWithDuplicateEmail != null && userWithDuplicateEmail.Id != userIdentifier)
                     {
                         validationErrors.Add("Email|This email address is already taken by another account.");
                     }
@@ -84,14 +93,17 @@ namespace BoardRent.Services
             }
         }
 
-        public async Task<ServiceResult<bool>> ChangePasswordAsync(Guid userId, string currentPassword, string newPassword)
+        public async Task<ServiceResult<bool>> ChangePasswordAsync(
+            Guid userIdentifier,
+            string currentPassword,
+            string newPassword)
         {
             using (var unitOfWork = this.unitOfWorkFactory.Create())
             {
                 await unitOfWork.OpenAsync();
                 this.userRepository.SetUnitOfWork(unitOfWork);
 
-                var userEntity = await this.userRepository.GetByIdAsync(userId);
+                var userEntity = await this.userRepository.GetByIdentifierAsync(userIdentifier);
                 if (userEntity == null)
                 {
                     return ServiceResult<bool>.Fail("User not found.");
@@ -118,45 +130,47 @@ namespace BoardRent.Services
             }
         }
 
-        public async Task<string> UploadAvatarAsync(Guid userId, string sourceFilePath)
+        public async Task<string> UploadAvatarAsync(Guid userIdentifier, string sourceFilePath)
         {
             using (var unitOfWork = this.unitOfWorkFactory.Create())
             {
                 await unitOfWork.OpenAsync();
                 this.userRepository.SetUnitOfWork(unitOfWork);
 
-                var userEntity = await this.userRepository.GetByIdAsync(userId);
+                var userEntity = await this.userRepository.GetByIdentifierAsync(userIdentifier);
                 if (userEntity == null)
                 {
                     throw new InvalidOperationException("User not found.");
                 }
 
-                string fileName = $"{userId}_{Path.GetFileName(sourceFilePath)}";
-                string localApplicationData = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
-                string saveFolderPath = Path.Combine(localApplicationData, ApplicationName, AvatarFolderName);
+                string fileName = $"{userIdentifier}_{Path.GetFileName(sourceFilePath)}";
+                string localApplicationDataPath =
+                    Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
+                string avatarSaveFolderPath =
+                    Path.Combine(localApplicationDataPath, ApplicationName, AvatarFolderName);
 
-                Directory.CreateDirectory(saveFolderPath);
-                string destinationPath = Path.Combine(saveFolderPath, fileName);
+                Directory.CreateDirectory(avatarSaveFolderPath);
+                string destinationFilePath = Path.Combine(avatarSaveFolderPath, fileName);
 
-                File.Copy(sourceFilePath, destinationPath, true);
+                File.Copy(sourceFilePath, destinationFilePath, overwrite: true);
 
-                userEntity.AvatarUrl = destinationPath;
+                userEntity.AvatarUrl = destinationFilePath;
                 userEntity.UpdatedAt = DateTime.UtcNow;
 
                 await this.userRepository.UpdateAsync(userEntity);
 
-                return destinationPath;
+                return destinationFilePath;
             }
         }
 
-        public async Task RemoveAvatarAsync(Guid userId)
+        public async Task RemoveAvatarAsync(Guid userIdentifier)
         {
             using (var unitOfWork = this.unitOfWorkFactory.Create())
             {
                 await unitOfWork.OpenAsync();
                 this.userRepository.SetUnitOfWork(unitOfWork);
 
-                var userEntity = await this.userRepository.GetByIdAsync(userId);
+                var userEntity = await this.userRepository.GetByIdentifierAsync(userIdentifier);
                 if (userEntity == null)
                 {
                     throw new InvalidOperationException("User not found.");
@@ -169,34 +183,44 @@ namespace BoardRent.Services
             }
         }
 
+        // ── Private helpers ──────────────────────────────────────────────────────
         private List<string> ValidateProfileDetails(UserProfileDataTransferObject profileData)
         {
-            var errors = new List<string>();
+            var validationErrors = new List<string>();
 
-            if (string.IsNullOrWhiteSpace(profileData.DisplayName) ||
-                profileData.DisplayName.Length < MinimumDisplayNameLength ||
-                profileData.DisplayName.Length > MaximumDisplayNameLength)
+            if (string.IsNullOrWhiteSpace(profileData.DisplayName)
+                || profileData.DisplayName.Length < MinimumDisplayNameLength
+                || profileData.DisplayName.Length > MaximumDisplayNameLength)
             {
-                errors.Add("DisplayName|Display name must be between 2 and 50 characters long.");
+                validationErrors.Add(
+                    $"DisplayName|Display name must be between {MinimumDisplayNameLength} " +
+                    $"and {MaximumDisplayNameLength} characters long.");
             }
 
             if (!string.IsNullOrWhiteSpace(profileData.PhoneNumber))
             {
-                if (!System.Text.RegularExpressions.Regex.IsMatch(profileData.PhoneNumber, @"^\+?\d{7,15}$"))
+                bool phoneNumberIsValid = System.Text.RegularExpressions.Regex.IsMatch(
+                    profileData.PhoneNumber,
+                    @"^\+?\d{7,15}$");
+
+                if (!phoneNumberIsValid)
                 {
-                    errors.Add("PhoneNumber|Phone number format is invalid.");
+                    validationErrors.Add("PhoneNumber|Phone number format is invalid.");
                 }
             }
 
-            if (!string.IsNullOrWhiteSpace(profileData.StreetNumber) && profileData.StreetNumber.Length > MaximumStreetNumberLength)
+            if (!string.IsNullOrWhiteSpace(profileData.StreetNumber)
+                && profileData.StreetNumber.Length > MaximumStreetNumberLength)
             {
-                errors.Add("StreetNumber|Street number must be a valid value.");
+                validationErrors.Add("StreetNumber|Street number must be a valid value.");
             }
 
-            return errors;
+            return validationErrors;
         }
 
-        private void ApplyProfileUpdatesToEntity(User userEntity, UserProfileDataTransferObject profileUpdateData)
+        private void ApplyProfileUpdatesToEntity(
+            User userEntity,
+            UserProfileDataTransferObject profileUpdateData)
         {
             userEntity.DisplayName = profileUpdateData.DisplayName;
             userEntity.Email = profileUpdateData.Email;
@@ -208,9 +232,9 @@ namespace BoardRent.Services
             userEntity.UpdatedAt = DateTime.UtcNow;
         }
 
-        private UserProfileDataTransferObject MapEntityToProfileDataTransferObject(User userEntity)
+        private UserProfileDataTransferObject MapEntityToProfileDto(User userEntity)
         {
-            var primaryRole = userEntity.Roles?.FirstOrDefault();
+            Role primaryRole = userEntity.Roles?.FirstOrDefault();
 
             return new UserProfileDataTransferObject
             {

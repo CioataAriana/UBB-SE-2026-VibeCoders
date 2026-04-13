@@ -133,7 +133,7 @@ namespace BoardRent.Tests.Utils
 
             mockUnitOfWork.Setup(unitOfWork => unitOfWork.OpenAsync()).Returns(Task.CompletedTask);
             mockUnitOfWorkFactory.Setup(factory => factory.Create()).Returns(mockUnitOfWork.Object);
-            mockUserRepository.Setup(repository => repository.GetByIdAsync(userId)).ReturnsAsync(persistedUser);
+            mockUserRepository.Setup(repository => repository.GetByIdentifierAsync(userId)).ReturnsAsync(persistedUser);
 
             UserService userService = new UserService(
                 mockUserRepository.Object,

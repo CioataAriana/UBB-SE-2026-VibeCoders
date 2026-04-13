@@ -30,19 +30,28 @@ namespace BoardRent.Services
 
         public async Task<ServiceResult<bool>> RegisterAsync(RegisterDataTransferObject registrationRequest)
         {
-            // Validările rămân în mare parte la fel, dar folosim numele întregi
             using (IUnitOfWork unitOfWork = this.unitOfWorkFactory.Create())
             {
                 await unitOfWork.OpenAsync();
                 this.userRepository.SetUnitOfWork(unitOfWork);
 
-                User existingUserByUsername = await this.userRepository.GetByUsernameAsync(registrationRequest.Username);
+                User existingUserByUsername =
+                    await this.userRepository.GetByUsernameAsync(registrationRequest.Username);
+
                 if (existingUserByUsername != null)
                 {
                     return ServiceResult<bool>.Fail("Username|Username is already taken.");
                 }
 
-                User newUser = new User
+                User existingUserByEmail =
+                    await this.userRepository.GetByEmailAsync(registrationRequest.Email);
+
+                if (existingUserByEmail != null)
+                {
+                    return ServiceResult<bool>.Fail("Email|Email address is already registered.");
+                }
+
+                var newUser = new User
                 {
                     Id = Guid.NewGuid(),
                     DisplayName = registrationRequest.DisplayName,
@@ -62,7 +71,8 @@ namespace BoardRent.Services
             }
         }
 
-        public async Task<ServiceResult<UserProfileDataTransferObject>> LoginAsync(LoginDataTransferObject loginRequest)
+        public async Task<ServiceResult<UserProfileDataTransferObject>> LoginAsync(
+            LoginDataTransferObject loginRequest)
         {
             using (IUnitOfWork unitOfWork = this.unitOfWorkFactory.Create())
             {
@@ -70,53 +80,61 @@ namespace BoardRent.Services
                 this.userRepository.SetUnitOfWork(unitOfWork);
                 this.failedLoginRepository.SetUnitOfWork(unitOfWork);
 
-                User userEntity = await this.userRepository.GetByUsernameAsync(loginRequest.UsernameOrEmail);
-                if (userEntity == null)
-                {
-                    userEntity = await this.userRepository.GetByEmailAsync(loginRequest.UsernameOrEmail);
-                }
+                User userEntity =
+                    await this.userRepository.GetByUsernameAsync(loginRequest.UsernameOrEmail)
+                    ?? await this.userRepository.GetByEmailAsync(loginRequest.UsernameOrEmail);
 
                 if (userEntity == null)
                 {
-                    return ServiceResult<UserProfileDataTransferObject>.Fail("Invalid username or password.");
+                    return ServiceResult<UserProfileDataTransferObject>.Fail(
+                        "Invalid username or password.");
                 }
 
                 if (userEntity.IsSuspended)
                 {
-                    return ServiceResult<UserProfileDataTransferObject>.Fail("This account has been suspended.");
+                    return ServiceResult<UserProfileDataTransferObject>.Fail(
+                        "This account has been suspended.");
                 }
 
-                FailedLoginAttempt existingFailedAttempt = await this.failedLoginRepository.GetByUserIdAsync(userEntity.Id);
-                if (existingFailedAttempt?.LockedUntil > DateTime.UtcNow)
+                FailedLoginAttempt failedLoginRecord =
+                    await this.failedLoginRepository.GetByUserIdAsync(userEntity.Id);
+
+                if (failedLoginRecord?.LockedUntil > DateTime.UtcNow)
                 {
-                    TimeSpan remainingLockTime = existingFailedAttempt.LockedUntil.Value - DateTime.UtcNow;
-                    int remainingMinutes = Math.Max(0, remainingLockTime.Minutes + (remainingLockTime.Hours * 60));
-                    int remainingSeconds = Math.Max(0, remainingLockTime.Seconds);
+                    TimeSpan remainingLockDuration = failedLoginRecord.LockedUntil.Value - DateTime.UtcNow;
+                    int remainingMinutes = Math.Max(0, remainingLockDuration.Minutes + (remainingLockDuration.Hours * 60));
+                    int remainingSeconds = Math.Max(0, remainingLockDuration.Seconds);
+
                     return ServiceResult<UserProfileDataTransferObject>.Fail(
                         $"This account is locked. Try again in {remainingMinutes:D2}:{remainingSeconds:D2}.");
                 }
 
-                if (!PasswordHasher.VerifyPassword(loginRequest.Password, userEntity.PasswordHash))
+                bool passwordIsCorrect = PasswordHasher.VerifyPassword(
+                    loginRequest.Password,
+                    userEntity.PasswordHash);
+
+                if (!passwordIsCorrect)
                 {
                     await this.failedLoginRepository.IncrementAsync(userEntity.Id);
-                    return ServiceResult<UserProfileDataTransferObject>.Fail("Invalid username or password.");
+                    return ServiceResult<UserProfileDataTransferObject>.Fail(
+                        "Invalid username or password.");
                 }
 
                 await this.failedLoginRepository.ResetAsync(userEntity.Id);
 
-                string primaryRole = userEntity.Roles?.FirstOrDefault()?.Name ?? "Standard User";
-                this.sessionContext.Populate(userEntity, primaryRole);
+                string primaryRoleName = userEntity.Roles?.FirstOrDefault()?.Name ?? "Standard User";
+                this.sessionContext.Populate(userEntity, primaryRoleName);
 
-                UserProfileDataTransferObject profileDto = new UserProfileDataTransferObject
+                var userProfileDto = new UserProfileDataTransferObject
                 {
                     Id = userEntity.Id,
                     Username = userEntity.Username,
                     DisplayName = userEntity.DisplayName,
                     Email = userEntity.Email,
-                    Role = new RoleDataTransferObject { Name = primaryRole }
+                    Role = new RoleDataTransferObject { Name = primaryRoleName }
                 };
 
-                return ServiceResult<UserProfileDataTransferObject>.Ok(profileDto);
+                return ServiceResult<UserProfileDataTransferObject>.Ok(userProfileDto);
             }
         }
 
@@ -128,7 +146,8 @@ namespace BoardRent.Services
 
         public async Task<ServiceResult<string>> ForgotPasswordAsync()
         {
-            return ServiceResult<string>.Ok("Please contact the Administrator at admin@boardrent.com.");
+            return ServiceResult<string>.Ok(
+                "Please contact the Administrator at admin@boardrent.com.");
         }
     }
 }

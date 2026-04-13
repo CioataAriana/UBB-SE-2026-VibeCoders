@@ -8,8 +8,11 @@ namespace BoardRent.Repositories
     public interface IFailedLoginRepository
     {
         void SetUnitOfWork(IUnitOfWork unitOfWork);
-        Task<FailedLoginAttempt?> GetByUserIdAsync(Guid userId);
-        Task IncrementAsync(Guid userId);
-        Task ResetAsync(Guid userId);
+
+        Task<FailedLoginAttempt> GetByUserIdAsync(Guid userIdentifier);
+
+        Task IncrementAsync(Guid userIdentifier);
+
+        Task ResetAsync(Guid userIdentifier);
     }
 }
